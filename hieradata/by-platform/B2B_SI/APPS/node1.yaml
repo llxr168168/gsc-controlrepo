@@ -1,0 +1,94 @@
+sw_util::wrapper::hiera_file::params:
+  - /etc/init.d/si_app: {ensure: "file", owner: "root", group: "root", content: "b2b_si::si_app", mode: "755"}
+
+
+b2b_si::si_app: |
+
+ #!/bin/sh
+ # chkconfig: 2345 99 1
+ # description: start/stop si app scripts
+ #
+
+ prog=si_app
+
+ if [ -f /etc/rc.d/init.d/functions ]; then
+        . /etc/rc.d/init.d/functions
+ fi
+
+ RETVAL=0
+
+ stop() {
+    echo -n $"Running soft stop: "
+    logger "I am running softstop."
+    su - SI -c '/swpkg/SI/IBM/SterlingIntegrator/install/bin/softstop.sh node1 -tq 600 -dp 3 -cp 3 >> /swdata/SI/sw_logs/shw_softstop.log'
+    RETVAL=$?
+    logger "Finished running softstop."
+    if [ $RETVAL -eq 0 ]; then
+         echo_success
+         logger "softstop ran successfully."
+    else
+         echo_failure
+         logger "softstop failed."
+    fi
+    
+    logger "I will wait 20 min...because we have to."
+    echo
+    echo "sleep 20 min..."
+    # sleep for 20 min before running hard stop
+    sleep 1200
+    
+    logger "Done sleeping. I am awake!"
+    
+    echo -n $"Running hard stop: "
+    
+    logger "I will now run hardstop."
+    
+    su - SI -c '/swpkg/SI/IBM/SterlingIntegrator/install/bin/hardstop.sh >> /swdata/SI/sw_logs/shw_hardstop_.log'
+    RETVAL=$?
+    logger "Finished running hardstop."
+    if [ $RETVAL -eq 0 ]; then
+        success
+        logger "hardstop ran successfully."
+    else
+        failure
+        logger "softstop failed."
+    fi
+    echo
+    logger "finished stop init script..."
+ }
+ start() {
+     echo -n "Starting SI..."
+     logger "I will now START si_app..."
+     touch /var/lock/subsys/$prog
+     logger "Created lock file..."
+     logger "I will now start si_app..."
+     su - SI -c '/swpkg/SI/IBM/SterlingIntegrator/install/bin/run.sh >> /swdata/SI/sw_logs/shw_run.log'
+     RETVAL=$?
+     logger "Finished running start si_app..."
+
+     if [ $RETVAL -eq 0 ]; then
+        success
+        logger "si_app started successfully..."
+     else
+        failure
+        logger "si_app start failed..."
+     fi
+     echo
+     
+     logger "finished start init script..."
+ }
+
+
+ case "$1" in
+ start)
+       start
+       ;;
+ stop)
+       stop
+       ;;
+ *)
+       echo $"Usage: $0 {start|stop}"
+       exit 2
+ esac
+
+ exit $?

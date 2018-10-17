@@ -1,0 +1,112 @@
+# by-platform -> ORACLE_OEM -> WEB.yaml
+
+sw_util::wrapper::hiera_package::params:
+  - make: {}
+  - binutils: {}
+  - libaio: {} 
+  - libstdc++: {}
+  - libXtst: {} 
+  - glibc-devel: {} 
+  - glibc-devel.i686: {} 
+  - gcc: {}
+
+sw_util::wrapper::hiera_user::params:
+  - applmgr: {uid: "1002", gid: "1001", groups: ["sa-local"] , home: "/home/applmgr"}
+
+
+sw_util::augeas::lnx_sysctl::params:
+  - "kernel.msgmni  2878"
+  - "kernel.msgmax  8192"
+  - "kernel.msgmnb  65536"
+  - "kernel.sem '250 32000 100 142'"
+  - "kernel.shmmax 4294967295"
+  - "kernel.shmall 3355443"
+  - "kernel.shmmni 4096"
+  - "kernel.panic_on_oops 1"
+  - "net.core.rmem_max 4194304"
+  - "net.core.rmem_default 262144"
+  - "net.core.wmem_max 1048576"
+  - "net.core.wmem_default 262144"
+  - "fs.aio-max-nr 1048576"
+  - "fs.file-max 6815744"
+  - "vm.min_free_kbytes 51200"
+  - "kernel.sysrq  1"
+  - "net.ipv4.ip_local_port_range '11000  65500'"
+  # Update (2017-01-16)
+  # Documenting Kernel changes from legacy OVM 2.x environment 
+  # used in CRQ000000008869 to address java IO issue 
+  # These values will be commented out in the new environment. 
+  # Uncomment to update on all Web servers. (Note: Augeas will not recycle sysctl)
+  #- "vm.dirty_background_ratio  5"
+  #- "vm.dirty_ratio  10"
+
+# requires update to stdbuild 
+oracle_oem::sudo: |
+  ### Managed by Puppet - sudo
+  Defaults   !requiretty
+  Defaults   !visiblepw
+  Defaults    always_set_home
+  Defaults    env_reset
+  Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR LS_COLORS"
+  Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+  Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+  Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+  Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+  Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+  root    ALL=(ALL)       ALL
+  %gg-adm-gcdunix ALL=(ALL) ALL
+  %gg-adm-oracle-oem ALL=(ALL) ALL
+  sa-qualys-linux ALL=NOPASSWD: ALL 
+  #includedir /etc/sudoers.d 
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-oracle-oem):ALL'
+  - '+:(gg-adm-scan):ALL'
+  - '+:tricore: 65.246.218.0/24'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+
+
+#sw_util::wrapper::hiera_package::params:
+
+sw_util::augeas::ulimit::params:
+  topic: domain
+  context: /files/etc/security/limits.conf
+  index:
+    - { domain: applmgr, type: hard, item: nofile, value: 65536 }
+    - { domain: applmgr, type: soft, item: nofile, value: 65536 }
+    - { domain: applmgr, type: hard, item: nproc, value: 16384 }
+    - { domain: applmgr, type: soft, item: nproc, value: 16384 }
+    - { domain: applmgr, type: hard, item: stack, value: unlimited }
+    - { domain: applmgr, type: soft, item: stack, value: unlimited }
+    - { domain: oracle, type: hard, item: nofile, value: 131072 }
+    - { domain: oracle, type: soft, item: nofile, value: 131072 }
+    - { domain: oracle, type: hard, item: nproc, value: 131072 }
+    - { domain: oracle, type: soft, item: nproc, value: 131072 }
+    - { domain: oracle, type: hard, item: core, value: unlimited }
+    - { domain: oracle, type: soft, item: core, value: unlimited }
+    - { domain: oracle, type: hard, item: stack, value: 10240 }
+    - { domain: oracle, type: soft, item: stack, value: 32768 }
+    - { domain: oracle, type: hard, item: memlock, value: unlimited }
+    - { domain: oracle, type: soft, item: memlock, value: unlimited }    
+    - { domain: '*', type: hard, item: nofile, value: 65536 }
+    - { domain: '*', type: soft, item: nofile, value: 4096 }
+    - { domain: '*', type: hard, item: nproc, value: 16384 }
+    - { domain: '*', type: soft, item: nproc, value: 2047 }
+
+
+sw_util::wrapper::hiera_file::params:
+  # Directories for NFS mount points
+  - /global/apps_backup: {owner: "oracle", group: "dba"}
+  - /apps_stage: {owner: "oracle", group: "dba"}
+  - /BIP_STORAGE: {owner: "oracle", group: "dba"}
+  - /swpkg/oracle/oms: {owner: "oracle", group: "dba"}
+  - /swpkg/oracle/gcagent: {owner: "oracle", group: "dba"}
+  - /etc/pam.d/emagent: {
+    ensure: "link",
+    target: "sshd",
+  }

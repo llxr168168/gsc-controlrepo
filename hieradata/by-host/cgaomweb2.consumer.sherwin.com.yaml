@@ -1,0 +1,2 @@
+jboss::jdk_version: java-1.7.0-openjdk-1.7.0.141
+jboss::java_home: /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.141.x86_64/jre

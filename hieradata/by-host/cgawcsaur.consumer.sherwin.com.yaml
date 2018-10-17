@@ -1,0 +1,6 @@
+oracle_build::kernel::vm_nr_hugepages: 3073
+
+tz::region: 'America'
+tz::locality: 'Boise'
+
+oracle_build::oracleshared_path: '/swdata/nfs/oraremote'

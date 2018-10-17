@@ -1,0 +1,143 @@
+---
+classes:
+  - profiles_unix::gsc::apps::sprint_app
+  - profiles_unix::gsc::apps::jboss_as
+  - profiles_unix::gsc::apps::ftpserver
+
+jboss::jboss_version: 6.3-0
+samba::shares:
+  node:
+    - 'comment = Node Stuff'
+    - 'path = /swdata/node'
+    - 'browseable = yes'
+    - 'writable = yes'
+    - 'valid users = @SW\gg-cgit-mdm-admins'
+    - 'force user = node'
+vsftpd::vsftpd_userlist:
+  - sruser
+  - sprint_xfer
+vsftpd::vsftpd_umask: '002'
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:sruser:LOCAL cgsprintdb2.consumer.sherwin.com cgsprintdb1.consumer.sherwin.com stnps2hq.sherwin.com cgsprint1.consumer.sherwin.com cgsprint2.consumer.sherwin.com stnps1hq.sherwin.com cgeaiw1.consumer.sherwin.com cgeaiw4.consumer.sherwin.com stnps1rw.sherwin.com stnps2rw.sherwin.com'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(jboss):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
+  - '-:ALL:ALL'
+
+  
+sprint::vhosts:
+  j29qa-http:
+    serveraliases:
+      - j29qa.sherwin.com
+      - j29qa
+    redirect_status: 'permanent'    
+    redirect_dest: 'https://j29qa.sherwin.com/J29/'  
+    docroot: '/var/www/html'
+    priority: 30
+    port: 80
+  j29qa:
+    ssl: true
+    ssl_cert: /etc/pki/tls/certs/star_sherwin.cert
+    ssl_key: /etc/pki/tls/private/star_sherwin.key
+    priority: 30
+    docroot: '/var/www/html'
+    serveraliases:
+      - j29qa.sherwin.com
+      - j29qa
+    port: 443
+    rewrites:
+      - rewrite_cond: '%%{}{HTTP_HOST} ^j29qa'
+      - rewrite_cond: '%%{}{REQUEST_URI} ^/console'
+      - rewrite_rule: '^(.*)$ http://j29qa.sherwin.com:9990/console/'
+      - rewrite_cond: '%%{}{REQUEST_URI} !^/console'
+      - rewrite_cond: '%%{}{REQUEST_URI} !^/J29'
+      - rewrite_rule: '^(.*)$ https://j29qa.sherwin.com/J29'
+  j29dev-http:
+    serveraliases:
+      - j29dev.sherwin.com
+      - j29dev
+    redirect_status: 'permanent'    
+    redirect_dest: 'https://j29dev.sherwin.com/J29/'
+    docroot: '/var/www/html'
+    priority: 30
+    port: 80
+  j29dev:
+    ssl: true
+    ssl_cert: /etc/pki/tls/certs/star_sherwin.cert
+    ssl_key: /etc/pki/tls/private/star_sherwin.key
+    priority: 30
+    docroot: '/var/www/html'
+    serveraliases:
+      - j29dev.sherwin.com
+      - j29dev
+    port: 443
+    rewrites:
+      - rewrite_cond: '%%{}{HTTP_HOST} ^j29dev'
+      - rewrite_cond: '%%{}{REQUEST_URI} ^/console'
+      - rewrite_rule: '^(.*)$ http://j29dev.sherwin.com:9990/console/'
+      - rewrite_cond: '%%{}{REQUEST_URI} !^/console'
+      - rewrite_cond: '%%{}{REQUEST_URI} !^/J29'
+      - rewrite_rule: '^(.*)$ https://j29dev.sherwin.com/J29'
+  sprintqa-http:
+    serveraliases:
+      - sprintqa.consumer.sherwin.com
+      - sprintqa
+    redirect_status: 'permanent'    
+    redirect_dest: 'https://sprintqa.consumer.sherwin.com/'
+    docroot: '/var/www/html'
+    priority: 30
+    port: 80
+  sprintqa:
+    ssl: true
+    ssl_cert: /etc/pki/tls/certs/star_sherwin.cert
+    ssl_key: /etc/pki/tls/private/star_sherwin.key
+    priority: 30
+    docroot: '/var/www/html'
+    serveraliases:
+      - sprintqa.consumer.sherwin.com
+      - sprintqa
+    port: 443
+    rewrites:
+      - rewrite_cond: '%%{}{HTTP_HOST} ^sprintqa'
+      - rewrite_cond: '%%{}{REQUEST_URI} ^/console'
+      - rewrite_rule: '^(.*)$ http://sprintqa.consumer.sherwin.com:9990/console/'
+      - rewrite_cond: '%%{}{REQUEST_URI} !^/console'
+      - rewrite_cond: '%%{}{REQUEST_URI} !^/sprint'
+      - rewrite_rule: '^(.*)$ https://sprintqa.consumer.sherwin.com/sprint'
+  nodeqa-http:
+    serveraliases:
+      - nodeqa.consumer.sherwin.com
+      - nodeqa
+    redirect_status: 'permanent'    
+    redirect_dest: 'https://nodeqa.consumer.sherwin.com/'
+    docroot: '/swdata/node'
+    priority: 30
+    port: 80
+  nodeqa:
+    ssl: true
+    ssl_cert: /etc/pki/tls/certs/star_sherwin.cert
+    ssl_key: /etc/pki/tls/private/star_sherwin.key
+    priority: 30
+    docroot: '/swdata/node'
+    serveraliases:
+      - nodeqa.consumer.sherwin.com
+      - nodeqa
+    port: 443
+sprint::vhost_fragments:
+  j29qa:
+    target: '30-j29qa.conf'
+    order: 1
+    content: '  JKMount /* default'
+  j29dev:
+    target: '30-j29dev.conf'
+    order: 1
+    content: '  JKMount /* mdmdev'
+  sprintqa:
+    target: '30-sprintqa.conf'
+    order: 1
+    content: '  JKMount /* default'

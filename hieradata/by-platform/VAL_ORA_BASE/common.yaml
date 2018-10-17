@@ -1,0 +1,9 @@
+classes:
+  - profiles_unix::val::oracle::base
+  - avamar
+
+#Don't make the /swdata/nfs directory
+autofs::make_default_dir: false 
+
+#Enable Avamar client backups on all Valspar Oracle database
+avamar::disable: 'false'

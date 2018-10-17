@@ -1,0 +1,365 @@
+# by-platform -> NETEZZA -> PTS.yaml
+
+sw_util::wrapper::hiera_group::params:
+  - nz: { gid: 500, system: false }
+#  - informix: { gid: 501, system: false }
+#  - nz: { gid: 1015, system: false }
+#  - informix: { gid: 1020, system: false }
+
+sw_util::wrapper::hiera_user::params:
+  - nz: { uid: 500, gid: 500, home: "/home/nz", groups: ["sa-local", "tty"] }
+#  - informix: { uid: 501, gid: 501, home: "/home/informix", groups: ["sa-local"] }
+#  - nz: { uid: 1015, gid: 1015, home: "/home/nz", groups: ["sa-local", "tty"] }
+#  - informix: { uid: 1020, gid: 1020, home: "/home/informix", groups: ["sa-local"] }
+
+sw_util::wrapper::hiera_package::params:
+  - pam.i686: {}
+  - redhat-lsb-core: {}
+  - ncurses-libs.i686: {}
+  - nfs-utils: {}
+  - libuuid.i686: {}
+  # Adding xfs filesystem binaries from custom. 
+  # Required for /var/nzrepl
+  - xfsprogs: {}
+  - xfsdump: {}
+# - stunnel: {} #  Place holder for ssl config over wan
+
+
+sw_util::wrapper::hiera_file::params:
+  - /swpkg/ibm: {owner: "root", group: "root"}
+  #- /opt/ibm: { ensure: "link", target: "/swpkg/ibm" }
+  #- /swpkg/ibm/nzpts: { owner: "nz", group: "nz" }
+  #- /swdata/nzpts: {owner: "root", group: "root"}
+  #- /swdata/nzpts/data: { owner: "nz", group: "nz" }
+  - /etc/exports: {ensure: "file" , content: "netezza::pts::exports", owner: "root", group: "root", notify: "Exec[Exports_Watcher]"}
+  - /home/informix: { owner: "informix", group: "informix", mode: "700" } 
+  - /home/nz: { owner: "nz", group: "nz", mode: "700" } 
+  - /home/nz/.ssh: { owner: "nz", group: "nz", mode: "700" } 
+  - /home/nz/.ssh/id_rsa: { ensure: "file", content: "nz::ssh_private", owner: "nz", group: "nz", mode: "600" } 
+  - /home/nz/.ssh/config: { ensure: "file", content: "nz::ssh_config", owner: "nz", group: "nz", mode: "600" }
+  - /home/nz/.ssh/authorized_keys: { ensure: "file", content: "nz::ssh_public", owner: "nz", group: "nz", mode: "600" } 
+  - /var/nzrepl: { owner: "nz", group: "nz", mode: "700" } 
+  - /etc/init.d/pts_tunnel: { ensure: "file", content: "netezza::pts::pts_tunnel", owner: "root", group: "root", mode: "755" } 
+  - /etc/profile.d/netezza_profile.sh: { 
+      ensure: "file", 
+      content: "netezza::pts::global::profile", 
+      owner: "root", 
+      group: "root", 
+      mode: "644"
+    }
+  - /etc/sysconfig/network-scripts/ifcfg-eth1: { 
+      ensure: "file", 
+      content: "netezza::pts::private_network", 
+      owner: "root", 
+      group: "root" , 
+      mode: "644",
+      notify: "Exec[Network_Watcher]" 
+    }
+
+# # Update pts filesystems with special mount point options.
+sw_util::wrapper::hiera_file_line::params:
+  - set_etc-hosts_ptsctrl: {
+      path: "/etc/hosts", 
+      match: "ptsctrl", 
+      line: "%{hiera('netezza::pts::private_ip')} \t ptsctrl.sherwin.com  \tptsctrl"
+    }
+  - set_etc-hosts_stptsms_ssh: {
+      path: "/etc/hosts", 
+      match: "tstptsms_ssh", 
+      line: "127.0.0.1 \tstptsms_ssh.local \tstptsms_ssh"
+    }
+  - set_etc-hosts_stptsrw_ssh: {
+      path: "/etc/hosts", 
+      match: "tstptsrw_ssh", 
+      line: "127.0.0.1 \tstptsrw_ssh.local \tstptsrw_ssh"
+    }
+
+# # stptsms-ssh -> Establishes ssh channel on port 52001
+# 127.0.0.1 stptsms_ssh.local stptsms_ssh
+# # stptsrw-ssh -> Establishes ssh channel on port 52002
+# 127.0.0.1 stptsrw_ssh.local stptsrw_ssh
+
+
+
+
+# Commenting out requires update to stdbuild process
+#  - /etc/sudoers: {ensure: "file", content: "netezza::sudo", owner: "root", group: "root", mode: "440" }
+
+sw_util::wrapper::hiera_exec::params:
+  - Network_Watcher_Exec: {
+    # Force eth1 to restart only when configuration changes.
+    command: "ifdown eth1 &> /dev/null && ifup eth1 &> /dev/null",
+    alias: "Network_Watcher",
+    refreshonly: true,
+    }
+  - Exports_Watcher_Exec: {
+    # Force nfs to restart only when configuration changes.
+    command: "service nfs reload &> /dev/null",
+    alias: "Exports_Watcher",
+    refreshonly: true,
+    } 
+ 
+
+
+# Start NFS server
+sw_util::wrapper::hiera_service::params:
+  - rpcbind: {}
+  - nfs: {}
+
+sw_util::augeas::lnx_sysctl::params:
+  - "vm.dirty_background_ratio 0"
+  - "vm.dirty_background_bytes 134217728"
+  - "vm.dirty_ratio 0"
+  - "vm.dirty_bytes 2146435072"
+  ## PTS increased TCP window buffer sizes
+  - "net.core.wmem_max 4194304"
+  - "net.core.rmem_max 4194304"
+
+
+########### START NFS Export Config ###############
+
+
+
+
+netezza::pts::exports: |
+  ## Puppet Managed File by-platform -> NETEZZA -> common.yaml
+  ## Hiera -> netezza::pts::exports
+  # Start Netezza Standalone replication NFS Export Config
+  # NFS access control for Netezza appliances connecting to PTS servers over private network
+  /var/nzrepl %{hiera('netezza::nfs1::private_ip')}(no_root_squash,rw,sync)  %{hiera('netezza::nfs2::private_ip')}(no_root_squash,rw,sync)
+  # End config
+
+########### END NFS Export Config ###############
+
+# File section
+
+netezza::pts::private_network: |
+  ## Puppet Managed File
+  # by-platform -> NETEZZA -> PTS.yaml
+  DEVICE=eth1
+  ONBOOT=yes
+  BOOTPROTO=none
+  IPADDR=%{hiera('netezza::pts::private_ip')}
+  NETMASK=255.255.255.0
+  TYPE=Ethernet
+
+netezza::sudo: |
+  ### Managed by Puppet - sudo
+  Defaults   !requiretty
+  Defaults   !visiblepw
+  Defaults    always_set_home
+  Defaults    env_reset
+  Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR LS_COLORS"
+  Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+  Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+  Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+  Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+  Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+  root    ALL=(ALL)       ALL
+  %gg-adm-gcdunix ALL=(ALL) ALL
+  %gg-adm-stpts ALL=(ALL) ALL
+  sa-qualys-linux ALL=NOPASSWD: ALL 
+  #includedir /etc/sudoers.d
+
+nz::ssh_config: |
+  Host *
+    AddressFamily inet
+
+netezza::pts::global::profile: |
+  ## Puppet Managed File
+  # by-platform -> netezza -> pts.yaml
+  # Netezza PTS Settings
+  #  
+  if [ "$USER" = "nz" ]; then 
+    # Netezza NZ user PROFILE 
+    export PATH=$PATH:/opt/ibm/nzpts/bin
+    export PS1="[\u@\h \W]\$ "
+    #< Export options for installpts
+    export PTS_SOFTWARE=/opt/ibm
+    export PTS_INSTALL=${PTS_SOFTWARE}/nzpts
+    export PTSD_CONF=${PTS_INSTALL}/etc/ptsd.conf
+    export PTS_DATA=/var/nzrepl
+    export NZPTSDNAME=ptsd
+    #<
+  fi
+  ## EOF
+
+netezza::pts::pts_tunnel: |
+  ## Puppet Managed File
+  # by-platform -> netezza -> pts.yaml
+  # Netezza PTS replication tunnel settings
+  # Creates socket ssh pair for PTS Traffic
+  #
+  #
+  # chkconfig: 345 99 15
+  # description: SSH Tunnel for PTS Traffic
+  #
+  ### BEGIN INIT INFO
+  # Provides: pts_tunnel
+  # Required-Start: $local_fs $network $syslog
+  # Required-Stop: $local_fs $syslog
+  # Should-Start: $syslog
+  # Should-Stop: $network $syslog
+  # Default-Start: 3 4 5
+  # Default-Stop: 0 1 6
+  # Short-Description: SSH Tunnel for PTS Traffic
+  # Description:       SSH Tunnel for PTS Traffic 
+  #        
+  ### END INIT INFO
+  # source function library
+  . /etc/rc.d/init.d/functions
+  RETVAL=0
+  prog="pts_tunnel"
+  SSH=/usr/bin/ssh
+  PID_FILE=/var/run/pts_tunnel.pid
+  lockfile=/var/lock/subsys/$prog
+  runlevel=$(set -- $(runlevel); eval "echo \$$#" )
+  #
+  pts_tunnel_status() {
+    ss -nal | grep %{hiera('netezza::ssh:socket')} &> /dev/null
+  }
+  
+  os_status() {
+    pts_tunnel_status && echo "SSH Tunnel port [%{hiera('netezza::ssh:socket')}] is open" || echo " - ! - SSH Tunnel is Not Running - ! -"
+  }
+  #
+  start()
+  {
+    echo $"Starting $prog: "
+    if pts_tunnel_status ; then 
+      echo "SSH Tunnel is open"
+    else
+      echo  $"Starting $prog "
+      daemon --user=nz $SSH -i /home/nz/.ssh/id_rsa nz@%{hiera('netezza::ssh:remotehost')} -L  %{hiera('netezza::ssh:socket')}:%{hiera('netezza::ssh:remotehost')}:%{hiera('netezza::ssh:socket')} -N  & 
+    fi
+    RETVAL=$?
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    echo
+    return $RETVAL
+  }
+  #
+  stop()
+  {
+    if os_status ; then 
+            echo -n $"Stopping $prog: "
+            killproc -p $PID_FILE $SSH
+            RETVAL=$?
+            [ $RETVAL -eq 0 ] && rm -f $lockfile
+            echo
+    else
+      echo " - ! - $prog is not running"
+    fi
+  }
+
+  case "$1" in
+    start)
+      start
+      ;;
+    stop)
+      stop
+      ;;
+    status)
+      os_status
+      ;;
+    restart)
+      stop
+      start
+      ;;
+    *)
+      echo $"Usage: $0 {start|stop|status|restart}"
+      RETVAL=2
+  esac
+  exit $RETVAL
+
+  
+
+
+
+nz::ssh_private: >
+    ENC[PKCS7,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
+    6tYmyN78SDGRExWU1BmqtasDVi5JkinA]
+  
+
+
+nz::ssh_public: >
+    ENC[PKCS7,MIIDDQYJKoZIhvcNAQcDoIIC/jCCAvoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAbHKWOkN7FtV9jGXrEpXpQ6aKNaOWPw3KFfO4
+    4fkE3nTpotv09K7NjPNwazjAoaZhgAf+jyQrpF1GDbWK6FoaA2aPKNq2a4Nc
+    vfDAa5ndRjDmkCNcphgk0qshX0mbGkWeaiFPBUQt5V6iYpI/qdcUzoLGoQyL
+    aW7RJmXlblD6JnqHITJdtEvzJNw3Xmi0K5xlvTjPFmDQiYOzU9LnBp3VquPJ
+    6a5jclBijdsZ+iAsLrDS7kfMH63SZna1v31yVJ/FymyFCiiH1myRAKXdFoiu
+    Z3ioY8gX4wp/EmygnTH5hgUBSC/LW1Si+aiZO8xtupE50Sh3YZ4m1U6kkN0l
+    Z1UT0DCCAc4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEOkoqZ2waXxy7RCC
+    JAU9HROAggGgf4WgOS0ffNQK6PNxdeHMI1VeFzUOyu7PylTQbX0n/UQ5jnX9
+    GVFh35ZBSHgF15ShR0Y0Ec0nw0PKaFAJpRnzTYHxYgFwrL4NKI1RwlIjv3FI
+    8VpxvCCtKZhhMYq09vBH6OONEHEJwa1AR2RHuTkZh5vYR7s7DYQsBeLRZdfs
+    wmCEjmdeMVzIsEaiDKISVPS9C81aZLlbFVeGtfGyu1uNfQiDIYEwIfmjyCqc
+    9WcwXuKe2waQ0Kgr4fL1hwvyzh6iYPDuS2JFeI81NmA8rV2xLz4k4PruINJG
+    ZOe0eRO8AFtPq3McWPm1Z0j8TJPMdS4a1BSNz2R8tPHV9bk0O3DGom2FqMG7
+    CTO9JjqXZy38YeV08cwLb2uawDdrY0udpg4IFyvmWo/Yij0r/4TyBMekQEEb
+    yDXNPUOTkmw8t+dpcqmAmUdbYq5xOWn7HP9nJbceTWxQZCqPxKWxIGEu2ac8
+    p9dQV6Kn8vMV2ZHqcV2kaS7CbidUemdtzfqW5ACPPfYATicOcImhVsGUgeK7
+    KoV0o3MQ5/Jn/uhissl5gf75wz4=]
+
+
+
+
+
+# Export options for installpts
+# export PTS_SOFTWARE=/swpkg/ibm
+# export PTS_INSTALL=${PTS_SOFTWARE}/nzpts
+# export PTSD_CONF=${PTS_INSTALL}/etc/ptsd.conf
+# export PTS_DATA=/swdata/nzpts/data
+# export NZPTSDNAME=ptsd
+# export DEFAULT_ALL=false
+# export DEFAULT_NZ_UID=1015
+# export DEFAULT_NZ_GID=1015
+# export DEFAULT_NZ_NAME="nz"
+# export DEFAULT_NZ_PASSWORD="nz"
+# export DEFAULT_NZ_PORT=52573
+# export NZPTSDBNUM=1
+# export NZPTSDBPORT=9088

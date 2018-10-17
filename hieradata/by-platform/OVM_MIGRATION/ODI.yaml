@@ -1,0 +1,13 @@
+#
+# Common platform configuration for OVM2.x & OVM3.x server migrations 
+#
+# by-platform -> OVM_MIGRATION -> ODI.yaml
+#
+
+source_yaml_conf: ODI 
+
+
+
+
+
+

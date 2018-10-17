@@ -1,0 +1,11 @@
+
+#Allow in Admins, and SFTP users.  Deny logins from regular FTP users.
+access_conf::access: 
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(admin):ALL'  
+  - '+:(sftp_users):ALL'  
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '-:ALL:ALL'

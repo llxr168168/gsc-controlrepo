@@ -1,0 +1,27 @@
+classes:
+  - profiles_unix::gsc::apps::edi_sher_procure
+  - profiles_unix::gsc::oracle::asm
+  - profiles_unix::gsc::apps::ftpserver
+sher_procure::sp_developers:
+  - cab72c
+  - tkk62c
+  - amp473
+  - axb831
+oracle_build::kernel::vm_nr_hugepages: 1032
+ssh::sshd_config: cgspdb.sshd.conf
+vsftpd::vsftpd_userlist:
+  - xfer
+  - somi_adm
+vsftpd::vsftpd_umask: '002'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '-:ALL:ALL'
+

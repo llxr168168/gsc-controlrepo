@@ -1,0 +1,17 @@
+profiles_unix::gsc::base::auth::use_std_accounts: 'yes'
+hosts::hosts_group: admin
+
+avamar::disable: 'true'
+ssh::sshd_config: dmz.sshd.conf
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(admin):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '-:ALL:ALL'
+zabbix::zabbixserver: cgmgt05.sherwin.com
+site_code: dmz
+tz::region: 'America'
+tz::locality: 'New_York'

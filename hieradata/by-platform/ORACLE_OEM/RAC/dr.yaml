@@ -1,0 +1,159 @@
+# Oracle Enterprise Manager
+# RAC Server (prod) Configuration MetaData
+# by-platform -> ORACLE_OEM -> RAC -> dr.yaml
+
+#DR Server List
+# CPOEMPW2
+# CPOEMPW4
+# CPOEMPDB2
+# CPOEMPDB4
+# CPOEMPDB6
+
+
+# Allow oracle accesss to rac cluster nodes
+# Adding access for appliction server agents to access database
+# TODO Remove after migration is complete
+# cpomsprod3v.sherwin.com has address 10.20.102.67
+# cpomsprod4v.sherwin.com has address 10.20.102.68
+# cpomsqa3v.sherwin.com has address 10.240.240.64
+# cpomsqa4v.sherwin.com has address 10.240.240.65
+# Only prod app servers can access prod 
+# 10.148.5.80
+# 10.140.19.165
+# 10.148.5.81
+# 10.140.19.166
+
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-corp-unix):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-oracle-oem):ALL'
+  - '+:(gg-adm-dba-ops):ALL'
+  - '+:(gg-adm-scan):ALL'
+  - '+:oracle: 192.168.145.12 192.168.145.14 192.168.145.16 10.148.5.82 10.148.5.83 10.148.5.84 10.140.32.23 10.140.32.24 10.140.32.25 10.148.5.80 10.148.5.81 10.140.32.21 10.140.32.22'
+  - '+:tricore: 64.94.254.0/29'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+
+
+
+sw_util::wrapper::hiera_file::params:
+  - /swpkg/oracle/gc: {owner: "oracle", group: "dba"}
+  - /swpkg/oracle/gc/product: {owner: "oracle", group: "dba"}
+  # QA test for DR DataGuard Replication
+  - /swpkg/oracle/gcrepdev: {owner: "oracle", group: "dba"}
+  - /swpkg/oracle/gcrepdev/product: {owner: "oracle", group: "dba"}
+
+# Need info for DR mounts
+
+sw_util::wrapper::hiera_mount::params:
+  - /global/dd_backup:
+      ensure: mounted
+      options: rw,bg,hard,nointr,vers=3,rsize=1048576,wsize=1048576,timeo=600,tcp,noacl,nolock
+      device: cpdd01ak-nas2:/data/col1/oracle_ak/cpoempdb1
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+
+
+# Data Domain Notes
+# PROD
+# cpoempdb1.sherwin.com
+# cpoempdb3.sherwin.com
+# cpoempdb5.sherwin.com
+
+# cpdd01ak-nas2:/data/col1/oracle_ak/cpoempdb1
+# cpdd01rw-nas2:/data/col1/oracle_ak/cpoempdb1    D/R
+
+# DR
+# cpoempdb2.sherwin.com
+# cpoempdb4.sherwin.com
+# cpoempdb6.sherwin.com
+
+# cpdd01rw-nas2:/data/col1/oracle_rw/cpoempdb2
+# cpdd01ak-nas2:/data/col1/oracle_rw/cpoempdb2    D/R
+
+
+oracle_oem::rac::ssh_private: >
+    ENC[PKCS7,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
+    AvN2gEaWpNBAMDpk4PFvguMsl0hVmSle]
+
+
+oracle_oem::rac::ssh_public: >
+    ENC[PKCS7,MIIDDQYJKoZIhvcNAQcDoIIC/jCCAvoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAT5TyR1p7inYkBxVE52AyXTux1o50zGmpubjE
+    xfeACe8vbvk7Oy8k6pU3a6ddT7TLvMZpzxEOf9azBYyixYy6G03qNxkO+FC9
+    ITIlqcBZ14c5qegviJik5KCPHV6gHfePfvvO77n5u0j7WKoRTJ+tIG5egQkK
+    oA+HduWyVYXBIDTd70SAatfu14LzqvOzfhodGooD+5Gr1zdBoJExe+2FA4/q
+    9+4o1M86RtMtgyB3uohPz5HnMzDYrvMKtKK7S5dO6IOZZl/KXvlgje54/OW7
+    b+5nVuooGqsIQ7sFkSY2dZ+01c3RvI0nv7fwMN3ZNoIZyjaE6IEb9WbEGqqT
+    7mu2dzCCAc4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEFdmXtEtWfwZYpW1
+    KkTTZneAggGgc5isc+YqOi5ef4teC1LrUiV/Dl3TXaqt8Z9b8BdLGGAD5rtu
+    6rDQDua9Y4RJV2FR4GAm9VEyOaLos6DoFh/lupGWisiBPQTwcbWQyuyeTwVY
+    MnZAchq6w9abO5T1/LT8Nov/RY9JO4697ion4ZZCOkR636CSnsoIb7+6xhH5
+    DOJhN1uyCEzCFVc+fMtCwGJ2SJ0ocLsT1CCKDVXsiS7GVHKeZkYSBG1DhY0s
+    TxEv8pNBcYfU2zjV4LfuprqSfVpvfspE5kUTCt0RD0FEJC7WzdeVa+SaS3Nj
+    dMFXPhZ7/fNcfvx85YFOopVKNAdp5RbDT14QUc9XiRR6j1plXfDS5SZeSSPL
+    eu+P5r4Wkh4O13I3xmzBLbO5XRGxlpm44uuiSDoJxTcVo/QCmXF2tWTKYdrM
+    jk2IYOu5B/XgH1KdHr891F0scetthiriI14ZUSw68DJtxHH1Ps1HUHHeDaxG
+    J5dAgimOyacwh35LOPqyX3E6w7zN2hYiVvTFKkzEcl5rIxaVa9sFs+weiRxK
+    n6AjY1JJpv6xeqfzQxUXshl8udA=]
+
+    
+oracle_oem::oracle::profile::unqname: "GCREPDR"
+oracle_oem::oracle::profile::default_sid: "GCREPDR1"
+oracle_oem::oracle::profile::db_name: "gc"
+
+oracle_oem::rac::udev::oracle_shared_disk_rules: |
+  ## Puppet Managed File
+  # by-platform -> oracle_oem -> rac -> dr.yaml
+  KERNEL=="sdc[1-3,5-6]", OWNER="oracle", GROUP="dba", MODE="660", ACTION=="add|change"
+  KERNEL=="sd[d-f][1-4]", OWNER="oracle", GROUP="dba", MODE="660", ACTION=="add|change"

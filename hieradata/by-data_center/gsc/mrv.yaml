@@ -1,0 +1,32 @@
+#Classes for this site
+classes:
+  - avamar
+
+avamar::version: '7.3.100-233'
+
+yum::plugins_enabled: 'true'
+#Site Specific overrides
+
+#Enable Avamar for all VMs at this site
+avamar::disable: 'false'
+avamar::grid: 'cgavmmrv.sherwin.com'
+resolv_conf::nameserver:
+  - '10.10.202.31'
+  - '10.20.103.6'
+  - '10.240.3.6'
+profiles_unix::gsc::oracle::base::nfs_mounts:
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvemrv.sherwin.com:/data/col1/gsc_ora_backup_mrv'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvemrv.sherwin.com:/data/col1/gsc_ora_disaster_mrv'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvemrv.sherwin.com:/data/col1/gsc_oraremote_rw'
+
+profiles_unix::gsc::apps::utilserver::nfs_mounts:
+  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvemrv.sherwin.com:/data/col1/gsc_lnxremote_rw'
+
+yum::yum_repo_file: remotesite.yum
+awcs::telnet_allow:
+  - '10.10.202.0/24'
+  - '10.216.0.0/16'
+  - 'cgawcsdb3.consumer.sherwin.com'
+site_code: mrv
+tz::region: 'America'
+tz::locality: 'Los_Angeles'

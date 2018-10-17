@@ -1,0 +1,3 @@
+oracle_build::kernel::vm_nr_hugepages: 3073
+
+oracle_build::oracleshared_path: '/swdata/nfs/oraremote'

@@ -1,0 +1,17 @@
+webcentersites::DOMAIN_HOME: '/sw/pkg/user_projects/corpwcsm'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-solutions-delivery):ALL'
+  - '+:(gg-adm-webeng_linux):ALL'
+  - '+:(wepadmin):ALL'
+  - '+:webdeploy:ALL'
+  - '+:(cmteam):ALL'
+  - '+:(swadmin):ALL'
+  - '+:(wewebcenter):ALL'
+  - '+:(gg-adm-scan):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'

@@ -1,0 +1,21 @@
+ssh::sshd_config: cgmq.sshd.conf
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:SupHubMDMq:LOCAL mdmerpq1.sherwin.com mdmerpq2.sherwin.com mdmerpn1x.sherwin.com mdmerpn2x.sherwin.com mdmerpp1.sherwin.com mdmerpp2.sherwin.com mdmerpp1x.sherwin.com mdmextp2.sherwin.com mdmerpd1.sherwin.com mdmerpd2.sherwin.com'
+  - '+:onbemea:LOCAL euerpprj1.sherwin.com euerpprj2.sherwin.com euerpq1.sherwin.com euerpq2.sherwin.com euerpd1.sherwin.com euerpd2.sherwin.com'
+  - '+:onbswerp:LOCAL swerpd1.sherwin.com swerpd2.sherwin.com swerpq1.sherwin.com swerpq2.sherwin.com swerpq3.sherwin.com swerpq4.sherwin.com'
+  - '+:obieeuser:e-corp-obiee1-devint.sherwin.com e-corp-obiee2-devint.sherwin.com e-corp-obiee1-qaint.sherwin.com e-corp-obiee2-qaint.sherwin.com'
+  - '+:mms:LOCAL swerpq1.sherwin.com swerpq2.sherwin.com swerpprj1.sherwin.com swerpprj2.sherwin.com swerpd1.sherwin.com swerpd2.sherwin.com'
+  - '+:mmsonbs: swerpq1.sherwin.com swerpq2.sherwin.com swerpq3.sherwin.com swerpq4.sherwin.com swerpd1.sherwin.com swerpd2.sherwin.com swerpprj1.sherwin.com swerpprj2.sherwin.com swerpprj3.sherwin.com swerpprj4.sherwin.com  swerppch1.sherwin.com swerppch2.sherwin.com'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-admin-sw-linux):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - "+:swat:swatprw.sherwin.com cpovms05cfsprw.sherwin.com cpovms06cfsprw.sherwin.com"
+  - "+:orastmt:ALL"
+  - '-:ALL:ALL'
+  
+

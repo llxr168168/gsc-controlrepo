@@ -1,0 +1,51 @@
+---
+version: 5
+defaults:
+  datadir: hieradata
+  data_hash: yaml_data
+
+
+hierarchy:
+  - name: "eyaml enabled hierarchy"
+    paths:
+      - "by-host/%{::trusted.certname}.yaml"
+      - "by-host/%{::trusted.certname}.eyaml"
+      - "by-host/%{custom_admin_org}/%{::trusted.certname}.yaml"
+      - "by-host/%{custom_admin_org}/%{::trusted.certname}.eyaml"
+      - "by-platform/%{custom_platform}/%{custom_domain}/%{custom_env}.yaml"
+      - "by-platform/%{custom_platform}/%{custom_domain}/%{custom_env}.eyaml"
+      - "by-platform/%{custom_platform}/%{custom_domain}.yaml"
+      - "by-platform/%{custom_platform}/%{custom_domain}.eyaml"
+      - "by-platform/%{custom_platform}/common.yaml"
+      - "by-platform/%{custom_platform}/common.eyaml"
+      - "by-platform/%{custom_platform}.yaml"
+      - "by-platform/%{custom_platform}.eyaml"
+      - "by-data_center/%{custom_admin_org}/%{custom_datacenter}/%{custom_securityzone}/%{custom_env}.yaml"
+      - "by-data_center/%{custom_admin_org}/%{custom_datacenter}/%{custom_securityzone}/%{custom_env}.eyaml"
+      - "by-data_center/%{custom_admin_org}/%{custom_datacenter}/%{custom_securityzone}.yaml"
+      - "by-data_center/%{custom_admin_org}/%{custom_datacenter}/%{custom_securityzone}.eyaml"
+      - "by-data_center/%{custom_admin_org}/%{custom_datacenter}.yaml"
+      - "by-data_center/%{custom_admin_org}/%{custom_datacenter}.eyaml"
+      - "by-data_center/%{custom_datacenter}/%{custom_securityzone}/%{custom_env}.yaml"
+      - "by-data_center/%{custom_datacenter}/%{custom_securityzone}/%{custom_env}.eyaml"
+      - "by-data_center/%{custom_datacenter}/%{custom_securityzone}.yaml"
+      - "by-data_center/%{custom_datacenter}/%{custom_securityzone}.eyaml"
+      - "by-data_center/%{custom_datacenter}.yaml"
+      - "by-data_center/%{custom_datacenter}.eyaml"
+      - "by-env/%{custom_admin_org}/%{custom_env}.yaml"
+      - "by-env/%{custom_admin_org}/%{custom_env}.eyaml"
+      - "by-env/%{custom_env}.yaml"
+      - "by-env/%{custom_env}.eyaml"
+      - "by-domain/%{custom_admin_org}/%{domain}.yaml"
+      - "by-domain/%{custom_admin_org}/%{domain}.eyaml"
+      - "by-domain/%{domain}.yaml"
+      - "by-domain/%{domain}.eyaml"
+      - "common/%{custom_admin_org}.yaml"
+      - "common/%{custom_admin_org}.eyaml"
+      - "common/common.yaml"
+      - "common/common.eyaml"
+    lookup_key: eyaml_lookup_key # eyaml backend
+    options:
+      pkcs7_private_key: "/etc/puppetlabs/puppet/secure/keys/private_key.pkcs7.pem"
+      pkcs7_public_key: "/etc/puppetlabs/puppet/secure/keys/public_key.pkcs7.pem"
+

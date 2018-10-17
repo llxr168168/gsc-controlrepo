@@ -1,0 +1,8 @@
+profiles_unix::gsc::base::auth::use_std_accounts: 'yes'
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(admin):ALL'
+  - '+:(SecureUsers):ALL'
+  - '-:ALL:ALL'

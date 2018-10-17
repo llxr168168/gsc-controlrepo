@@ -1,0 +1,14 @@
+classes:
+  - autofs
+  - sw_oracle_client
+  
+autofs::nfs_maps:
+  - '/sw/pkg/scheduled_jobs -rw,vers=3,addr=10.148.12.33 nafgps21ak-nfs02:/BMC_ctlm_prd'
+
+sw_util::wrapper::hiera_file::params:
+  - /sw/pkg/scheduled_jobs: {
+      ensure: "directory", 
+      owner: "sa-amsadm", 
+      group: "gg-adm-amsadm" , 
+      mode: "770"
+    }

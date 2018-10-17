@@ -1,0 +1,131 @@
+# by-platform -> CARMS -> DB2.yaml
+# Reviewed by Lin
+
+sw_util::module_param::bool_exec_augeas_kernel: true
+sw_util::module_param::bool_exec_augeas_limits: true
+
+# setting sudo rights for database servers
+sudo::sudoers_template: sudoers.ibm_db2
+
+
+sw_util::wrapper::hiera_group::params:
+  - db2iadm1: {gid: 1080}
+  - bocarms: {gid: 1087}
+
+sw_util::wrapper::hiera_user::params:
+  - db2inst1: {uid: 1080, gid: 1080, groups: ['db2iadm1'], forcelocal: true, home: '/swdata/db2inst1/home' }
+  - db2fenc1: {uid: 1081, gid: 1080, groups: ['db2iadm1'], forcelocal: true, home: '/home/db2fenc1'}
+  - bocarms: {uid: 1087, gid: 1087, groups: ['bocarms'], forcelocal: true, home: '/home/bocarms'}
+  - lcuser: {uid: 1084, gid: 1080, home: '/home/lcuser'}
+
+sw_util::wrapper::hiera_file::params:
+  - /home/db2fenc1: {owner: "db2fenc1", group: "db2iadm1", mode: "700"}
+  - /home/lcuser: {owner: "lcuser", group: "db2iadm1", mode: "700" }
+  - /home/bocarms: {owner: "bocarms", group: "bocarms", mode: "700" }
+  - /connshare: {owner: "root", group: "root"}
+  - /swdata: {owner: "db2inst1", group: "db2iadm1"}
+  - /swdata/db2inst1: { owner: "db2inst1", group: "db2iadm1", mode: "750" }
+  - /swdata/db2inst1/home: { owner: "db2inst1", group: "db2iadm1", mode: "770" }
+  - /swdata/db2inst1/activelog: {owner: "db2inst1", group: "db2iadm1"}
+  - /swdata/db2inst1/data01: {owner: "db2inst1", group: "db2iadm1"}
+  - /swdata/db2inst1/temp01: {owner: "db2inst1", group: "db2iadm1"}
+  - /swdata/db2inst1/archivelog: {owner: "db2inst1", group: "db2iadm1"}
+  - /etc/auto.d: {owner: "root", group: "root"}
+  - /etc/auto.master: {
+      ensure: "file",
+      content: "carms::autofs::master",
+      owner: "root",
+      group: "root",
+      mode: "644",
+      notify: "Exec[Carms_Autofs_Watcher]",
+    }
+  - /etc/auto.d/nfs.maps: {
+      ensure: "file",
+      content: "carms::autofs::nfs_maps",
+      owner: "root",
+      group: "root",
+      mode: "644",
+      notify: "Exec[Carms_Autofs_Watcher]",
+    }
+
+
+sw_util::wrapper::hiera_exec::params:
+  - restart_auto_fs: {
+      command: "service autofs restart",
+      alias: "Carms_Autofs_Watcher",
+      refreshonly: true,
+    }
+
+sw_util::wrapper::hiera_package::params:
+  - dapl.x86_64: {}
+  - sg3_utils.x86_64: {}
+  - pam.i686: {}
+  - eclipse-swt.x86_64: {}
+  - libXtst.x86_64: {}
+  - libXtst.i686: {}
+  - xinetd: {ensure: "absent"}
+  - autofs: {}
+  - nfs-utils: {}
+
+
+sw_util::wrapper::hiera_service::params:
+  - autofs: {}
+
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-db2):ALL'
+  - '+:(gg-adm-carms):ALL'
+  - '+:(gg-adm-scan):10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181 10.240.6.27 10.20.101.97'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:db2inst1:cron crond :0'
+  - '-:ALL:ALL'
+
+# setting sudo rights for database servers
+sudo::sudoers_template: sudoers.ibm_db2
+
+
+# Set Ulimit values for all IBM Connections DB2 servers.
+#Reference (v10.5) -> https://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.qb.server.doc/doc/r0052441.html
+# Note: 2.6 kernel limits nofiles to (1024 * 1024). 
+# - Exceeding this limit will cause PAM validation to fail. 
+# - Result: Session can not be opened for use...
+sw_util::augeas::ulimit::params:
+  topic: domain
+  context: /files/etc/security/limits.conf
+  index:
+    - { domain: db2inst1, type: hard, item: nofile, value: 65536 }
+    - { domain: db2inst1, type: soft, item: nofile,  value: 65536 }
+    - { domain: db2inst2, type: hard, item: nofile, value: 65536 }
+    - { domain: db2inst2, type: soft, item: nofile,  value: 65536 }
+    - { domain: db2inst1, type: hard, item: data, value: unlimited }
+    - { domain: db2inst1, type: soft, item: data, value: unlimited }
+    - { domain: db2inst2, type: hard, item: data, value: unlimited }
+    - { domain: db2inst2, type: soft, item: data, value: unlimited }
+    - { domain: db2inst1, type: hard, item: fsize, value: unlimited }
+    - { domain: db2inst1, type: soft, item: fsize, value: unlimited }
+    - { domain: db2inst2, type: hard, item: fsize, value: unlimited }
+    - { domain: db2inst2, type: soft, item: fsize, value: unlimited }
+    - { domain: db2inst1, type: soft, item: nproc, value: 32768 }
+    - { domain: db2inst1, type: hard, item: nproc, value: 32768 }
+    - { domain: db2inst2, type: soft, item: nproc, value: 32768 }
+    - { domain: db2inst2, type: hard, item: nproc, value: 32768 }
+
+# Kernel parameters for DB2
+# Note:: - "kernel.sem 250 32000 32  128" <- Requires augeas update. 
+# work around: Add single quotes around data containing spaces
+
+sw_util::augeas::lnx_sysctl::params:
+  - "kernel.shmmax 68719476736"
+  - "kernel.shmall 4294967296"
+  - "kernel.shmmni 30208"
+  - "kernel.msgmax 65536"
+  - "kernel.msgmni 32768"
+  - "kernel.msgmnb 65536"
+  # Note: Parameters with spaces in them require single quotes to maintain the augeas key -> value relationship. 
+  - "kernel.sem '250 32000 32  128'"
+
+

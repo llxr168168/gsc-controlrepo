@@ -1,0 +1,88 @@
+# Oracle Enterprise Manager
+# Platorm Configuration MetaData
+# by-platform -> ORACLE_OEM -> common.yaml
+
+# Deployment Overview 
+# http://connections.sherwin.com/files/app#/file/5a2a2f28-3c38-405b-afa3-0b0cc830918d
+
+classes:
+  - oracle_oem
+
+sw_util::wrapper::hiera_group::params:
+  - tricore: { gid: 1023 }
+
+# Third party oracle support user.
+sw_util::wrapper::hiera_user::params:
+  - tricore: { uid: 1023, gid: 1023, home: "/home/tricore", system: "false" }
+
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-oracle-oem):ALL'
+  - '+:(gg-adm-scan):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+
+sudo::sudoers_template: sudoers.oracle_oem
+
+# Kernel Security Parameters
+sw_util::augeas::lnx_sysctl::params:
+  - "net.ipv6.conf.all.disable_ipv6 1"
+  - "net.ipv6.conf.default.disable_ipv6 1"
+  - "net.ipv4.conf.default.send_redirects 0"
+  - "net.ipv4.conf.all.send_redirects 0"
+  - "net.ipv4.ip_forward  0"
+  - "net.ipv4.conf.all.accept_source_route  0"
+  - "net.ipv4.conf.all.accept_redirects  0"
+  - "net.ipv4.conf.all.secure_redirects  0"
+  - "net.ipv4.conf.all.log_martians  0"
+  - "net.ipv4.conf.default.accept_redirects  0"
+  - "net.ipv4.conf.default.secure_redirects  0"
+  - "net.ipv4.icmp_echo_ignore_broadcasts  1"
+  - "net.ipv4.icmp_ignore_bogus_error_responses  1"
+  - "net.ipv4.conf.all.rp_filter  1"
+  - "net.ipv6.conf.default.accept_redirects  0"
+  - "kernel.randomize_va_space  2"
+  - "kernel.exec-shield  1"
+
+
+
+
+# Common file attribures
+sw_util::wrapper::hiera_file::params:
+  - /sw/install: {owner: "oracle", group: "dba"}
+  - /tmp: {owner: "root", owner: "root", mode: "1777" }
+# This change requies sudo package to be removed from stdbuild
+#  - /etc/sudoers: {ensure: "file", content: "oracle_oem::sudo", owner: "root", group: "root", mode: "440" }
+
+
+
+# Common NAS Mount locations
+oracle_oem::nfs_mounts:
+  - '/sw/install -rw,intr,soft,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3 nafgps01rw-nfs02:/oem_all_installation'
+
+# Platform Common default. (Applied if not overridden.)
+# Overrides can be applied in more specific scopes
+avamar::client::version: "7.3.101-125"
+
+sw_util::wrapper::hiera_package::params:
+  # Avamar client backups for Oracle databases. 
+  # Note Backup software is version specific. 
+  # Linux 5.x and higeher = 7.3
+  - AvamarClient: {ensure: "%{hiera('avamar::client::version')}"}
+
+
+# Note: avamar::grid default set in by-datacenter->gcd-><datacenter name>.yaml
+sw_util::wrapper::hiera_exec::params:
+  - register_avamar_client: {
+      command: "/usr/local/avamar/etc/avagent.d register %{hiera('avamar::grid')} Corporate/Corp_Linux",
+      unless: "test -f /usr/local/avamar/var/cid.bin",
+      require: [ "Package[AvamarClient]" ],
+    }
+
+# Start the Avamar agent
+sw_util::wrapper::hiera_service::params:
+  - avagent: {}

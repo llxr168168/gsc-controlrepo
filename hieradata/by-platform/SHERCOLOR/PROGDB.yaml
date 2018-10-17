@@ -1,0 +1,215 @@
+# hieradata -> by-platform -> SHERCOLOR -> PROGDB.yaml
+# Common config for Shercolor Platform domain
+# Progress
+
+# Add progress / application groups
+sw_util::wrapper::hiera_group::params:
+  - scadm: { gid: 1024, system: false }
+  - color: { gid: 3028, system: false } # ID for gg-adm-shercolor
+
+sw_util::wrapper::hiera_user::params:
+  - scadm: { uid: 1024, gid: 3028, home: "/home/scadm", groups: ["sa-local", "tty", "scadm"], system: false, managehome: true}
+  - mqstores: { uid: 1582, gid: 3028, home: "/home/mqstores", groups: ["sa-local"], system: false, managehome: true}
+
+
+sw_util::wrapper::hiera_file::params:
+  - /home/scadm: { owner: "scadm", group: "color", mode: "700" } 
+  - /home/scadm/.ssh: { owner: "scadm", group: "color", mode: "700" } 
+  - /home/mqstores: { owner: "mqstores", group: "color", mode: "700" } 
+  - /home/mqstores/.ssh: { owner: "mqstores", group: "color", mode: "700" } 
+  - /home/mqstores/.ssh/authorized_keys: { ensure: file, content: "shercolor::mq::public_key", owner: "mqstores", group: "color", mode: "700" } 
+  - /swpkg/openedge: {owner: "root", group: "root"} # AKA Progress 
+  - /swpkg/openedge/dlc11: {owner: "scadm", group: "color"}
+  - /swpkg/openedge/oemgmt: {owner: "scadm", group: "color"}
+  - /swpkg/openedge/dlc10: {owner: "scadm", group: "color"}
+  - /swdata/charzd: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/archive: { owner: "scadm", group: "color", mode: "775"}
+  - /swdata/charzd/IFS_Outbox: {owner: "scadm", group: "color",mode: "775" }
+  - /swdata/charzd/IFS_Inbox: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/charzd/IFS_Work: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/charzd/IFS_Vc: {owner: "scadm", group: "color", mode: "775"}
+  # Mount point and dir structure for apps 
+  - /swpkg/apps: {owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/charzd: {owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/charzd/lib: {owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/cds: {owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/colorver: {owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/fiscal: {owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/logs: { ensure: "absent", owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/SherColorService: { ensure: "absent", owner: "scadm", group: "color", mode: "775"}
+  # Progress Transaction Logs
+  # BI = Before image
+  # AI = After Image
+  - /swdata/tximg/cds: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/cds/bi: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/cds/ai: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/fiscal: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/fiscal/bi: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/fiscal/ai: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/rolla: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/rolla/bi: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/rolla/ai: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/afcd: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/afcd/bi: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/afcd/ai: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/colorver: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/colorver/bi: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/colorver/ai: {owner: "scadm", group: "color", mode: "775"}
+  # Create Progress database directories
+  - /swdata/db/cds: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/db/fiscal: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/db/rolla: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/db/afcd: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/db/colorver: {owner: "scadm", group: "color", mode: "775"}
+  # Client release 
+  - /swdata/clients: {owner: "scadm", group: "color", mode: "775"}
+  # cds package data for export
+  - /swdata/cds: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/cds-update: {owner: "scadm", group: "color", mode: "775"}
+  # data-dump is target for mqstores file transfers from MQ
+  - /swdata/cds/data-dump: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/data-dump/pim-data: {owner: "mqstores", group: "color", mode: "775"}
+  - /swdata/cds/dump: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/archive: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/other_pgms: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/other_pgms/itnstore: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/logs: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/warehouse: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/source-data: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/etl: {owner: "scadm", group: "color", mode: "775"}
+  # CDS Links - Required for application namespace
+  - /swpkg/apps/cds/cds-update: {ensure: "link", target: "/swdata/cds/cds-update" }
+  - /swpkg/apps/cds/data-dump: {ensure: "link", target: "/swdata/cds/data-dump" }
+  - /swpkg/apps/cds/dump: {ensure: "link", target: "/swdata/cds/dump" }
+  - /swpkg/apps/cds/other_pgms/itnstore: {ensure: "link", target: "/swdata/cds/other_pgms/itnstore" }
+  - /swpkg/apps/cds/logs: {ensure: "link", target: "/swdata/cds/logs" }
+  - /swpkg/apps/cds/tmp: {ensure: "link", target: "/swdata/cds/tmp" }
+  - /swpkg/apps/cds/warehouse: {ensure: "link", target: "/swdata/cds/warehouse" }
+  - /swpkg/apps/cds/source-data: {ensure: "link", target: "/swdata/cds/source-data" }
+  - /swpkg/apps/cds/etl: {ensure: "link", target: "/swdata/cds/etl" }
+  - /usr/local/bin/mutt: {ensure: "link", target: "/usr/bin/mutt" }
+  # Setup Progress user profile
+  - /etc/profile.d/scadm_profile.sh: { 
+      ensure: "file", 
+      content: "scadm::global::profile", 
+      owner: "root", 
+      group: "root", 
+      mode: "644"
+    }
+  # Shercolor configs
+  - /etc/shercolor: {owner: "root", group: "root", mode: "755"}
+  - /etc/shercolor/shercolor_user_acl: {
+      ensure: "file", 
+      content: "shercolor::user::acl::profile", 
+      owner: "root", 
+      group: "root", 
+      mode: "755"
+    }
+  - /swdata/charzd/IFS_Inbox/Archive: {owner: "scadm", group: "color", mode: "775",  require: "Mount[nfsMount_Charzd_InBox]"}
+  - /swdata/charzd/IFS_Work/Legacy: {owner: "scadm", group: "color", mode: "775",  require: "Mount[nfsMount_Charzd_Work]"}
+
+
+
+# Required by Progress Installer
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), flac, x86_64
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), giflib, x86_64
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), libasyncns, x86_64
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), libogg, x86_64
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), libsndfile, x86_64
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), libvorbis, x86_64
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), libXcomposite, x86_64
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), libXi, x86_64
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), libXtst, x86_64
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), mailcap, noarch
+# 1478273986, (Fri 04 Nov 2016 11:39:46 AM EDT), pulseaudio-libs, x86_64
+# 1478273987, (Fri 04 Nov 2016 11:39:47 AM EDT), jpackage-utils, noarch
+# 1478273987, (Fri 04 Nov 2016 11:39:47 AM EDT), tzdata-java, noarch
+
+    
+
+sw_util::wrapper::hiera_package::params:
+  - compat-libstdc++-33.i686: {}
+  - nfs-utils: {}
+  - java-1.6.0-openjdk.x86_64: {ensure: absent}
+  - mutt: {}
+  - flac: {}
+  - giflib: {}
+  - libasyncns: {}
+  - libogg: {}
+  - libsndfile: {}
+  - libvorbis: {}
+  - libXcomposite: {}
+  - libXi: {}
+  - libXtst: {} 
+  - mailcap: {}
+  - pulseaudio-libs: {}
+  - jpackage-utils: {}
+  - shercolor-oe10: {}
+
+sw_util::wrapper::hiera_service::params:
+  - rpcbind: {}
+
+scadm::global::profile: |
+  ## Puppet Managed File
+  # by-platform -> SHERCOLOR -> PRGDB.yaml
+  # shercolor user Settings
+  #  Author: Kevin Fox (11/11/2016)
+  if [ "$USER" = "scadm" ]; then 
+    export PS1="[\u@\h \W]\> "
+    #<
+  fi
+  # Set Group Variables
+  # Any user with primary group num 3028 (gg-adm-shercolor)
+  PRIME_GROUP_NUM=`id -g`
+
+  if [ ${PRIME_GROUP_NUM} = 3028 ]; then
+    export DLC=/swpkg/openedge/dlc10   
+    export DBUTIL=$DLC/bin/_dbutil
+    export PROPATH=$DLC:$DLC/bin:.  
+    export PATH=$PROPATH:$PATH       
+  fi
+  #
+  # Check to see if the users are listed in the application acl
+  #
+  if grep -ixq ${USER} /etc/shercolor/shercolor_user_acl ; then 
+    cd /swpkg/apps/cds
+    ./startCDS.sh
+    exit
+  fi
+
+  ###EOF
+
+
+shercolor::user::acl::profile: |
+  ## Puppet Managed File
+  # by-platform -> SHERCOLOR -> PRGDB.yaml
+  # Users in this list are forced to use application specific profile.
+  # See /etc/profile.d/scadm_profile.sh
+  adc72c
+  bmk88c
+  cad871
+  dgm406
+  djr52c
+  jls353
+  jls55c
+  mfj74c
+  mlt68c
+  mxs66c
+  sja54c
+  djm301
+  edo78r
+  jxm719
+  lal50r
+
+
+#set hostname=stores-smtp.sherwin.com
+#set smtp_url="smtp://stores-smtp.sherwin.com:25/"
+sw_util::wrapper::hiera_file_line::params:
+  - set_smtp_muttrc_hostname: { path: "/etc/Muttrc", line: "set hostname=stores-smtp.sherwin.com" }
+  - set_smtp_muttrc_mailurl: { path: "/etc/Muttrc", line: "set smtp_url='smtp://stores-smtp.sherwin.com:25/'" }
+  - set_muttrc_ssl_starttls: { path: "/etc/Muttrc", line: "set ssl_starttls=no" }
+  - unset_muttrc_ssl_verify_host: { path: "/etc/Muttrc", line: "unset ssl_verify_host" }
+  - unset_muttrc_ssl_use_sslv3: { path: "/etc/Muttrc", line: "unset ssl_use_sslv3" }
+  - unset_muttrc_ssl_use_tlsv1: { path: "/etc/Muttrc", line: "unset ssl_use_tlsv1" }
+
+

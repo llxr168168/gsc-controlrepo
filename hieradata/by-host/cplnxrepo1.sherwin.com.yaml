@@ -1,0 +1,73 @@
+#classes:
+#  - sw_oracle_client
+
+samba::shares:
+  installers_gsc:
+    - 'comment = GSC Installer Files'
+    - 'path = /swdata/pulp/webroot/installers/gsc'
+    - 'valid users = @SW\gg-cgit-lnxadmin'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = root'
+  installers_corp:
+    - 'comment = Corp Installer Files'
+    - 'path = /swdata/pulp/webroot/installers/corp'
+    - 'valid users = @SW\gg-admin-sw-linux'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = root'
+  installers_webeng:
+    - 'comment = WebEng Installer Files'
+    - 'path = /swdata/pulp/webroot/installers/webeng'
+    - 'valid users = @SW\gg-ez-corp-is-sd'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = root'
+  isos:
+    - 'comment = ISO Files'
+    - 'path = /swdata/pulp/webroot/isos'
+    - 'valid users = @SW\gg-admin-sw-linux'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = root'
+  ks:
+    - 'comment = Kickstart Files'
+    - 'path = /swdata/pulp/webroot/ks'
+    - 'valid users = @SW\gg-admin-sw-linux'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = root'
+  vagrant:
+    - 'comment = Vagrant Box Files'
+    - 'path = /swdata/pulp/webroot/vagrant'
+    - 'valid users = @SW\gg-admin-sw-linux'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = root'
+  oracle:
+    - 'comment = Kickstart Files'
+    - 'path = /swdata/pulp/webroot/oracle'
+    - 'valid users = @SW\gg-cgit-dba-admins'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = root'
+  tns:
+    - 'comment = TNS Files '
+    - 'path = /swdata/sys/LnxRepo/oracle'
+    - 'valid users = @SW\gg-cgit-dba-admins,@SW\gg-cgit-lnxadmin'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = root'
+    
+    
+samba::use_native_domain: 'yes'
+
+sudo::sudoers_template: 'sudoers.sharedservices'
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:webdeploy:ALL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_CPLNXREPO1):ALL'
+  - '+:SW\sa-qualys-linux:10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181 10.240.6.27 10.20.101.97 10.140.5.70 10.140.5.71 10.140.5.72 10.140.5.73 10.140.5.74 10.140.5.75'
+  - '-:ALL:ALL'

@@ -1,0 +1,43 @@
+#add standard packages
+
+classes:
+#- profiles_unix::gcd::base::auth
+#- profiles_unix::gcd::base::pkgs
+#- syslog
+#- access_conf
+#- zabbix
+#- ssh
+#- vmwaretools
+#- sudo
+#- vsftpd
+#- yum
+#- samba
+
+#zabbix::zabbixserver: 'zabbix.consumer.sherwin.com,cgzbxproxy1.consumer.sherwin.com,cgzbxproxy2.consumer.sherwin.com,cgmgt05.sherwin.com'
+
+#samba::shares:
+#  b2b:
+#    - 'comment = Argentina B2B'
+#    - 'path = /swdata/b2b'
+#    - 'valid users = SW\fer07, SW\mfg, @SW\gg-admin-sw-linux'
+#    - 'public = no'
+#    - 'writable = yes'
+#    - 'force user = mfg'
+
+#samba::use_native_domain: 'yes'
+
+#access_conf::access:
+#  - '+:root:LOCAL'
+#  - '+:root:ALL'
+#  - '+:(sa-local):LOCAL'
+#  - '+:(sa-remote):ALL'
+#  - '+:(SW\GG-ADM-%{::hostname_upcase}):ALL' 
+#  - '-:ALL:ALL'  
+
+#vsftpd::vsftpd_userlist:
+#  - fer708
+#  - mfg
+
+#yum::yum_repo_file: swrepo.yum
+#yum::errata_target: 2015_Q1
+

@@ -1,0 +1,53 @@
+---
+#### Include Classes
+#- profiles_unix::base::linux
+classes:
+- stdbuild
+- stdbuild::puppet
+
+stdbuild::tl_sw_dirs:
+- '/sw'
+
+stdbuild::sw_special:
+- '/sw/env'
+- '/sw/env/cfg'
+- '/sw/bin'
+
+stdbuild::sw_adm_dirs: []
+
+# Corp - WebEng Defaults
+profiles_webeng::default::pkg_base_path: '/sw/pkg'
+profiles_webeng::default::installs_base_path: '/sw/installs'
+profiles_webeng::default::logs_base_path: '/sw/logs'
+profiles_webeng::default::group: 'webeng'
+
+
+ntp::servers: 
+  - 'time.sherwin.com'
+
+resolv_conf::domain: 'sherwin.com'
+resolv_conf::search: 'sherwin.com'
+resolv_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+  
+common::artifactory::id: 'puppet'
+common::artifactory::pswd: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAYyVQB2GA0BRvAcl1tjGKFK2GSLpfBppYXLYa
+    kHKutKWU6q4/oPbT32b3WFfcJGq/XYroO9wD3DCsXnCWtiaDt/hYa0CT7m/v
+    PMjiwnzkLRMyGgsCxKkpualS7Tp5/j/odv8xHebJ4xhGLQixs9SXaJja8CKq
+    jRyoZMMxp0iNu8I0Cby2i2faq0+Ot2Q2bFpQ9czeavFPtlt55YjjzZodfyvr
+    L8oigUIFzWCAJkd4EDCC+MgStqKsQ4oHfTLXJzm1DP2WUilEKUmb6z5dJ8W3
+    FmDFu0GYNU+lJJ9wYki+7MVG8v0EoAOT8TZ3YtDsHLz3I2Pe0J8NR7mFPs4x
+    WRkyHjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBPh5ZtqipYF1I6Rpjx
+    C1MngBAm5ZzeWHtANw95OGQ7U7Gp]
+
+common::sw_mail_server: 'smtp.sherwin.com'  
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'  

@@ -1,0 +1,84 @@
+classes:
+  - profiles_unix::gsc::apps::datawarehouse_app
+  - profiles_unix::gsc::apps::mqclient
+  - profiles_unix::gsc::apps::ftpserver
+
+data_warehouse::dw_developers:
+  - dgs01d
+  - pxf01c
+  - djl62c
+  - cjk238
+  - wxs160
+
+ssh::sshd_config: cgdwapp.sshd.conf
+vsftpd::vsftpd_userlist:
+  - xfer
+  - dwadm
+  - qaduser
+vsftpd::vsftpd_umask: '002'
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:dwadm:cron crond'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '-:ALL:ALL'
+
+data_warehouse::ssh_auth_keys_xfer: >
+    ENC[PKCS7,MIIEjQYJKoZIhvcNAQcDoIIEfjCCBHoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAjN1jZB8KTMIVtl/jku1ogpFnfPe7B/hmtr1G
+    zaF/VEBK8Hz4IFz3liJwYFx6l2tq+2DDflH2Hz7AWRv5YU/S9TrnxzddhzbR
+    Qdp7veBCeJOLcrY5W5uWrkGHPzrKcniryLvOIPyKgxYp/UhGY5Nyk2z9bDnV
+    IfLA9/Krqv6S0wQKM+6qJk1PzAmyn6hQbH20sPTniD/kI2kiAemcQZWfB7TX
+    EmwJ06M281ym+xSsVcT69u+I933eCoMuie6uUhXeSlgTG5pFqh+BcCnnldfK
+    FrwWVYpcgbn/MpmmjqiBeBtMjPqYvfUtsAp3wjtJYV7A04GX4qIQghTI7Ccy
+    38294TCCA04GCSqGSIb3DQEHATAdBglghkgBZQMEASoEELx/SZt9X8BdxY7q
+    jLrrZ3KAggMgs8LcFAPmSQovBW/g9Jf8u+LSITQP4dqIDLGrrqJvOiZCUGzF
+    AnAAMXLHpg5GhDN2FI8gV9gX552MNdeUX3jdlTo7La/iKkLdEbJFc4KDcq1E
+    CpWEfmJnsC2WRomI5XtRU6TwP1N46qPcMiTw/SlAeg0gAAnzhBn1If/j0hI/
+    aAChAkX2f+juW3HfwSkb5FX7gbACVCnXh6RYDmyuCjjGy/EBxQaY/gDqpFZR
+    owqY+xPxktoL1NFg2Yo+SSGrpJLpaN+H0UJAJpi5KV8s+dTm/QAa3csH3EEa
+    ctwSeEww57f3sBRtT8ffWGgtpZgKPFo+3+Jb5Q2ArmKNcWff4hFjr2CsYFT2
+    Nbmg7pNl5r5G+O+XLyuQ2XVVLKCO+gzK9lABo6GPgxHL7a2ctsb164AuGUcq
+    OpeODpnUGlRpZnY25KIKdVcIazqaM3gGCtJ7oiPoYGN32sMQLchS8Sw7CI0P
+    wNuzL9ipYlHnajJmZkQ7KzYhKU68jOYCXhZiAeGstHJEiEKfZ/3hzxc8QzTZ
+    QcC8t5fSAclPDdtib2bd7EXnnmrYhP+XGjALgZ7XbSDqFKl2n2YoXASJLT0q
+    HaKsn3ve7fIaAWzQQJVta0V5qJyeeU1dv6URWHuGfh+y7orlSzG+MJ3bk1ng
+    5cctd/vYQ7LosdBZpelcZnMaUa3vpclUOzxvw/rumGtCbtti3PWDk1574TEz
+    W4bhJgzOUGNl+RsqhE8c1fjRRq8pPeSwFRrniwCf++X9lBau4+TC/Ehs5fHK
+    34cUHmUwWPlpPUnTOY3hAf/SNWiKFXA5rAo6SBTekEhOMOosQaLl7LiHq4z5
+    q/OTu+fbmNyW6CK5d5ExtSLE7hkk0tNbzEINtm4NGmu+AF4yrOPVPpE5Vtar
+    L83ytM59COiojbxQXkh5Vkjchr8/EK6vjqw4U0ATXKXvwmhqJisbK6r6daQO
+    PrsHBQDwyng+KX/P7vQdb4IjGhCduP7ahTjUsOUHjFHp4qVRpkzmgo9Fqatj
+    dVl/U0oLTXomVFYeqWGNF4epU0P4IEVfarNfGPKPMgmMWHLLPbjF6tgP/yo=]
+
+data_warehouse::ssh_auth_keys_qaduser: >
+    ENC[PKCS7,MIIEjQYJKoZIhvcNAQcDoIIEfjCCBHoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAjN1jZB8KTMIVtl/jku1ogpFnfPe7B/hmtr1G
+    zaF/VEBK8Hz4IFz3liJwYFx6l2tq+2DDflH2Hz7AWRv5YU/S9TrnxzddhzbR
+    Qdp7veBCeJOLcrY5W5uWrkGHPzrKcniryLvOIPyKgxYp/UhGY5Nyk2z9bDnV
+    IfLA9/Krqv6S0wQKM+6qJk1PzAmyn6hQbH20sPTniD/kI2kiAemcQZWfB7TX
+    EmwJ06M281ym+xSsVcT69u+I933eCoMuie6uUhXeSlgTG5pFqh+BcCnnldfK
+    FrwWVYpcgbn/MpmmjqiBeBtMjPqYvfUtsAp3wjtJYV7A04GX4qIQghTI7Ccy
+    38294TCCA04GCSqGSIb3DQEHATAdBglghkgBZQMEASoEELx/SZt9X8BdxY7q
+    jLrrZ3KAggMgs8LcFAPmSQovBW/g9Jf8u+LSITQP4dqIDLGrrqJvOiZCUGzF
+    AnAAMXLHpg5GhDN2FI8gV9gX552MNdeUX3jdlTo7La/iKkLdEbJFc4KDcq1E
+    CpWEfmJnsC2WRomI5XtRU6TwP1N46qPcMiTw/SlAeg0gAAnzhBn1If/j0hI/
+    aAChAkX2f+juW3HfwSkb5FX7gbACVCnXh6RYDmyuCjjGy/EBxQaY/gDqpFZR
+    owqY+xPxktoL1NFg2Yo+SSGrpJLpaN+H0UJAJpi5KV8s+dTm/QAa3csH3EEa
+    ctwSeEww57f3sBRtT8ffWGgtpZgKPFo+3+Jb5Q2ArmKNcWff4hFjr2CsYFT2
+    Nbmg7pNl5r5G+O+XLyuQ2XVVLKCO+gzK9lABo6GPgxHL7a2ctsb164AuGUcq
+    OpeODpnUGlRpZnY25KIKdVcIazqaM3gGCtJ7oiPoYGN32sMQLchS8Sw7CI0P
+    wNuzL9ipYlHnajJmZkQ7KzYhKU68jOYCXhZiAeGstHJEiEKfZ/3hzxc8QzTZ
+    QcC8t5fSAclPDdtib2bd7EXnnmrYhP+XGjALgZ7XbSDqFKl2n2YoXASJLT0q
+    HaKsn3ve7fIaAWzQQJVta0V5qJyeeU1dv6URWHuGfh+y7orlSzG+MJ3bk1ng
+    5cctd/vYQ7LosdBZpelcZnMaUa3vpclUOzxvw/rumGtCbtti3PWDk1574TEz
+    W4bhJgzOUGNl+RsqhE8c1fjRRq8pPeSwFRrniwCf++X9lBau4+TC/Ehs5fHK
+    34cUHmUwWPlpPUnTOY3hAf/SNWiKFXA5rAo6SBTekEhOMOosQaLl7LiHq4z5
+    q/OTu+fbmNyW6CK5d5ExtSLE7hkk0tNbzEINtm4NGmu+AF4yrOPVPpE5Vtar
+    L83ytM59COiojbxQXkh5Vkjchr8/EK6vjqw4U0ATXKXvwmhqJisbK6r6daQO
+    PrsHBQDwyng+KX/P7vQdb4IjGhCduP7ahTjUsOUHjFHp4qVRpkzmgo9Fqatj
+    dVl/U0oLTXomVFYeqWGNF4epU0P4IEVfarNfGPKPMgmMWHLLPbjF6tgP/yo=]

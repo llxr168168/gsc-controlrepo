@@ -1,0 +1,30 @@
+yum::docker_repo_file: docker.yum
+yum::epel_repo_file: epel.yum
+yum::extras_repo_file: extra.yum
+
+
+sudo::sudoers_template: sudoers.solutionsdelivery
+
+classes:
+  - sw_util::hiera_wrapper
+  - autofs
+  - sw_docker_3_8::node
+
+# For Jenkins deploy's
+sw_util::wrapper::hiera_user::params:
+  - webdeploy: { uid: 501, gid: 501, home: "/home/webdeploy", groups: ["sa-remote", "tty", "docker"] }
+sw_util::wrapper::hiera_group::params:
+  - webdeploy: { gid: 501, system: false, forcelocal: true}
+
+
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-webeng_linux):ALL'
+  - '+:(gg-adm-solutions-delivery):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-scan):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'

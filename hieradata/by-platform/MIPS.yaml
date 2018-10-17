@@ -1,0 +1,70 @@
+classes:
+  - profiles_unix::gsc::apps::trans_mips
+  - profiles_unix::gsc::oracle::asm
+  - profiles_unix::gsc::apps::mqclient
+  - profiles_unix::gsc::apps::ftpserver
+oracle_build::kernel::vm_nr_hugepages: 2048
+vsftpd::vsftpd_userlist:
+  - mips
+  - qadrcp
+  - qaduser
+vsftpd::vsftpd_umask: '002'
+mips::mips_developers:
+  - 'dmb01l'
+  - 'bdl01l'
+  - 'jxk678'
+  - 'mwl01s'
+  - 'wem18c'
+
+access_conf::access: 
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(mips):LOCAL'
+  - '+:(qadrcp):LOCAL'
+  - '+:(qaduser):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(mips):cgtmwftp1.consumer.sherwin.com cgtaprod.sherwin.com cgmipdb1.consumer.sherwin.com cgmipdb2.consumer.sherwin.com cghpv1.sherwin.com cghpdev1.sherwin.com'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '-:ALL:ALL'
+
+mips::mips_auth_keys: >
+    ENC[PKCS7,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
+    9xpp1i/aCPbsPQ==]

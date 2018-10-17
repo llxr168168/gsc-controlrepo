@@ -1,0 +1,6 @@
+classes:
+  - avamar
+  
+avamar::disable: 'false'
+
+avamar::grid: "swavmtest1.sherwin.com"

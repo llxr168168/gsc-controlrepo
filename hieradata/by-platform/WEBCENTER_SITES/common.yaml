@@ -1,0 +1,7 @@
+# This is temporary proof of concept for classification of webcentersites
+classes:
+ - webcentersites
+ - sw_splunk
+ 
+sudo::sudoers_template: 'sudoers.webeng'
+

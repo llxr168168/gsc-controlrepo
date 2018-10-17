@@ -1,0 +1,22 @@
+# Currently no onsite Datadomain
+# Backups are being taken via a Symantec tool, no Avamar
+# No NFS locations
+# Need to use Valspar DNS servers in order to traverse NAT, will change once DC is network integrated.
+
+tz::region: 'Australia'
+tz::locality: 'Sydney'
+site_code: anz
+
+avamar::grid: 'cgavmanz.sherwin.com'
+
+avamar::disable: 'true'
+
+profiles_unix::gsc::oracle::base::nfs_mounts:
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemct.sherwin.com:/data/col1/gsc_ora_disaster_mct'
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemct.sherwin.com:/data/col1/gsc_ora_backup_mct'
+
+
+resolv_conf::nameserver:
+  - '10.160.2.10'
+  - '10.20.103.6'
+  - '10.240.3.6'

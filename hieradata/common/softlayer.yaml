@@ -1,0 +1,310 @@
+---
+#### Include Classes
+# Classes stdbuild, stdbuild::puppet, softlayer_splunk, softlayer_utils::mail_config::sw_mail_postfix
+# were moved to be includes inside of profiles_webeng::base::softlayer_linux.  This is because they
+# were linux centric and now that we have added our first Softlayer windows node, we need those only
+# on linux at this time.
+classes:
+- profiles_webeng::base::softlayer_linux
+- profiles_webeng::base::softlayer_windows
+- ntp
+stdbuild::tl_sw_dirs:
+- '/sw'
+
+stdbuild::sw_special:
+- '/sw/env'
+- '/sw/env/cfg'
+- '/sw/bin'
+
+stdbuild::sw_adm_dirs: []
+
+# ###############
+# Corp - WebEng Defaults
+profiles_webeng::default::pkg_base_path: '/sw/pkg'
+profiles_webeng::default::installs_base_path: '/sw/installs'
+profiles_webeng::default::logs_base_path: '/sw/logs'
+profiles_webeng::default::group: 'webeng'
+
+# ###############
+# Softlayer openfile limits
+softlayer::open_file_soft_limit: '65536'
+softlayer::open_file_hard_limit: '131072'
+softlayer::swappiness_value: '10'
+
+
+## Dynatrace Agent Package
+dynatrace_agent_package::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/6.5/dynatrace-agent-6.5.0.1289-unix.jar'
+dynatrace_agent_package::installer_prefix_dir: '/sw/pkg/dynatrace'
+dynatrace_agent_dev_collector_target: "svdevdynacoll01.sherwin.com:9998"
+dynatrace_agent_stage_collector_target: "svqadynacoll01.sherwin.com:9998"
+dynatrace_agent_prod_collector_target: "svprdadynacoll01.sherwin.com:9998"
+dynatrace_agent_lt_collector_target: "svltdynacoll01.sherwin.com:9998"
+
+dynatrace_hostagent_package::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/6.5/dynatrace-hostagent-6.5.0.1289-linux-x86-64.tar'
+dynatrace_hostagent_package::installer_prefix_dir: '/sw/pkg/dynatrace'
+dynatrace_hostagent_package::home_dir_name: 'dynatrace-6.5'
+dynatrace_hostagent_dev_collector: "svdevdynacoll01.sherwin.com"
+dynatrace_hostagent_stage_collector: "svqadynacoll01.sherwin.com"
+dynatrace_hostagent_prod_collector: "svprdadynacoll01.sherwin.com"
+dynatrace_hostagent_lt_collector: "svltdynacoll01.sherwin.com"
+
+dynatrace_wsagent_package::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/6.5/dynatrace-wsagent-6.5.0.1289-linux-x86-64.tar'
+dynatrace_wsagent_package::installer_prefix_dir: '/sw/pkg/dynatrace'
+dynatrace_wsagent_package::home_dir_name: 'dynatrace-6.5'
+dynatrace_wsagent_package::extract_script: 'dynatrace-wsagent-6.5.0.1289-linux-x64.sh'
+dynatrace_wsagent_dev_collector: "svdevdynacoll01.sherwin.com"
+dynatrace_wsagent_stage_collector: "svqadynacoll01.sherwin.com"
+dynatrace_wsagent_prod_collector: "svprdadynacoll01.sherwin.com"
+dynatrace_wsagent_lt_collector: "svltdynacoll01.sherwin.com"
+
+# Additional 32 bit ws agent
+dynatrace_wsagent_package_32::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/6.5/dynatrace-wsagent-6.5.0.1289-linux-x86-32.tar'
+dynatrace_wsagent_package_32::home_dir_name: 'dynatrace-6.5_32'
+dynatrace_wsagent_package_32::extract_script: 'dynatrace-wsagent-6.5.0.1289-linux-x86.sh'
+
+
+# ###############
+## Splunk Universal Forwarder Settings for SoftLayer.
+softlayer::splunk_universal_forwarder::rpm_location: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/Splunk/splunkforwarder-6.3.3-f44afce176d0-linux-2.6-x86_64.rpm'
+softlayer::splunk_universal_forwarder::rpm_version: 'splunkforwarder-6.3.3-f44afce176d0'
+softlayer::splunk_universal_forwarder::deploymentServer_uri: 'slogmgt01.sherwin.com:8089'
+
+# ###############
+# Default softlayer hosts file entry which should not be used
+# but is here in case something is not configured properly.
+hosts_file_content: |
+  # Default value - Check Hieradata by-data_center / softlayer
+  # or /sw/env/cfg/puppet.d/custom_facts.yml for configuration
+  127.0.0.1 localhost.localdomain localhost
+
+# ###############
+# Default list of Groups for SoftLayer nodes is just osadmin.
+softlayer_os_groups: |
+  # Default Group Assignment.
+  +:(osadmin):ALL
+  +:(security):ALL
+
+# ###############
+# Sudoers.d configuration (additive because its a hieradata array).
+softlayer_sudo::configs:
+    'osadmin':
+        'content'   : "%osadmin ALL=(ALL) PASSWD: ALL"
+        'priority'  : 10
+    'security':
+        'content'   : "%security ALL=(ALL) PASSWD: ALL"
+        'priority'  : 10
+
+# ###############
+# SSSD configuration.
+# Note: The 'softlayer_sssd::ldap_uri' hieradata value is set per data_center.
+# Check the by-data_center/softlayer files DAL09.yaml or WDC04.yaml.
+
+softlayer_sssd::ldap_os_user_base: 'dc=sherwin,dc=com'
+softlayer_sssd::ldap_default_bind_dn: 'uid=oslogin,ou=applications,dc=sherwin,dc=com'
+softlayer_sssd::ldap_user_object_class: 'posixAccount'
+softlayer_sssd::ldap_user_search_base: 'dc=sherwin,dc=com'
+softlayer_sssd::ldap_group_object_class: 'groupOfUniqueNames'
+softlayer_sssd::ldap_group_search_base: 'ou=oslogin,ou=groups,dc=sherwin,dc=com'
+softlayer_sssd::ldap_cert_file_name: 'sw-cert.crt'
+softlayer_sssd::ldap_default_authtok_type: 'password'
+
+softlayer_sssd::ldap_default_authtok: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAQ2JVUSaz2fY1cBflVxKvrYUpQ3d5fn2XqBLp
+    zlxGpFPfO5/E6eSfz30p4DMXCUgwBdXy9RxSpABgT6znNXWyo61bO6JhCSCs
+    sCXnky3E1TYKRe5DtDwjit/xFp9dF4FHwpLVBQVnzIFKlzyUE/0RHhzZLN6P
+    LZ87Fmwa3Oka9o/0cD7UD2nDPXE4KTR9Xqv2eqlS5JDsT+T+TzNIoxa0MyJA
+    k0KrnIJAb33FbgcK4uzxzVFip3YK7PbSZnvmor+cYv3WJ5A5FR5PRPpPsFaT
+    pfQP74LPYlwDLxHaOge3TNGDsd45VSafi1TFWkjaDWeKhVLHrpeoIV1igky2
+    7mvzVjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDjdD03SrWkzTabz3GG
+    HfgmgBA5ySTor1rVQwNtqFe1q09B]
+
+softlayer_sssd::ldap_cert: >
+    ENC[PKCS7,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]

@@ -1,0 +1,5 @@
+
+#Fake avamar grid to get client installed if it's enabled, but won't actually register to anything.
+avamar::grid: 'swavmtest.sherwin.com'
+
+site_code: mpl

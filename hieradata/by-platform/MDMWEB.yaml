@@ -1,0 +1,38 @@
+classes:
+  - vsftpd
+
+access_conf::access: 
+  - '+:root:LOCAL'
+  - '+:sruser:LOCAL cgsprintdb2.consumer.sherwin.com cgsprintdb1.consumer.sherwin.com stnps2hq.sherwin.com cgsprint1.consumer.sherwin.com cgsprint2.consumer.sherwin.com stnps1hq.sherwin.com cgeaiw1.consumer.sherwin.com cgeaiw4.consumer.sherwin.com stnps1rw.sherwin.com stnps2rw.sherwin.com' 
+  - '+:jboss:LOCAL 10.25.34.58 10.240.31.16'
+  - '+:pimadmin:LOCAL 10.25.34.58 10.240.31.16'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '-:ALL:ALL'
+
+  
+vsftpd::vsftpd_userlist:
+  - sruser
+  - sprint_xfer
+vsftpd::vsftpd_umask: '002'
+
+
+samba::shares:
+  jboss:
+    - 'comment = JBoss'
+    - 'path = /swdata/'
+    - 'browseable = no'
+    - 'writable = yes'
+    - 'valid users = @SW\DL_ADMIN_%{::hostname_upcase}'
+    - 'force user = jboss'
+  httpd:
+    - 'comment = apache_logs'
+    - 'path = /var/log/httpd'
+    - 'browseable = no'
+    - 'writable = no'
+    - 'valid users = @SW\DL_ADMIN_%{::hostname_upcase}'
+    - 'force user = root'

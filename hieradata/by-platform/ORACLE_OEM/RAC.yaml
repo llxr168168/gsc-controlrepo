@@ -1,0 +1,216 @@
+# by-platform -> ORACLE_OEM -> RAC.yaml
+
+# AVAMAR Client (DATABASE SERVERS)
+# Platform Common default. (Applied if not overridden.)
+# Overrides can be applied in more specific scopes
+avamar::client::version: "7.3.101-125"
+
+sw_util::wrapper::hiera_package::params:
+  - binutils: {}
+  - compat-libcap1: {}
+  - compat-libstdc++-33: {}
+  - compat-libstdc++-33.i686: {}
+  - gcc: {}
+  - gcc-c++: {} 
+  - glibc.i686: {} 
+  - glibc: {} 
+  - glibc-devel: {} 
+  - glibc-devel.i686: {}
+  - libgcc.i686: {} 
+  - libgcc: {} 
+  - libstdc++: {}
+  - libstdc++.i686: {}
+  - libstdc++-devel: {} 
+  - libstdc++-devel.i686: {} 
+  - libaio: {} 
+  - libaio.i686: {} 
+  - libaio-devel: {} 
+  - libaio-devel.i686: {} 
+  - libXext: {} 
+  - libXext.i686: {} 
+  - libXtst: {} 
+  - libXtst.i686: {} 
+  - libX11: {} 
+  - libX11.i686: {} 
+  - libXau: {}
+  - libXau.i686: {}
+  - libxcb: {}
+  - libxcb.i686: {}
+  - libXi: {}
+  - libXi.i686: {}
+  - make: {}
+  - cvuqdisk: {}
+  # Avamar client backups for Oracle databases. 
+  # Note Backup software is version specific. 
+  # Linux 5.x and higher = 7.3
+  - AvamarClient: {ensure: "%{hiera('avamar::client::version')}"}
+
+
+
+# access_conf::access:
+#   - '+:root:LOCAL'
+#   - '+:(sa-local):LOCAL'
+#   - '+:(sa-remote):ALL'
+#   - '+:oracle:10.20.102.67 10.20.102.68 10.240.240.64 10.240.240.65'
+#   - '+:(gg-adm-gcdunix):ALL'
+#   - '+:(gg-adm-oracle-oem):ALL'
+#   - '+:(gg-adm-scan):ALL'
+#   - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+#   - '-:ALL:ALL'
+
+
+
+
+sw_util::augeas::lnx_sysctl::params:
+  - "kernel.shmmax 17179869184"
+  - "kernel.shmall 3355443"
+  - "kernel.shmmni 4096"
+  - "kernel.sem '250 32000 100  128'"
+  - "kernel.panic_on_oops 1"
+  - "net.core.rmem_max 4194304"
+  - "net.core.rmem_default 262144"
+  - "net.core.wmem_max 1048576"
+  - "net.core.wmem_default 262144"
+  - "fs.aio-max-nr 1048576"
+  - "fs.file-max 6815744"
+  - "net.ipv4.ip_local_port_range '9000  65500'"
+
+
+sw_util::augeas::ulimit::params:
+  topic: domain
+  context: /files/etc/security/limits.conf
+  index:
+    - { domain: grid, type: hard, item: nofile, value: 65536 }
+    - { domain: grid, type: soft, item: nofile, value: 65536 }
+    - { domain: grid, type: hard, item: nproc, value: 131072 }
+    - { domain: grid, type: soft, item: nproc, value: 131072 }
+    - { domain: oracle, type: hard, item: nofile, value: 131072 }
+    - { domain: oracle, type: soft, item: nofile, value: 131072 }
+    - { domain: oracle, type: hard, item: nproc, value: 131072 }
+    - { domain: oracle, type: soft, item: nproc, value: 131072 }
+    - { domain: oracle, type: hard, item: core, value: unlimited }
+    - { domain: oracle, type: soft, item: core, value: unlimited }
+    - { domain: oracle, type: hard, item: stack, value: 10240 }
+    - { domain: oracle, type: soft, item: stack, value: 32768 }
+    - { domain: root, type: hard, item: nproc, value: 4096 }
+    - { domain: root, type: soft, item: nproc, value: 4096 }    
+    - { domain: "*", type: hard, item: memlock, value: unlimited }
+    - { domain: "*", type: soft, item: memlock, value: unlimited }    
+
+
+oracle_oem::rac::network::private_network: |
+  ## Puppet Managed File
+  # by-platform -> oracle_oem -> rac.yaml
+  DEVICE=eth1
+  ONBOOT=yes
+  BOOTPROTO=none
+  IPADDR="%{hiera('oracle_oem::rac::private_ip')}"
+  NETMASK=255.255.255.0
+  TYPE=Ethernet
+
+oracle_oem::oracle::global::profile: |
+  ## Puppet Managed File
+  # by-platform -> oracle_oem -> rac -> qa.yaml
+  # Oracle Settings
+  if [ "$USER" = "oracle" ]; then 
+    # ORACLE PROFILE 
+    export TMP=/tmp
+    export TMPDIR=$TMP
+    export ORACLE_HOSTNAME=%{::hostname}.sherwin.com
+    export ORACLE_UNQNAME=%{hiera('oracle_oem::oracle::profile::unqname')}
+    export ORACLE_BASE=/u01/app/oracle
+    export GRID_HOME=/u01/app/12.1.0.2/grid
+    export DB_HOME=/swpkg/oracle/%{hiera('oracle_oem::oracle::profile::db_name')}/product/12.1.0.2/
+    export ORACLE_HOME=$DB_HOME
+    export ORACLE_SID=%{hiera('oracle_oem::oracle::profile::default_sid')}
+    export ORACLE_TERM=xterm
+    export BASE_PATH=/usr/sbin:$PATH
+    export PATH=$ORACLE_HOME/bin:$BASE_PATH
+    export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
+    export CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+    export PS1='$PWD @ '`hostname -s`' $ '
+    alias grid_env='. /home/oracle/grid.env'
+    alias db_env='. /home/oracle/gcrepqa.env'
+    # End Oracle export config
+  fi
+  ## EOF
+
+# Requires update to stdbuild
+oracle_oem::sudo: |
+  ### Managed by Puppet - sudo
+  Defaults   !requiretty
+  Defaults   !visiblepw
+  Defaults    always_set_home
+  Defaults    env_reset
+  Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR LS_COLORS"
+  Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+  Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+  Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+  Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+  Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+  root    ALL=(ALL)       ALL
+  grid    ALL=NOPASSWD: ALL
+  %gg-adm-gcdunix ALL=(ALL) ALL
+  %gg-adm-oracle-oem ALL=(ALL) ALL
+  sa-qualys-linux ALL=NOPASSWD: ALL 
+  #includedir /etc/sudoers.d 
+
+
+# Directories and permissions for RAC nodes
+sw_util::wrapper::hiera_file::params:
+  - /u01: {owner: "root", group: "oinstall"}
+  - /u01/app: {owner: "root", group: "oinstall"}
+  - /u01/app/oraInventory: {owner: "oracle", group: "oinstall"}
+  - /u01/app/oracle: {owner: "oracle", group: "oinstall"}
+  - /swpkg/oracle/ora_home: {owner: "oracle", group: "oinstall"}
+  - /u01/app/12.1.0.2: {owner: "oracle", group: "oinstall"}
+  - /u01/app/oracle/12.1.0.2: { ensure: "absent", recurse: "true", force: "true", owner: "oracle", group: "oinstall"}
+  - /global: {owner: "root", group: "root"}
+  - /global/ora_backup: {owner: "oracle", group: "oinstall", mode: "755" }
+  - /global/dd_backup: {owner: "oracle", group: "oinstall", mode: "755" }
+  - /swpkg/oracle/rmancat/product: {owner: "oracle", group: "dba"}
+  - /swpkg/oracle/gcagent: {owner: "oracle", group: "oinstall"}
+  - /swpkg/oracle/ora_home/.ssh: { owner: "oracle", group: "oinstall", mode: "700" } 
+  - /swpkg/oracle/ora_home/.ssh/id_rsa: { ensure: "file", content: "oracle_oem::rac::ssh_private", owner: "oracle", group: "oinstall", mode: "400" }
+  - /swpkg/oracle/ora_home/.ssh/authorized_keys: { ensure: "file", content: "oracle_oem::rac::ssh_public", owner: "oracle", group: "oinstall", mode: "400" }
+  - /etc/udev/rules.d/99-oracle.rules: {
+      ensure: "file", 
+      content: "oracle_oem::rac::udev::oracle_shared_disk_rules", 
+      owner: "root", 
+      group: "root" , 
+      mode: "644",
+      notify: "Exec[OracleUdevWatcher]"
+    }
+  - /etc/sysconfig/network-scripts/ifcfg-eth1: {ensure: "file", content: "oracle_oem::rac::network::private_network", owner: "root", group: "root" , mode: "644"}
+  - /etc/profile.d/oracle_profile.sh: {ensure: "file", content: "oracle_oem::oracle::global::profile", owner: "root", group: "root" , mode: "644"}
+  - /usr/local/avamar/exclude_list: { ensure: "file", owner: "root", group: "root", require: [ "Package[AvamarClient]" ] }
+
+sw_util::wrapper::hiera_exec::params:
+  - Oracle_Udev_Watcher_Exec: {
+    # Cycle udev when targeted udev rule changes.
+    command: "udevadm trigger &> /dev/null",
+    alias: "OracleUdevWatcher",
+    refreshonly: true,
+    }
+  # Note: avamar::grid default set in by-datacenter->gcd-><datacenter name>.yaml
+  - register_avamar_client: {
+    command: "/usr/local/avamar/etc/avagent.d register %{hiera('avamar::grid')} Corporate/Corp_Linux",
+    unless: "test -f /usr/local/avamar/var/cid.bin",
+    require: [ "Package[AvamarClient]" ],
+    }
+
+# Unset domain value for rac servers. 
+# Oracle requires search attribute only
+resolv_conf::domain:
+ 
+# Add Network parameter to all rac nodes
+sw_util::wrapper::hiera_file_line::params:
+  - set_network_param_nozeroconf: { path: "/etc/sysconfig/network", line: "NOZEROCONF=yes" }
+  - set_shm_memory_size_fstab: {path: "/etc/fstab", match: "^tmpfs", line: "tmpfs                   /dev/shm                tmpfs   defaults,size=16384m        0 0"}
+
+
+# Start the Avamar agent
+sw_util::wrapper::hiera_service::params:
+  - avagent: {}
+
+

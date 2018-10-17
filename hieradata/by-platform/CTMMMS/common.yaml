@@ -1,0 +1,34 @@
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-control-m):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+  
+
+sw_util::wrapper::hiera_package::params:
+  - tcsh: {}
+  - autofs: {}
+  
+sw_util::module_param::bool_exec_augeas_kernel: true
+sw_util::module_param::bool_exec_augeas_limits: true
+sw_util::augeas::ulimit::params:
+  topic: domain
+  context: /files/etc/security/limits.conf
+  index:
+    - { domain: ctmuser, type: hard, item: nofile, value: 131072 }
+    - { domain: ctmuser, type: soft, item: nofile, value: 131072 }
+    - { domain: ctmuser, type: soft, item: nproc, value: 131072 }
+    - { domain: ctmuser, type: hard, item: nproc, value: 131072 }
+    - { domain: ctmuser, type: soft, item: core, value: unlimited }
+    - { domain: ctmuser, type: hard, item: core, value: unlimited }
+    - { domain: ctmuser, type: soft, item: memlock, value: 50000000 }
+    - { domain: ctmuser, type: hard, item: memlock, value: 50000000 }
+
+
+
+## SUDO files (ctmuser, agent)
+## sysctl
+## 

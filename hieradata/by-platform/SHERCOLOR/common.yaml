@@ -1,0 +1,69 @@
+# hieradata -> by-platform -> SHERCOLOR -> common.yaml
+# Common config for Shercolor Platform
+
+classes:
+  - sw_util::hiera_wrapper
+
+# Setting sw_util parameters
+sw_util::module_param::bool_exec_augeas_kernel: true
+sw_util::module_param::bool_exec_augeas_limits: true
+sw_util::module_param::bool_exec_audit: false
+
+sudo::sudoers_template: sudoers.shercolor
+
+# Kernel Security Parameters
+sw_util::augeas::lnx_sysctl::params:
+  - "net.ipv6.conf.all.disable_ipv6 1"
+  - "net.ipv6.conf.default.disable_ipv6 1"
+  - "net.ipv4.conf.default.send_redirects 0"
+  - "net.ipv4.conf.all.send_redirects 0"
+  - "net.ipv4.ip_forward  0"
+  - "net.ipv4.conf.all.accept_source_route  0"
+  - "net.ipv4.conf.all.accept_redirects  0"
+  - "net.ipv4.conf.all.secure_redirects  0"
+  - "net.ipv4.conf.all.log_martians  1"
+  - "net.ipv4.conf.default.accept_redirects  0"
+  - "net.ipv4.conf.default.secure_redirects  0"
+  - "net.ipv4.icmp_echo_ignore_broadcasts  1"
+  - "net.ipv4.icmp_ignore_bogus_error_responses  1"
+  - "net.ipv4.conf.all.rp_filter  1"
+  - "net.ipv6.conf.default.accept_redirects  0"
+  - "kernel.randomize_va_space  2"
+  - "kernel.exec-shield  1"
+
+# Enforce permissions on /tmp dir. 
+sw_util::wrapper::hiera_file::params:
+  - /tmp: { owner: "root", group: "root", mode: "1777" } 
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:mqstores: 10.25.33.181 10.25.33.189 10.25.34.58'
+  - '-:mqstores: ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '-:sa-shercolor:ALL'
+  - '+:(gg-adm-shercolor):ALL'
+  - '+:(gg-adm-scan):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+
+shercolor::mq::public_key: >
+  ENC[PKCS7,MIICTAYJKoZIhvcNAQcDoIICPTCCAjkCAQAxggEhMIIBHQIBADAFMAACAQAw
+  DQYJKoZIhvcNAQEBBQAEggEAPhkzVx+nHcy25/E3evij7Vzamq40Pxs+6ZiU
+  v4bdH4QpMyrfN09hPuT9ItMA8N0UfVXIvlsEIyeLqv8b0VaiD7lWLTeyYEP7
+  iriCePtfPotzj48qO5FjnAeQTCdUcbjivvRhs9Tuv9e0QGdFxw6npklohlYi
+  EkrMsWq3iq/mU2Np8/9XF7mhnhb7wJ2ZVW4yjXgTefY7aWU3QjS/+UOU6Emh
+  yS79ea8wV8E8aKZVANcygvvp5rAFIRJI90/h9TixJ5cTNo98X2+LC+NfiKvD
+  i2S/HFq8lX47fNryVBkhDyepCPfIhw1iHPLgGNSY4b+oRxStZ3yEoix1eaiD
+  A0zZiTCCAQ0GCSqGSIb3DQEHATAdBglghkgBZQMEASoEECVbxUJvpCXRnBcp
+  XMJffI6AgeB9yQ8OQ489+czw5IUZhMzVa7lEJ5xyjF1C7UQ939yMezbU5X4R
+  HtEV3ZlMi6ltqRvxLCHc0OAHEoy3tdTaAPzx4OkdrD02UVatPX+2pRefc1xM
+  oRNNmZ0u0Muwwac8M1RCyZ4bxC/5zxew6cPFDSKQaoJnddWRFx5Sq6u/jVc6
+  qpzKQycXU1SwRNsYXghkAvziInQuzClZoaPA16rkyCZZ/HyXtAHEfB+LUXmR
+  2fEDIeNu23gxOHimPZHEqPQR2O2L9se+T8B6ZCTa1HXwT3F00dXm9n2bjbGp
+  kFV+BI9ktw==]  
+
+
+
+

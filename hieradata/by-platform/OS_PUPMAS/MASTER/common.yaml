@@ -1,0 +1,6 @@
+sw_util::wrapper::hiera_file::params:
+  - /sw/data: {
+      owner: "root",
+      group: "docker",
+      mode: "750"
+    }

@@ -1,0 +1,11 @@
+classes:
+  - sw_docker_3.8::manager
+
+
+
+sw_docker_3.8::manager::log_server: 'udp://prodelkstack.sherwin.com:514'
+
+docker::registry_auth::registries:
+  'docker.cpartdc01.sherwin.com':
+    username: 'sa-rancher-prod'
+    password: 'sa-rancher-prod4builds'

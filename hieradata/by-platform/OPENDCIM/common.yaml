@@ -1,0 +1,41 @@
+# by-platform -> OPENDCIM -> common.yaml
+# OpenDcim deployment -> http://www.opendcim.org/
+
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - "+:(gg-adm-scan): %{hiera('access_conf::qualys_ips')}"
+  - '-:ALL:ALL'
+
+# Add dcim user to all dcim storage nodes
+# Groups
+sw_util::wrapper::hiera_group::params:
+  - dcim: { gid: 1071  }
+
+# Users
+sw_util::wrapper::hiera_user::params:
+  # Legacy migration from OVM3.x
+  - dcim: { uid: 1071, gid: 1071, home: "/home/dcim", groups: ["sa-local", "tty"] }
+
+sw_util::wrapper::hiera_file::params:
+  - /etc/profile.d/sw-puppet.sh: {
+    ensure: "file",
+    content: "puppet::global::profile",
+    owner: "root",
+    group: "root",
+    mode: "755"
+  }
+
+puppet::global::profile: |
+  ## Puppet Managed File
+  # by-platform -> %{::custom_domain} -> common.yaml
+  # Set puppet environment on login 
+  if [ "$USER" = "root" ]; then 
+    export PATH=$PATH:/opt/puppet/bin
+    for exp in $(cat /etc/sysconfig/pe-puppet); do export ${exp}; done
+  fi
+  ###EOF
+

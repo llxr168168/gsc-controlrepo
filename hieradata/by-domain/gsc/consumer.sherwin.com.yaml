@@ -1,0 +1,11 @@
+---
+resolv_conf::search: 'consumer.sherwin.com sw.sherwin.com sherwin.com'
+resolv_conf::domain: 'consumer.sherwin.com'
+sw_sssd_authentication::short_domain: 'SW'
+sw_sssd_authentication::fqdn_domain: 'sw.sherwin.com'
+sw_sssd_authentication::ldap_search_base: 'DC=sw,DC=sherwin,DC=com'
+sw_sssd_authentication::ldap_user_search_base: 'DC=sw,DC=sherwin,DC=com?sub?&(msSFU30NisDomain=sw)'
+sw_sssd_authentication::ldap_group_search_base: 'DC=sw,DC=sherwin,DC=com?sub?(msSFU30NisDomain=sw)'
+sw_sssd_authentication::ldap_user_search_base5: 'DC=sw,DC=sherwin,DC=com'
+sw_sssd_authentication::ldap_group_search_base5: 'DC=sw,DC=sherwin,DC=com'
+sw_sssd_authentication::default_realm: 'SW.SHERWIN.COM'

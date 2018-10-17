@@ -1,0 +1,75 @@
+---
+#### Include Classes
+classes:
+  - profiles_unix::exa::base::linux
+  - profiles_unix::exa::base::pkgs
+  - profiles_unix::exa::base::auth
+  - sw_util::hiera_wrapper
+
+
+#### Defaults
+zabbix::zabbixserver: 'zabbix.consumer.sherwin.com,cgzbxproxy1.consumer.sherwin.com,cgzbxproxy2.consumer.sherwin.com,cgzbxproxy3.consumer.sherwin.com,cgzbxproxy1d.consumer.sherwin.com,zabbixdev.consumer.sherwin.com,cgmgt05.sherwin.com'
+
+ntp::servers:
+  - 'time.sherwin.com'
+
+resolv_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+# Adding Hiera variable for Tricore network
+# Used to allow sa-tricore access to select databases
+access_conf::tricore_network: '64.94.254.0/29'
+
+resolv_conf::domain: 'sherwin.com'
+resolv_conf::search: 'sherwin.com'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+
+samba::short_domain: 'SW'
+samba::fqdn_domain: 'sw.sherwin.com'
+
+# Disabling /swdata/nfs directory creation
+autofs::make_default_dir: false
+
+yum::yum_repo_file: 'swrepo.yum'
+
+# WebEng Defaults
+profiles_webeng::default::pkg_base_path: '/sw/pkg'
+profiles_webeng::default::logs_base_path: '/sw/logs'
+
+# ###############
+# Splunk forwarder configuration.
+sw_splunk::agent::uf_deployment_srv_uri: 'slogmgt01.sherwin.com:8089'
+
+# ###############
+## Dynatrace Agent Package
+dynatrace_agent_package::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/6.5/dynatrace-agent-6.5.0.1289-unix.jar'
+dynatrace_agent_package::installer_prefix_dir: '/sw/pkg/dynatrace'
+dynatrace_agent_dev_collector_target: "cpdyncold01.sherwin.com:9998"
+dynatrace_agent_stage_collector_target: "cpdyncolq01.sherwin.com:9998"
+dynatrace_agent_prod_collector_target: "cpdyncolp01.sherwin.com:9998"
+dynatrace_agent_lt_collector_target: "cpdyncolq01.sherwin.com:9998"
+
+# ###############
+## Dynatrace Host Package
+dynatrace_hostagent_package::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/6.5/dynatrace-hostagent-6.5.0.1289-linux-x86-64.tar'
+dynatrace_hostagent_package::installer_prefix_dir: '/sw/pkg/dynatrace'
+dynatrace_hostagent_package::home_dir_name: 'dynatrace-6.5'
+dynatrace_hostagent_stage_collector: "cpdyncolq01.sherwin.com"
+dynatrace_hostagent_prod_collector: "cpdyncolp01.sherwin.com"
+
+# ###############
+## Dynatrace Server
+dynatrace_server::server_installer_prefix_dir: '/sw/pkg/dynatrace'
+dynatrace_server::server_installer_file_name: 'dynatrace.jar'
+#dynatrace_server::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/6.5/dynatrace-server-6.5.0.1289-linux-x86.jar'
+dynatrace_server::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/7.0/dynatrace-server-7.0.0.2469-linux-x86.jar'
+dynatrace_server::server_collector_port: '6698'
+dynatrace_server::server_do_pwh_connection: false

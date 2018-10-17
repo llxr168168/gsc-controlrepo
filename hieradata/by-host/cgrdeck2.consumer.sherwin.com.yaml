@@ -1,0 +1,2 @@
+samba::krb_template: krb5.conf.busobj
+postfix::enabled: 'true'

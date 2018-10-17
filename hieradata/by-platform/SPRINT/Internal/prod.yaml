@@ -1,0 +1,100 @@
+---
+classes:
+  - profiles_unix::gsc::apps::sprint_app
+  - profiles_unix::gsc::apps::jboss_as
+  - profiles_unix::gsc::apps::ftpserver
+
+jboss::jboss_version: 6.3-0
+vsftpd::vsftpd_userlist:
+  - sruser
+  - sprint_xfer
+vsftpd::vsftpd_umask: '002'
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:sruser:LOCAL cgsprintdb2.consumer.sherwin.com cgsprintdb1.consumer.sherwin.com stnps2hq.sherwin.com cgsprint1.consumer.sherwin.com cgsprint2.consumer.sherwin.com stnps1hq.sherwin.com cgeaiw1.consumer.sherwin.com cgeaiw4.consumer.sherwin.com stnps1rw.sherwin.com stnps2rw.sherwin.com'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(jboss):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
+  - '-:ALL:ALL'
+
+  
+sprint::vhosts:
+  j29-http:
+    serveraliases:
+      - j29.sherwin.com
+      - j29
+    redirect_status: 'permanent'
+    redirect_dest: 'https://j29.sherwin.com/J29/'
+    docroot: '/var/www/html'
+    priority: 30
+    port: 80
+  j29:
+    ssl: true
+    ssl_cert: /etc/pki/tls/certs/star_sherwin.cert
+    ssl_key: /etc/pki/tls/private/star_sherwin.key
+    priority: 30
+    docroot: '/var/www/html'
+    serveraliases:
+      - j29.sherwin.com
+      - j29
+    port: 443
+    rewrites:
+      - rewrite_cond: '%%{}{HTTP_HOST} ^j29'
+      - rewrite_cond: '%%{}{REQUEST_URI} ^/console'
+      - rewrite_rule: '^(.*)$ http://j29.sherwin.com:9990/console/'
+      - rewrite_cond: '%%{}{REQUEST_URI} !^/console'
+      - rewrite_cond: '%%{}{REQUEST_URI} !^/J29'
+      - rewrite_rule: '^(.*)$ https://j29.sherwin.com/J29'
+    directories:
+      - path: '/J29'
+        order: 'Deny,Allow'
+        provider: 'location'
+        deny: 'from all'
+        allow: 'from 10.'
+      - path: '/var/www/html'
+        options:
+          - 'FollowSymLinks'
+          - 'MultiViews'
+        allow_override: 
+          - 'None'
+        allow: 'from all'
+        order: 'Allow,Deny'
+  sprintp-http:
+    serveraliases:
+      - sprintp.consumer.sherwin.com
+      - sprintp
+    redirect_status: 'permanent'
+    redirect_dest: 'https://sprintp.consumer.sherwin.com/'
+    docroot: '/var/www/html'
+    priority: 30
+    port: 80
+  sprintp:
+    ssl: true
+    ssl_cert: /etc/pki/tls/certs/star_sherwin.cert
+    ssl_key: /etc/pki/tls/private/star_sherwin.key
+    priority: 30
+    docroot: '/var/www/html'
+    serveraliases:
+      - sprintp.consumer.sherwin.com
+      - sprintp
+    port: 443
+    rewrites:
+      - rewrite_cond: '%%{}{HTTP_HOST} ^sprintp'
+      - rewrite_cond: '%%{}{REQUEST_URI} ^/console'
+      - rewrite_rule: '^(.*)$ http://sprintp.consumer.sherwin.com:9990/console/'
+      - rewrite_cond: '%%{}{REQUEST_URI} !^/console'
+      - rewrite_cond: '%%{}{REQUEST_URI} !^/sprint'
+      - rewrite_rule: '^(.*)$ http://sprintp.consumer.sherwin.com/sprint'
+sprint::vhost_fragments:
+  sprintp:
+    target: '30-sprintp.conf'
+    order: 1
+    content: '  JKMount /* default'
+  j29:
+    target: '30-j29.conf'
+    order: 1
+    content: '  JKMount /* default'

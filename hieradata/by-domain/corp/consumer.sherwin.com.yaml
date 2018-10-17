@@ -1,0 +1,2 @@
+resolv_conf::search: 'consumer.sherwin.com sw.sherwin.com sherwin.com'
+resolv_conf::domain: 'consumer.sherwin.com'

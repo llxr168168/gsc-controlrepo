@@ -1,0 +1,7 @@
+# Site: Statesville
+
+tz::region: 'America'
+tz::locality: 'New_York'
+site_code: sta
+
+oracle_build::kernel::vm_nr_hugepages: 3100

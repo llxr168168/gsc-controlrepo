@@ -1,0 +1,4 @@
+ignition::nbr_hugepages: 0
+ignition::jdk_version: 'watson-jdk8'
+hosts::hosts_group: ignition
+

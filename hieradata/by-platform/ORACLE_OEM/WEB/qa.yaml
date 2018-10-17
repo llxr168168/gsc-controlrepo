@@ -1,0 +1,99 @@
+# Oracle Enterprise Manager
+# WEB Server (qa) Configuration MetaData
+# by-platform -> ORACLE_OEM -> WEB -> qa.yaml
+
+oracle_oem::nfs_mounts:
+  - '/global/apps_backup -rw,intr,soft,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3 nafgps01rw-nfs01:/oem_backup_qa'
+
+# Fixed NFS mount for OEM stage 
+sw_util::wrapper::hiera_mount::params:
+  - /apps_stage:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/oem_stage_qa
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+  - /BIP_STORAGE:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/OEM_BIP_storage
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-corp-unix):ALL'
+  - '+:oracle: 10.148.5.79 10.140.19.164'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-oracle-oem):ALL'
+  - '+:(gg-adm-scan):ALL'
+  - '+:tricore: 64.94.254.0/29'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+
+oracle_oem::qa::rac::ssh_private: >
+    ENC[PKCS7,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
+    9MV0VVkZBPdd2uJdDUJVQu28ae685gJ3]
+
+oracle_oem::ssh_config: |
+  # Puppet Managed file
+  # by-platform -> ORACLE_OEM -> WEB -> qa.yaml
+  host cpoemqdb*
+   IdentityFile ~/.ssh/rac_qa_id_rsa
+   User oracle
+
+
+sw_util::wrapper::hiera_file::params:
+  - /home/oracle/.ssh/rac_qa_id_rsa: { ensure: "file", content: "oracle_oem::qa::rac::ssh_private", owner: "oracle", group: "oinstall", mode: "400" } 
+  - /home/oracle/.ssh/config : { ensure: "file", content: "oracle_oem::ssh_config", owner: "oracle", group: "oinstall", mode: "400" } 
+

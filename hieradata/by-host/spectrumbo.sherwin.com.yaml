@@ -1,0 +1,20 @@
+classes:
+- profiles_unix::gsc::base::auth
+- profiles_unix::gsc::base::pkgs
+- access_conf
+- zabbix
+- ssh
+- vmwaretools
+- sudo
+- spectrumbo
+
+zabbix::zabbixserver: 'zabbix.consumer.sherwin.com,cgzbxproxy1.consumer.sherwin.com,cgzbxproxy2.consumer.sherwin.com,cgmgt05.sherwin.com'
+
+samba::use_native_domain: 'yes'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL-SVR-%{::hostname_upcase}):ALL' 
+  - '-:ALL:ALL'  

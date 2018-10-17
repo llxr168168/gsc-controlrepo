@@ -1,0 +1,9 @@
+sw_util::wrapper::hiera_mount::params:
+  - /swdata/ctmdocs:
+      ensure: mounted
+      options: credentials=/root/.ctmdocscred,ro
+      device: //cgconhq.sw.sherwin.com/cgcon-shared3/ctmdocs_cgctmjda2
+      atboot: true
+      fstype: cifs
+      dump: 0
+      pass: 0

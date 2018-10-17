@@ -1,0 +1,11 @@
+profiles_unix::gsc::base::auth::use_std_accounts: 'yes'
+hosts::hosts_group: admin
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(admin):ALL'
+  - '-:ALL:ALL'
+
+ssh::sshd_config: cgmozbx.ssd.conf
+avamar::disable: 'true'

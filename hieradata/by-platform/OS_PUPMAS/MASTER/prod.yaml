@@ -1,0 +1,2 @@
+autofs::nfs_maps:
+  - '/sw/data -rw,secure,sync,intr,soft,tcp,vers=3 nafgps21ak-nfs01:/CP_puppet_prd'

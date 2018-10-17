@@ -1,0 +1,12 @@
+---
+#### Include Classes
+classes:
+- profiles_webeng::f5::wdc04_config
+    
+# Required for device fqdn's.  Must set facts
+# via hieradata and the pick_default($::custom_admin_org, hiera('custom_admin_org',undef))
+# in Env/site.pp file.
+custom_admin_org: 'softlayer'
+
+
+ 

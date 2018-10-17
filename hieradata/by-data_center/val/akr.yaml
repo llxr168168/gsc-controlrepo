@@ -1,0 +1,19 @@
+
+classes:
+  - resolv_conf
+  - hosts
+
+avamar::grid: 'swavmuak1.sherwin.com'
+
+resolv_conf::domain: 'valspar.local'
+resolv_conf::search: 'valspar.local valspar.com corporate.root.corp europe.root.corp sherwin.com consumer.sherwin.com sw.sherwin.com'
+resolv_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+site_code: akr
+
+profiles_unix::val::oracle::base::nfs_mounts:
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/oracle_val_ak/%{::hostname}'
+  - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/oracle_val_rw'
+  - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/oracle_val_ak'

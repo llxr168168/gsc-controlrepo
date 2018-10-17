@@ -1,0 +1,9 @@
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(secureusers):ALL'
+  - '+:(admin):ALL'
+  - '-:ALL:ALL'
+
+syslog::rsyslog_file: pci_rsyslog.conf

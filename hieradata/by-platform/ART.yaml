@@ -1,0 +1,59 @@
+---
+classes:
+  - profiles_unix::gsc::oracle::asm
+  - profiles_unix::gsc::apps::mqclient
+  - profiles_unix::gsc::apps::ftpserver
+  - profiles_unix::gsc::apps::edi_art
+oracle_build::kernel::vm_nr_hugepages: 2600
+
+vsftpd::vsftpd_userlist:
+  - ec_xfer
+
+vsftpd::vsftpd.conf:
+  - anonymous_enable=NO
+  - local_enable=YES
+  - write_enable=YES
+  - local_umask=022
+  - dirmessage_enable=YES
+  - xferlog_enable=YES
+  - connect_from_port_20=YES
+  - xferlog_std_format=YES
+  - listen=YES
+  - pam_service_name=vsftpd
+  - tcp_wrappers=YES
+  - vsftpd_log_file=/var/log/vsftpd.log
+  - dual_log_enable=YES
+
+### This option allows users in userlist to login
+  - userlist_enable=YES
+
+### This option causes only users listed in userlist to be allowed to box(when used in conjuction with userlist_enable)
+  - userlist_deny=NO
+
+edi::art::art_developers:
+  - dxl756
+  - jch98c
+  - rss58c
+  - gag99c
+  - tkk62c
+  - exm509
+  - pxm717
+  - cab72c
+  - kxs763
+  - rxa163
+  - amp473
+  
+edi::art::art_developers_retire: []
+ 
+sudo::sudoers_template: sudoers.cgnjfdb1
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '-:ALL:ALL'

@@ -1,0 +1,74 @@
+# by-platform -> OVM_MIGRATION -> MASTERSAF -> non_prod.yaml
+# Mastersaf non-production database servers
+# Note(s): lamsmdb01 & lamsmdb02 support the following application environments:
+#   1. Development
+#   2. Quality Assurance
+#   3. Disaster Recovery
+#
+
+oracle_rac::udev::oracle_shared_disk_rules: |
+  ## Puppet Managed File
+  # by-platform -> OVM_MIGRATION -> MASTERSAF -> qa.yaml
+  KERNEL=="sdc[1-3,5-6]", OWNER="oracle", GROUP="dba", MODE="660", ACTION=="add|change"
+  KERNEL=="sdd[1-4]", OWNER="oracle", GROUP="dba", MODE="660", ACTION=="add|change"
+
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(sa-local):LOCAL'
+  # Adding ssh access for RAC cluster members. 
+  - '+:oracle: 10.140.32.72 10.140.32.73 192.168.127.11 192.168.127.12'
+  - '+:sa-oracle-oem:LOCAL'
+  - '+:(gg-adm-dba-ops):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - "+:(gg-adm-tricore-ops): %{hiera('access_conf::tricore_network')}"
+  - '-:ALL:ALL'
+
+  
+# Directories for NFS mount points
+sw_util::wrapper::hiera_file::params:
+  - /util: {owner: "oracle", group: "dba"}
+  - /stage: {owner: "oracle", group: "dba"}
+  - /global/ora_backup: {owner: "oracle", group: "dba"}
+  # Sandbox instance for Mastersaf
+  - /swpkg/oracle/mstrsfsb: {owner: "oracle", group: "dba"}
+  - /swpkg/oracle/mstrsfsb/product: {owner: "oracle", group: "dba"}
+
+sw_util::wrapper::hiera_mount::params:
+  #databaseb-nfs01int:/ora_util    /util   nfs     rw,bg,rsize=32768,wsize=32768,timeo=600,tcp,vers=3,intr
+  - /util:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/ORA_cp_util_qa
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+  #databaseb-nfs02int:/ora_stage   /stage  nfs     rw,bg,rsize=32768,wsize=32768,timeo=600,tcp,vers=3,intr
+  - /stage:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/ORA_cp_stage_qa
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+  #cpzfs53wv:/export/oracle_devqa_wv_53/cpqa1617  /global/ora_backup  nfs rw,bg,hard,nointr,noacl,proto=tcp,vers=3,rsize=1048576,wsize=1048576,timeo=600   0 0
+  - /global/ora_backup:
+      ensure: absent
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: cpzfs53wv:/export/oracle_devqa_wv_53/cpqa1617 
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+  - /global/dd_backup:
+      ensure: mounted
+      options: rw,bg,hard,nointr,vers=3,rsize=1048576,wsize=1048576,timeo=600,tcp,noacl,nolock
+      device: cpdd01rw-nas2:/data/col1/oracle_rw/lamsdb01
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0

@@ -1,0 +1,49 @@
+# by-platform -> OVM_MIGRATION -> GRC.yaml
+# GRC database servers
+
+source_yaml_conf: GRC 
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(sa-local):LOCAL'
+  - '+:(gg-adm-dba-ops):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  #- '+:oracle: 10.148.5.80 10.148.5.81 10.140.32.21 10.140.32.22'
+  - '+:sa-oracle-oem: LOCAL'
+  - "+:(gg-adm-tricore-ops): %{hiera('access_conf::tricore_network')}"
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+
+# Common private network config for all Migrated OVM Systems 
+# See by-host->gcd-><fqdn>
+ovm_migration::private_network::conf: |
+  ## Puppet Managed File
+  # by-platform -> ovm_migration -> GRC -> %{hiera('source_yaml_conf')}.yaml
+  # Content intentionally blank (No second interface)
+
+# Common ulimits for all Migrated OVM systems
+sw_util::augeas::ulimit::params:
+  topic: domain
+  context: /files/etc/security/limits.conf
+  index:
+    - { domain: "*", type: hard, item: nofile, value: 65536 }
+    - { domain: "*", type: soft, item: nofile, value: 1024 }
+    - { domain: "*", type: hard, item: nproc, value: 16384 }
+    - { domain: "*", type: soft, item: nproc, value: 16384 }
+    - { domain: oracle, type: soft, item: nofile, value: 1024 }
+    - { domain: oracle, type: hard, item: nofile, value: 65536 }
+    - { domain: oracle, type: hard, item: nproc, value: 16384 }
+    - { domain: oracle, type: soft, item: nproc, value: 16384 }
+    - { domain: oracle, type: hard, item: memlock, value: 134217728 }
+    - { domain: oracle, type: soft, item: memlock, value: 134217728 }
+    - { domain: oracle, type: soft, item: stack, value: 10240 }
+    - { domain: oracle, type: hard, item: stack, value: 32768 }
+    - { domain: "@webeng", type: soft, item: nofile, value: 131072 }
+    - { domain: "@webeng", type: hard, item: nofile, value: 131072 }
+    - { domain: "@webeng", type: hard, item: nproc, value: 131072 }
+    - { domain: "@webeng", type: soft, item: nproc, value: 131072 }
+    - { domain: "@webeng", type: soft, item: core, value: unlimited }
+    - { domain: "@webeng", type: hard, item: core, value: unlimited }
+    - { domain: "@webeng", type: hard, item: memlock, value: 50000000 }
+    - { domain: "@webeng", type: soft, item: memlock, value: 50000000 }

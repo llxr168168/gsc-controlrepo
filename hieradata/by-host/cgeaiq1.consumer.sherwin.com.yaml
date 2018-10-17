@@ -1,0 +1,10 @@
+hosts::hosts_template: 'array'
+hosts_file_content: |
+  127.0.0.1       localhost.localdomain   localhost
+  10.240.17.199	cgeaiq1.consumer.sherwin.com cgeaiq1
+  10.128.7.137 geadev-aia11.sherwin.com geadev-aia11
+  10.128.7.128 geadev-aia12.sherwin.com geadev-aia12
+  10.240.28.158 geadev-aia11.sherwin.com geadev-aia11
+  10.240.28.155 geadev-aia12.sherwin.com geadev-aia12
+  10.128.7.138 geaqa-aia11.sherwin.com geaqa-aia11
+  10.128.7.139 geaqa-aia12.sherwin.com geaqa-aia12

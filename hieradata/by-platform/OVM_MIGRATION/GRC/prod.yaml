@@ -1,0 +1,32 @@
+#by-platform -> OVM_MIGRATION -> GRC -> qa.yaml
+
+oracle_rac::udev::oracle_shared_disk_rules: |
+  ## Puppet Managed File
+  # by-platform -> OVM_MIGRATION -> GRC -> prod.yaml
+  KERNEL=="sdc[1-4]", OWNER="oracle", GROUP="dba", MODE="660", ACTION=="add|change"
+
+# Directories for NFS mount points
+sw_util::wrapper::hiera_file::params:
+  - /util: {owner: "oracle", group: "dba"}
+  - /stage: {owner: "oracle", group: "dba"}
+  - /global/ora_backup: {owner: "oracle", group: "dba"}
+
+
+sw_util::wrapper::hiera_mount::params:
+  #cpzfs53wv:/export/oracle_devqa_wv_53/cpqa1617  /global/ora_backup  nfs rw,bg,hard,nointr,noacl,proto=tcp,vers=3,rsize=1048576,wsize=1048576,timeo=600   0 0
+  - /global/ora_backup:
+      ensure: absent
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: cpzfs03hq:/export/oracle_prod_hq_03/cpgrcp
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+  - /global/dd_backup:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: cpdd01ak-nas1:/data/col1/oracle_ak/cpgrcp
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0

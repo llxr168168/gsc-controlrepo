@@ -1,0 +1,14 @@
+---
+admin_host: 'v-corp-ldap1-prdint'
+
+oracle_ent_directory_admin_passwd: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAKi/ltdfuerpySvWrO/hINsBk6xcO7GXtOj7a
+    ZKmeCMXTY5b4/iZ6kFZWTlGrWpD0vu8rgaRKmnQCtvg3uuhVt1mLRKYV33fB
+    RmwQbEnxHj0BtYaEuPgy/jBUxvolK615lEw/j1uwtw3ltwYQFab1M2wwXDQI
+    dcyG5GL5rN3J+mKgl3/QYXnmE8MCn+GutO+N4QM1PVCtW2qQfaXcgtfp9MLP
+    +UzW1Ti78gzaH+pQD/MFh1YL+I4pbgcftEWdL9MBYFyAyxsWfIB+i78r0Hh4
+    +5H7W/4qCeNFynsSK4lclIG60CDu3BQr0pv+dzrccveR5N5jdG/BmyQBw/R4
+    z4VZnTA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDV99L2ZfCVHCey9FUA
+    SyURgBBVrB/PCGqKLJZtdsHhr//v]
+

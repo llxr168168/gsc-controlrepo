@@ -1,0 +1,6 @@
+
+# Classes
+classes:
+- softlayer_sudo
+- softlayer_sudo::configs
+- softlayer_sssd_authentication

@@ -1,0 +1,59 @@
+# by-platform -> IBM_CONNECTIONS -> APP.yaml
+
+# Conntemp - local, server specific storage, intended to be used as temp space for applcation installation
+# Environment variable set on each server [IATEMPDIR] to override the OS /tmp location 
+# Autofs mount point is only available on connections application servers.
+
+
+# Connshare - global shared storage location for connections / db2 installation media and binaries.
+
+ibm_connections::nfs_mounts:
+  - "/connshare -rw,intr,soft,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=%{hiera('ibm_connections::nfs_mounts::nfs_version')} nafgps01rw-nfs01:/connections_all_installfiles"
+  - "/mnt/conntemp -rw,intr,soft,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=%{hiera('ibm_connections::nfs_mounts::nfs_version')} nafgps01rw-nfs01:/connections_all_installation/%{::hostname}"
+
+# setting sudo rights for application servers
+sudo::sudoers_template: sudoers.connections
+
+# Set Ulimit values for all IBM Connections Appliation servers.
+# Updated WASADM's limits due to out of memory errors in Java - BW 2016.08.08
+sw_util::augeas::ulimit::params:
+  topic: domain
+  context: /files/etc/security/limits.conf
+  index:
+    - domain: root
+      type: hard
+      item: nofile
+      value: 20000
+    - domain: root
+      type: soft
+      item: nofile
+      value: 20000
+    - domain: wasadm
+      type: hard
+      item: nofile
+      value: 65536
+    - domain: wasadm
+      type: soft
+      item: nofile
+      value: 65536
+    - domain: wasadm
+      type: hard
+      item: nproc
+      value: 32000
+    - domain: wasadm
+      type: soft
+      item: nproc
+      value: 32000
+
+# Added environmental specific config
+# Updates needed to hiera for proper order processing. 
+# access_conf::access:
+#   - '+:root:LOCAL'
+#   - '+:(sa-local):LOCAL'
+#   - '+:(sa-remote):ALL'
+#   - '+:(gg-adm-gcdunix):ALL'
+#   - '+:(gg-adm-notes):ALL'
+#   - '+:(gg-adm-scan):10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181 10.240.6.27 10.20.101.97'
+#   - '+:(gg-adm-infosec-admins-linux):ALL'
+#   - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+#   - '-:ALL:ALL'

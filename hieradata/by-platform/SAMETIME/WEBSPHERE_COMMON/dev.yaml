@@ -1,0 +1,2 @@
+resolv_conf::domain: 'devsherwin.com'
+resolv_conf::search: 'sherwin.com devsherwin.com'

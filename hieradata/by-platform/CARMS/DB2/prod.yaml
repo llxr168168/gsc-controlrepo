@@ -1,0 +1,14 @@
+# by-platform -> CARMS -> DB2 -> prod.yaml
+
+carms::autofs::master: |
+  ### PUPPET MANAGED FILE CARMS autofs
+  # File by-plaform -> CARMS -> DB2 -> prod.yaml
+  /- /etc/auto.d/nfs.maps --timeout=300
+
+carms::autofs::nfs_maps: |
+  ### PUPPET MANAGED FILE CARMS autofs
+  # File by-plaform -> CARMS -> DB2 -> prod.yaml
+  /connshare -rw,intr,soft,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3 nafgps01rw-nfs01:/connections_all_installfiles/db2_install
+
+
+

@@ -1,0 +1,22 @@
+classes:
+  - profiles_unix::gsc::oracle::asm
+
+oracle_build::kernel::vm_nr_hugepages: 17000
+
+sw_util::wrapper::hiera_group::params:
+  - aomsftp: { gid: 1466, system: true, forcelocal: true}
+
+sw_util::wrapper::hiera_user::params:
+  - aomsftp: {uid: 1466, gid: 1466, home: "/home/aomsftp", system: true, groups: ["aomsftp"], password: "!!"}
+
+ 
+access_conf::access:
+    - '+:root:LOCAL'
+    - '+:(sa-local):LOCAL'
+    - '+:(sa-remote):ALL'
+    - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+    - '+:oracle:LOCAL 10.140.8.34 10.148.19.17'
+    - '+:aomsftp:10.148.19.17
+    - '+:SW\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}'
+    - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+    - '-:ALL:ALL'

@@ -1,0 +1,133 @@
+---
+yum::yum_repo_file: 'swrepo.yum'
+yum::errata_target: 2018_Q2
+
+#### Include Classes
+classes:
+  - profiles_unix::gcd::base::linux
+  - profiles_unix::gcd::base::pkgs
+  - profiles_unix::gcd::base::auth
+  - sw_util::hiera_wrapper
+  - rundeck_ssh
+
+profiles_unix::gcd::base::puppet_env: dev
+profiles_unix::gcd::custom_admin_org: gcd
+profiles_unix::gcd::custom_patchgroup: unpatchable
+
+#### Defaults
+zabbix::zabbixserver: 'zabbix.consumer.sherwin.com,cgzbxproxy1.consumer.sherwin.com,cgzbxproxy2.consumer.sherwin.com,cgzbxproxy3.consumer.sherwin.com,cgzbxproxy1d.consumer.sherwin.com,zabbixdev.consumer.sherwin.com,cgmgt05.sherwin.com'
+
+ntp::servers: 
+  - 'time.sherwin.com'
+
+resolv_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+# Adding Hiera variable for Tricore network 
+# Used to allow sa-tricore access to select databases
+access_conf::tricore_network: '64.94.254.0/29'
+
+resolv_conf::domain: 'sherwin.com'
+resolv_conf::search: 'sherwin.com'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'  
+
+samba::short_domain: 'SW'
+samba::fqdn_domain: 'sw.sherwin.com'
+
+# Disabling /swdata/nfs directory creation
+autofs::make_default_dir: false
+
+yum::yum_repo_file: 'swrepo.yum'
+
+# prep for sssd
+sw_sssd_authentication::ldap_uris: 'ldap://SWADS1HQ.SW.SHERWIN.COM,ldap://SWADS2HQ.SW.SHERWIN.COM,ldap://SWADS1WR.SW.SHERWIN.COM,ldap://SWADS2WR.SW.SHERWIN.COM'
+sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
+sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5zUAAQID'
+sw_sssd_authentication::krb5_server: 'SWADS2HQ.SW.SHERWIN.COM:88,SWADS1HQ.SW.SHERWIN.COM:88,SWADS1WR.SW.SHERWIN.COM:88,SWADS2WR.SW.SHERWIN.COM:88'
+sw_sssd_authentication::krb5_kpasswd: 'SWADS2HQ.SW.SHERWIN.COM:88,SWADS1HQ.SW.SHERWIN.COM:88,SWADS1WR.SW.SHERWIN.COM:88,SWADS2WR.SW.SHERWIN.COM:88'
+sw_sssd_authentication::kdc1: 'SWADS2HQ.SW.SHERWIN.COM'
+sw_sssd_authentication::kdc2: 'SWADS1HQ.SW.SHERWIN.COM'
+sw_sssd_authentication::kdc3: 'SWADS1WR.SW.SHERWIN.COM'
+sw_sssd_authentication::kdc4: 'SWADS2WR.SW.SHERWIN.COM'
+
+
+# WebEng Defaults
+profiles_webeng::default::pkg_base_path: '/sw/pkg'
+profiles_webeng::default::logs_base_path: '/sw/logs'
+
+# Base Docker variables
+docker::registry_auth::registries:
+  'docker.cpartdc01.sherwin.com':
+
+## Dynatrace Agent Package
+dynatrace_agent_package::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/6.5/dynatrace-agent-6.5.0.1289-unix.jar'
+dynatrace_agent_package::installer_prefix_dir: '/sw/pkg/dynatrace'
+dynatrace_agent_dev_collector_target: "cpdyncold01.sherwin.com:9998"
+dynatrace_agent_stage_collector_target: "cpdyncolq01.sherwin.com:9998"
+dynatrace_agent_prod_collector_target: "cpdyncolp01.sherwin.com:9998"
+dynatrace_agent_lt_collector_target: "cpdyncolq01.sherwin.com:9998"
+
+# ###############
+## Dynatrace Host Package
+dynatrace_hostagent_package::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/6.5/dynatrace-hostagent-6.5.0.1289-linux-x86-64.tar'
+dynatrace_hostagent_package::installer_prefix_dir: '/sw/pkg/dynatrace'
+dynatrace_hostagent_package::home_dir_name: 'dynatrace-6.5'
+dynatrace_hostagent_stage_collector: "cpdyncolq01.sherwin.com"
+dynatrace_hostagent_prod_collector: "cpdyncolp01.sherwin.com"
+
+# ###############
+## Dynatrace Server
+dynatrace_server::server_installer_prefix_dir: '/sw/pkg/dynatrace'
+dynatrace_server::server_installer_file_name: 'dynatrace.jar'
+#dynatrace_server::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/6.5/dynatrace-server-6.5.0.1289-linux-x86.jar'
+#dynatrace_server::installer_file_url: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/dynatrace/7.0/dynatrace-server-7.0.0.2469-linux-x86.jar'
+dynatrace_server::server_collector_port: '6698'
+dynatrace_server::server_do_pwh_connection: false
+
+rundeck_ssh::sshd_enable: true
+rundeck_ssh::allowed_users: 'root@10.25.34.43 root@10.25.34.252 root@10.247.34.252 root@10.247.34.43 oracle@10.25.34.43 oracle@10.25.34.252 grid@10.25.34.43 grid@10.25.34.252 mysql@10.25.34.43 mysql@10.25.34.252'
+rundeck_ssh::allowed_root_ssh_key: >
+    ENC[PKCS7,MIIDDQYJKoZIhvcNAQcDoIIC/jCCAvoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAgDvoyLf2FfEFS5/sJk+pDIgmbthJgNwMLSAP
+    UctI/2YsxFZUOdNU/5AjvTUM1v9jmsEl3vKYwtXaY1mds54OiRtFU8oLtS0I
+    /VPJ24gRuZR0yYk9xGQ8WmRHl+XZHC8/LSeR4Uc8PH6NY631vv3a/X7yZ4TL
+    fAlOpPGUh0iML/ciqEETwVBUVN9MOYDCpk8TOH4A/v79byo/nXOW3fB8ADlq
+    uDA5Rc5F+TEB2l0E5MiiNfDAygCad+eStYoT8aFYo8HNsoGRjpgUZHisW95l
+    CDQSW7FlkVtIN9H8rtclL3GWQxH8vpoc0bhnv9TmbviV6RDu6VMXFKfc2hAG
+    yYnbVzCCAc4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEBumiHSdlcQOmVrt
+    DIs7O06AggGgHW/uzEGzED01ck00oTT1/2ewD5floyoVFLgkOTIdjsZYmKsQ
+    OkDNOKoJFnx8CJLh10L80GSgSwZjSwX26SN+nk8N0FyNnM7A4JTokVi3k8zO
+    c6pz20RfOZTguRhZ48Hd8as4GEPLOQWFsIdKZLjTB2qPzVhn05ZVeBWbibXY
+    aYqtJgPbxBAsPlJEIn+kGw2JW9dERAlnZEFfGSnTDYcj+0aRvkj/+ro27bDV
+    qsf5PoZqn7N1BseHMyWJoWtHGcE4YN8ATNWFMYg8xv7guML7gr2DNAkiYB+Q
+    7o6B+1MLGSaIaohblM77ngEKdjnLQcaGNBlCoJbmPTcXDyCewjlWyFXvgfBN
+    49sCoijWLdalPJJZKtBTiWURAHsIAUxk4MLNtJdvvhXOX7vQmp3wInQB9BHW
+    tp96wkTvB4zgH5eNolvpiKKJtCaSaWmIee4GaQxrXnufH7QoWWhZ55k2Ida5
+    rtLXjvwJRYci+chFz07OGfceljUrCIu7WTwnmEncS1fyne5kvLwyKHohkzOH
+    0lgdZVnnCUGb/UlQhdQJJYt/fEQ=]
+rundeck_ssh::allowed_ssh_key: >
+    ENC[PKCS7,MIIC7QYJKoZIhvcNAQcDoIIC3jCCAtoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAibBGXihQxaG91zS9NyWaFmHrH4+LKHccDZAP
+    lm6rki8F3d0cWmNk14HRajMlZC/EgOmksChy7cXLe5tCsF5cZ94yNESy15yg
+    tH+6+z7xT3Z/xLU/kmqD5KCItYBuJ2DaLOejHBaLOrZZtp58xf4mRDbMg1H6
+    gjkfv1Ke9gtinG2eDG7NqNdmcMepuAc0AaDu/ozff8vJPHmV/Fthn0cu6zzM
+    /r+9urem94RB+ocwyCEENNJyGmKEUF8OhrtmsfwfYUgnOHMzN1jm3wFwiDi/
+    KMbn/r+E1rXI3XKTtVOq03ZQ8nyzTnJVkL5QbFaMTtGY10i5HCJ/bmnwIalD
+    R3b7DDCCAa4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEGCb596PIbzmCMnP
+    OvCTo/SAggGA22zNwrYNR8zvTUzzi6LacEbdb1fcOjeXSHp7FIPhOr373mBI
+    Ee4dcZ5lrimRA/svBDMgD/jAfYL6WZFbm5n9Kr6guz1ZisXkzCgrmHS9p4YV
+    FVonaS5B/7kVeBBicj1vvWZ95xfHG+OexEvcfhFsyDtLxudK4j/bQqATs/ts
+    1b6jHl6zHerdig0CqUy84pC+p11h1JMqqKyaU7+u78LItn3C8PaZsf7PCf5k
+    qAFkKuLgz5AcWhHqPvkIYr+RGnzcqpLrM1BGdAwN0AeZNAYDyjzfB3dn17BA
+    GpWNlY3OAw1cBLczcxb2ZJDlNHGh6ZoEOaM3GhfZWFhNs9ezIAF1Li8781p3
+    fPWi7nOUCP3xh++New4lW3gEP+jNJ1vVuZ+hbkSsq8bDUH1AMrDTcE0gHmYW
+    wDHR7+7N/3kCpuIxGRu1L4SVLxYBlBLnEkd78E+wwvQG5Tt1705tci8iFCwm
+    xEZjUM9Uvr57aBIyOkqfvVWkfI4ad9pujHAXXG8HJzGn]

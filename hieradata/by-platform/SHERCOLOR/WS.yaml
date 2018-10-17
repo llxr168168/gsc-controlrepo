@@ -1,0 +1,91 @@
+# by-platform -> SHERCOLOR -> WS.yaml
+# Shercolor Web Services
+
+
+
+# Add progress / application groups
+sw_util::wrapper::hiera_group::params:
+  - scadm: { gid: 1024, system: false }
+  - color: { gid: 3028, system: false } # ID for gg-adm-shercolor
+
+sw_util::wrapper::hiera_user::params:
+  - scadm: { uid: 1024, gid: 3028, home: "/home/scadm", groups: ["sa-local", "tty", "scadm"], system: false, managehome: true}
+  - mqstores: { uid: 1582, gid: 3028, home: "/home/mqstores", groups: ["sa-local"], system: false, managehome: true}
+
+sw_util::wrapper::hiera_package::params:
+  - compat-libstdc++-33.i686: {}
+  - nfs-utils: {}
+  - java-1.6.0-openjdk.x86_64: {ensure: absent}
+  - mutt: {}
+  - flac: {}
+  - giflib: {}
+  - libasyncns: {}
+  - libogg: {}
+  - libsndfile: {}
+  - libvorbis: {}
+  - libXcomposite: {}
+  - libXi: {}
+  - libXtst: {} 
+  - mailcap: {}
+  - pulseaudio-libs: {}
+  - jpackage-utils: {}
+  - compat-32bit: {}
+
+sw_util::wrapper::hiera_file::params:
+  - /home/scadm: { owner: "scadm", group: "color", mode: "700" } 
+  - /home/scadm/.ssh: { owner: "scadm", group: "color", mode: "700" } 
+  # Progress 11 installation
+  - /swpkg/openedge: {owner: "root", group: "root"} # AKA Progress 
+  - /swpkg/openedge/dlc11: {owner: "scadm", group: "color"}
+  # Application Directories
+  - /swpkg/apps: {owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/oemgmt: {owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/logs: { ensure: "absent", owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/wrk_oemgmt: { ensure: "absent", owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/SherColorService: { ensure: "absent", owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/fiscal: {owner: "scadm", group: "color", mode: "775"}
+  - /swpkg/apps/cds: {owner: "scadm", group: "color", mode: "775"}
+  # Application Data Directories
+  - /swdata/db/fiscal: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/db/afcd: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/afcd: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/afcd/bi: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/afcd/ai: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/fiscal: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/fiscal/bi: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/tximg/fiscal/ai: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/archive: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/logs: {owner: "scadm", group: "color", mode: "775"}
+  - /swdata/cds/installs: {owner: "scadm", group: "color", mode: "775"}
+  # Setup Progress user profile
+  - /etc/profile.d/scadm_profile.sh: { 
+      ensure: "file", 
+      content: "scadm::global::profile", 
+      owner: "root", 
+      group: "root", 
+      mode: "644"
+    }
+
+
+
+scadm::global::profile: |
+  ## Puppet Managed File
+  # by-platform -> SHERCOLOR -> WS.yaml
+  # shercolor user Settings
+  #  Author: Kevin Fox (11/11/2016)
+  if [ "$USER" = "scadm" ]; then 
+    export PS1="[\u@\h \W]\> "
+    #<
+  fi
+  # Set Group Variables
+  # Any user with primary group num 3028 (gg-adm-shercolor)
+  PRIME_GROUP_NUM=`id -g`
+
+  if [ ${PRIME_GROUP_NUM} = 3028 ]; then
+    export DLC=/swpkg/openedge/dlc11   
+    export DBUTIL=$DLC/bin/_dbutil
+    export PROPATH=$DLC:$DLC/bin:.  
+    export PATH=$PROPATH:$PATH       
+  fi
+
+  ###EOF

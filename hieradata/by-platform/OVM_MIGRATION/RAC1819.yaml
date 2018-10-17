@@ -1,0 +1,100 @@
+# by-platform -> OVM_MIGRATION -> RAC1819.yaml
+#----------------------------------------------------------
+#	Puppet Platform Configuration for:
+#	cpqa18 (Old OVM3.x cpqa18v)
+#	cpqa19 (Old OVM3.x cpqa19v)
+#
+
+source_yaml_conf: RAC1819
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(sa-local):LOCAL'
+  # Adding ssh access for RAC cluster members. 
+  - '+:oracle: 10.140.32.65 10.140.32.67 192.168.126.18 192.168.126.19'
+  #- '+:(gg-adm-tricore-ops): %{hiera(access_conf::tricore_network)}'
+  - '+:sa-oracle-oem:LOCAL'
+  - '+:(gg-adm-dba-ops):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '-:ALL:ALL'
+
+
+# # Directories and permissions for RAC nodes
+# sw_util::wrapper::hiera_file::params:
+#   - /etc/udev/rules.d/99-oracle.rules: {
+#       ensure: "file", 
+#       content: "oracle_oem::rac::udev::oracle_shared_disk_rules", 
+#       owner: "root", 
+#       group: "root" , 
+#       mode: "644",
+#       notify: "Exec[OracleUdevWatcher]"
+#     }
+#   - /etc/sysconfig/network-scripts/ifcfg-eth1: {
+#       ensure: "file", 
+#       content: "ovm_migration::private_network::conf", 
+#       owner: "root", 
+#       group: "root" , 
+#       mode: "644",
+#       notify: "Exec[Network_Watcher]"
+#     }
+
+
+
+# sw_util::wrapper::hiera_exec::params:
+#   - Network_Watcher_Exec: {
+#     # Force eth1 to restart only when configuration changes.
+#     command: "ifdown eth1 &> /dev/null && ifup eth1 &> /dev/null",
+#     alias: "Network_Watcher",
+#     refreshonly: true,
+#     }
+#   - Oracle_Udev_Watcher_Exec: {
+#     # Cycle udev when targeted udev rule changes.
+#     command: "udevadm trigger &> /dev/null",
+#     alias: "OracleUdevWatcher",
+#     refreshonly: true,
+#     }
+
+
+# ovm_migration::private_network::conf: |
+#   ## Puppet Managed File
+#   # by-platform -> ovm_migration -> rac1819.yaml
+#   DEVICE=eth1
+#   ONBOOT=yes
+#   BOOTPROTO=none
+#   IPADDR=%{hiera('ovm_migration::private_ip')}
+#   NETMASK=255.255.255.0
+#   TYPE=Ethernet
+
+
+# sw_util::augeas::ulimit::params:
+#   topic: domain
+#   context: /files/etc/security/limits.conf
+#   index:
+#     - { domain: oracle, type: hard, item: nofile, value: 65536 }
+#     - { domain: oracle, type: soft, item: nofile, value: 1024 }
+#     - { domain: oracle, type: hard, item: nproc, value: 16384 }
+#     - { domain: oracle, type: soft, item: nproc, value: 16384 }
+#     - { domain: oracle, type: hard, item: memlock, value: 134217728 }
+#     - { domain: oracle, type: soft, item: memlock, value: 134217728 }
+#     - { domain: oracle, type: hard, item: stack, value: 32768 }
+#     - { domain: oracle, type: soft, item: stack, value: 10240 }
+
+
+# sw_util::augeas::lnx_sysctl::params:
+#   - "kernel.shmmax 4398046511104"
+#   - "kernel.shmall 1073741824"
+#   - "kernel.shmmni 4096"
+#   - "kernel.sem '250 32000 100  128'"
+#   - "kernel.panic_on_oops 1"
+#   - "net.core.rmem_max 4194304"
+#   - "net.core.rmem_default 262144"
+#   - "net.core.wmem_max 1048576"
+#   - "net.core.wmem_default 262144"
+#   - "fs.aio-max-nr 1048576"
+#   - "fs.file-max 6815744"
+#   - "net.ipv4.ip_local_port_range '9000  65500'"
+#   - "kernel.msgmnb 65536"
+#   - "kernel.msgmax 65536"
+
+

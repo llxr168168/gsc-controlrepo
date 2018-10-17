@@ -1,0 +1,14 @@
+samba::shares:
+  trac:
+    - 'comment = Applications'
+    - 'valid users = SW\jtp353, SW\zrh535, SW\rbp01l, SW\jnk865, SW\pnv01l, SW\apt135'
+    - 'path = /swdata/apps/'
+    - 'force user = apache'
+    - 'writable = yes'
+    - 'create mask = 2770'
+    - 'directory mask = 2770'
+  uara:
+    - 'valid users = SW\jtp353, SW\zrh535, SW\rbp01l, SW\jpr955, SW\rph563'
+    - 'path = /swdata/apps/uara/'
+    - 'force user = apache'
+    - 'writeable = no'

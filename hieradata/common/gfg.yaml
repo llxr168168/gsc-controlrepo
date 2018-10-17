@@ -1,0 +1,6 @@
+---
+#### Include Classes
+classes:
+- profiles_gfg::utils::sw_chocolatey
+
+profiles_gfg::octo::installer_bundle: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/GFG/Octopus/Octopus.Tentacle.3.2.23-x64.msi'

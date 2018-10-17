@@ -1,0 +1,3 @@
+tz::region: 'America'
+tz::locality: 'Chicago'
+oracle_build::kernel::vm_nr_hugepages: 2115

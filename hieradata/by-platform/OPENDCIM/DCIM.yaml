@@ -1,0 +1,154 @@
+# by-platform -> OPENDCIM -> DCIM.yaml
+classes: 
+  - ::mysql::server
+  - apache
+  - apache::mod::ssl
+
+# Tells puppet what package version-release to install
+dcim::rpm_package::release: "4.4-0"
+# Links the version to the runtime
+dcim::version: "4.4"
+
+
+
+sw_util::wrapper::hiera_package::params:
+  - mariadb: {}
+  # install latest PHP release
+  - mod_php71u: {}
+  - php71u-mysqlnd: {}
+  - php71u-snmp: {}
+  - php71u-mbstring: {}
+  - php71u-json: {}
+  - php71u-xml: {}
+  - php71u-gd: {}
+  - php71u-ldap: {}
+  - openDCIM: { ensure: "%{hiera('dcim::rpm_package::release')}" }
+
+sw_util::wrapper::hiera_service::params:
+  # Start database
+  - mariadb: {}
+
+sw_util::wrapper::create_resources::params:
+  # Call mysql module function to create database 
+   - { resource_name: "mysql::db", params: "mysql::server::db", defaults: {} }
+   # Configure apache vhost for dcim
+   - { resource_name: "apache::vhost", params: "dcim::apache::vhost::conf", defaults: {} }
+   # Configure Apache Mods
+   - { resource_name: "apache::mod", params: "apache::mod::conf", defaults: {} }
+
+
+sw_util::wrapper::hiera_file::params:
+  - /etc/yum.repos.d/rh7_ius.repo: {
+  ensure: "file",
+  content: "yum::ius_repo",
+  mode: "644"
+  }
+  # Create link for DCIM application
+  - /swpkg/dcim: {
+  ensure: "link",
+  target: "/swpkg/openDCIM-%{hiera('dcim::version')}"
+  }
+  # Allow apache to write to these directories
+  - /swpkg/dcim/drawings: {
+  group: "apache",
+  mode: "765" 
+  }
+  - /swpkg/dcim/pictures: {
+  group: "apache",
+  mode: "765" 
+  }
+  - /swpkg/dcim/vendor/mpdf/mpdf/ttfontdata: {
+  group: "apache",
+  mode: "765" 
+  }  
+  - /etc/ssl/certs/cpodcimd01.sherwin.com.key: {
+    ensure: "file",
+    content: "opendcim::ssl::key",
+    owner: "root",
+    group: "root",
+    mode: "644"
+  }
+  - /etc/ssl/certs/cpodcimd01.sherwin.com.cert: {
+    ensure: "file",
+    content: "opendcim::ssl::cert",
+    owner: "root",
+    group: "root",
+    mode: "644"
+  }
+
+
+yum::ius_repo: |
+  # !! ~~ Puppet Managed File ~~ !!
+  # by-platform -> OPENDCIM -> DCIM.yaml
+  [IUS_Lastest]
+  name=IUS RHEL 7 - Latest
+  baseurl=http://cplnxrepo1.sherwin.com/pulp/repos/ius/x86_64/7/latest/
+  enabled=1
+  gpgcheck=0
+  # ~ EOF
+
+
+
+
+# < BEGIN >  MYSQL (Mariadb) Config
+# package_manage: Package managed by package list...
+mysql::client::package_manage: false
+mysql::server::root_password: "look_a_password"
+mysql::server::manage_config_file: true
+mysql::server::override_options:
+  'mysqld':
+    'bind-address': '127.0.0.1'
+    'log-error': /var/log/mysqld.log' # required for proper MySQL installation
+  'mysqld_safe':
+    'log-error': '/var/log/mysqld.log'  # required for proper MySQL installation
+
+# create database + account with access, passwords are not encrypted
+mysql::server::db:
+  "dcim":
+    user: "dcim_adm"
+    password: "devpass"
+    host: "localhost"
+    grant:
+      - "ALL"
+
+# < END >  MYSQL (Mariadb) Config
+
+
+
+## <BEGIN> Apache VHost
+
+dcim::apache::vhost::conf: 
+  "%{::fqdn} non-ssl":
+    servername: "%{::fqdn}"
+    port: 80
+    docroot: /swpkg/dcim
+    custom_fragment: 'AddType application/x-httpd-php .php'
+    options: ['Indexes','FollowSymLinks','MultiViews']
+    override: ['All']
+    # Notes for Cert
+    # http://connections.sherwin.com/wikis/home?lang=en-us#!/wiki/Wd42fd410ac6d_4510_8c0c_b1ef9493edfa/page/Request%20Certificate
+  "%{::fqdn} ssl":
+    # SSL enabled port for dcim
+    servername: "%{::fqdn}"
+    port: 443
+    ssl: true
+    docroot: /swpkg/dcim
+    ssl_cert: "/etc/ssl/certs/cpodcimd01.sherwin.com.cert"
+    ssl_key: "/etc/ssl/certs/cpodcimd01.sherwin.com.key"
+    custom_fragment: 'AddType application/x-httpd-php .php'
+    options: ['Indexes','FollowSymLinks','MultiViews']
+    override: ['All']
+
+apache::mod::conf: 
+  'php7': {
+    # Note: removed package declaration from module, added to package list for clarity
+    #package: 'mod_php71u',
+    # Set the libraty name for the module
+    lib: 'libphp7.so'
+  }
+
+
+
+## <END> Apache VHOST
+
+

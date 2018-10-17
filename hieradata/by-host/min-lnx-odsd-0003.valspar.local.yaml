@@ -1,0 +1,14 @@
+classes:
+  - sudo
+  - profiles_unix::gsc::base::auth
+  - access_conf
+  
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'  

@@ -1,0 +1,67 @@
+# hieradata -> by-platform -> SHERCOLOR -> PROGDB -> dev.yaml
+# Shercolor Development 
+
+sw_util::wrapper::hiera_file::params:
+  # Place holder for install media during build
+  - /mnt: {owner: "scadm", group: "color", mode: "775"}
+
+sw_util::wrapper::hiera_mount::params:
+  - /swpkg/apps/charzd/lib:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/SherColor_charzd_dev/lib
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+  - /swdata/charzd/IFS_Outbox:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/SherColor_charzd_dev/IFS_Outbox
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+  - /swdata/charzd/IFS_Inbox:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/SherColor_charzd_dev/IFS_Inbox
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+      alias: "nfsMount_Charzd_InBox"
+  - /swdata/charzd/IFS_Work:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/SherColor_charzd_dev/IFS_Work
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+      alias: "nfsMount_Charzd_Work"
+  - /swdata/charzd/IFS_Vc:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/SherColor_charzd_dev/IFS_Vc
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+  - /swdata/archive:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/SherColor_progress_backup_dev
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+  - /mnt:
+      ensure: mounted
+      options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
+      device: nafgps01rw-nfs01:/SherColor_charzd_dev/INSTALL_MEDIA
+      atboot: true
+      fstype: nfs
+      dump: 0
+      pass: 0
+

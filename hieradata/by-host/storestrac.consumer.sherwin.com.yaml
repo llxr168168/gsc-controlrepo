@@ -1,0 +1,20 @@
+samba::shares:
+  apps:
+    - 'comment = Applications'
+    - 'path = /swdata/apps/'
+    - 'valid users = @SW\gg-cgit-lnxadmin, SW\rdc01d, SW\txs871'
+    - 'force user = apache'
+    - 'read only = No'
+    - 'create mask = 02770'
+    - 'directory mask = 02770'
+sudo::sudoers_template: sudoers.storestrac
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-cgit-storestrac):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
+  - '-:ALL:ALL'

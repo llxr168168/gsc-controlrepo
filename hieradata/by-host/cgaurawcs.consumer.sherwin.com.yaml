@@ -1,0 +1,15 @@
+oracle_build::kernel::vm_nr_hugepages: 3073
+
+samba::shares:
+  awcs:
+    - 'comment = AWCS'
+    - 'path = /swpkg/awcs_sys'
+    - 'valid users = @SW\gg-cgit-awcs-admins'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = awcs'
+  bpac:
+    - 'path = /var/spool/samba/'
+    - 'printable = Yes'
+    - 'print ok = Yes'
+    - 'printer name = bpac'

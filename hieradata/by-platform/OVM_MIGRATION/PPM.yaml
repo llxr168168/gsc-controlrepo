@@ -1,0 +1,73 @@
+# by-platform -> OVM_MIGRATION -> PPM.yaml
+# Servers cpqa16 & cpqa17
+# Application Notes (2017-01-09)
+# 1. Formulator
+# 2. PPM 
+
+# Name for coding comments in files managed by puppet (See <by-platform>/common.yaml)...
+source_yaml_conf: PPM
+
+sudo::sudoers_template: sudoers.ppmdb # Support users for Oracle && Control-m
+
+
+# Shamelessly copied from GCD Controlm_v9 
+# With modifications for 
+controlm_ppm::rc_ctm_agent: |
+  #!/bin/sh
+  # chkconfig: 2345 98 2
+  # description: Script for starting and stopping Control-M Agent
+
+  # Modified for PPM integration 
+  # This is legacy from OVM3.x migration
+  # Please update this file when Control-M is updated on PPM  Database servers.
+
+  prog=ctm_agent
+
+  # CTM user home directory
+  CTMHOME=~ctmusr
+
+  # Path to the CTM scripts ()
+  export CTMBASE=$CTMHOME/ctm/scripts
+
+  case $1 in
+
+  start_msg)
+          echo "Starting Control/M Agent."
+          ;;
+
+  stop_msg)
+          echo "Stopping Control/M Agent."
+          ;;
+
+  'stop')
+
+    su - ctmusr -c "$CTMHOME/ctm/scripts/shut-ag -u ctmusr -p ALL"
+    if [ $? -eq 0 ]; then
+      rm -f /var/lock/subsys/$prog
+    fi
+          ;;
+
+  'start')
+    [ -f /var/lock/subsys/$prog ] && exit
+
+
+    # Issue the agent shutdown to clean up the lock file and any other voodoo that
+    # might be required.  We do this just in case the last shutdown was non-clean;
+    # otherwise, the agent won't start.
+
+    su - ctmusr -c "$CTMHOME/ctm/scripts/shut-ag -u ctmusr -p ALL"
+
+    # Start the agent normally
+    su - ctmusr -c "$CTMHOME/ctm/scripts/start-ag -u ctmusr -p ALL"
+    if [ $? -eq 0 ]; then
+      touch /var/lock/subsys/ctm_agent
+    fi
+
+    su - ctmusr -c ag_diag_comm
+
+    ;;
+
+  esac
+  #- EOF
+
+

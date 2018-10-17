@@ -1,0 +1,7 @@
+classes:
+   - sw_util::hiera_wrapper
+   
+sw_util::wrapper::hiera_package::params:
+   - rpcbind: {}
+   - nfs-utils: {}
+   - nfs-utils-lib: {}

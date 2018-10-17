@@ -1,0 +1,9 @@
+samba::short_domain: 'DEVSW'
+samba::fqdn_domain: 'devsw.devsherwin.com'
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(DEVSW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+resolv_conf::search: 'sherwin.com devsherwin.com sw.sherwin.com consumer.sherwin.com'

@@ -1,0 +1,18 @@
+#Classes for this site
+classes:
+- avamar
+  
+avamar::version: '7.3.100-233'
+
+yum::plugins_enabled: 'true'
+
+#No Avamar at Elkhart, no backups
+avamar::disable: 'true'
+
+#No local UTIL server, come back to AK
+yum::yum_repo_file: swrepo.yum
+
+
+site_code: elk
+tz::region: 'America'
+tz::locality: 'New_York'

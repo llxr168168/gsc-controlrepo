@@ -1,0 +1,40 @@
+classes:
+  - profiles_unix::gsc::oracle::asm
+  - profiles_unix::gsc::apps::mqclient
+  - profiles_unix::gsc::apps::ftpserver
+  - profiles_unix::gsc::apps::trans_freight
+oracle_build::kernel::vm_nr_hugepages: 2048
+oracle_build::kernel::vm_swappiness: 10
+
+vsftpd::vsftpd_userlist:
+  - datwhs
+  - datwhs_xfer
+  - spam
+vsftpd::vsftpd_umask: '002'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(datwhs):cgtmwftp1.consumer.sherwin.com'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '-:ALL:ALL'
+
+trans::trans_developers:
+  - dmb01l
+  - bdl01l
+  - mwl01s
+  - wem18c
+
+trans::trans_developers_retire: []
+
+profiles_unix::gsc::oracle::base::nfs_mounts:
+  - '/swdata/nfs/cgddorac1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
+  - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
+  - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01wv.sherwin.com:/data/col1/gsc_oracle_ak'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 oramedia.consumer.sherwin.com:/vol/oramedia/oracle'
+  - '/swdata/nfs/oraremote -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1b.consumer.sherwin.com:/vol/oraremote'

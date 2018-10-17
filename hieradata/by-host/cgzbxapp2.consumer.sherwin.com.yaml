@@ -1,0 +1,24 @@
+classes:
+  - rundeck_ssh
+rundeck_ssh::sshd_enable: true
+rundeck_ssh::allowed_users: root@10.240.17.163
+rundeck_ssh::allowed_ssh_key: >
+    ENC[PKCS7,MIIC7QYJKoZIhvcNAQcDoIIC3jCCAtoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAVNDCL5IcKwLtV4FmfjhxU2iwpHI5D9Xfxr1S
+    jb6P8XMIMn3/lce1T/VhkgazcfW1mspCpikHBiZxfPwqv1VwkoPOBOTuEc/l
+    NW6kc8MO3UNE8s1RFTXjlm28rVqQEyQF+xk+LzHO/sHciogyewF3J9pCeNlZ
+    HVTf++XKQXuPg3ZNrleLEXvvHGfnEqxeMZBdcwapByyfUdGo2JsB0P4Q7yBc
+    gM1P3IbDhA1aSAeXzUp5W0T56SGuMPhwWW2ThOPiT+CPqKcoIpV8mH6pniq/
+    PfhKU+NhMB5SQ9618DDdjnoYVmANRf9fhUrVz7gGNsky7yaz0YySOuxaQXfj
+    rpEsZTCCAa4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEHgz7S6znRyRPrAZ
+    KuPgBBWAggGAUwc80pSQqXckWJTVXaMdW1wLnoPtcJvkJa1D+DINbkwO3Py8
+    I2DV/iYxFX6zWevRgH0Wik7NtW1KWi47MFVPv/Fcog5yD6lT/IyJKrpoCb1/
+    GZGrZnQOsi/ExKImNxBuuVC70Bnzpx011D8GemJgKBxthgNkEGdxgdQiClgg
+    bw2j4CiVwWcjgrbgQ5zKCR5pHE3vTmyuZwxItKrNqtvzuuuasE+jFP3xCdhF
+    bjfyKEsRQacH33ZLTMZpxdAy5sNR/WMhj2DEMfrn7TgnkotAqibG1BB7GL4Y
+    +jMaZqlnsQ5bFV4nnauWEDkdQDNJ8swfakefPPPMwReFrZ5IqMYvuz0vTxcl
+    hceilbDiriOcDX3dkldQlA+m+Qw01mzeN9+UEn2WGhlH1Eh6/g2vCUONnMBm
+    VmD+rjQ65NNqqOsgl0sX1U9ieY8fGgiulDVV2KGqYzl369uTWjn1//MdabAQ
+    IEGv4e1PgGM7LkxlxPJlEuFjRKwP5R7mzR9cFmj5MI2M]
+    
+avamar::disable: 'true'

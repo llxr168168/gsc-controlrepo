@@ -1,0 +1,7 @@
+samba::shares:
+  trac:
+    - 'comment = OSCC instance'
+    - 'path = /swdata/apps/trac/OSCC'
+    - 'valid users = @SW\gg-admin-gsc-oscc'
+    - 'force user = apache'
+    - 'read only = No'

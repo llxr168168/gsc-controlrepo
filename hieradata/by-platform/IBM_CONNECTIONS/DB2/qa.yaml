@@ -1,0 +1,5 @@
+# Shared storage for installation media and backups
+ibm_connections::nfs_mounts:
+  - '/connshare -rw,intr,soft,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3 nafgps01rw-nfs01:/connections_all_installfiles/db2_install'
+  - '/conn_db2_refresh -rw,intr,soft,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3 nafgps01rw-nfs02:/connections_db2_qa_refresh'
+  - '/global/dd_backup -rw,noac,hard,rsize=1048576,wsize=10485763,nolock,vers=3 cpdd03rw-nas2:/data/col1/db2_rw'

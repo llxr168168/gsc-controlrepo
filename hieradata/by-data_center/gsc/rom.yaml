@@ -1,0 +1,15 @@
+# Site: Romeoville
+
+classes:
+  - avamar
+
+avamar::version: '7.3.100-233'
+
+profiles_unix::gsc::apps::utilserver::nfs_mounts:
+  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvearl.sherwin.com:/data/col1/gsc_lnxremote_rw'
+
+yum::plugins_enabled: 'true'
+
+site_code: rom
+tz::region: 'America'
+tz::locality: 'Chicago'

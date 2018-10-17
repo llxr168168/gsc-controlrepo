@@ -1,0 +1,24 @@
+samba::use_native_domain: 'yes'
+postfix::enabled: 'true'
+
+sudo::sudoers_template: 'sudoers.github'
+
+classes:
+  - sw_util::hiera_wrapper
+
+
+sw_util::wrapper::hiera_group::params:
+  - webdeploy: { gid: 512, system: false }
+
+sw_util::wrapper::hiera_user::params:
+  - webdeploy: {uid: 521, gid: 512, home: "/home/webdeploy", system: false}
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:webdeploy:ALL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-solutions-delivery):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'

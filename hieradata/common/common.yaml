@@ -1,0 +1,93 @@
+# Default Classes
+classes:
+  - hiera_include_base
+  - tanium_client
+  - sw_app_status
+  - stdbuild::pam
+
+resolv_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+  
+# ###############
+# Tripwire settings.
+tripwire::host: 'cptrip2hq.sw.sherwin.com'
+tripwire::port: '9898'
+tripwire::installdir: '/sw/pkg/tripwire/tripwire_8.4.2'
+tripwire::source: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/tripwire/8.4.2/te_agent_8.4.2_en_linux_x86_64.tgz'
+tripwire::pass: >
+    ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAJbCfRgUHQepUMLe3aHkktUqzWdJ3Bn2GLHQl
+    gCRDTNlzvN9hTKNrGamKIiwoPm+z5KE3yXsw+dqvGQxylukqoDPcOtqB3xwp
+    LSqDe0lJfuVOt687EquiIk9hAGn2k5wi+lERZSFnIMLhZYN/87uMYgQXIhlE
+    iJenlKjTpG/aC+DCMNcAdlXyfoIlAaiiIDxN3g20zJJtDc/E8qyRDkx5MO7j
+    yux8Z2sR2NJcxxEjSNWSpuEaG80oUH9Tr4x5ZXzZ0clHHW8qW5VQwOKQEZkm
+    thvVB9PmSguAU6KGoMQW4+YTvYXbpMsUtaEDrbAryfKNkrPyThqx8hKv/tDX
+    dv2WDTBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDbn5QOIu7QwwAgzzam
+    g3l1gCDS5k0P67LOknZhWDR9w8DIy/80V9riQ295rWxKblDGlw==]
+
+# Splunk forwarder configuration.
+sw_splunk::agent::uf_deployment_srv_uri: 'slogmgt01.sherwin.com:8089'
+
+access_conf::qualys_ips: '10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181 10.240.6.27 10.20.101.97 10.140.5.70 10.140.5.71 10.140.5.72 10.140.5.73 10.140.5.74 10.140.5.75'  
+access_conf::cyberark_ips: '10.240.29.55 10.148.41.34 10.140.41.49'
+
+
+sw_util::wrapper::hiera_augeas::params::defaults:
+  show_diff: false
+  type_check: false
+
+sw_util::wrapper::hiera_exec::params::defaults:
+  path: "/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"
+
+sw_util::wrapper::hiera_file::params::defaults:
+  ensure: directory
+  mode: "755"
+
+sw_util::wrapper::hiera_group::params::defaults:
+  ensure: present
+  system: true
+  forcelocal: true
+
+sw_util::wrapper::hiera_mount::params::defaults:
+  ensure: mounted
+  dump: 0
+  pass: 0
+  atboot: true
+
+
+sw_util::wrapper::hiera_package::params::defaults:
+  ensure: present
+
+sw_util::wrapper::hiera_schedule::params::defaults:
+  name: hiera_default_name 
+
+sw_util::wrapper::hiera_service::params::defaults:
+  ensure: running
+  enable: true
+
+sw_util::wrapper::hiera_user::params::defaults:
+  ensure: present
+  shell: /bin/bash
+  system: true
+  forcelocal: true
+
+
+##################################################################
+# Puppet Device Hieradata Section - Since "puppet device" does not 
+# allow setting custom facts like "puppet agent" does, device
+# facts need to be included in the common.yaml or the host specific.
+##################################################################
+
+softlayer::f5::monitor_oud_health_passwd: >
+    ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEARq0cjLbguB5t20aUHDy5npQCYMWZ2EPcxnup
+    71KKIsmtYRmvdL5eiCh5kbv2h70wV8jDBbP0EruEVwVCbZWOCFsjD+BwpUB3
+    Q5tjMPYIjIbWvikG+4PRQTRv066GOR9z1U4EKWr9FHzTVOBxoy2kaDkXhxlz
+    utKLrrwWBJz6nKXxFNMw/CCjcdfv2TKqcP/rYCspztYLmexs0Ymibv1NrYx3
+    paIEarlsK4pLSGKfWsuhjRk1bwSQFJ2eEsIVudvIEq0pvlI48ePVzr9D+Vrl
+    ebuCx5wEDGst11lGsQj9H9kul4QTMOOTAN9GNeViAdROoYKGGLWCfBZo/joK
+    G1Zw3TBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBAtcxEyikwoWkf1KKdC
+    RXQNgCDg3NeWim3+s5OYyVMTASlIoT5hvoYAC84fEd9hUuMVBw==]
+
+

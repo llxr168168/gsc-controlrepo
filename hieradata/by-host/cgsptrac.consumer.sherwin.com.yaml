@@ -1,0 +1,9 @@
+samba::shares:
+  trac:
+    - 'comment = SP Trac instance'
+    - 'path = /swdata/apps/trac/'
+    - 'valid users = SW\cab72c SW\kxs763 SW\axb831'
+    - 'force user = apache'
+    - 'read only = No'
+    - 'create mask = 02770'
+    - 'directory mask = 02770'

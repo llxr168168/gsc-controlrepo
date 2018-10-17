@@ -1,0 +1,45 @@
+# by-platform -> SWEEP -> common.yaml
+# Sweep application deployent environment 
+# Environment used to develop, build and promote code for the stores sweep application
+
+classes:
+  - sw_util::hiera_wrapper
+
+# Setting sw_util parameters
+sw_util::module_param::bool_exec_augeas_kernel: true
+sw_util::module_param::bool_exec_augeas_limits: true
+sw_util::module_param::bool_exec_audit: false
+
+sudo::sudoers_template: sudoers.sweep
+
+# Kernel Security Parameters
+sw_util::augeas::lnx_sysctl::params:
+  - "net.ipv6.conf.all.disable_ipv6 1"
+  - "net.ipv6.conf.default.disable_ipv6 1"
+  - "net.ipv4.conf.default.send_redirects 0"
+  - "net.ipv4.conf.all.send_redirects 0"
+  - "net.ipv4.ip_forward  0"
+  - "net.ipv4.conf.all.accept_source_route  0"
+  - "net.ipv4.conf.all.accept_redirects  0"
+  - "net.ipv4.conf.all.secure_redirects  0"
+  - "net.ipv4.conf.all.log_martians  1"
+  - "net.ipv4.conf.default.accept_redirects  0"
+  - "net.ipv4.conf.default.secure_redirects  0"
+  - "net.ipv4.icmp_echo_ignore_broadcasts  1"
+  - "net.ipv4.icmp_ignore_bogus_error_responses  1"
+  - "net.ipv4.conf.all.rp_filter  1"
+  - "net.ipv6.conf.default.accept_redirects  0"
+  - "kernel.randomize_va_space  2"
+  - "kernel.exec-shield  1"
+
+# Base ACL for AppEnv
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-lw-sweep):ALL'
+  - '+:(gg-adm-scan):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+

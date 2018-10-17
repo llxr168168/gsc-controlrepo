@@ -1,0 +1,19 @@
+
+
+
+# We don't have a class setup yet for this server
+# classes:
+
+profiles_unix::gcd::custom_datacenter: rock
+profiles_unix::gcd::custom_admin_org: gcd
+profiles_unix::gcd::custom_patchgroup: unpatchable
+
+profiles_unix::gcd::base::auth::changeNoAuth: yes
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:ALL:ALL'

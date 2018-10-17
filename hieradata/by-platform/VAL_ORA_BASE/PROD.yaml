@@ -1,0 +1,4 @@
+profiles_unix::val::oracle::base::nfs_mounts:
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddvemin.corporate.root.corp:/data/col1/oracle_val_msp_ak/%{::hostname}'
+  - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddvemin.corporate.root.corp:/data/col1/oracle_val_msp_rw'
+  - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddvemin.corporate.root.corp:/data/col1/oracle_val_msp_ak'

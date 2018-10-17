@@ -1,0 +1,15 @@
+# Site: Sacramento
+
+classes:
+  - avamar
+
+avamar::version: '7.3.100-233'
+
+yum::plugins_enabled: 'true'
+
+profiles_unix::gsc::apps::utilserver::nfs_mounts:
+  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvearl.sherwin.com:/data/col1/gsc_lnxremote_rw'
+
+site_code: sac
+tz::region: 'America'
+tz::locality: 'Los_Angeles'

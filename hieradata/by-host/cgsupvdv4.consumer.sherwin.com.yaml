@@ -1,0 +1,3 @@
+hosts::hosts_group: ignition
+ignition::jdk_version: 'watson-jdk8'
+

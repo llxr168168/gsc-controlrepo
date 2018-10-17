@@ -1,0 +1,4 @@
+classes:                        
+  - apache                  
+  - tanium_client 
+  - autofs                         

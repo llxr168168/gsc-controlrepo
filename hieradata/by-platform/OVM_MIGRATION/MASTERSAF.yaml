@@ -1,0 +1,12 @@
+# by-platform -> OVM_MIGRATION -> MASTERSAF.yaml
+# Mastersaf database servers
+
+source_yaml_conf: MASTERSAF 
+
+# Server is hosted in HQ datacenters
+# Functional deployment = Brazil/East Timezone
+# Overriding dataenter specific timezone settings for Mastersaf Application servers
+tz::region: 'Brazil'
+tz::locality: 'East'
+
+

@@ -1,0 +1,56 @@
+profiles_unix::gsc::oracle::base::nfs_mounts:
+  - '/swdata/nfs/cgddorac1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
+  - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
+  - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
+  - '/swdata/nfs/cgddoraw1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 oramedia.consumer.sherwin.com:/vol/oramedia/oracle'
+  - '/swdata/nfs/oraremote -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd03rw.sherwin.com:/data/col1/gsc_oraremote_rw'
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddorac1.consumer.sherwin.com:/data/col1/oracle_gsc_ak/%{::hostname}'
+  - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddorac1.consumer.sherwin.com:/data/col1/oracle_gsc_rw'
+  - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddorac1.consumer.sherwin.com:/data/col1/oracle_gsc_ak'
+
+profiles_unix::gsc::apps::mysqlserver::nfs_mounts:
+  - '/swdata/nfs/cpdd01ak -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01ak-nas2.sherwin.com:/data/col1/gsc_mysql_ak'
+  - '/swdata/nfs/cpdd01rw -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01rw-nas2.sherwin.com:/data/col1/gsc_mysql_rw'
+  - '/swdata/nfs/cpdd01ak_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01rw-nas2.sherwin.com:/data/col1/gsc_mysql_ak'
+  - '/swdata/nfs/mysqlmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 oramedia.consumer.sherwin.com:/vol/mysqlmedia'
+  
+site_code: cle
+tz::region: 'America'
+tz::locality: 'New_York'
+avamar::grid: 'swavmak.sherwin.com'
+
+
+sw_sssd_authentication::ldap_uris: 'ldap://SWADS1HQ.SW.SHERWIN.COM,ldap://SWADS2HQ.SW.SHERWIN.COM,ldap://SWADS1WR.SW.SHERWIN.COM,ldap://SWADS2WR.SW.SHERWIN.COM'
+sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
+sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5zUAAQID'
+sw_sssd_authentication::krb5_server: 'SWADS2HQ.SW.SHERWIN.COM:88,SWADS1HQ.SW.SHERWIN.COM:88,SWADS1WR.SW.SHERWIN.COM:88,SWADS2WR.SW.SHERWIN.COM:88'
+sw_sssd_authentication::krb5_kpasswd: 'SWADS2HQ.SW.SHERWIN.COM:88,SWADS1HQ.SW.SHERWIN.COM:88,SWADS1WR.SW.SHERWIN.COM:88,SWADS2WR.SW.SHERWIN.COM:88'
+sw_sssd_authentication::kdc1: 'SWADS2HQ.SW.SHERWIN.COM'
+sw_sssd_authentication::kdc2: 'SWADS1HQ.SW.SHERWIN.COM'
+sw_sssd_authentication::kdc3: 'SWADS1WR.SW.SHERWIN.COM'
+sw_sssd_authentication::kdc4: 'SWADS2WR.SW.SHERWIN.COM'
+sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
+sw_sssd_authentication::default_realm: SW
+sw_sssd_authentication::krb5_realm: SW.SHERWIN.COM
+
+
+sw_splunk::default::splunk_home: '/opt/splunk/'
+sw_splunk::splunk_heavy_forwarder::thruput_maxKBps: 1024
+sw_splunk::agent::uf_deployment_srv_uri: 'slogmgt01.sherwin.com:8089'
+sw_splunk::splunk_secret: >
+    ENC[PKCS7,MIICfQYJKoZIhvcNAQcDoIICbjCCAmoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEApEpxQDenGx8ttb8H8rgzp6LlNAXUAjBLZZhI
+    l7psalx4KgAgw6qBhf/MGM2Dp8rD6RJvi14UePFz6+zpenPDuKykbM9H3ktb
+    Fy0+ZMrm4/RIaNv6CDMkEhRmTZzr7yZndr86hurzM1rPupiECz3oC1GHgYcw
+    zSUvbD9b8ltA3Eo+lpqd9y6g4A6FDZn3RVJs/lH311Dvtcs4ELYEWeZ6dpG2
+    NBkfYp+ZuQ2OaXDenRDfaal7IvTb6bNGEU2xfblN+j/JFuduScMNh41b6Fm+
+    aAebZENCMeo4sTlRKQor97mVz5d0pzdmL8C6GuCVSOo+oY/TZAxkxLqaWm33
+    n0fv8TCCAT4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEGqDySKtQ5q9LVjY
+    fq0RcmiAggEQ33ZebXMZOxsPEr93O2TqZIljyNpY5B09bDlioFiXPTETGoYH
+    dXmG0jsKTVPZkVUvdg/VRYKRBDv9H9MmGx7UVFlNzr8f6gUGQuQX+kzFwelP
+    ScfWPBnm1Annq4/IUMEHGyzV4U4XxI5skyfRl6JOuxkSkNDAg2O7IsPYgK8+
+    ZXzXBPkJi2dI0bx+Ku804kO3pjD6LSXW3Gxdon7skX9ifrNocqiaoDNbQwdH
+    TKPIvBbWtmd0az2h9S+sEtF9RAjoCAErOCZgcJviXrg+TXbeTwDxW4Whzd7K
+    DwJvalh+RfCsIFBVcOD+pqHOk6FBcG6++VgJBImEzY1u834i8OIK+1BLaK98
+    KOMbqyu/t2FUVlk=]

@@ -1,0 +1,9 @@
+samba::shares:
+  trac:
+    - 'comment = b2b .NET instance'
+    - 'path = /swdata/b2b'
+    - 'valid users = SW\amp473, SW\cab72c, SW\kxs763, SW\jtp353, SW\axb831'
+    - 'force user = b2b'
+    - 'read only = No'
+    - 'create mask = 02770'
+    - 'directory mask = 02770'

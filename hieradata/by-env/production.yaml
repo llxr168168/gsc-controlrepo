@@ -1,0 +1,5 @@
+
+# Dynatrace OneAgent for Prod
+dynatrace_oneagent::download_link_url: 'https://nextgen-dynatrace.sherwin.com/e/269043e7-cbf6-4987-9fff-6c25110741cd/api/v1/deployment/installer/agent/unix/default/latest?Api-Token=jcKl8uUlRi2vAG0FQdQX0&arch=x86&flavor=default'
+
+syslog::rsyslog_file: 'gcd-default-rsyslog-elk-prod.conf'

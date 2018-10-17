@@ -1,0 +1,5 @@
+resolv_conf::search: 'sherwin.com sw.sherwin.com'
+resolv_conf::domain: 'sherwin.com'
+samba::short_domain: 'SW'
+samba::fqdn_domain: 'sw.sherwin.com'
+  

@@ -1,0 +1,20 @@
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:svnuser:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:SW\sa-svc:cron'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
+  - '-:ALL:ALL'
+samba::shares:
+  trac:
+    - 'comment = Applications'
+    - 'valid users = @SW\gg-cgit-lnxadmin @SW\gg-cgit-mdm-admins'
+    - 'path = /swdata/apps/'
+    - 'force user = apache'
+    - 'writable = yes'
+    - 'create mask = 2770'
+    - 'directory mask = 2770'
+

@@ -1,0 +1,14 @@
+samba::shares:
+  svn:
+    - 'comment = Subversion'
+    - 'valid users = SW\jaz92s'
+    - 'path = /swdata/svn/projects/'
+    - 'force user = apache'
+    - 'writable = yes'
+
+  git:
+    - 'comment = Git'
+    - 'valid users = SW\jaz92s'
+    - 'path = /swdata/git/projects/'
+    - 'force user = apache'
+    - 'writable = yes'
