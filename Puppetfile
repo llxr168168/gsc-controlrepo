@@ -127,7 +127,7 @@ mod 'dcim',
 
 mod 'zabbix_proxy',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/zabbix_proxy.git',
- :ref => '1.0.5'
+ :ref => 'master'
 
 mod 'sw_infrasture_facts',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/SWInfrastructureFacts.git',
