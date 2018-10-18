@@ -25,6 +25,9 @@ unless pick_default($::custom_admin_org, hiera('custom_admin_org',undef)){
 unless $::custom_admin_org {
        fail('NOTICE: You have not set custom_admin_org. Please see http://tswiki.sherwin.com/index.php/Puppet5#facts.d')
 }
+if $::custom_admin_org != 'gsc' {
+       fail('custom_admin_org is set to something other than gsc but you're using the gsc control repo! Too scary, I quit.')
+}
 
 if $::custom_admin_org == 'gsc' {
   unless $::custom_platform {
