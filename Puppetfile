@@ -430,7 +430,7 @@ mod 'java',
 
 mod 'awcs_pickcart',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/awcs_pickcart',
- :ref => '1.0.24'
+ :ref => 'puppet5'
 
 # RazorEdge Network puppet library
 #mod 'network',
