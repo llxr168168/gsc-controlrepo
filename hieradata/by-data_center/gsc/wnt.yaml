@@ -7,7 +7,7 @@ avamar::version: '7.3.100-233'
 yum::plugins_enabled: 'true'
 
 avamar::disable: 'false'
-avamar::grid: 'cgavmbuf.sherwin.com'
+avamar::grid: 'swavmEST.sherwin.com'
 
 #Site Specific overrides
 
