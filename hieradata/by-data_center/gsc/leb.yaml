@@ -5,7 +5,7 @@ classes:
 
 avamar::version: '7.3.100-233'
 yum::plugins_enabled: 'true'
-avamar::grid: 'cgavmleb.sherwin.com'
+avamar::grid: 'swavmEST.sherwin.com'
 
 site_code: leb
 tz::region: 'America'
