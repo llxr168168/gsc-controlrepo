@@ -8,7 +8,7 @@ yum::plugins_enabled: 'true'
 
 #Site Specific overrides
 avamar::disable: 'false'
-avamar::grid: 'cgavmrno.sherwin.com'
+avamar::grid: 'swavmPST.sherwin.com'
 
 
 resolv_conf::nameserver:
