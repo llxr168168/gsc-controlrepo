@@ -15,14 +15,7 @@ sw_util::wrapper::hiera_file::params:
       content: "controlm_v9::ctmdocscreds",
       mode: "600"
     }
-    
-  - /swdata/ctmdocs: {
-      ensure: "directory", 
-      owner: "root", 
-      group: "root" , 
-      mode: "755"
-    }    
-    
+
 
 
 controlm_v9::ctmdocscreds: >
