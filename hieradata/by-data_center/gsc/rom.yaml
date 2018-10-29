@@ -4,6 +4,7 @@ classes:
   - avamar
 
 avamar::version: '7.3.100-233'
+avamar::grid: 'cgavmcst.sherwin.com'
 
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvearl.sherwin.com:/data/col1/gsc_lnxremote_rw'
