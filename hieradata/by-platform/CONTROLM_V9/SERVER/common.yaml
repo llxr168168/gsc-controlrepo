@@ -17,7 +17,6 @@ sw_util::wrapper::hiera_file::params:
     }
 
 
-
 controlm_v9::ctmdocscreds: >
     ENC[PKCS7,MIIBqQYJKoZIhvcNAQcDoIIBmjCCAZYCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAbAQJUbq+xejXCcra+RlAJRJMfaOCjwT02X0Q
