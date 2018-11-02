@@ -1,2 +1,2 @@
-oracle_build::kernel::vm_nr_hugepages: 3073
+oracle_build::kernel::vm_nr_hugepages: 4106
 ssh::sshd_config: cgecmdb.sshd.conf
