@@ -7,6 +7,9 @@ classes:
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
+  - sw_app_status
+
+sw_app_status::app_status_script: 'mes_status.sh'
 
 oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/mes.tns
