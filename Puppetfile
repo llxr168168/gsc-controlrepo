@@ -224,7 +224,7 @@ mod 'sudo',
 
 mod 'zabbix',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/zabbix.git',
- :ref => '1.0.2'
+ :ref => 'master'
 
 #mod 'vmwaretools',
 # :git => 'git@github.sherwin.com:Corp-IT-Puppet/vmwaretools.git',
