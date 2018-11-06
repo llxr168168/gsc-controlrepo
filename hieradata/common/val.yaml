@@ -15,7 +15,7 @@ ntp::servers:
   - 'time.sherwin.com'
 
 yum::yum_repo_file: 'swrepo.yum'
-yum::errata_target: 2018_Q3
+yum::errata_target: 2018_Q3_FULL
 
 syslog::rsyslog_file: 'gcd-default-rsyslog-elk-preprod.conf'
 
