@@ -26,6 +26,9 @@ tripwire::pass: >
     dv2WDTBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDbn5QOIu7QwwAgzzam
     g3l1gCDS5k0P67LOknZhWDR9w8DIy/80V9riQ295rWxKblDGlw==]
 
+# Enable NOPASSWD sudo rights for the zabbix user for the appstatus custom facter fact ONLY
+sudo::sudoers_d_template: 'zabbix_appstatus'
+
 # Splunk forwarder configuration.
 sw_splunk::agent::uf_deployment_srv_uri: 'slogmgt01.sherwin.com:8089'
 
