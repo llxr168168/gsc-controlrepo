@@ -1,5 +1,4 @@
-sw_app_status::app_status_script: 'simplepscheck'
-sw_app_status::sw_check_ps_name: 'Ignition'
+
   
 samba::shares:
   ignition:
