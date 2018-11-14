@@ -200,7 +200,7 @@ mod 'ntp_client',
 
 mod 'hosts',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/hosts.git',
- :ref => '1.0.11'
+ :ref => 'master'
 
 mod 'postfix',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/postfix.git',
