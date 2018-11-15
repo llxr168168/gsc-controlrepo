@@ -172,7 +172,7 @@ mod 'samba',
 
 mod 'access_conf',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/access_conf.git',
- :ref => '1.0.4'
+ :ref => 'master'
 
 mod 'yum',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/yum.git',
