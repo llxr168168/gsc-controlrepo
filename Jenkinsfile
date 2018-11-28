@@ -1,4 +1,5 @@
 REPO = "gsc"
+REPOFULLNAME = "GSC_Controlrepo"
 EMAIL_RECIPIENTS = 'matt.cengic@sherwin.com,brian.wagner@sherwin.com,jason.t.pappas@sherwin.com'
 
 
@@ -15,7 +16,7 @@ node{
         println output
     }
     stage ('Run merge script '){ 
-        def output = sh returnStdout: true, script: "${SSH_OPTS} sudo /usr/local/sbin/mergecheck.sh GSC_Controlrepo ${env.BRANCH_NAME}" 
+        def output = sh returnStdout: true, script: "${SSH_OPTS} sudo /usr/local/sbin/mergecheck.sh ${REPOFULLNAME} ${env.BRANCH_NAME}" 
         println output 
     } 
    stage ('Email success'){
