@@ -11,7 +11,7 @@ node{
     stage('Checkout SCM'){
       checkout scm
     }
-    stage ('Run script'){
+    stage ('Run r10k script'){
         def output = sh returnStdout: true, script: "${SSH_OPTS} sudo /usr/local/sbin/r10kdocker.sh ${REPO}_${env.BRANCH_NAME}"
         println output
     }
@@ -21,8 +21,8 @@ node{
     } 
    stage ('Email success'){
      emailext (
-       subject: "R10K BUILD SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-       body: """SUCCESS: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]  \n\nFeel free to filter me if you don't want to see successes. Check console output at: ${env.BUILD_URL} """,
+       subject: "GSC_CONTROLREPO JENKINS JOB SUCCEEDED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+       body: """SUCCESS: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]  \n\nFeel free to filter me if you don't want to see successes. Check console output at: ${env.BUILD_URL}console """,
        recipientProviders: [[$class: 'DevelopersRecipientProvider']],
        to: EMAIL_RECIPIENTS
      )
@@ -30,8 +30,8 @@ node{
    }
    catch (Exception e){
      emailext ( 
-       subject: "R10K BUILD FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-       body: """FAILED: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]: ${e}.   \n\nCheck console output at: ${env.BUILD_URL}   """,
+       subject: "GSC_CONTROLREPO JENKINS JOB FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+       body: """FAILED: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]: ${e}.   \n\nCheck console output at: ${env.BUILD_URL}console   """,
        recipientProviders: [[$class: 'DevelopersRecipientProvider']],
        to: EMAIL_RECIPIENTS
      )
