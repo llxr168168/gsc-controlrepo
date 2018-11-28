@@ -14,6 +14,10 @@ node{
         def output = sh returnStdout: true, script: "${SSH_OPTS} sudo /usr/local/sbin/r10kdocker.sh ${REPO}_${env.BRANCH_NAME}"
         println output
     }
+    stage ('Run merge script '){ 
+        def output = sh returnStdout: true, script: "${SSH_OPTS} sudo /usr/local/sbin/mergecheck.sh GSC_Controlrepo ${env.BRANCH_NAME}" 
+        println output 
+    } 
    stage ('Email success'){
      emailext (
        subject: "R10K BUILD SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
