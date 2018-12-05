@@ -47,7 +47,3 @@ sw_util::wrapper::hiera_file::params:
       group: "stordrft" , 
       mode: "700"
     }
-
-
-sw_util::wrapper::hiera_file_line::params:
-  - sudoers: { path: "/etc/sudoers", line: 'ctmuser ALL = (ccn,stordrft) NOPASSWD: ALL' }
