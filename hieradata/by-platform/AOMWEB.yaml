@@ -9,7 +9,7 @@
 samba::shares:
   jboss:
     - 'comment = Jboss'
-    - 'valid users = SW\cxf683 SW\tlp832'
+    - 'valid users = SW\cxf683 SW\tlp832 SW\dxw474 SW\mxv99c'
     - 'path = /swdata/jboss'
     - 'force user = jboss'
     - 'writable = yes'
