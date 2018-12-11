@@ -5,13 +5,13 @@ classes:
   - ssh
   
   
-sudo::sudoers_template: sudoers.qualys_ad
+sudo::sudoers_template: 'sudoers.gcd'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 access_conf::access:
   - '+:root:LOCAL'
-  - '+:oracle:LOCAL azores.sherwin.com'
+  - '+:oracle:ALL'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
