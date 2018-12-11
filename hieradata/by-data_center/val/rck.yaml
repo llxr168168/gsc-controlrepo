@@ -30,15 +30,3 @@ sw_sssd_authentication::kdc2: 'SWADS1HQ.SW.SHERWIN.COM'
 sw_sssd_authentication::kdc3: 'SWADS1WR.SW.SHERWIN.COM'
 sw_sssd_authentication::kdc4: 'SWADS2WR.SW.SHERWIN.COM'
 
-sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
-sw_sssd_authentication::default_realm: SW
-sw_sssd_authentication::krb5_realm: SW.SHERWIN.COM
-
-sw_sssd_authentication::short_domain: 'SW'
-sw_sssd_authentication::fqdn_domain: 'sw.sherwin.com'
-sw_sssd_authentication::ldap_search_base: 'DC=sw,DC=sherwin,DC=com'
-sw_sssd_authentication::ldap_user_search_base: 'DC=sw,DC=sherwin,DC=com?sub?&(msSFU30NisDomain=sw)'
-sw_sssd_authentication::ldap_group_search_base: 'DC=sw,DC=sherwin,DC=com?sub?(msSFU30NisDomain=sw)'
-sw_sssd_authentication::ldap_user_search_base5: 'DC=sw,DC=sherwin,DC=com'
-sw_sssd_authentication::ldap_group_search_base5: 'DC=sw,DC=sherwin,DC=com'
-
