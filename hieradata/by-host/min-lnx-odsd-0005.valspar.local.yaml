@@ -2,7 +2,7 @@ classes:
   - sudo
   - profiles_unix::gsc::base::auth
   - access_conf
-  - sshd
+  - ssh
   
   
 sudo::sudoers_template: sudoers.qualys_ad
