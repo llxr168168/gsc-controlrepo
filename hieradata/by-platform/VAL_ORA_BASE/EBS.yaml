@@ -1,0 +1,22 @@
+classes:
+  - sudo
+  - profiles_unix::gsc::base::auth
+  - access_conf
+  - ssh
+
+
+ssh::sshd_config: 'ebs_valspar_sshd.erb'
+
+sudo::sudoers_template: 'sudoers.gcd'
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+access_conf::access:
+  - '+:root:ALL'
+  - '+:oracle:ALL'
+  - '+:admin:ALL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-dba-ops):ALL'
+  - '-:ALL:ALL'  
