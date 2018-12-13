@@ -1,0 +1,21 @@
+
+classes:
+  - sudo
+  - profiles_unix::gsc::base::auth
+  - access_conf
+  - ssh
+
+sudo::sudoers_template: 'sudoers.gcd'
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+access_conf::access:
+  - '+:root:ALL'
+  - '+:admin:ALL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:pje477:ALL'
+  - '+:dxe516:ALL'
+  - '+:sre258:ALL'
+  - '-:ALL:ALL'  
