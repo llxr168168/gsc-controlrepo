@@ -11,7 +11,7 @@ profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 access_conf::access:
   - '+:root:ALL'
-  - '+:admin:ALL'
+  - '+:weblogic:ALL'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
