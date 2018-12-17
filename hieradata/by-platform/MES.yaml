@@ -8,6 +8,8 @@ classes:
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
 
+
+oracle_build::create_grid: 'false'
 sw_app_status::app_status_script: 'mes_status.sh'
 
 oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
