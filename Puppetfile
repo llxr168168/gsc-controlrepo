@@ -356,7 +356,7 @@ mod 'mips',
 
 mod 'gisarchive',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/gisarchive.git',
- :ref => '1.0.4'
+ :ref => '1.0.3'
 
 #mod 'dashing',
 # :git => 'git@github.sherwin.com:Corp-IT-Puppet/dashing.git',
