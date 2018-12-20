@@ -1,0 +1,15 @@
+samba::shares:
+  tomcat:
+    - 'comment = AWCS'
+    - 'path = /swpkg/plt_sys/prod/tomcat'
+    - 'valid users = @SW\gg-cgit-lnxadmin @SW\gg-usr-cgit-mesadmins'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = plt_adm'
+  logs:
+    - 'comment = Pallet Tag Logs'
+    - 'path = /swdata/plt_sys/logs/bar_qad'
+    - 'valid users = CGLEBMES\engineer'
+    - 'public = no'
+    - 'writable = no'
+    - 'force user = plt_adm'
