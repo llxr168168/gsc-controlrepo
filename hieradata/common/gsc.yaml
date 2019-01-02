@@ -34,7 +34,7 @@ samba::fqdn_domain: 'sw.sherwin.com'
 sudo::sudoers_template: sudoers.qualys_ad
 
 yum::yum_repo_file: 'swrepo.yum'
-yum::errata_target: 2018_Q3_FULL
+yum::errata_target: 2018_Q4
 
 mqseries::authorized_keys: >
     ENC[PKCS7,MIIHzQYJKoZIhvcNAQcDoIIHvjCCB7oCAQAxggEhMIIBHQIBADAFMAACAQAw
