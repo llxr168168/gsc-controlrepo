@@ -10,6 +10,7 @@ classes:
   - oracle_build::sudoers
 
 oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
+oracle_build::tns::tns_webhost_file: /webroot/oracle/mes.tns
 oracle_build::tns::localfile: 
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
