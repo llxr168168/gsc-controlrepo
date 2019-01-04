@@ -1,10 +1,6 @@
 # Regenerative Thermal Oxidizers
 
 classes:
-  - profiles_unix::gsc::apps::apex
-  - profiles_unix::gsc::apps::mqclient
-  - profiles_unix::gsc::apps::printing
-  - profiles_unix::gsc::apps::sysadm
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
