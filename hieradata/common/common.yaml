@@ -5,10 +5,14 @@ classes:
   - sw_app_status
   - sw_custom_facts
   - stdbuild::pam
+  - yum
 
 resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
+
+yum::yum_repo_file: 'swrepo.yum'
+yum::errata_target: 2018_Q4_FULL
   
 # ###############
 # Tripwire settings.
