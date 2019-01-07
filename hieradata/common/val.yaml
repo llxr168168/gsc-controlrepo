@@ -4,7 +4,7 @@ classes:
   - rundeck_ssh
   - sw_util::hiera_wrapper
   - syslog
-  - yum
+  
 
 profiles_unix::gcd::custom_datacenter: min
 profiles_unix::gcd::base::puppet_env: dev
@@ -13,9 +13,6 @@ profiles_unix::gcd::custom_patchgroup: unpatchable
   
 ntp::servers: 
   - 'time.sherwin.com'
-
-yum::yum_repo_file: 'swrepo.yum'
-yum::errata_target: 2018_Q3_FULL
 
 syslog::rsyslog_file: 'gcd-default-rsyslog-elk-preprod.conf'
 
