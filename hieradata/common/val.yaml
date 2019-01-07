@@ -4,6 +4,7 @@ classes:
   - rundeck_ssh
   - sw_util::hiera_wrapper
   - syslog
+  - yum
   
 
 profiles_unix::gcd::custom_datacenter: min
