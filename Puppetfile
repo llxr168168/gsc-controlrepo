@@ -773,3 +773,7 @@ mod 'tomcat9_gsc',
 mod 'sw_app_status',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_app_status.git',
 :ref => 'master'
+
+mod 'sw_custom_facts',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_custom_facts.git',
+:ref => 'master'
