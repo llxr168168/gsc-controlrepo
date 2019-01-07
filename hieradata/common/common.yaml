@@ -98,3 +98,15 @@ softlayer::f5::monitor_oud_health_passwd: >
     RXQNgCDg3NeWim3+s5OYyVMTASlIoT5hvoYAC84fEd9hUuMVBw==]
 
 
+sw_sssd_authentication::ldap_uris: 'ldap://SWADS1HQ.SW.SHERWIN.COM,ldap://SWADS2HQ.SW.SHERWIN.COM,ldap://SWADS1WR.SW.SHERWIN.COM,ldap://SWADS2WR.SW.SHERWIN.COM'
+sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
+sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5zUAAQID'
+sw_sssd_authentication::krb5_server: 'SWADS2HQ.SW.SHERWIN.COM:88,SWADS1HQ.SW.SHERWIN.COM:88,SWADS1WR.SW.SHERWIN.COM:88,SWADS2WR.SW.SHERWIN.COM:88'
+sw_sssd_authentication::krb5_kpasswd: 'SWADS2HQ.SW.SHERWIN.COM:88,SWADS1HQ.SW.SHERWIN.COM:88,SWADS1WR.SW.SHERWIN.COM:88,SWADS2WR.SW.SHERWIN.COM:88'
+sw_sssd_authentication::kdc1: 'SWADS2HQ.SW.SHERWIN.COM'
+sw_sssd_authentication::kdc2: 'SWADS1HQ.SW.SHERWIN.COM'
+sw_sssd_authentication::kdc3: 'SWADS1WR.SW.SHERWIN.COM'
+sw_sssd_authentication::kdc4: 'SWADS2WR.SW.SHERWIN.COM'
+sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
+sw_sssd_authentication::default_realm: SW
+sw_sssd_authentication::krb5_realm: SW.SHERWIN.COM
