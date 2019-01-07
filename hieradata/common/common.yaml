@@ -3,6 +3,7 @@ classes:
   - hiera_include_base
   - tanium_client
   - sw_app_status
+  - sw_custom_facts
   - stdbuild::pam
 
 resolv_conf::nameserver:
