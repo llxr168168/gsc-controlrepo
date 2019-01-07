@@ -1,0 +1,8 @@
+# Quito, Ecuador site.
+# Running Watson FLM
+
+tz::region: 'America'
+tz::locality: 'Guayaquil'
+site_code: qto
+
+avamar::disable: 'true'
