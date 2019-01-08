@@ -10,7 +10,7 @@ yum::plugins_enabled: 'true'
 
 #Enable Avamar for all VMs at this site
 avamar::disable: 'false'
-avamar::grid: 'cgavmcst.sherwin.com'
+avamar::grid: 'swavmPIA.sherwin.com'
 
 resolv_conf::nameserver:
   - '10.10.52.118'
