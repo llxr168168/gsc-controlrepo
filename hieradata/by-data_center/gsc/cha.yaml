@@ -8,21 +8,21 @@ yum::plugins_enabled: 'true'
 
 #Enable Avamar for all VMs at this site
 avamar::disable: 'false'
-avamar::grid: 'cgavmcst.sherwin.com'
+avamar::grid: 'cgavmest.sherwin.com'
 
 resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
   
 profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemol.sherwin.com:/data/col1/gsc_ora_backup_mol'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemol.sherwin.com:/data/col1/gsc_ora_disaster_mol'
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvechl.sherwin.com:/data/col1/gsc_ora_backup_chl'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvechl.sherwin.com:/data/col1/gsc_ora_disaster_chl'
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvesta.sherwin.com:/data/col1/gsc_oraremote_rw'
 
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddvemol.sherwin.com:/data/col1/gsc_lnxremote_rw'
+  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddvechl.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
 yum::yum_repo_file: remotesite.yum
-site_code: mol
+site_code: cha
 tz::region: 'America'
-tz::locality: 'Chicago'
+tz::locality: 'New_York'

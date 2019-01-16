@@ -25,7 +25,7 @@ apache::btc_config: |
  Redirect / https://colordata.sherwin.com/
  
  RewriteEngine on
- RewriteCond %{REQUEST_METHOD} ^TRACE
+ RewriteCond %%{}{REQUEST_METHOD} ^TRACE
  RewriteRule .* - [F]
 
  </VirtualHost>
@@ -38,7 +38,7 @@ apache::btc_config: |
  Alias /btc /swdata/btc
  
  RewriteEngine on
- RewriteCond %{REQUEST_METHOD} ^TRACE
+ RewriteCond %%{}{REQUEST_METHOD} ^TRACE
  RewriteRule .* - [F]
 
  <Directory /swdata/btc/>

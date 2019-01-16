@@ -16,7 +16,7 @@ oracle_build::eunfs_mount_dirs:
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 oramedia.consumer.sherwin.com:/vol/oramedia/oracle'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafgps01rw-nfs01.sherwin.com:/CP_oramedia/oracle'
   - '/swdata/nfs/oraremote -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd03rw.sherwin.com:/data/col1/gsc_oraremote_rw'
   - '/swdata/nfs/oraremote_bell_sheff -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cpnas22wv.sherwin.com:/vol/oraremote_ebel'
   - '/swdata/nfs/oraremote_pianoro -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafclerepb-nfs01ext.sherwin.com:/oraremote_epia'
