@@ -1,7 +1,7 @@
 #Classes for this site
 #Site Specific overrides
 avamar::disable: 'false'
-avamar::grid: 'swavmPIA.sherwin.com'
+avamar::grid: 'swavmpia.sherwin.com'
 resolv_conf::nameserver:
   - '10.12.16.49'
   - '10.20.103.6'
