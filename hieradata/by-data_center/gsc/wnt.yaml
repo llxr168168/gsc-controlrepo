@@ -7,14 +7,15 @@ avamar::version: '7.3.100-233'
 yum::plugins_enabled: 'true'
 
 avamar::disable: 'false'
-avamar::grid: 'swavmEST.sherwin.com'
+avamar::grid: 'swavmest.sherwin.com'
 
 #Site Specific overrides
 
 resolv_conf::nameserver:
-  - '10.10.100.66'
-  - '10.20.103.6'
+  - '10.10.100.96'
   - '10.240.3.6'
+  - '10.20.103.6'
+  
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvewnt.sherwin.com:/data/col1/gsc_ora_backup_wnt'
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvewnt.sherwin.com:/data/col1/gsc_ora_disaster_wnt'
