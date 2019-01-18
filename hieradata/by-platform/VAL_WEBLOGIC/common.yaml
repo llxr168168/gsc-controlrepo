@@ -5,6 +5,8 @@ classes:
   - access_conf
   - ssh
 
+ssh::sshd_config: 'weblogic_valspar_sshd.erb'
+
 sudo::sudoers_template: 'sudoers.gcd'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
