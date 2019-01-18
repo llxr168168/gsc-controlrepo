@@ -10,7 +10,7 @@ sudo::sudoers_template: 'sudoers.gcd'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 access_conf::access:
-  - '+:root:LOCAL'
+  - '+:root:LOCAL,min-lnx-appd-0004.valspar.local,min-lnx-appt-0004,min-lnx-appp-0006.valspar.local'
   - '+:weblogic:ALL'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
