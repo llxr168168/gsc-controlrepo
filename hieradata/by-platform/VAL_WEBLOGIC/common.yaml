@@ -5,7 +5,7 @@ classes:
   - access_conf
   - ssh
 
-ssh::sshd_config:weblogic_valspar_sshd.erb
+ssh::sshd_config: 'weblogic_valspar_sshd.erb'
 
 sudo::sudoers_template: 'sudoers.gcd'
 
