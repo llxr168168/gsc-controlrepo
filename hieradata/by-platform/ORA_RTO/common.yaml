@@ -6,7 +6,7 @@ classes:
   - oracle_build::sudoers
 
 oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
-oracle_build::tns::tns_webhost_file: /webroot/oracle/mes.tns
+oracle_build::tns::tns_webhost_file: /webroot/oracle/awcs.tns
 oracle_build::tns::localfile: 
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
@@ -35,3 +35,14 @@ access_conf::access:
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 oracle_build::kernel::vm_nr_hugepages: 1536
+
+
+samba::shares:
+  rto:
+  - 'comment = RTO share'
+  - 'valid users = @"gg-adm-rto@sw.sherwin.com"'
+  - 'path = /swdata/rto'
+  - 'force user = rto'
+  - 'writable = yes'
+
+
