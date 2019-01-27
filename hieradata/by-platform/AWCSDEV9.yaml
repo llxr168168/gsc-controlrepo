@@ -9,6 +9,10 @@ classes:
   - tanium_client
   - stdbuild::pam
 
+oracle_build::kernel::vm_nr_hugepages: 2304
+
+
+
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
   - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
