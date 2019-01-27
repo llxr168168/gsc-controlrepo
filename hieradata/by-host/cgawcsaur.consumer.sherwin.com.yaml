@@ -1,4 +1,4 @@
-oracle_build::kernel::vm_nr_hugepages: 3073
+oracle_build::kernel::vm_nr_hugepages: 2304
 
 tz::region: 'America'
 tz::locality: 'Boise'
