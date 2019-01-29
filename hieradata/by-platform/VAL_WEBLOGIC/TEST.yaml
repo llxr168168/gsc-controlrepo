@@ -1,0 +1,8 @@
+  access_conf::access:
+  - '+:root:LOCAL 10.148.16.105 10.140.16.100 10.140.16.94 10.140.16.87 10.140.16.88'
+  - '+:weblogic:ALL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-val-weblogic):ALL'
+  - '-:ALL:ALL'  
