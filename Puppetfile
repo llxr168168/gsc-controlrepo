@@ -220,7 +220,7 @@ mod 'virtual',
 
 mod 'sudo',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sudo.git',
- :ref => '1.0.151'
+ :ref => 'master'
 
 mod 'zabbix',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/zabbix.git',
