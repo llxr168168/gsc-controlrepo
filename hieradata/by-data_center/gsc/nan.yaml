@@ -1,3 +1,6 @@
+# Nantong China
+#  Nantong, Jiangsu, China (GMT+8)
+# CST - China Standard Time
 tz::region: 'Asia'
 tz::locality: 'Shanghai'
 site_code: nan
