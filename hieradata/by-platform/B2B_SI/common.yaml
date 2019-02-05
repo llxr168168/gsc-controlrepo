@@ -19,7 +19,6 @@ vsftpd::vsftpd_userlist:
 
 
 b2b_si::b2b_si_developers:
-  - pxm717
   - exm509
   - dxl756
   - gag99c
