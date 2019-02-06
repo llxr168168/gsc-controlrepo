@@ -4,6 +4,7 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
   - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
   - '-:ALL:ALL'
 
