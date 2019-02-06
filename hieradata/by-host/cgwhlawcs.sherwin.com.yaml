@@ -4,4 +4,4 @@ site_code: whl
 tz::region: 'America'
 tz::locality: 'Chicago'
 
-oracle_build::kernel::vm_nr_hugepages: 3100
+oracle_build::kernel::vm_nr_hugepages: 3328
