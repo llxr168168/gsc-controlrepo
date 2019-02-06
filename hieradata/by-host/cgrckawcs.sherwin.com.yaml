@@ -5,6 +5,6 @@ site_code: rck
 tz::region: 'America'
 tz::locality: 'Chicago'
 
-oracle_build::kernel::vm_nr_hugepages: 3100
+oracle_build::kernel::vm_nr_hugepages: 3328
 
 oracle_build::oracleshared_path: '/swdata/nfs/oraremote'
