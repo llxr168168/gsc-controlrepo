@@ -6,6 +6,8 @@ classes:
   - profiles_unix::gsc::apps::sysadm
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
+  
+sw_app_status::app_status_script: 'awcs_status.sh'
 
 oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/awcs.tns
