@@ -6,6 +6,7 @@ classes:
   - profiles_unix::gsc::base::auth
   - sw_util::hiera_wrapper
   - puppet5_maint
+  - stdbuild::pam
 
 
 #### Defaults
