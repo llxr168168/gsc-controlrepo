@@ -5,6 +5,7 @@ classes:
   - sw_util::hiera_wrapper
   - syslog
   - yum
+  - stdbuild::pam
   
 
 profiles_unix::gcd::custom_datacenter: min
