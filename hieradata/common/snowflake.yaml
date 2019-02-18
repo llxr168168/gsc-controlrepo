@@ -1,2 +1,3 @@
 classes:
 - rundeck_ssh
+- puppet5_maint
