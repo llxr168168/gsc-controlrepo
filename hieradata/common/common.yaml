@@ -4,7 +4,6 @@ classes:
   - tanium_client
   - sw_app_status
   - sw_custom_facts
-  - stdbuild::pam
 
 resolv_conf::nameserver:
   - '10.20.103.6'
