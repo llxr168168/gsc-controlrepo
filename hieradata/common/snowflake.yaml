@@ -2,3 +2,5 @@ classes:
 - rundeck_ssh
 - puppet5_maint
 - yum
+
+site_code: cle
