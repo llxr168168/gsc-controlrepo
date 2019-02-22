@@ -15,7 +15,7 @@ access_conf::access:
   - '-:ALL:ALL'
   
   
-  samba::shares:
+samba::shares:
    xfer:
     - 'comment = Transfer directory'
     - 'valid users = @SW\gg-cgit-mdm-admins @SW\gg-cgit-lnxadmin'
