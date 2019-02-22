@@ -18,7 +18,7 @@ access_conf::access:
   samba::shares:
   xfer:
   - 'comment = Transfer directory'
-  - 'valid users = @SW\DL_ADMIN_%{::hostname_upcase}'
+  - 'valid users = @SW\gg-cgit-mdm-admins'
   - 'path = /swdata/xfer'
   - 'force user = mdm_xfer'
   - 'writable = yes'
