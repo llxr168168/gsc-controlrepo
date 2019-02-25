@@ -1,1 +1,5 @@
 oracle_build::kernel::vm_nr_hugepages: 7219
+
+site_code: cle
+tz::region: 'America'
+tz::locality: 'Los_Angeles'
