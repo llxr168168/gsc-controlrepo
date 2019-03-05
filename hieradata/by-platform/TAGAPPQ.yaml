@@ -17,10 +17,10 @@ sw_util::wrapper::hiera_user::params:
   - banking: { uid: 1019, gid: 1019, groups: ["sa-local"], home: "/app/banking", system: true, shell: "/bin/bash" }
   
 autofs::nfs_maps:
-  - '/swdata/tag/ccn/home -rw,vers=4,addr=10.148.12.18 nafgps01rw-nfs01.sherwin.com:/ST_cnn_app_nonprd'
-  - '/swdata/tag/stordrft/home -rw,vers=4,addr=10.148.12.18 nafgps01rw-nfs01.sherwin.com:/ST_app_ccnfpr_qa'
+  - '/swdata/tag/ccn/home -rw,vers=3,addr=10.148.12.18 nafgps01rw-nfs01.sherwin.com:/ST_cnn_app_nonprd'
+  - '/swdata/tag/stordrft/home -rw,vers=3,addr=10.148.12.18 nafgps01rw-nfs01.sherwin.com:/ST_app_ccnfpr_qa'
   - '/swdata/tag/banking/home -rw,vers=3,rsize=65536,wsize=65536,bg,hard,addr=10.148.12.18 nafgps01rw-nfs01:/ST_ccn_qa'
-  - '/swdata/tag/fldprrpt/home -rw,vers=4,addr=10.148.12.18 nafgps01rw-nfs01.sherwin.com:/ST_fldprrpt_devqa'
+  - '/swdata/tag/fldprrpt/home -rw,vers=3,addr=10.148.12.18 nafgps01rw-nfs01.sherwin.com:/ST_fldprrpt_devqa'
 
 sw_util::wrapper::hiera_file::params:
   - /swdata/tag/banking: {
