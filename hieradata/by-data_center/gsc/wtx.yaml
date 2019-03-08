@@ -30,6 +30,7 @@ profiles_unix::gsc::apps::utilserver::nfs_mounts:
 yum::yum_repo_file: remotesite.yum
 awcs::telnet_allow:
   - '10.10.222.0/24'
+  - '10.10.226.0/23'
   - '10.216.0.0/16'
   - 'cgawcsdb3.consumer.sherwin.com'
 tz::region: 'America'
