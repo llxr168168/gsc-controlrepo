@@ -14,9 +14,10 @@ avamar::grid: 'cgavmcst.sherwin.com'
 
 
 resolv_conf::nameserver:
-  - '10.10.222.32'
-  - '10.20.103.6'
+  - '10.10.226.50'
   - '10.240.3.6'
+  - '10.20.103.6'
+  
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvewtx.sherwin.com:/data/col1/gsc_ora_backup_wtx'
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvewtx.sherwin.com:/data/col1/gsc_ora_disaster_wtx'
@@ -29,6 +30,7 @@ profiles_unix::gsc::apps::utilserver::nfs_mounts:
 yum::yum_repo_file: remotesite.yum
 awcs::telnet_allow:
   - '10.10.222.0/24'
+  - '10.10.226.0/23'
   - '10.216.0.0/16'
   - 'cgawcsdb3.consumer.sherwin.com'
 tz::region: 'America'
