@@ -368,7 +368,7 @@ mod 'soa',
 
 mod 'rundeck_ssh',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/rundeck_ssh.git',
- :ref => '1.0.8'
+ :ref => 'master'
 
 #mod 'qualys',
 # :git => 'git@github.sherwin.com:Corp-IT-Puppet/qualys.git',
