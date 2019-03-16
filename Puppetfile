@@ -208,7 +208,7 @@ mod 'postfix',
 
 mod 'avamar',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/avamar.git',
- :ref => '1.0.6'
+ :ref => 'master'
 
 mod 'utils',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/utils.git',
