@@ -777,3 +777,7 @@ mod 'sw_app_status',
 mod 'sw_custom_facts',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_custom_facts.git',
 :ref => 'master'
+
+mod 'sw_former_admin_cleaner',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_former_unix_cleaner.git',
+:ref => 'master'
