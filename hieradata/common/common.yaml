@@ -4,6 +4,7 @@ classes:
   - tanium_client
   - sw_app_status
   - sw_custom_facts
+  - sw_former_admin_cleaner
 
 resolv_conf::nameserver:
   - '10.20.103.6'
