@@ -781,3 +781,7 @@ mod 'sw_custom_facts',
 mod 'sw_former_admin_cleaner',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_former_unix_cleaner.git',
 :ref => 'master'
+
+mod 'sw_apex_print',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_apex_print.git',
+:ref => 'master'
