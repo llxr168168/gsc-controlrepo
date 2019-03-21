@@ -22,6 +22,7 @@ access_conf::access:
   - "+:SW\\sa-xxsw-apc:ALL"
   - "+:SW\\sa-xxsw-blc:ALL"
   - "+:SW\\sa-xxsw-brf:ALL"
+  - "+:SW\\sa-ora-iqr:ALL"
   - "+:swat:swatprw.sherwin.com cpovms05cfsprw.sherwin.com cpovms06cfsprw.sherwin.com"
   - "+:orastmt:ALL"
   - '-:ALL:ALL'
