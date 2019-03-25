@@ -3,4 +3,4 @@ classes:
   
 sudo::sudoers_template: sudoers.sql
 
-postfix::enabled
+postfix::enabled: 'true'
