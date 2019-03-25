@@ -3,6 +3,12 @@ classes:
   - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::ftpserver
   - profiles_unix::gsc::apps::trans_freight
+  - sw_apex_print
+
+
+sw_apex_print::local_user: 'datwhs'
+sw_apex_print::local_group: 'dat_whs'
+
 oracle_build::kernel::vm_nr_hugepages: 2048
 oracle_build::kernel::vm_swappiness: 10
 
