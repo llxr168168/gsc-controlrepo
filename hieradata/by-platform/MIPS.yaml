@@ -3,12 +3,21 @@ classes:
   - profiles_unix::gsc::oracle::asm
   - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::ftpserver
+  - sw_apex_print
+  
+sw_apex_print::local_user: 'awcs'
+sw_apex_print::local_group: 'awcs'
+  
+  
 oracle_build::kernel::vm_nr_hugepages: 2048
+
 vsftpd::vsftpd_userlist:
   - mips
   - qadrcp
   - qaduser
+  
 vsftpd::vsftpd_umask: '002'
+
 mips::mips_developers:
   - 'dmb01l'
   - 'bdl01l'
