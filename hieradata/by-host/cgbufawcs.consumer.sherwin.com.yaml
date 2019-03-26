@@ -1,1 +1,8 @@
 oracle_build::kernel::vm_nr_hugepages: 7169
+
+
+classes:
+  - sw_apex_print
+  
+sw_apex_print::local_user: 'awcs'
+sw_apex_print::local_group: 'awcs'
