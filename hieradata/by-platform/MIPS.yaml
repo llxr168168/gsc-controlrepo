@@ -5,8 +5,8 @@ classes:
   - profiles_unix::gsc::apps::ftpserver
   - sw_apex_print
   
-sw_apex_print::local_user: 'awcs'
-sw_apex_print::local_group: 'awcs'
+sw_apex_print::local_user: 'mips'
+sw_apex_print::local_group: 'mips'
   
   
 oracle_build::kernel::vm_nr_hugepages: 2048
