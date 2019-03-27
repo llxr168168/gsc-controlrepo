@@ -36,6 +36,7 @@ hosts::hosts_group: ignition
 
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
+- nano.x86_64: {}
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
