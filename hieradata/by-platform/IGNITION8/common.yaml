@@ -1,21 +1,21 @@
 
 samba::shares:
   ignition:
-    - comment = Ignition
-    - valid users = @SW\gg-cgit-lnxadmin @SW\gg-cgit-watson
-    - path = /swpkg/ignition
-    - force user = ignition
-    - writable = yes
-    - create mask = 2770
-    - directory mask = 2770
+    - 'comment = Ignition'
+    - 'valid users = @SW\gg-cgit-lnxadmin @SW\gg-cgit-watson'
+    - 'path = /swpkg/ignition'
+    - 'force user = ignition'
+    - 'writable = yes'
+    - 'create mask = 2770'
+    - 'directory mask = 2770'
   backups:
-    - comment = backups
-    - valid users = @SW\gg-cgit-lnxadmin @SW\gg-cgit-watson
-    - path = /swdata/ignition
-    - force user = ignition
-    - writable = yes
-    - create mask = 2770
-    - directory mask = 2770
+    - 'comment = backups'
+    - 'valid users = @SW\gg-cgit-lnxadmin @SW\gg-cgit-watson'
+    - 'path = /swdata/ignition'
+    - 'force user = ignition'
+    - 'writable = yes'
+    - 'create mask = 2770'
+    - 'directory mask = 2770'
 
 access_conf::access:
   - '+:root:LOCAL'
