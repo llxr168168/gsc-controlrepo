@@ -1,3 +1,4 @@
+include samba::standalone
 
 samba::shares:
   ignition:
