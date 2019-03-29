@@ -1,4 +1,6 @@
-include samba::standalone
+classes:
+    - profiles_unix::gsc::apps::ignition8_app
+    - samba::standalone
 
 samba::shares:
   ignition:
@@ -29,9 +31,6 @@ access_conf::access:
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
   - '-:ALL:ALL'
-
-classes:
-  - profiles_unix::gsc::apps::ignition8_app
 
 hosts::hosts_group: ignition
 
