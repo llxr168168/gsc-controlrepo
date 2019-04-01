@@ -12,6 +12,7 @@ resolv_conf::nameserver:
 
 yum::yum_repo_file: 'swrepo.yum'
 yum::errata_target: 2019_Q1
+
   
 # ###############
 # Tripwire settings.
