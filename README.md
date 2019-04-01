@@ -2,9 +2,7 @@
 Puppet 5 control repo for GSC/VAL custom_admin_org.
 
 # Testing in progress
-DEVLOCK
-
-egh629  testing smb server config for IGNITION8  
+None
 
 
 # Locking
