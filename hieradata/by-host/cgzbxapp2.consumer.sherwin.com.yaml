@@ -1,7 +1,7 @@
 classes:
   - rundeck_ssh
 rundeck_ssh::sshd_enable: true
-rundeck_ssh::allowed_users: root@10.240.17.163
+rundeck_ssh::allowed_users: root@10.240.17.163 root@10.25.34.43
 rundeck_ssh::allowed_ssh_key: >
     ENC[PKCS7,MIIC7QYJKoZIhvcNAQcDoIIC3jCCAtoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAVNDCL5IcKwLtV4FmfjhxU2iwpHI5D9Xfxr1S
