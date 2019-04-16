@@ -10,7 +10,7 @@ sudo::sudoers_template: 'sudoers.gcd'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 access_conf::access:
-  - '+:root:ALL'
+  - '+:root:LOCAL'
   - '+:oracle:ALL'
   - '+:admin:ALL'
   - '+:(sa-local):LOCAL'
