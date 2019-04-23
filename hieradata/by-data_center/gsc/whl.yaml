@@ -10,7 +10,7 @@ yum::plugins_enabled: 'true'
 yum::yum_repo_file: 'swrepo.yum'
 
 site_code: whl
-avamar::grid: 'cgavmwhl.sherwin.com'
+avamar::grid: 'swavmcst.sherwin.com'
 
 tz::region: 'America'
 tz::locality: 'Chicago'
