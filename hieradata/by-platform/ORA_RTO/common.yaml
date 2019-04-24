@@ -10,6 +10,9 @@ oracle_build::tns::tns_webhost_file: /webroot/oracle/awcs.tns
 oracle_build::tns::localfile: 
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
   
+sw_util::wrapper::hiera_user::params:
+  - rto: {uid: 1006, gid: 1006, home: "/home/rto", system: false}
+  
 sudo::sudoers_d_template: 'rto_user'
 
 postfix::enabled: 'true'
