@@ -786,7 +786,3 @@ mod 'sw_apex_print',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_apex_print.git',
 :ref => 'master'
 
-mod 'sw_mqfr',
-:git =>'git@github.sherwin.com:SW-CORP-IT/sw_mqfr.git',
-:ref => 'master'
-
