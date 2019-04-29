@@ -1,0 +1,1 @@
+   - AvamarClient: {ensure: "%{hiera('avamar::client::version')}"}
