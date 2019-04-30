@@ -3,6 +3,10 @@ classes:
   - profiles_unix::gsc::oracle::asm
   - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::ftpserver
+  - sw_apex_print
+  
+sw_apex_print::local_user: 'jdaadmin'
+sw_apex_print::local_group: 'jda'
 
 jda::jda_developers:
   - 'dsf01d'
