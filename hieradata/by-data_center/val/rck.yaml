@@ -15,7 +15,7 @@ resolv_conf::nameserver:
 site_code: rck
 
 profiles_unix::val::oracle::base::nfs_mounts:
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01rw-nas2.sherwin.com:/data/col1/oracle_val_rw/%{::hostname}'
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01rw-nas2.sherwin.com:/data/col1/oracle_val_rw_1/%{::hostname}'
   - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01rw-nas2.sherwin.com:/data/col1/oracle_val_rw_1'
   - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01rw-nas2.sherwin.com:/data/col1/oracle_val_ak'
   - '/global/dd_backup_msp -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_val_msp_ak'
