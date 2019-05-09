@@ -6,7 +6,7 @@ profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 
 oracle_build::kernel::vm_swappiness: 0
-oracle_build::kernel::vm_nr_hugepages: 6000
+oracle_build::kernel::vm_nr_hugepages: 3000
 oracle_build::kernel::kernel_shmall: 1073741824
 oracle_build::kernel::net_core_wmem_max: 4194304
 oracle_build::kernel::net_core_rmem_max: 4194304
