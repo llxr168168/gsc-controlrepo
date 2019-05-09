@@ -7,6 +7,7 @@ classes:
   - sw_util::hiera_wrapper
   - puppet5_maint
   - stdbuild::pam
+  - sw_aacp_puppet
 
 
 #### Defaults
