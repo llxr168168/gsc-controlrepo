@@ -1,1 +1,2 @@
 
+sudo::sudoers_d_template: 'ctm_server'
