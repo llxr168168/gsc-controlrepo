@@ -3,9 +3,7 @@ classes:
   - profiles_unix::gsc::oracle::asm
   - profiles_unix::gsc::apps::ftpserver
 sher_procure::sp_developers:
-  - cab72c
   - tkk62c
-  - amp473
   - axb831
 oracle_build::kernel::vm_nr_hugepages: 1032
 ssh::sshd_config: cgspdb.sshd.conf
