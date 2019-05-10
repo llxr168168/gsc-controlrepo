@@ -3,7 +3,7 @@ classes:
   - profiles_unix::gsc::apps::utilserver
 
 
-avamar::version: '7.3.100-233'
+avamar::version: '7.5.101-101'
 
 
 access_conf::access:
