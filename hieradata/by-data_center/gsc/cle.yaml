@@ -19,7 +19,7 @@ profiles_unix::gsc::apps::mysqlserver::nfs_mounts:
 site_code: cle
 tz::region: 'America'
 tz::locality: 'New_York'
-avamar::grid: 'swavmak.sherwin.com'
+avamar::grid: 'swavmuak1.sherwin.com'
 
 
 sw_sssd_authentication::ldap_uris: 'ldap://SWADS1HQ.SW.SHERWIN.COM,ldap://SWADS2HQ.SW.SHERWIN.COM,ldap://SWADS1WR.SW.SHERWIN.COM,ldap://SWADS2WR.SW.SHERWIN.COM'
