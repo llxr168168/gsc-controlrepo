@@ -3,7 +3,6 @@
 classes:
   - avamar
 
-avamar::version: '7.3.100-233'
 avamar::grid: 'cgavmcst.sherwin.com'
 
 #Site Specific overrides

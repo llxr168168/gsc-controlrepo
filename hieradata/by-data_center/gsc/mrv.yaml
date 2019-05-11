@@ -2,7 +2,6 @@
 classes:
   - avamar
 
-avamar::version: '7.3.100-233'
 
 yum::plugins_enabled: 'true'
 #Site Specific overrides
