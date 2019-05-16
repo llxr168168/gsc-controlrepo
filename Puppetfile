@@ -292,7 +292,7 @@ mod 'sw_ignition8',
 
 mod 'awcs',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/awcs.git',
- :ref => '1.0.4'
+ :ref => '1.0.5'
 
 mod 'mes',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mes.git',
