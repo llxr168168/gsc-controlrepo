@@ -324,7 +324,7 @@ mod 'sw_gsc_mysql',
 
 mod 'trans',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/trans.git',
- :ref => '1.0.0'
+ :ref => '1.0.1'
 
 mod 'sher_procure',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sher_procure.git',
@@ -352,7 +352,7 @@ mod 'spectrumbo',
 
 mod 'mips',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mips.git',
- :ref => '1.0.1'
+ :ref => '1.0.2'
 
 mod 'gisarchive',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/gisarchive.git',
