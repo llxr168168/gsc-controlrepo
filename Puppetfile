@@ -296,7 +296,7 @@ mod 'sw_ignition8',
 
 mod 'awcs',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/awcs.git',
- :ref => '1.0.5'
+ :ref => '1.0.7'
 
 mod 'mes',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mes.git',
@@ -328,7 +328,7 @@ mod 'sw_gsc_mysql',
 
 mod 'trans',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/trans.git',
- :ref => '1.0.1'
+ :ref => '1.0.2'
 
 mod 'sher_procure',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sher_procure.git',
@@ -356,7 +356,7 @@ mod 'spectrumbo',
 
 mod 'mips',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mips.git',
- :ref => '1.0.2'
+ :ref => '1.0.3'
 
 mod 'gisarchive',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/gisarchive.git',
