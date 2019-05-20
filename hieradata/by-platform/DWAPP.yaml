@@ -9,6 +9,7 @@ data_warehouse::dw_developers:
   - djl62c
   - cjk238
   - wxs160
+  - nxr210
 
 ssh::sshd_config: cgdwapp.sshd.conf
 vsftpd::vsftpd_userlist:
