@@ -324,7 +324,7 @@ mod 'jboss',
 
 mod 'sw_gsc_mysql',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_gsc_mysql.git',
- :ref => '1.0.2'
+ :ref => 'master'
 
 mod 'trans',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/trans.git',
