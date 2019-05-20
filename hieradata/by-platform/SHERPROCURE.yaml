@@ -5,7 +5,6 @@ classes:
 sher_procure::sp_developers:
   - cab72c
   - tkk62c
-  - amp473
   - axb831
 oracle_build::kernel::vm_nr_hugepages: 1032
 ssh::sshd_config: cgspdb.sshd.conf
@@ -22,6 +21,6 @@ access_conf::access:
   - '+:(SW\gg-adm-gcdunix):ALL'
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
-  - '+:oracle:LOCAL 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '+:oracle:LOCAL cgspdb1.consumer.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'
 
