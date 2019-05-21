@@ -5,14 +5,7 @@ postfix::enabled: 'true'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 
-oracle_build::kernel::vm_swappiness: 0
-oracle_build::kernel::vm_nr_hugepages: 3000
-oracle_build::kernel::kernel_shmall: 1073741824
-oracle_build::kernel::net_core_wmem_max: 4194304
-oracle_build::kernel::net_core_rmem_max: 4194304
-oracle_build::kernel::net_core_wmem_default: 4194304
-oracle_build::kernel::net_core_rmem_default: 4194304
-oracle_build::kernel::pid_max: 139264
+oracle_build7::kernel::vm_nr_hugepages: 3000
 
 access_conf::access:
     - '+:root:LOCAL'
@@ -21,13 +14,13 @@ access_conf::access:
     - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
     - '+:(SW\gg-adm-gcdunix):ALL'
     - '+:grid:LOCAL cgeisdb3a.sherwin.com cgeisdb3a-prv.sherwin.com cgeisdb3b.sherwin.com cgeisdb3b-prv.sherwin.com cgeisdb3c.sherwin.com cgeisdb3c-prv.sherwin.com cgeisdb3d.sherwin.com cgeisdb3d-prv.sherwin.com'
-    - '+:oracle:LOCAL cgeisdb3a.sherwin.com cgeisdb3a-prv.sherwin.com cgeisdb3b.sherwin.com cgeisdb3b-prv.sherwin.com cgeisdb3c.sherwin.com cgeisdb3c-prv.sherwin.com cgeisdb3d.sherwin.com cgeisdb3d-prv.sherwin.com cgimi4.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+    - '+:oracle:LOCAL cgeisdb3a.sherwin.com cgeisdb3a-prv.sherwin.com cgeisdb3b.sherwin.com cgeisdb3b-prv.sherwin.com cgeisdb3c.sherwin.com cgeisdb3c-prv.sherwin.com cgeisdb3d.sherwin.com cgeisdb3d-prv.sherwin.com'
     - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
     - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
     - '-:ALL:ALL'
 
     
-oracle_build::rac::ssh::grid_pub_key: >
+oracle_build7::rac::ssh::grid_pub_key: >
     ENC[PKCS7,MIIC7QYJKoZIhvcNAQcDoIIC3jCCAtoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEADMI0KXmSbBq83eRcY8cU8gCQnhXugNDnY6sP
     6YP9DQaRTBRxYriv+j1t1HVzG8tEgGiJ/1mnhEIzO6S611da5+HUm4d5xbbk
@@ -45,7 +38,7 @@ oracle_build::rac::ssh::grid_pub_key: >
     eKArE14WWejmZHeBPRRSvWfjgxRqPUQPxkIV7rPIePYUSLXX9Z0/QNpbR16B
     BHq8jvIpphORunvM9Lp83qu3Dpj76JwJ3uspY69+fwJnPGqudchtogFkl/eQ
     IT8GnSDDLpVsDgI5j2kBqXaC05Y5BDip+YLR3VZ7c8Nn]
-oracle_build::rac::ssh::grid_prv_key: >
+oracle_build7::rac::ssh::grid_prv_key: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAnf5tiDbOrAmtLK6giqneNUKPog+yKP1O7PpB
     eWFs7a6XgbcHpBkvxB0TzgNoTAnJAE49SUwaMPlWGIaaWxJoK83CbpfW21MJ
@@ -92,7 +85,7 @@ oracle_build::rac::ssh::grid_prv_key: >
     0z5IebhSaOwuiy0g5S5IRxA9NuE0eV5WB/D3ZVZC/vq+60NnlKjThpo2LXdo
     HMM97NFXubfK1fMcJBSHL1PfhD9L2cLH+gcsUcnDJ3WmdhOnd2GSiOYgT7Lg
     BgTtDncQYwldln7m6LMRr+K4x3WCsZ+U]
-oracle_build::rac::ssh::grid_auth_keys: >
+oracle_build7::rac::ssh::grid_auth_keys: >
     ENC[PKCS7,MIIC7QYJKoZIhvcNAQcDoIIC3jCCAtoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEACdD2iNUEfbQfxGTLE98PSV7QyxAC6Opadw/X
     QiI2XTNURPqsVgbru+tsyZ7tb7CZibh5gVrN5Guvs5Uc0hOCgiFWkoJtpfwn
@@ -110,7 +103,7 @@ oracle_build::rac::ssh::grid_auth_keys: >
     UeKVVm7+cy1pK7l1F+de6DRhLnr7/8PPKDco+S9ywmtTMbC7ldiVrzMhfzpO
     IBWErcygKb2/2LYyRYHyZsoSytWCvpvkRhDS6kWgEPfPTHNGH7ajBRy2Aom3
     G6UEbMNXmde9pVwqy5ibdgqGmSUPyHfwQPfZ0JDWFBEh]
-oracle_build::rac::ssh::oracle_pub_key: >
+oracle_build7::rac::ssh::oracle_pub_key: >
     ENC[PKCS7,MIIC7QYJKoZIhvcNAQcDoIIC3jCCAtoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAee4TiG/WUN6fz/5Ezpoe4Szyclqcui4QjSAQ
     8iLU2mSle6litusHrBz36UL357bjHS5Znngi6E8r9KhFEsfe1QJFsZhIAId3
@@ -128,7 +121,7 @@ oracle_build::rac::ssh::oracle_pub_key: >
     BarsbvC5JSPFpzZ8305ttddjguy7zyHjNg4HAgGr5VJZHYK2hHkgGPFbUa6Z
     335KzxG0dyqwpWiQMkOB68ZlHauarWYAwRoiN867lBtMc009cHkjc6ruT+ks
     6H7JFCgPQxZ4hBGaGGCpBX/ExA9wPViWVeE+NEmRJWfi]
-oracle_build::rac::ssh::oracle_prv_key: >
+oracle_build7::rac::ssh::oracle_prv_key: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAv6vX73fUdaLKbgEGP9lFTOp3d9a0pRPJtJOJ
     QxvgjzmOG4WzFcoTeXy+HHE1L/OMO+95VSa0bx7l3lD6maC5ptJSGpRURqYm
@@ -175,7 +168,7 @@ oracle_build::rac::ssh::oracle_prv_key: >
     93mbQ1qZn7xGOrCYtwvqOGnggqeFBh5HmlsdAL2+6DbB7SpvOmlPA1h0jOKf
     kXelZerHmjSe9/wXFgXLgOBJwk/d2c4KNoNmZ7DgtV3Urd2tNvOwz1lBM8JW
     5wKRRNwXFiXk9kYert72TZkD87HsoeFF]
-oracle_build::rac::ssh::oracle_auth_keys: >
+oracle_build7::rac::ssh::oracle_auth_keys: >
     ENC[PKCS7,MIIEfQYJKoZIhvcNAQcDoIIEbjCCBGoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEANZLK8nIrFXk/wN3igLe1iYfJz61Y76Ke7r9j
     K3WUi4ZUlfdwM37KCGUs5aQEmLhSwV0QQl98b156V/RsU6Su7++pTz3BuR+f
