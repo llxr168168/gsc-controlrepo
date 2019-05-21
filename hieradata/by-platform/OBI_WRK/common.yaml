@@ -1,0 +1,11 @@
+# by-platform -> OBI_WRK -> common.yaml
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(DL_ADMIN_CGOBIWRK1):ALL'
+  - '+:(gg-app-etl-admins):ALL'
+  - '-:ALL:ALL'
