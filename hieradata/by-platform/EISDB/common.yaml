@@ -11,12 +11,12 @@ access_conf::access:
     - '+:root:LOCAL'
     - '+:(sa-local):LOCAL'
     - '+:(sa-remote):ALL'
-    - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
-    - '+:(SW\gg-adm-gcdunix):ALL'
+    - '+:(gg-cgit-dba-admins):ALL'
+    - '+:(gg-adm-gcdunix):ALL'
     - '+:grid:LOCAL cgeisdb3a.sherwin.com cgeisdb3a-prv.sherwin.com cgeisdb3b.sherwin.com cgeisdb3b-prv.sherwin.com cgeisdb3c.sherwin.com cgeisdb3c-prv.sherwin.com cgeisdb3d.sherwin.com cgeisdb3d-prv.sherwin.com'
     - '+:oracle:LOCAL cgeisdb3a.sherwin.com cgeisdb3a-prv.sherwin.com cgeisdb3b.sherwin.com cgeisdb3b-prv.sherwin.com cgeisdb3c.sherwin.com cgeisdb3c-prv.sherwin.com cgeisdb3d.sherwin.com cgeisdb3d-prv.sherwin.com'
-    - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
-    - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+    - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+    - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
     - '-:ALL:ALL'
 
     
