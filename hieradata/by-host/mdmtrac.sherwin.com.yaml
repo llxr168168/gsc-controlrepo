@@ -11,7 +11,7 @@ access_conf::access:
 samba::shares:
   trac:
     - 'comment = Applications'
-    - 'valid users = @SW\gg-cgit-lnxadmin @SW\gg-cgit-mdm-admins'
+    - 'valid users = @SW\gg-adm-gcdunix @SW\gg-cgit-mdm-admins'
     - 'path = /swdata/apps/'
     - 'force user = apache'
     - 'writable = yes'

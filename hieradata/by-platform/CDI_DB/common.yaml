@@ -4,7 +4,7 @@ classes:
 samba::shares:
    xfer:
     - 'comment = Transfer directory'
-    - 'valid users = @SW\gg-cgit-mdm-admins @SW\gg-cgit-lnxadmin'
+    - 'valid users = @SW\gg-cgit-mdm-admins @SW\gg-adm-gcdunix'
     - 'path = /swdata/xfer'
     - 'force user = mdm_xfer'
     - 'writable = yes'

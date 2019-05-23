@@ -5,14 +5,14 @@ samba::shares:
   installers_gsc:
     - 'comment = GSC Installer Files'
     - 'path = /swdata/pulp/webroot/installers/gsc'
-    - 'valid users = @SW\gg-cgit-lnxadmin'
+    - 'valid users = @SW\gg-adm-gcdunix'
     - 'public = no'
     - 'writable = yes'
     - 'force user = root'
   installers_corp:
     - 'comment = Corp Installer Files'
     - 'path = /swdata/pulp/webroot/installers/corp'
-    - 'valid users = @SW\gg-admin-sw-linux'
+    - 'valid users = @SW\gg-adm-gcdunix'
     - 'public = no'
     - 'writable = yes'
     - 'force user = root'
@@ -54,7 +54,7 @@ samba::shares:
   tns:
     - 'comment = TNS Files '
     - 'path = /swdata/sys/LnxRepo/oracle'
-    - 'valid users = @SW\gg-cgit-dba-admins,@SW\gg-cgit-lnxadmin'
+    - 'valid users = @SW\gg-cgit-dba-admins,@SW\gg-adm-gcdunix'
     - 'public = no'
     - 'writable = yes'
     - 'force user = root'

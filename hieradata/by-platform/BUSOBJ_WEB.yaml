@@ -2,7 +2,7 @@ samba::krb_template: krb5.conf.busobj
 samba::shares:
   tomcat:
   - 'comment = tomcat app directory'
-  - 'valid users = @SW\dl-app-bi-superadmin @SW\gg-cgit-lnxadmin'
+  - 'valid users = @SW\dl-app-bi-superadmin @SW\gg-adm-gcdunix'
   - 'path = /swpkg/busobj/sap_bobj/tomcat'
   - 'force user = boweb'
   - 'writable = yes'
