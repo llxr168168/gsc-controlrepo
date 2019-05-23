@@ -3,7 +3,7 @@
 samba::shares:
   ignition:
     - comment = Ignition
-    - valid users = @SW\gg-cgit-lnxadmin @SW\gg-cgit-watson
+    - valid users = @SW\gg-adm-gcdunix @SW\gg-cgit-watson
     - path = /swpkg/ignition
     - force user = ignition
     - writable = yes
@@ -11,7 +11,7 @@ samba::shares:
     - directory mask = 2770
   backups:
     - comment = backups
-    - valid users = @SW\gg-cgit-lnxadmin @SW\gg-cgit-watson
+    - valid users = @SW\gg-adm-gcdunix @SW\gg-cgit-watson
     - path = /swdata/ignition
     - force user = ignition
     - writable = yes
