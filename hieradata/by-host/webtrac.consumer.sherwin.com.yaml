@@ -2,7 +2,7 @@ samba::shares:
   trac:
     - 'comment = Applications'
     - 'path = /swdata/apps/trac'
-    - 'valid users = @SW\gg-cgit-lnxadmin, @SW\gg-cgit-mdm-admins'
+    - 'valid users = @SW\gg-adm-gcdunix, @SW\gg-cgit-mdm-admins'
     - 'force user = apache'
     - 'read only = No'
     - 'create mask = 02770'
