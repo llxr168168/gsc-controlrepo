@@ -3,9 +3,7 @@ classes:
 
 #Classes for this site
 #Site Specific overrides
-avamar::disable: 'true'
-
-avamar::version: '7.3.100-233'
+avamar::disable: 'false'
 
 yum::plugins_enabled: 'true'
 
