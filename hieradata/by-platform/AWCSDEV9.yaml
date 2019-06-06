@@ -66,7 +66,7 @@ profiles_unix::gsc::oracle::base::nfs_mounts:
 oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/awcsdev.tns
 oracle_build::tns::localfile: 
-  - '/swpkg/oracle/product/12.1.0/db_2/network/admin/tnsnames.ora'
+  - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
 oracle_build::oracleshared_path: '/swdata/nfs/oraremote'
 oracle_build::create_grid: 'false'
