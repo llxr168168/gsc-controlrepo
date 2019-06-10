@@ -1,2 +1,4 @@
 classes:
 - sw_tripwire
+
+sudo::sudoers_d_template: 'ctm700s_agent'
