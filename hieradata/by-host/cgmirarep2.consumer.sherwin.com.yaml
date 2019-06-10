@@ -9,3 +9,6 @@ access_conf::access:
   - "### DEV cgedi03 QA cgb2b03 EDI Servers"
   - "-:miraftp:ALL EXCEPT LOCAL 10.25.32.37 10.240.16.22 swb2bw04.consumer.sherwin.com swb2bw14.consumer.sherwin.com swb2bw07.consumer.sherwin.com swb2bw16.consumer.sherwin.com swb2bc04.consumer.sherwin.com swb2bc14.consumer.sherwin.com"
   - '-:ALL:ALL'
+
+
+sudo::sudoers_d_template: 'ctm700s_agent'
