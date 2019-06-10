@@ -19,3 +19,4 @@ access_conf::access:
   - '-:ALL:ALL'
   
 
+sudo::sudoers_d_template: 'ctm700s_agent'
