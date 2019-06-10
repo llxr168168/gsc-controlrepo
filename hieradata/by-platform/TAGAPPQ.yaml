@@ -47,3 +47,6 @@ sw_util::wrapper::hiera_file::params:
       group: "stordrft" , 
       mode: "700"
     }
+
+
+sudo::sudoers_d_template: 'ctm_agent'
