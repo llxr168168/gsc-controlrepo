@@ -5,3 +5,14 @@ hosts_file_content: |
   10.25.33.162	cgwlaem1.consumer.sherwin.com cgwlaem1
   10.20.100.7	hostxibm	hostxibm.sherwin.com hostx
   10.20.100.8	hostyibm	hostyibm.sherwin.com hosty
+
+
+sw_util::wrapper::hiera_mount::params:
+  - /swpkg/BMC_WLA:
+      ensure: mounted
+      options: credentials=/root/.ctmdocscred,rw,uid=1016,gid=1695201306,dir_mode=0770,vers=1.0
+      device: //cgconhq.sw.sherwin.com/cgcon-shared3/BMC_WLA
+      atboot: true
+      fstype: cifs
+      dump: 0
+      pass: 0
