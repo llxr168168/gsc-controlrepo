@@ -1,0 +1,22 @@
+# Site: Menomonee Falls WI
+
+classes:
+  - avamar
+  
+yum::plugins_enabled: 'true'
+
+#Site Specific overrides
+avamar::disable: 'false'
+avamar::grid: 'swavmcst.sherwin.com'
+
+resolv_conf::nameserver:
+- '10.20.103.6'
+- '10.240.3.6'
+
+profiles_unix::gsc::apps::utilserver::nfs_mounts:
+- '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvemen.sherwin.com:/data/col1/gsc_lnxremote_rw'
+
+site_code: men
+yum::yum_repo_file: remotesite.yum
+tz::region: 'America'
+tz::locality: 'Chicago'
