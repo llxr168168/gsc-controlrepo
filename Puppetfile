@@ -336,7 +336,7 @@ mod 'sher_procure',
 
 mod 'pv',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/pv.git',
- :ref => '1.0.5'
+ :ref => '1.0.6'
 
 mod 'jda',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/jda.git',
