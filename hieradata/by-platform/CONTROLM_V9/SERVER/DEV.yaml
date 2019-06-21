@@ -7,7 +7,7 @@ classes:
 sw_util::wrapper::hiera_mount::params:
   - /swpkg/BMC_WLA:
       ensure: mounted
-      options: credentials=/root/.ctmdocscred,rw,uid=1017,gid=1695201306,dir_mode=0770,vers=1.0
+      options: credentials=/root/.ctmdocscred,rw,uid=1017,gid=1695201306,dir_mode=0770,vers=3.0
       device: //cgconhq.sw.sherwin.com/cgcon-shared3/BMC_WLA
       atboot: true
       fstype: cifs
