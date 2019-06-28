@@ -1,1 +1,1 @@
-oracle_build::sudoers::oracle::sudo_template: 'sudoers_ans'
+oracle_build::sudoers::oraclesudo_template: 'sudoers_ans'
