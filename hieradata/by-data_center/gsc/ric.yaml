@@ -23,6 +23,8 @@ profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveric.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
 yum::yum_repo_file: remotesite.yum
+sw_os_update_management::redhat::yum_repo_file: remotesite.yum
+
 awcs::telnet_allow:
   - '10.10.58.0/23'
   - '10.216.0.0/16'

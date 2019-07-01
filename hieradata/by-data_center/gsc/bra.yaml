@@ -26,6 +26,8 @@ profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/cgbrana1b_root -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgbrana1b.consumer.sherwin.com:/vol/vol0'
 
 yum::yum_repo_file: remotesite.yum
+sw_os_update_management::redhat::yum_repo_file: remotesite.yum
+
 awcs::telnet_allow:
   - '10.10.180.0/24'
   - '10.216.0.0/16'

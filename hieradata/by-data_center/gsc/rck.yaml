@@ -13,7 +13,6 @@ profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddverck.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
 #No Util server yet
-yum::yum_repo_file: swrepo.yum
 site_code: rck
 
 tz::region: 'America'

@@ -24,6 +24,8 @@ profiles_unix::gsc::apps::utilserver::nfs_mounts:
 
 
 yum::yum_repo_file: remotesite.yum
+sw_os_update_management::redhat::yum_repo_file: remotesite.yum
+
 tz::region: 'America'
 tz::locality: 'New_York'
 site_code: orl
