@@ -13,7 +13,7 @@ access_conf::access:
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
-
+  - '+:SW\sa-geamdm-bamboo:cgmdmweb3.consumer.sherwin.com cgatlweb2.sherwin.com cgatlweb1.sherwin.com cgmdmweb2.consumer.sherwin.com'
   
 vsftpd::vsftpd_userlist:
   - sruser
