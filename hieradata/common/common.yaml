@@ -11,7 +11,7 @@ resolv_conf::nameserver:
   - '10.240.3.6'
 
 yum::yum_repo_file: 'swrepo.yum'
-yum::errata_target: 2019_Q1
+yum::errata_target: 2019_Q2
 
   
 # ###############
