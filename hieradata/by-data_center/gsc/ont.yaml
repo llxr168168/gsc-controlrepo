@@ -13,6 +13,8 @@ profiles_unix::gsc::apps::utilserver::nfs_mounts:
 
 
 yum::yum_repo_file: remotesite.yum
+sw_os_update_management::redhat::yum_repo_file: remotesite.yum
+
 site_code: mem
 tz::region: 'America'
 tz::locality: 'Los_Angeles'

@@ -7,8 +7,6 @@ yum::plugins_enabled: 'true'
 #No Avamar at Elkhart, no backups
 avamar::disable: 'true'
 
-#No local UTIL server, come back to AK
-yum::yum_repo_file: swrepo.yum
 
 
 site_code: elk
