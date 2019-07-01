@@ -1,6 +1,8 @@
 classes:
   - vsftpd
 
+sudo::sudoers_d_template: 'gea_bamboo'
+
 access_conf::access: 
   - '+:root:LOCAL'
   - '+:sruser:LOCAL cgsprintdb2.consumer.sherwin.com cgsprintdb1.consumer.sherwin.com stnps2hq.sherwin.com cgsprint1.consumer.sherwin.com cgsprint2.consumer.sherwin.com stnps1hq.sherwin.com cgeaiw1.consumer.sherwin.com cgeaiw4.consumer.sherwin.com stnps1rw.sherwin.com stnps2rw.sherwin.com' 
