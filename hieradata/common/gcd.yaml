@@ -1,6 +1,6 @@
 ---
 yum::yum_repo_file: 'swrepo.yum'
-yum::errata_target: 2018_Q2
+yum::errata_target: 2019_Q2
 
 #### Include Classes
 classes:
