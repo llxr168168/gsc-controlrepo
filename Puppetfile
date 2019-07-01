@@ -174,9 +174,9 @@ mod 'access_conf',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/access_conf.git',
  :ref => 'master'
 
-mod 'yum',
- :git => 'git@github.sherwin.com:Corp-IT-Puppet/yum.git',
- :ref => 'puppet5'
+mod 'sw_os_update_management',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_os_update_management.git',
+ :ref => 'master'
 
 mod 'ssh',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/ssh.git',
