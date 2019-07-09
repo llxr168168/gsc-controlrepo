@@ -11,7 +11,7 @@ classes:
 oracle_build::create_grid: 'false'
 sw_app_status::app_status_script: 'mes_status.sh'
 
-oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
+oracle_build::tns::tns_webhost: pulp.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/mes.tns
 oracle_build::tns::localfile: 
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
