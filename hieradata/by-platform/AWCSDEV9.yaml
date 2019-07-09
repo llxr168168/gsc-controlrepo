@@ -63,7 +63,7 @@ profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/gsc_ora_disaster_sta -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_sta'
   - '/swdata/nfs/gsc_ora_disaster_leb -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_leb'
 
-oracle_build::tns::tns_webhost: pulp.sherwin.com
+oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/awcsdev.tns
 oracle_build::tns::localfile: 
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
