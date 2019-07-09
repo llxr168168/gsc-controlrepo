@@ -4,7 +4,7 @@ classes:
   - oracle_build::sudoers
   - profiles_unix::gsc::apps::apex
   
-oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
+oracle_build::tns::tns_webhost: pulp.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/mes.tns
 oracle_build::tns::localfile:  
   - '/swpkg/oracle/product/11.2.0/db_1/network/admin/tnsnames.ora'
