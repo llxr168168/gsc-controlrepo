@@ -23,7 +23,7 @@ sw_os_update_management::redhat::yum_repo_file: 'swrepo.yum'
 tripwire::host: 'cptrip2hq.sw.sherwin.com'
 tripwire::port: '9898'
 tripwire::installdir: '/sw/pkg/tripwire/tripwire_8.4.2'
-tripwire::source: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/tripwire/8.4.2/te_agent_8.4.2_en_linux_x86_64.tgz'
+tripwire::source: 'http://pulp.sherwin.com/webroot/installers/webeng/tripwire/8.4.2/te_agent_8.4.2_en_linux_x86_64.tgz'
 tripwire::pass: >
     ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAJbCfRgUHQepUMLe3aHkktUqzWdJ3Bn2GLHQl
