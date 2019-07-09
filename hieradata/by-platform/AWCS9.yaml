@@ -14,7 +14,7 @@ sw_apex_print::local_group: 'awcs'
   
 sw_app_status::app_status_script: 'awcs_status.sh'
 
-oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
+oracle_build::tns::tns_webhost: pulp.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/awcs.tns
 oracle_build::tns::localfile: 
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
