@@ -5,7 +5,7 @@ classes:
 samba::shares:
   ignition:
     - 'comment = Ignition'
-    - 'valid users = @"SW\gg-adm-gcdunix" @"SW\gg-cgit-watson"'
+    - 'valid users = @SW\gg-adm-gcdunix @SW\gg-cgit-watson'
     - 'path = /swpkg/ignition'
     - 'force user = ignition'
     - 'writable = yes'
@@ -13,7 +13,7 @@ samba::shares:
     - 'directory mask = 2770'
   backups:
     - 'comment = backups'
-    - 'valid users = @"SW\gg-adm-gcdunix" @"SW\gg-cgit-watson"'
+    - 'valid users = @SW\gg-adm-gcdunix @SW\gg-cgit-watson'
     - 'path = /swdata/ignition'
     - 'force user = ignition'
     - 'writable = yes'
@@ -37,7 +37,7 @@ hosts::hosts_group: ignition
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
 - nano.x86_64: {}
-- ignitiondeploy.7.9.9.noarch: {}
+
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
