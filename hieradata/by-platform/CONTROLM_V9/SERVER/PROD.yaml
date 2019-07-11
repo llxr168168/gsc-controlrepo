@@ -2,6 +2,9 @@ classes:
   - sw_util::hiera_wrapper
   
   
+sudo::sudoers_d_template: 'ctm_server'
+  
+  
 sw_util::wrapper::hiera_mount::params:
   - /swpkg/BMC_WLA:
       ensure: mounted
