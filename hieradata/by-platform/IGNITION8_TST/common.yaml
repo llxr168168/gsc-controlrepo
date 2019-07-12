@@ -38,8 +38,19 @@ sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
 - nano.x86_64: {}
 - ignitiondeploy.7.9.9.noarch: {}
-- samba-client: {}
+- samba-client-libs: {}
+- samba-winbind-client: {}
+- libarchive: {}
 - samba: {}
+- samba-common: {}
+- samba-common-libs: {}
+- samba-libs: {}
+- samba - winbind: {}
+- samba-common-tools: {}
+- samba-client: {}
+
+
+
 - samba-winbind: {}
 
 
