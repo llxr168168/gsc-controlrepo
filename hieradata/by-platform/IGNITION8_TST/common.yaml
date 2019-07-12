@@ -51,3 +51,65 @@ sw_util::wrapper::hiera_package::params:
 
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+IGNITION8_TST::smb_conf: |
+# See smb.conf.example for a more detailed config file or
+# read the smb.conf manpage.
+# Run 'testparm' to verify the config is correct after
+# you modified it.
+# File controlled by puppet 
+
+[global]
+	client ipc signing = auto
+        workgroup = SW
+        realm = SW.SHERWIN.COM
+        server string = Samba Server Version %v
+        security = ADS
+	    password server = SWADS2HQ.SW.SHERWIN.COM
+        log file = /var/log/samba/log.%m
+        max log size = 50
+        template shell = /bin/bash
+        encrypt passwords = yes
+        winbind use default domain = no
+        winbind offline logon = no
+        idmap config * : backend = hash
+        #idmap config * : backend = ad
+        idmap config * : range = 10000-4000000000
+        map to guest = Never
+        load printers = no
+        printing = bsd
+        printcap name = /dev/null
+        restrict anonymous = 2
+        wide links = no
+        log level = 5
+	    name resolve order = wins bcast host lmhosts
+
+[ignition]
+comment = Ignition
+valid users = @gg-adm-gcdunix @gg-cgit-watson
+path = /swpkg/ignition
+force user = ignition
+writable = yes
+create mask = 2770
+directory mask = 2770
+
+[backups]
+comment = backups
+valid users = @gg-adm-gcdunix @gg-cgit-watson
+path = /swdata/ignition
+force user = ignition
+writable = yes
+create mask = 2770
+directory mask = 2770
+
+#- EOF
+
+
+sw_util::wrapper::hiera_file::params:
+    - /etc/samba/test_smb_conf: {
+      ensure: "file",
+      content: "IGNITION8_TST::smb_conf:",
+      owner: "root", 
+      group: "root",
+      mode: "755",
+    }  
