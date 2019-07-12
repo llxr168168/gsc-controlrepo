@@ -1,6 +1,6 @@
 classes:
     - profiles_unix::gsc::apps::ignition8_app
-    - samba::standalone
+    
 
 samba::shares:
   ignition:
