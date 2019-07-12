@@ -45,13 +45,9 @@ sw_util::wrapper::hiera_package::params:
 - samba-common: {}
 - samba-common-libs: {}
 - samba-libs: {}
-- samba - winbind: {}
+- samba-winbind: {}
 - samba-common-tools: {}
 - samba-client: {}
-
-
-
-- samba-winbind: {}
 
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
