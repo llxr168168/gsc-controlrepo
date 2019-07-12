@@ -60,7 +60,7 @@ IGNITION8_TST::smb_conf: |
   # File controlled by puppet 
 
   [global]
-	client ipc signing = auto
+        client ipc signing = auto
         workgroup = SW
         realm = SW.SHERWIN.COM
         server string = Samba Server Version %v
