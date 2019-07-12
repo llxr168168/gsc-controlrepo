@@ -1,1 +1,42 @@
+classes:
+    - profiles_unix::gsc::apps::ignition8_app
+    - samba::standalone
 
+samba::shares:
+  ignition:
+    - 'comment = Ignition'
+    - 'valid users = @gg-adm-gcdunix @gg-cgit-watson'
+    - 'path = /swpkg/ignition'
+    - 'force user = ignition'
+    - 'writable = yes'
+    - 'create mask = 2770'
+    - 'directory mask = 2770'
+  backups:
+    - 'comment = backups'
+    - 'valid users = @gg-adm-gcdunix @gg-cgit-watson'
+    - 'path = /swdata/ignition'
+    - 'force user = ignition'
+    - 'writable = yes'
+    - 'create mask = 2770'
+    - 'directory mask = 2770'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:ignition:LOCAL cgwatsondr.consumer.sherwin.com'
+  - '+:zabbix:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-watson):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
+  - '-:ALL:ALL'
+
+hosts::hosts_group: ignition
+
+sw_util::wrapper::hiera_package::params:
+- jdk9u4.x86_64: {}
+- nano.x86_64: {}
+
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
