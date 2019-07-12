@@ -1,6 +1,6 @@
 classes:
     - profiles_unix::gsc::apps::ignition8_app
-    
+    - samba::standalone
 
 samba::shares:
   ignition:
@@ -37,8 +37,6 @@ hosts::hosts_group: ignition
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
 - nano.x86_64: {}
-
+- ignitiondeploy.7.9.9.noarch: {}
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
-
-
