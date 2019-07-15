@@ -110,11 +110,3 @@ IGNITION8_TST::smb_conf: |
   #~ EOF
 
 
-sw_util::wrapper::hiera_file::params:
-    - /etc/samba/test_smb_conf: {
-      ensure: "file",
-      content: "IGNITION8_TST::smb_conf",
-      owner: "root", 
-      group: "root",
-      mode: "755",
-    }  
