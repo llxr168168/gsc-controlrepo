@@ -52,14 +52,21 @@ sw_util::wrapper::hiera_package::params:
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
-IGNITION8_TST::smb_conf: |
-# See smb.conf.example for a more detailed config file or
-# read the smb.conf manpage.
-# Run 'testparm' to verify the config is correct after
-# you modified it.
-# File controlled by puppet 
 
- [global]
+sw_util::wrapper::hiera_file::params:
+  - /etc/samba/test_smb_conf: {
+  ensure: "file",
+  content: "IGNITION8_TST::smb_conf",
+  owner: "root", 
+  group: "root",
+  mode: "755",
+  }  
+
+
+IGNITION8_TST::smb_conf: |
+  # File controlled by puppet 
+
+  [global]
         client ipc signing = auto
         workgroup = SW
         realm = SW.SHERWIN.COM
@@ -83,7 +90,7 @@ IGNITION8_TST::smb_conf: |
         log level = 5
         name resolve order = wins bcast host lmhosts
 
- [ignition]
+  [ignition]
   comment = Ignition
   valid users = @gg-adm-gcdunix @gg-cgit-watson
   path = /swpkg/ignition
@@ -92,7 +99,7 @@ IGNITION8_TST::smb_conf: |
   create mask = 2770
   directory mask = 2770
 
- [backups]
+  [backups]
   comment = backups
   valid users = @gg-adm-gcdunix @gg-cgit-watson
   path = /swdata/ignition
@@ -100,7 +107,6 @@ IGNITION8_TST::smb_conf: |
   writable = yes
   create mask = 2770
   directory mask = 2770
-
   #~ EOF
 
 
