@@ -59,7 +59,7 @@ IGNITION8_TST::smb_conf: |
 # you modified it.
 # File controlled by puppet 
 
-[global]
+ [global]
         client ipc signing = auto
         workgroup = SW
         realm = SW.SHERWIN.COM
@@ -83,7 +83,7 @@ IGNITION8_TST::smb_conf: |
         log level = 5
         name resolve order = wins bcast host lmhosts
 
-[ignition]
+ [ignition]
   comment = Ignition
   valid users = @gg-adm-gcdunix @gg-cgit-watson
   path = /swpkg/ignition
@@ -92,7 +92,7 @@ IGNITION8_TST::smb_conf: |
   create mask = 2770
   directory mask = 2770
 
-[backups]
+ [backups]
   comment = backups
   valid users = @gg-adm-gcdunix @gg-cgit-watson
   path = /swdata/ignition
