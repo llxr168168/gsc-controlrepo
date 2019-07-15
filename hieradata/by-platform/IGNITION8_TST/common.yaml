@@ -2,24 +2,6 @@ classes:
     - profiles_unix::gsc::apps::ignition8_app
    
 
-samba::shares:
-  ignition:
-    - 'comment = Ignition'
-    - 'valid users = @gg-adm-gcdunix @gg-cgit-watson'
-    - 'path = /swpkg/ignition'
-    - 'force user = ignition'
-    - 'writable = yes'
-    - 'create mask = 2770'
-    - 'directory mask = 2770'
-  backups:
-    - 'comment = backups'
-    - 'valid users = @gg-adm-gcdunix @gg-cgit-watson'
-    - 'path = /swdata/ignition'
-    - 'force user = ignition'
-    - 'writable = yes'
-    - 'create mask = 2770'
-    - 'directory mask = 2770'
-
 access_conf::access:
   - '+:root:LOCAL'
   - '+:ignition:LOCAL cgwatsondr.consumer.sherwin.com'
@@ -54,12 +36,12 @@ profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 
 sw_util::wrapper::hiera_file::params:
-  - /etc/samba/test_smb_conf: {
+  - /etc/samba/smb.conf: {
   ensure: "file",
   content: "IGNITION8_TST::smb_conf",
   owner: "root", 
   group: "root",
-  mode: "755",
+  mode: "655",
   }  
 
 
@@ -110,11 +92,3 @@ IGNITION8_TST::smb_conf: |
   #~ EOF
 
 
-sw_util::wrapper::hiera_file::params:
-    - /etc/samba/test_smb_conf: {
-      ensure: "file",
-      content: "IGNITION8_TST::smb_conf",
-      owner: "root", 
-      group: "root",
-      mode: "755",
-    }  
