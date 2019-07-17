@@ -22,6 +22,7 @@ vsftpd::vsftpd_userlist:
   - sprint_xfer
 vsftpd::vsftpd_umask: '002'
 
+samba::smb_template: 'smb.conf_SMB2.erb'
 
 samba::shares:
   jboss:
