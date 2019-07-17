@@ -22,8 +22,6 @@ vsftpd::vsftpd_userlist:
   - sprint_xfer
 vsftpd::vsftpd_umask: '002'
 
-samba::smb_template: 'smb.conf_SMB2.erb'
-
 samba::shares:
   jboss:
     - 'comment = JBoss'
@@ -39,3 +37,5 @@ samba::shares:
     - 'writable = no'
     - 'valid users = @SW\DL_ADMIN_%{::hostname_upcase}'
     - 'force user = root'
+
+samba::smb_template: 'smb.conf_SMB2.erb'
