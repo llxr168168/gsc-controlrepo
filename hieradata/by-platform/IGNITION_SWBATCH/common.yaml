@@ -21,7 +21,6 @@ sw_util::wrapper::hiera_package::params:
 - nano.x86_64: {}
 - ignitiondeploy.7.9.10.noarch: {}
 - samba-client-libs: {}
-- samba-winbind-client: {}
 - libarchive: {}
 - samba: {}
 - samba-common: {}
