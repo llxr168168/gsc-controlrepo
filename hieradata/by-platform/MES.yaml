@@ -54,7 +54,6 @@ mes::mes_developers:
   - mas90r
   - mxp17c
   - nab719
-  - vmd460
   
 mes::oracle_apachectl: /swpkg/oracle/product/Middleware/Oracle_WT1/ohs/bin/.apachectl
 mes::mes_authorized_keys: >
