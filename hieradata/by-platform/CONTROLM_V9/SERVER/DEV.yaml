@@ -4,6 +4,10 @@ classes:
   - sw_util::hiera_wrapper
   
   
+sw_util::wrapper::hiera_user::params:
+  - ctmuser: {password: "!!"}
+  
+  
 sw_util::wrapper::hiera_mount::params:
   - /swpkg/BMC_WLA:
       ensure: mounted
