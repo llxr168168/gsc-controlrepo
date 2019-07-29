@@ -45,6 +45,10 @@ ODI_SMB::smb_conf: |
   # File controlled by puppet 
 
   [global]
+        min protocol = SMB2                                                                                 
+        max protocol = SMB2                                                                                 
+        client min protocol = SMB2
+        client max protocol = SMB2
         client ipc signing = auto
         workgroup = SW
         realm = SW.SHERWIN.COM
