@@ -27,7 +27,12 @@ sw_util::wrapper::hiera_package::params:
 - samba-winbind: {}
 - samba-common-tools: {}
 - samba-client: {}
-
+- compat-libcap1.x86_64: {}
+- compat-libstdc++-33.x86_64: {}
+- numactl.x86_64: {}
+- numactl-devel.x86_64: {}
+- motif-devel.x86_64: {}
+- redhat-lsb.x86_64: {}
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
