@@ -64,17 +64,6 @@ sw_util::wrapper::hiera_file::params:
 oracle_oem::nfs_mounts:
   - '/sw/install -rw,intr,soft,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3 nafgps01rw-nfs02:/oem_all_installation'
 
-# Platform Common default. (Applied if not overridden.)
-# Overrides can be applied in more specific scopes
-avamar::client::version: "7.3.101-125"
-
-sw_util::wrapper::hiera_package::params:
-  # Avamar client backups for Oracle databases. 
-  # Note Backup software is version specific. 
-  # Linux 5.x and higeher = 7.3
-  - AvamarClient: {ensure: "%{hiera('avamar::client::version')}"}
-
-
 # Note: avamar::grid default set in by-datacenter->gcd-><datacenter name>.yaml
 sw_util::wrapper::hiera_exec::params:
   - register_avamar_client: {
