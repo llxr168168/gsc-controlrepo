@@ -6,9 +6,6 @@ classes:
   
 sw_util::wrapper::hiera_user::params:
   - ctmuser: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/csh", password: "!!"}
-  - ctm700s: {password: "!!"}
-  - emuser: {password: "!!"}
-  
   
   
 sw_util::wrapper::hiera_mount::params:
