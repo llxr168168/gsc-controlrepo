@@ -294,6 +294,10 @@ mod 'sw_ignition8',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_ignition8.git',
  :ref => 'master'
 
+mod 'sw_ignition8_tst',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_ignition8_tst.git',
+ :ref => 'master'
+
 mod 'awcs',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/awcs.git',
  :ref => '1.0.7'
