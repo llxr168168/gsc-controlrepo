@@ -1,7 +1,7 @@
 classes:
     - sw_ignition8_app_tst
     
-sw_ignition8_tst::ign_pack:ignitiondeploy.7.9.9.noarch    
+sw_ignition8_tst::ign_pack::ignitiondeploy.7.9.9.noarch    
 
 access_conf::access:
   - '+:root:LOCAL'
