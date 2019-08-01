@@ -1,5 +1,5 @@
 classes:
-    - profiles_unix::gsc::apps::ignition8_app
+    - sw_ignition8_app_tst
    
 
 access_conf::access:
