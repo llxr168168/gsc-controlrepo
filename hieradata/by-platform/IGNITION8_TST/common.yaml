@@ -1,5 +1,5 @@
 classes:
-    - sw_ignition8_app_tst
+    - sw_ignition8_tst
     
 sw_ignition8_tst::ign_pack: 'ignitiondeploy.7.9.9.noarch'    
 
