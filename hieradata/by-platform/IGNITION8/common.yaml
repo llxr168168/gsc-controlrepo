@@ -61,7 +61,7 @@ sw_util::wrapper::hiera_file::params:
 
 
 IGNITION8::smb_conf: |
-  # File controlled by puppet 
+  # File controlled by puppet IGNITION8 platform common.yaml 
 
   [global]
         client ipc signing = auto
