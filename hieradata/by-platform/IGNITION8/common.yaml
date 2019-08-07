@@ -38,7 +38,6 @@ sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
 - nano.x86_64: {}
 - samba-client-libs: {}
-- samba-winbind-client: {}
 - libarchive: {}
 - samba: {}
 - samba-common: {}
