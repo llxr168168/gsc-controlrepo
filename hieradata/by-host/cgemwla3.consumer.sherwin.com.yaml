@@ -10,4 +10,4 @@ sw_util::wrapper::hiera_mount::params:
 
 
 sw_util::wrapper::hiera_user::params:
-  - emuser: {password: "!!", shell: "/bin/csh", home: "/swpkg/bmc/em/"}
+  - emuser: {password: "!!", shell: "/bin/sh", home: "/swpkg/bmc/em/"}
