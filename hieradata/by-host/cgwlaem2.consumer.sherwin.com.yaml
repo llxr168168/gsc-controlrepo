@@ -7,3 +7,7 @@ sw_util::wrapper::hiera_mount::params:
       fstype: cifs
       dump: 0
       pass: 0
+
+
+sw_util::wrapper::hiera_user::params:
+  - emuser: {password: "!!", shell: "/bin/sh", home: "/swpkg/bmc/em/"}
