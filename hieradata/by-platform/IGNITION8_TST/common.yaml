@@ -72,6 +72,7 @@ IGNITION8_TST::smb_conf: |
         restrict anonymous = 2
         wide links = no
         log level = 5
+        min protocol = SMB2
         
   [ignition]
   comment = Ignition
