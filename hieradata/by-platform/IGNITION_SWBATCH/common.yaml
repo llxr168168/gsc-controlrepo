@@ -1,5 +1,5 @@
 classes:
-    - profiles_unix::gsc::apps::ignition8_app
+    - sw_ignition8_v2
    
 
 access_conf::access:
@@ -17,6 +17,9 @@ access_conf::access:
   - '-:ALL:ALL'
 
 hosts::hosts_group: ignition
+
+## Default ignition version for batch is 7.9.10 at this time, but is overridable in by-host
+sw_ignition8_v2::ign_ver: 7.9.10
 
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
@@ -38,14 +41,14 @@ profiles_unix::gsc::base::auth::sssd_auth: 'true'
 sw_util::wrapper::hiera_file::params:
   - /etc/samba/smb.conf: {
   ensure: "file",
-  content: "IGNITION8_TST::smb_conf",
+  content: "IGNITION_SWBATCH::smb_conf",
   owner: "root", 
   group: "root",
   mode: "655",
   }  
 
 
-IGNITION8_TST::smb_conf: |
+IGNITION_SWBATCH::smb_conf: |
   # File controlled by puppet 
 
   [global]
