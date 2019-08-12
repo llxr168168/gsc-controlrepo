@@ -159,7 +159,7 @@ access_conf::access:
     - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
     - '+:(SW\gg-adm-gcdunix):ALL'
     - '+:grid:LOCAL cgaomdb3a.sherwin.com cgaomdb3a-prv.sherwin.com cgaomdb3b.sherwin.com cgaomdb3b-prv.sherwin.com cgaomdb3c.sherwin.com cgaomdb3c-prv.sherwin.com cgaomdb3d.sherwin.com cgaomdb3d-prv.sherwin.com'
-    - '+:oracle:LOCAL cgaomdb3a.sherwin.com cgaomdb3a-prv.sherwin.com cgaomdb3b.sherwin.com cgaomdb3b-prv.sherwin.com cgaomdb3c.sherwin.com cgaomdb3c-prv.sherwin.com cgaomdb3d.sherwin.com cgaomdb3d-prv.sherwin.com cgimi4.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+    - '+:oracle:LOCAL %{::hostname} cgaomdb3a.sherwin.com cgaomdb3a-prv.sherwin.com cgaomdb3b.sherwin.com cgaomdb3b-prv.sherwin.com cgaomdb3c.sherwin.com cgaomdb3c-prv.sherwin.com cgaomdb3d.sherwin.com cgaomdb3d-prv.sherwin.com cgimi4.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
     - '+:aomapp:cgimi7.sherwin.com cgimi4.sherwin.com cgimi1.sherwin.com'
     - '+:aom:cgimi7.sherwin.com cgimi4.sherwin.com cgimi1.sherwin.com'
     - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
