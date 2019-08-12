@@ -10,5 +10,5 @@ access_conf::access:
   - '+:(SW\gg-adm-gcdunix):ALL'
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
-  - '+:oracle:LOCAL %{::hostname} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'

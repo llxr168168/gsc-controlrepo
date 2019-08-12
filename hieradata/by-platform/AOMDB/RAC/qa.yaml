@@ -197,7 +197,7 @@ access_conf::access:
     - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
     - '+:(SW\gg-adm-gcdunix):ALL'
     - '+:grid:LOCAL cgaomdb2a.sherwin.com cgaomdb2a-prv.sherwin.com cgaomdb2b.sherwin.com cgaomdb2b-prv.sherwin.com cgaomdb2c.sherwin.com cgaomdb2c-prv.sherwin.com cgaomdb2d.sherwin.com cgaomdb2d-prv.sherwin.com'
-    - '+:oracle:LOCAL %{::hostname} cgaomdb2a.sherwin.com cgaomdb2a-prv.sherwin.com cgaomdb2b.sherwin.com cgaomdb2b-prv.sherwin.com cgaomdb2c.sherwin.com cgaomdb2c-prv.sherwin.com cgaomdb2d.sherwin.com cgaomdb2d-prv.sherwin.com cgimi4.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+    - '+:oracle:LOCAL %{::fqdn} cgaomdb2a.sherwin.com cgaomdb2a-prv.sherwin.com cgaomdb2b.sherwin.com cgaomdb2b-prv.sherwin.com cgaomdb2c.sherwin.com cgaomdb2c-prv.sherwin.com cgaomdb2d.sherwin.com cgaomdb2d-prv.sherwin.com cgimi4.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
     - '+:aomapp:cgimi7.sherwin.com cgimi4.sherwin.com cgimi1.sherwin.com'
     - '+:aom:cgimi7.sherwin.com cgimi4.sherwin.com cgimi1.sherwin.com'
     - '+:bizlink:swb2bw04.consumer.sherwin.com swb2bw14.consumer.sherwin.com swb2bw07.consumer.sherwin.com swb2bw16.consumer.sherwin.com'

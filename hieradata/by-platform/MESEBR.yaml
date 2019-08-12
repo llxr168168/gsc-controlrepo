@@ -12,7 +12,7 @@ oracle_build::create_grid: 'false'
 
 access_conf::access:
   - '+:root:LOCAL'
-  - '+:oracle:LOCAL %{::hostname} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'

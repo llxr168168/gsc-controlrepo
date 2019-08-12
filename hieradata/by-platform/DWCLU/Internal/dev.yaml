@@ -6,7 +6,7 @@ postfix::enabled: 'true'
 access_conf::access:
   - '+:root:LOCAL'
   - '+:grid:LOCAL cgdwdb3a.consumer.sherwin.com cgdwdb3a-prv.consumer.sherwin.com cgdwdb3b.consumer.sherwin.com cgdwdb3b-prv.consumer.sherwin.com cgdwdb3c.consumer.sherwin.com cgdwdb3c-prv.consumer.sherwin.com cgdwdb3d.consumer.sherwin.com cgdwdb3d-prv.consumer.sherwin.com'
-  - '+:oracle:LOCAL %{::hostname} cgdwdb3a.consumer.sherwin.com cgdwdb3a-prv.consumer.sherwin.com cgdwdb3b.consumer.sherwin.com cgdwdb3b-prv.consumer.sherwin.com cgdwdb3c.consumer.sherwin.com cgdwdb3c-prv.consumer.sherwin.com cgdwdb3d.consumer.sherwin.com cgdwdb3d-prv.consumer.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '+:oracle:LOCAL %{::fqdn} cgdwdb3a.consumer.sherwin.com cgdwdb3a-prv.consumer.sherwin.com cgdwdb3b.consumer.sherwin.com cgdwdb3b-prv.consumer.sherwin.com cgdwdb3c.consumer.sherwin.com cgdwdb3c-prv.consumer.sherwin.com cgdwdb3d.consumer.sherwin.com cgdwdb3d-prv.consumer.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
