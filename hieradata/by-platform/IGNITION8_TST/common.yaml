@@ -1,7 +1,9 @@
 classes:
-    - sw_ignition8_tst
+    - sw_ignition8_v2
     
-
+## Default ignition version for regular ignnition is 7.9.9 at this time and that is set in sw_ignition8_v2 , but is overridable in by-host
+## including a template for a platform wide upgrade in version, uncomment the line below and set the version correctly 
+#sw_ignition8_v2::ign_ver: 7.9.9
 
 access_conf::access:
   - '+:root:LOCAL'
@@ -11,6 +13,8 @@ access_conf::access:
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(gg-cgit-watson):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL' 
+  - '+:(SW\gg-cgit-watson):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
   - '-:ALL:ALL'
@@ -20,7 +24,6 @@ hosts::hosts_group: ignition
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
 - nano.x86_64: {}
-- ignitiondeploy.7.9.9.noarch: {}
 - samba-client-libs: {}
 - samba-winbind-client: {}
 - libarchive: {}
@@ -70,6 +73,7 @@ IGNITION8_TST::smb_conf: |
         restrict anonymous = 2
         wide links = no
         log level = 5
+        min protocol = SMB2
         
   [ignition]
   comment = Ignition

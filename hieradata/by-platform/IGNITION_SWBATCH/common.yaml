@@ -1,5 +1,5 @@
 classes:
-    - profiles_unix::gsc::apps::ignition8_app
+    - sw_ignition8_v2
    
 
 access_conf::access:
@@ -10,16 +10,20 @@ access_conf::access:
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(gg-cgit-watson):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-cgit-watson):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
   - '-:ALL:ALL'
 
 hosts::hosts_group: ignition
 
+## Default ignition version for batch is 7.9.10 at this time, but is overridable in by-host
+sw_ignition8_v2::ign_ver: 7.9.10
+
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
 - nano.x86_64: {}
-- ignitiondeploy.7.9.10.noarch: {}
 - samba-client-libs: {}
 - libarchive: {}
 - samba: {}
@@ -37,15 +41,15 @@ profiles_unix::gsc::base::auth::sssd_auth: 'true'
 sw_util::wrapper::hiera_file::params:
   - /etc/samba/smb.conf: {
   ensure: "file",
-  content: "IGNITION8_TST::smb_conf",
+  content: "IGNITION_SWBATCH::smb_conf",
   owner: "root", 
   group: "root",
   mode: "655",
   }  
 
 
-IGNITION8_TST::smb_conf: |
-  # File controlled by puppet 
+IGNITION_SWBATCH::smb_conf: |
+  # File controlled by puppet IGNITION_SWBATCH platform common.yaml
 
   [global]
         client ipc signing = auto
