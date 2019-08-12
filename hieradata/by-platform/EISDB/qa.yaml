@@ -14,7 +14,7 @@ access_conf::access:
     - '+:(gg-cgit-dba-admins):ALL'
     - '+:(gg-adm-gcdunix):ALL'
     - '+:grid:LOCAL cgeisdb2a.sherwin.com cgeisdb2a-prv.sherwin.com cgeisdb2b.sherwin.com cgeisdb2b-prv.sherwin.com cgeisdb2c.sherwin.com cgeisdb2c-prv.sherwin.com cgeisdb2d.sherwin.com cgeisdb2d-prv.sherwin.com'
-    - '+:oracle:LOCAL %{::hostname} cgeisdb2a.sherwin.com cgeisdb2a-prv.sherwin.com cgeisdb2b.sherwin.com cgeisdb2b-prv.sherwin.com cgeisdb2c.sherwin.com cgeisdb2c-prv.sherwin.com cgeisdb2d.sherwin.com cgeisdb2d-prv.sherwin.com'
+    - '+:oracle:LOCAL %{::fqdn} cgeisdb2a.sherwin.com cgeisdb2a-prv.sherwin.com cgeisdb2b.sherwin.com cgeisdb2b-prv.sherwin.com cgeisdb2c.sherwin.com cgeisdb2c-prv.sherwin.com cgeisdb2d.sherwin.com cgeisdb2d-prv.sherwin.com'
     - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
     - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
     - '-:ALL:ALL'

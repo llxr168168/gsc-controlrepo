@@ -1,6 +1,6 @@
 access_conf::access:
   - '+:root:LOCAL'
-  - '+:oracle:LOCAL %{::hostname}  10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80' 
+  - '+:oracle:LOCAL %{::fqdn}  10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80' 
   - "+:oinstall:LOCAL"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
