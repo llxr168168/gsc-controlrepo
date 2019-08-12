@@ -1,2 +1,2 @@
 hosts::hosts_group: ignition
-sw_ignition8_tst::ign_ver: 7.9.10
+sw_ignition8_v2::ign_ver: 7.9.10
