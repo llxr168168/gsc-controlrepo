@@ -10,6 +10,8 @@ access_conf::access:
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(gg-cgit-watson):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-cgit-watson):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
   - '-:ALL:ALL'
@@ -19,7 +21,6 @@ hosts::hosts_group: ignition
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
 - nano.x86_64: {}
-- ignitiondeploy.7.9.10.noarch: {}
 - samba-client-libs: {}
 - libarchive: {}
 - samba: {}
