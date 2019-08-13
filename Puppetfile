@@ -216,7 +216,7 @@ mod 'utils',
 
 mod 'virtual',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/virtual.git',
- :ref => '1.0.54'
+ :ref => 'master'
 
 mod 'sudo',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sudo.git',
