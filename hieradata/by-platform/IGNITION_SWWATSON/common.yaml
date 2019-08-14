@@ -1,7 +1,7 @@
 classes:
     - sw_ignition8_v2
     
-## Default ignition version for regular ignnition is 7.9.9 at this time and that is set in sw_ignition8_v2 , but is overridable in by-host
+## Default ignition version for regular ignition is 7.9.9 at this time and that is set in sw_ignition8_v2 , but is overridable in by-host
 ## including a template for a platform wide upgrade in version, uncomment the line below and set the version correctly 
 #sw_ignition8_v2::ign_ver: 7.9.9
 
