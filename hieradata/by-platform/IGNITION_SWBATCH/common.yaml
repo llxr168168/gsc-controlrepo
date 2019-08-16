@@ -77,7 +77,7 @@ IGNITION_SWBATCH::smb_conf: |
 
   [ignition]
   comment = Ignition
-  valid users = @gg-adm-gcdunix @gg-cgit-watson
+  valid users = @gg-adm-gcdunix @gg-cgit-watson @SW\gg-adm-gcdunix @SW\gg-cgit-watson
   path = /swpkg/ignition
   force user = ignition
   writable = yes
@@ -86,7 +86,7 @@ IGNITION_SWBATCH::smb_conf: |
 
   [backups]
   comment = backups
-  valid users = @gg-adm-gcdunix @gg-cgit-watson
+  valid users = @gg-adm-gcdunix @gg-cgit-watson @SW\gg-adm-gcdunix @SW\gg-cgit-watson
   path = /swdata/ignition
   force user = ignition
   writable = yes
