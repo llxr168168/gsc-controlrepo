@@ -45,8 +45,6 @@ edi::art::art_developers:
   
 edi::art::art_developers_retire: []
  
-sudo::sudoers_template: sudoers.cgnjfdb1
-
 access_conf::access:
   - '+:root:LOCAL'
   - '+:(sa-local):LOCAL'
