@@ -22,7 +22,7 @@ samba::shares:
   tomcat:
     - 'comment = AWCS'
     - 'path = /swpkg/plt_sys/prod/tomcat'
-    - 'valid users = @SW\gg-adm-gcdunix @SW\gg-usr-cgit-mesadmins'
+    - 'valid users = @SW\gg-adm-gcdunix @SW\gg-usr-cgit-mesadmins SW\lbj337'
     - 'public = no'
     - 'writable = yes'
     - 'force user = plt_adm'
