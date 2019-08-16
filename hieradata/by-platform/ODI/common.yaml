@@ -15,7 +15,9 @@ access_conf::access:
   - '+:(SW\gg-app-etl-admin):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
   - '+:(gg-adm-gcdunix):ALL'
-  - '+:(gg-cgit-dba-admins):ALL' 
+  - '+:(gg-cgit-dba-admins):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-cgit-watson):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '+:oracle:LOCAL %{::fqdn} %{::hostname} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
