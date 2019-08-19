@@ -1,5 +1,6 @@
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:oracle:LOCAL %{::fqdn} cpoempw1.sherwin.com cpoempw2.sherwin.com cpoempw3.sherwin.com cpoempw4.sherwin.com'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'

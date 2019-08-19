@@ -2,6 +2,7 @@ classes:
   - profiles_unix::gsc::oracle::base
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'

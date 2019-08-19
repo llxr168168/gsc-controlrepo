@@ -12,6 +12,7 @@ profiles_unix::gcd::base::auth::changeNoAuth: yes
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'

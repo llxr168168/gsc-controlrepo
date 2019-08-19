@@ -5,6 +5,7 @@ sudo::sudoers_d_template: 'gea_bamboo'
 
 access_conf::access: 
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:jboss:LOCAL 10.25.34.58 10.240.31.16'
   - '+:pimadmin:LOCAL 10.25.34.58 10.240.31.16'
   - '+:(sa-local):LOCAL'
