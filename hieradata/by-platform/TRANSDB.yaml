@@ -1,5 +1,6 @@
 classes:
   - profiles_unix::gsc::oracle::base
+  - sudo::sudoers_d_template: 'oracle-ta' 
 access_conf::access:
   - '+:root:LOCAL'
   - '+:(sa-local):LOCAL'
