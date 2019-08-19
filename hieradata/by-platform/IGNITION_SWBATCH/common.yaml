@@ -4,6 +4,7 @@ classes:
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:ignition:LOCAL cgwatsondr.consumer.sherwin.com'
   - '+:zabbix:LOCAL'
   - '+:(sa-local):LOCAL'

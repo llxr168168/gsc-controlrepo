@@ -2,6 +2,7 @@ webcentersites::DOMAIN_HOME: '/sw/pkg/user_projects/corpwcsd'
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):ALL'
   - '+:(wepadmin):ALL'
   - '+:(sa-remote):ALL'

@@ -801,3 +801,8 @@ mod 'sw_apex_print',
 mod 'sw_aacp_puppet',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_aacp_puppet.git',
 :ref => 'master'
+
+mod 'sw_puppet_ansible',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_ansible.git',
+:ref => 'master'
+
