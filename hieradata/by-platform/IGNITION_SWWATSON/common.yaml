@@ -74,8 +74,7 @@ IGNITION8_TST::smb_conf: |
         restrict anonymous = 2
         wide links = no
         log level = 5
-        min protocol = SMB2
-        
+              
   [ignition]
   comment = Ignition
   valid users = @gg-adm-gcdunix @gg-cgit-watson @SW\gg-adm-gcdunix @SW\gg-cgit-watson
