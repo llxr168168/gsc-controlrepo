@@ -5,6 +5,7 @@ postfix::enabled: 'true'
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:grid:LOCAL cgdwdb2a.consumer.sherwin.com cgdwdb2a-prv.consumer.sherwin.com cgdwdb2b.consumer.sherwin.com cgdwdb2b-prv.consumer.sherwin.com cgdwdb2c.consumer.sherwin.com cgdwdb2c-prv.consumer.sherwin.com cgdwdb2d.consumer.sherwin.com cgdwdb2d-prv.consumer.sherwin.com'
   - '+:oracle:LOCAL %{::fqdn} cgdwdb2a.consumer.sherwin.com cgdwdb2a-prv.consumer.sherwin.com cgdwdb2b.consumer.sherwin.com cgdwdb2b-prv.consumer.sherwin.com cgdwdb2c.consumer.sherwin.com cgdwdb2c-prv.consumer.sherwin.com cgdwdb2d.consumer.sherwin.com cgdwdb2d-prv.consumer.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '+:(sa-local):LOCAL'
@@ -173,20 +174,29 @@ oracle_build::rac::ssh::oracle_prv_key: >
     kXelZerHmjSe9/wXFgXLgOBJwk/d2c4KNoNmZ7DgtV3Urd2tNvOwz1lBM8JW
     5wKRRNwXFiXk9kYert72TZkD87HsoeFF]
 oracle_build::rac::ssh::oracle_auth_keys: >
-    ENC[PKCS7,MIIC7QYJKoZIhvcNAQcDoIIC3jCCAtoCAQAxggEhMIIBHQIBADAFMAACAQAw
-    DQYJKoZIhvcNAQEBBQAEggEAciMGXQ7+d9Qg6Stvbve1F2PzXtUHSHhO+hCh
-    Szp833tpED112k0ljWmWd0krtYLEwumYcY9p/cR+qISPN7mdX/5ODNEFvDPE
-    fKp/mHC7iiRE6r+JHuk3uuKz982RUjv248JQgOiTTbru2Ey6rhzskMewbDrJ
-    FDie4HkilxP4jOils6mxuzRtEZWqib2UK29MFf+iZaZ1MRAxA5N9BySxBSIt
-    9GFt3PrklQ/VG0LfLvt2Z1GOj5rNpwt24dkQ9nrglQmiXQLoVhISO9N2ihdG
-    qk0neZRkMNvkiV6Tl6ogZtSZ/SHFSZiK9nM/NTiRV5iWd68IbAJYeT2Lj5qf
-    zNBxAjCCAa4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEC9aI008IAaCLXrX
-    9Rds3hWAggGAGtUGRPEEfz3TSM2EdU5ebRqBBosGgypQCDFmjYlcuoZ+v9Qx
-    Bq33Y63r9kHBBHfHqyujPMu9OOKOFdPsc/f/5BKIJuMXKrPmd3NIBHJpd8Xd
-    BArfZhjNCiLoEg5DHI2meTEnunxgX/q0TcJiS4UzLIxFPtHEYYJsfKoSPlB7
-    9YhYOwTANTpwAcHAWUGVXi+lcVxZ+WuRX6F0iyrt+R/otQGemz7PRpR9ME3i
-    +ySh2FQrkf2Sk1N5cg2E6lX2Vcozs36Y5Y9rSOGPvtu2uBIpN0864hFDhttG
-    6Gj+/9UNIoykli6xCT9b3iafVilVCHCpHVE3FHaS0yz6tXsvVBZajDLQwunF
-    F8QiyoEHdyUgiFdaceyrCf7tQnxBr7ggtW0/+m6BSse9LB9Y3xr4UnFTnqXk
-    Pj4RU0PZP00Bod+SuIpMlJ2RdetZ1MqPT7KulkOOaJuCEOkiyhk0ttIR2u5c
-    1YSREwgp53U70sgwn2yYf+eRNET246mZ1XqevrPMHtyn]
+    ENC[PKCS7,MIIEjQYJKoZIhvcNAQcDoIIEfjCCBHoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAqbw+HyPHGbJXwL66LypUXDGOZWJOZeWCCBvs
+    seaBk8mWdQ2HZtJ5v1QOLLW6PGoqBb0L4oqocojXSPG6fYKBhsBxTpgg3hZU
+    FYlQXvzUxMJcXNgs3AEFfSnbVJ9PWanX40UbYnmadODPkvuJsiAYCQPssbiD
+    MVJxoqibQgKPif/+Xg/Aht4j6ctpzyqPtg06mA88qa79K8pudtV7/NzzbIhO
+    bDs5Q6aHDs2csoMfa8clia7CETBhfhCnVJsztz7Smz+xmrWdSTbGF3XtYGKv
+    P/3x0BbwsbWUCUUBh4hbj7HmoozqhSgdd64+LrihHH66A6Fwuvx0fzTToIxe
+    gcIWfjCCA04GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEPQLFqiDtqVqshLM
+    cC2COxWAggMghjO6mroJjXsIJx8+qi8Yc+ucpeGsH+UL2DtCsOnOtWYRdMV5
+    MJiCvzfFaEeH5g7czbuGTO2+5NrST85YfGhDGW9bKEDcP1oM/bfV/zSCceTg
+    MJcxUVYXgUkiPcYrxusZ3zT+RweiV2UARp+t2iRWb3wNBAHNWAKOjWKBF7Yg
+    s0sY26cqt97CUCLFHT9dhRzpoYWYbCXUHhKflNhRuRFzA6/qd/AuG3gZtp/v
+    x2guXSroMyCHTI2SSDOX1z3S3FWqCINluvDu2bQb8S4sxi6E6CNHSbKuHl5U
+    ZMc+Fvi/HkaDvlT4VYcY39CE/RHQ7mJd+EJSejQ0eZN00OY84y51kxtrlzMU
+    jmMlxt8vBr9Yl5MBfMV8+tTV+g+1rTdaVXNyQKnbPyZGKmmWN7OWvLrDQOOg
+    ec8zHGkoIMuCikAFYCr9+NX1rQC7kyJ0sn2CeN1aqMCZH0KIefhrj8c//7dz
+    XynNn1P4b+g43k/AhKKDWQVO/FO7xsQzCPwdvwVzeV7VhrdWicnNhVtrJ2tS
+    j//Qmju3E5rZZC1bPoNYVgcQGDSmHoaH1NmWrR02QpkCumUMIrGUybXJANyd
+    iE6scm0y6dQPJpBAK4BMUYPPZtyVZ+yesp+CwfG+72he9b4iS0BgNjIZ74Su
+    /boNP9UwnBqpX0p1CpLFQboZpNfP+jasHJDFYJKxICyYONl7/LZHKP9e+mDM
+    /nOYgGRsnkbp/NRxBJ707tyNvTXVqJUvz1qqZO/6BDqpQ+UmBYX9pMZ7bcOZ
+    jApu1lulWwvnlYEwaVTSF/WIQT8n8UvKs4xdGq6N0CJLE1r2LcB+lF6K4oW4
+    WStf2oqI0h31iVoRe/GS0gImcSMmCDVgql+uw2K9+Ww356YtwrWK7S54GdGQ
+    h/Zkgk9F38DL7YPi+/9o93TeVvu/Dtfmy9aAlrYwKKSNiWVk3iYD1XYufzeb
+    IpfFjP+8Zx1xpiezSD4bXnR/189SomScuWGmG5p2J2nJQfqhL66o/mkrmIvI
+    gxPunwOecqveQQVjQi9ifUz/DqNnj1qd2UoEx9UgkHrnJoNdyCnn9giC7eQ=]

@@ -216,7 +216,7 @@ mod 'utils',
 
 mod 'virtual',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/virtual.git',
- :ref => '1.0.54'
+ :ref => 'master'
 
 mod 'sudo',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sudo.git',
@@ -296,6 +296,10 @@ mod 'sw_ignition8',
 
 mod 'sw_ignition8_tst',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_ignition8_tst.git',
+ :ref => 'master'
+
+mod 'sw_ignition8_v2',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_ignition8_v2.git',
  :ref => 'master'
 
 mod 'awcs',
@@ -797,3 +801,8 @@ mod 'sw_apex_print',
 mod 'sw_aacp_puppet',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_aacp_puppet.git',
 :ref => 'master'
+
+mod 'sw_puppet_ansible',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_ansible.git',
+:ref => 'master'
+

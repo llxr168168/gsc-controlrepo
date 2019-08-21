@@ -65,6 +65,7 @@ samba::use_native_domain: 'yes'
 sudo::sudoers_template: 'sudoers.sharedservices'
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:webdeploy:ALL'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'

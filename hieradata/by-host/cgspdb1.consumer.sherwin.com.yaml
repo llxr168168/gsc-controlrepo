@@ -3,3 +3,6 @@ classes:
 
 
 sudo::sudoers_d_template: 'ctm700s_agent'
+
+sw_util::wrapper::hiera_user::params:
+  - ctm700s: {password: "!!", shell: "/bin/csh"}

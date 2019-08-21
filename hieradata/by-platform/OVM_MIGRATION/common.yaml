@@ -23,6 +23,7 @@ sudo::sudoers_template: sudoers.oracle_oem # Support users for Oracle
 # Default Access
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(gg-adm-dba-ops):ALL'

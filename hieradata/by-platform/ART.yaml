@@ -45,10 +45,9 @@ edi::art::art_developers:
   
 edi::art::art_developers_retire: []
  
-sudo::sudoers_template: sudoers.cgnjfdb1
-
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
