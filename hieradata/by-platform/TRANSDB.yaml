@@ -1,6 +1,6 @@
 classes:
   - profiles_unix::gsc::oracle::base
-  - sudo::sudoers_d_template: 'oracle-ta' 
+  - oracle_build::sudoers 
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
