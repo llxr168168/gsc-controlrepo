@@ -26,13 +26,11 @@ sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
 - nano.x86_64: {}
 - samba-client-libs: {}
-- samba-winbind-clients: {}
 - libarchive: {}
 - samba: {}
 - samba-common: {}
 - samba-common-libs: {}
 - samba-libs: {}
-- samba-winbind: {}
 - samba-common-tools: {}
 - samba-client: {}
 
@@ -59,7 +57,6 @@ IGNITION_SWBATCH::smb_conf: |
         realm = SW.SHERWIN.COM
         server string = Samba Server Version %v
         security = ADS
-        password server = SWADS2HQ.SW.SHERWIN.COM
         log file = /var/log/samba/log.%m
         max log size = 50
         template shell = /bin/bash
@@ -76,6 +73,7 @@ IGNITION_SWBATCH::smb_conf: |
         wide links = no
         log level = 5
         name resolve order = wins bcast host lmhosts
+        protocol = SMB2
 
   [ignition]
   comment = Ignition
