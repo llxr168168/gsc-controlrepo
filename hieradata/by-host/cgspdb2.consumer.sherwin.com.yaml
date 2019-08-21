@@ -1,6 +1,9 @@
 classes:
 - sw_tripwire
 
+tripwire::installdir: '/sw/pkg/tripwire/tripwire_8.7.3'
+tripwire::source: 'http://pulp.sherwin.com/webroot/installers/webeng/tripwire/8.7.3/te_agent_8.7.3_en_linux_amd64.tgz'
+
 sudo::sudoers_d_template: 'ctm700s_agent'
 
 sw_util::wrapper::hiera_user::params:
