@@ -1,0 +1,11 @@
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(DL_ADMIN_CGBIGDATA1):ALL'
+  - '+:(gg-cgit-pv5webadmins):ALL'
+  - '-:ALL:ALL'
