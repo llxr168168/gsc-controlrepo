@@ -683,7 +683,7 @@ mod 'sametime',
 
 mod 'sw_tripwire',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_tripwire.git',
- :ref => '1.0.2'
+ :ref => 'master'
 
 #mod 'sw_mapr',
 # :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_mapr.git',
