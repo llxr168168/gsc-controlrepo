@@ -1,0 +1,25 @@
+access_conf::access: 
+  - '+:root:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_CGATLWEB2):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:SW\sa-geamdm-bamboo:cgmdmweb3.consumer.sherwin.com cgatlweb2.sherwin.com cgatlweb1.sherwin.com cgmdmweb2.consumer.sherwin.com'
+  - '-:ALL:ALL'  
+
+
+samba::krb_template: krb5.conf.busobj
+samba::shares:
+  swbamboo:
+  - 'comment = bamboo app sw directory'
+  - 'valid users = @SW\gg-cgit-mdm-admins @SW\gg-adm-gcdunix'
+  - 'path = /swdata/apps/bamboo/sw/db'
+  - 'force user = bamboo'
+  - 'writable = yes'
+
+
+#Fix for SMB2 share issues
+samba::smb_template: 'smb.conf_SMB2.erb'
