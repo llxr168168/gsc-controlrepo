@@ -13,7 +13,7 @@ access_conf::access:
 
 samba::krb_template: krb5.conf.busobj
 samba::shares:
-  tomcat:
+  swbamboo:
   - 'comment = bamboo app sw directory'
   - 'valid users = @SW\gg-cgit-mdm-admins @SW\gg-adm-gcdunix'
   - 'path = /swdata/apps/bamboo/sw/db'
