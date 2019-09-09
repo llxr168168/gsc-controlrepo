@@ -12,3 +12,6 @@ samba::shares:
   - 'force user = jboss'
   - 'writable = yes'
 sudo::sudoers_template: sudoers.cgdiscweb
+
+#Fix for SMB2 share issues
+samba::smb_template: 'smb.conf_SMB2.erb'

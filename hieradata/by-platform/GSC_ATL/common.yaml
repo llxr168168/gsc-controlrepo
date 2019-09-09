@@ -1,2 +1,2 @@
 sw_util::wrapper::hiera_package::params:
-- unix2dos: {}  
+- unix2dos: {}

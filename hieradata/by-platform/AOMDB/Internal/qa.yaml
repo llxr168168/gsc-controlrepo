@@ -25,10 +25,11 @@ sw_util::wrapper::hiera_user::params:
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
-  - '+:oracle:LOCAL 10.140.8.34 10.148.19.17'
+  - '+:oracle:LOCAL %{::fqdn} 10.140.8.34 10.148.19.17'
   - '+:aomsftp: 10.140.8.34 10.148.19.17'
   - '+:aomapp: 10.140.8.34 10.148.19.17'
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"

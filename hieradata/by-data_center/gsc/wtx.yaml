@@ -26,6 +26,8 @@ profiles_unix::gsc::apps::utilserver::nfs_mounts:
 
 
 yum::yum_repo_file: remotesite.yum
+sw_os_update_management::redhat::yum_repo_file: remotesite.yum
+
 awcs::telnet_allow:
   - '10.10.222.0/24'
   - '10.10.226.0/23'

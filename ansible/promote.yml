@@ -1,0 +1,12 @@
+---
+- hosts: servers
+  gather_facts: false
+  become: true 
+  tasks:
+  - name: Run promotion
+    shell: /usr/local/sbin/mergecheck.sh "{{controlrepo}}" "{{branchname}}"
+    register: hello
+  
+  - debug: msg="{{ hello.stdout }}"
+
+  - debug: msg="{{ hello.stderr }}"

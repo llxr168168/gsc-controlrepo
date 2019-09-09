@@ -1,6 +1,6 @@
 ---
 yum::yum_repo_file: 'swrepo.yum'
-yum::errata_target: 2018_Q2
+yum::errata_target: 2019_Q2
 
 #### Include Classes
 classes:
@@ -33,6 +33,7 @@ resolv_conf::search: 'sherwin.com'
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'

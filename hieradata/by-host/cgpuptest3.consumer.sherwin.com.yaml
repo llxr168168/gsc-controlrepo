@@ -2,6 +2,7 @@ samba::short_domain: 'DEVSW'
 samba::fqdn_domain: 'devsw.devsherwin.com'
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(DEVSW\DL_ADMIN_%{::hostname_upcase}):ALL'

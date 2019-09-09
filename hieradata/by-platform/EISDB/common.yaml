@@ -9,12 +9,13 @@ oracle_build7::kernel::vm_nr_hugepages: 3000
 
 access_conf::access:
     - '+:root:LOCAL'
+    - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
     - '+:(sa-local):LOCAL'
     - '+:(sa-remote):ALL'
     - '+:(gg-cgit-dba-admins):ALL'
     - '+:(gg-adm-gcdunix):ALL'
     - '+:grid:LOCAL cgeisdb3a.sherwin.com cgeisdb3a-prv.sherwin.com cgeisdb3b.sherwin.com cgeisdb3b-prv.sherwin.com cgeisdb3c.sherwin.com cgeisdb3c-prv.sherwin.com cgeisdb3d.sherwin.com cgeisdb3d-prv.sherwin.com'
-    - '+:oracle:LOCAL cgeisdb3a.sherwin.com cgeisdb3a-prv.sherwin.com cgeisdb3b.sherwin.com cgeisdb3b-prv.sherwin.com cgeisdb3c.sherwin.com cgeisdb3c-prv.sherwin.com cgeisdb3d.sherwin.com cgeisdb3d-prv.sherwin.com'
+    - '+:oracle:LOCAL %{::fqdn} cgeisdb3a.sherwin.com cgeisdb3a-prv.sherwin.com cgeisdb3b.sherwin.com cgeisdb3b-prv.sherwin.com cgeisdb3c.sherwin.com cgeisdb3c-prv.sherwin.com cgeisdb3d.sherwin.com cgeisdb3d-prv.sherwin.com'
     - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
     - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
     - '-:ALL:ALL'

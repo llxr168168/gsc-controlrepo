@@ -174,9 +174,9 @@ mod 'access_conf',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/access_conf.git',
  :ref => 'master'
 
-mod 'yum',
- :git => 'git@github.sherwin.com:Corp-IT-Puppet/yum.git',
- :ref => 'puppet5'
+mod 'sw_os_update_management',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_os_update_management.git',
+ :ref => 'master'
 
 mod 'ssh',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/ssh.git',
@@ -216,7 +216,7 @@ mod 'utils',
 
 mod 'virtual',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/virtual.git',
- :ref => '1.0.54'
+ :ref => 'master'
 
 mod 'sudo',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sudo.git',
@@ -294,6 +294,14 @@ mod 'sw_ignition8',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_ignition8.git',
  :ref => 'master'
 
+mod 'sw_ignition8_tst',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_ignition8_tst.git',
+ :ref => 'master'
+
+mod 'sw_ignition8_v2',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_ignition8_v2.git',
+ :ref => 'master'
+
 mod 'awcs',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/awcs.git',
  :ref => '1.0.7'
@@ -336,7 +344,7 @@ mod 'sher_procure',
 
 mod 'pv',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/pv.git',
- :ref => '1.0.5'
+ :ref => '1.0.8'
 
 mod 'jda',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/jda.git',
@@ -675,7 +683,7 @@ mod 'sametime',
 
 mod 'sw_tripwire',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_tripwire.git',
- :ref => '1.0.2'
+ :ref => 'master'
 
 #mod 'sw_mapr',
 # :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_mapr.git',
@@ -793,3 +801,8 @@ mod 'sw_apex_print',
 mod 'sw_aacp_puppet',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_aacp_puppet.git',
 :ref => 'master'
+
+mod 'sw_puppet_ansible',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_ansible.git',
+:ref => 'master'
+

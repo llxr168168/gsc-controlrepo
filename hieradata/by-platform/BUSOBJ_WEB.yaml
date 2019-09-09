@@ -7,3 +7,6 @@ samba::shares:
   - 'force user = boweb'
   - 'writable = yes'
 sudo::sudoers_template: sudoers.busobj
+
+#Fix for SMB2 share issues
+samba::smb_template: 'smb.conf_SMB2.erb'

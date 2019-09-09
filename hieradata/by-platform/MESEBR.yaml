@@ -4,7 +4,7 @@ classes:
   - oracle_build::sudoers
   - profiles_unix::gsc::apps::apex
   
-oracle_build::tns::tns_webhost: cplnxrepo1.sherwin.com
+oracle_build::tns::tns_webhost: pulp.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/mes.tns
 oracle_build::tns::localfile:  
   - '/swpkg/oracle/product/11.2.0/db_1/network/admin/tnsnames.ora'
@@ -12,7 +12,8 @@ oracle_build::create_grid: 'false'
 
 access_conf::access:
   - '+:root:LOCAL'
-  - '+:oracle:LOCAL 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'

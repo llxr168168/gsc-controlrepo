@@ -19,7 +19,8 @@ pv::pv_developers:
 
 access_conf::access:
   - '+:root:LOCAL'
-  - '+:oracle:LOCAL 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 cgapvdb1.consumer.sherwin.com cgapvdb2.consumer.sherwin.com cgepvdb1.consumer.sherwin.com cgepvdb2.consumer.sherwin.com cggpvdb1.consumer.sherwin.com cggpvdb2.consumer.sherwin.com cgpvdb1.consumer.sherwin.com cgpvdb2.consumer.sherwin.com cgpvdb3.consumer.sherwin.com cgspvdb1.consumer.sherwin.com cgspvdb2.consumer.sherwin.com'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 cgapvdb1.consumer.sherwin.com cgapvdb2.consumer.sherwin.com cgepvdb1.consumer.sherwin.com cgepvdb2.consumer.sherwin.com cggpvdb1.consumer.sherwin.com cggpvdb2.consumer.sherwin.com cgpvdb1.consumer.sherwin.com cgpvdb2.consumer.sherwin.com cgpvdb3.consumer.sherwin.com cgspvdb1.consumer.sherwin.com cgspvdb2.consumer.sherwin.com'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
@@ -31,24 +32,34 @@ access_conf::access:
 oracle_build::kernel::vm_nr_hugepages: 1536
 
 pv::oracle::pv_oracle_auth_keys: >
-    ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
-    DQYJKoZIhvcNAQEBBQAEggEAbft2tvgap7rNBQems86JCsWdkRA6yFLVa8cn
-    QlyMJuxHeEsyEqhE/If7ukzd87w3Uc9dckT8346kSNX//Xf3Z6XxsiutxEPt
-    qbGhDgkRh1wPIQhilq/PfeyCv6EHIO2Tk6J0n5QyK3y0bB0lYl/srtzxX7bT
-    cWjpyV//bIPFXImkdctrNR11Uy0ka085nnfJNbEBKeUXaYV9nePUErz44Mhi
-    3a9L9Y84fyIq9M8sYvv2TVjbBXt0z6kNvJLcnc8Ko3GXIYCD8dy73Kk56zz4
-    wAKQxS3gWZkySAaJPaYEM2ls/M0+a09YHfDKRxokkLNQ88K95s8MyQ9iA92i
-    rakGGjCCAd4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEELbz5JOWQoXzdH8C
-    670BbeaAggGwaQ9zkXz5JQFKPYQX01wd50pb/nVQKliQbWjkxFWQh2a4rqe4
-    SpFdcTSXl5FJwlgDhRo3y9HjO1Nwa7mdRC4oDJWkEmtRPVd2kC3pXCWIXDcx
-    OL9cU7g5UmfwISOIReWDYeGkHv1eoXKymFDAoJHoHm6ghN1t3q3ZB4snqAV4
-    +zNK6W2lpSP26fbkiV84GiZZVeM73/TKbAGfXTQ4znnI5FGnO0/GkeeKP5Y+
-    0x914xMLik2Bl0SkBOOwldR5S+ouxR++c/1aacNXG8B0V0r9eZJ85Negsoey
-    KLhBfwprpta6VjOGfGeiiftO+37LbVDc58TC2cOfP85j7f53Oq4NBxt70HR/
-    arV7G7jgVu6OQ7J8empUIt4ox4mJwelxF31lLRDdU9wR1Yepf9B40MfDHaVc
-    h2w+MHyxxVJSHzMjBY5OURLKjnuX4YBhD1Th6Zt1BKtEowa/tjWXqBt5pYhU
-    tr4x3Y1Te/tdYCKjOO5LFRnsxQ4e/GSd6364Crh9lU8HUXBC3neQAR95UnLM
-    78kjSztyTaLvAu/CojQSlYOPtPLJCR0WHr15cgrnL0DQG3kA]
+    ENC[PKCS7,MIIEvQYJKoZIhvcNAQcDoIIErjCCBKoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAUUIJTs0Cxb8M+9myxwQvknqNKJtMRzaDmMjl
+    jqNFJ2jrUZoI4uXZLGt0ABjc74ThkAvUESlqBF1oxok1LwXb90BSsJMl1Sze
+    5YavbI+r4H31hoOt5GeEzuCVeBk9s9mCGHq4iJvCJ6oQUL/MTFAki33amxnB
+    5I2vOy7XxfRH/rfN0XBR2by690P5m+s6Qe3Z8Q8e18BENlVGq/a2j49rxl1M
+    bNNNljJVOn/ta4DnqxZKvYnTvA/3uGcgzvE7HmGq6FcWhwE4S3cS0OrPNHpq
+    Vh+oNoWDhRTxRl1Mi0PwBpe2202MQxjPudMHuOTPMHC1i9N8IX+77ONHNzm9
+    c4SntjCCA34GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEN8xigRc9qQUyxJb
+    YNrPaVKAggNQXYziDukp/QKYUCyTtK/wB27Xs2hjQmwTomfSkb8hV4wFfF7W
+    hndPKEE3NGtPibmcI1yTLcVVMQ/PqWNEGVp2eI97vI+Yld2ZoQNcvpwZEPMC
+    WrD16I2cibqB9XEu5Rox1t6BkovlDkC/kwc62r+QqwFoUlutCqNChMDvbcCJ
+    fUZ07PkUWETBr/Iw23KzUclNjbcoD96SKcBcX8jLgqmIyegYFMgJiaO74C3R
+    GMgYHONQWWnduqc4JyLyI8IJN6sg6bvxnhAXRZmIPTqxHiMnblqahJp0OG4J
+    /CRmlp6ew5wQfleqSA/NEQgM5+J8FMkomz23TqmLKsWnPlM7FYOO2865UAIv
+    iiof+cLIuAwi2QeXujGrFzlrqQ0+dcZ4r1KoSfLWNtvnt4jdN6CoOemPA7x7
+    ihUMYvOT3uf72bQ/XRc32PaUa6ee3h6N7LLPM+QAGH7gELpcHCjhPUz9P/gs
+    /NcO768lbeA8ND5pfSHcKWRUwi2xmw/qd+j3/bxlSkfb8GspugPQcKhWXY8v
+    RvBosKzZiDTzEEW7dsa+paNkn7zSPwT995HCZJsx6NT3mKgm34aFOGp8Cn1s
+    rLHCQ8gyvv2cHpwFNDPh6gJ4KRRe3TRs5Yq3GFz4hBSRuu9BDwOKRNn/edUP
+    rGjc9jYNpr3ARNIXxrwUFBlYcohHHl3snOydZU/537EIUzlXQfrp/uPtcOIw
+    +sh5gEWaqWrNG2RvHVd7zkUmZT43lITZrCyK+Pn7+rLiC8jwnvj87iY+kcUW
+    T0CcE4KAMHN5o48BRMB4QC+8vuOMc8t9YzO4dOUSTxsY3/iO5UkkHJXeY7l8
+    WexrxxHbERBUKX2kObeSrCa4P4bRFL8G1NimjLAh6xFEUCoLwNDYmhe8ZVE7
+    LhmaUEGxVjum2hRKHgJ/+p9OiSxfwuA0o7AnbOEPPzeiIfWA8lUQGycVwnwG
+    3bhFNrqZww4GLCI5xkKmXfHfTfXY1GfG5CyTJHdjTRUhAh8qRNQLO6SB5UYF
+    AF3ZeiZm/W2WgPMFn0mKa1ezi8LrX5bdPChBlJvisLVTBJoeyehC9VV8RiOP
+    tmwaj6YC/MTsu7Z7hfwB8dUivciubqefPXd7IWuFDmEqnMyekekiwD+f/3xC
+    p+o=]
 pv::oracle::pv_oracle_pubkey:  >
     ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAKQxJxvcqTcxzgDcd3BAXNrEA4nuGkq1m13hf

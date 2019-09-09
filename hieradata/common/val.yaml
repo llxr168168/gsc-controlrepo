@@ -4,7 +4,6 @@ classes:
   - rundeck_ssh
   - sw_util::hiera_wrapper
   - syslog
-  - yum
   - stdbuild::pam
   
 
