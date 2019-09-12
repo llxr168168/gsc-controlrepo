@@ -1,7 +1,6 @@
 classes:
 - rundeck_ssh
 - puppet5_maint
-- sw_aacp_puppet
 
 site_code: cle
 
