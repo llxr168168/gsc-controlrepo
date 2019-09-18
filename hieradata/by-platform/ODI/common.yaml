@@ -26,7 +26,6 @@ access_conf::access:
 
 sw_util::wrapper::hiera_package::params:
 - samba-client-libs: {}
-- samba-winbind-client: {}
 - libarchive: {}
 - samba: {}
 - samba-common: {}
