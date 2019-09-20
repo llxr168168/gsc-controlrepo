@@ -6,8 +6,10 @@ classes:
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
-  
-  
+  - sw_apex_print
+
+sw_apex_print::local_user: 'awcs'
+sw_apex_print::local_group: 'awcs'
   
 sw_app_status::app_status_script: 'awcs_status.sh'
 
