@@ -1,0 +1,92 @@
+classes:
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+postfix::enabled: 'true'
+
+  
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-app-etl-admin):ALL'
+  - '+:(gg-cg-wla-admins):ALL'
+  - '+:(SW\gg-app-etl-admin):ALL'
+  - '+:(SW\gg-cg-wla-admins):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-cgit-watson):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} %{::hostname} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '-:ALL:ALL'
+
+sw_util::wrapper::hiera_package::params:
+- samba-client-libs: {}
+- samba-winbind-client: {}
+- libarchive: {}
+- samba: {}
+- samba-common: {}
+- samba-common-libs: {}
+- samba-libs: {}
+- samba-winbind: {}
+- samba-common-tools: {}
+- samba-client: {}
+- compat-libcap1.x86_64: {}
+- compat-libstdc++-33.x86_64: {}
+- numactl.x86_64: {}
+- numactl-devel.x86_64: {}
+- motif-devel.x86_64: {}
+- redhat-lsb.x86_64: {}
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+
+sw_util::wrapper::hiera_file::params:
+  - /etc/samba/smb.conf: {
+  ensure: "file",
+  content: "ODI_SMB::smb_conf",
+  owner: "root", 
+  group: "root",
+  mode: "655",
+  }  
+
+
+ODI_SMB::smb_conf: |
+  # File controlled by puppet 
+
+  [global]
+        min protocol = SMB2                                                                                 
+        max protocol = SMB2                                                                                 
+        client min protocol = SMB2
+        client max protocol = SMB2
+        client ipc signing = auto
+        workgroup = SW
+        realm = SW.SHERWIN.COM
+        server string = Samba Server Version %v
+        security = ADS
+        log file = /var/log/samba/log.%m
+        max log size = 50
+        template shell = /bin/bash
+        encrypt passwords = yes
+        winbind use default domain = no
+        winbind offline logon = no
+        idmap config * : backend = hash
+        idmap config * : range = 10000-4000000000
+        map to guest = Never
+        load printers = no
+        printing = bsd
+        printcap name = /dev/null
+        restrict anonymous = 2
+        wide links = no
+        log level = 5
+        
+    odi_data:
+    - 'comment = ODI Studio Folders'
+    - 'valid users = @SW\gg-app-etl-admin,@SW\gg-adm-gcdunix,odiadm,SW\sa-etlclient,SW\sa-etlclient1'
+    - 'path = /swdata/odi_data'
+    - 'force user = odiadm'
+    - 'writable = yes'
+    - 'directory mask = 2770'
+#~ EOF
