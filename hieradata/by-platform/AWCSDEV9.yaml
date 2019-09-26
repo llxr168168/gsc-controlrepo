@@ -54,6 +54,7 @@ profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/gsc_ora_disaster_orl -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_orl'
   - '/swdata/nfs/gsc_ora_disaster_ric -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_ric'
   - '/swdata/nfs/gsc_ora_disaster_rno -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_rno'
+  - '/swdata/nfs/gsc_ora_disaster_rom -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_rom'
   - '/swdata/nfs/gsc_ora_disaster_san -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_san'
   - '/swdata/nfs/gsc_ora_disaster_van -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_van'
   - '/swdata/nfs/gsc_ora_disaster_vic -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_vic'
