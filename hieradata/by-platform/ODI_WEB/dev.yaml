@@ -1,5 +1,4 @@
-classes:
-  
+ 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 postfix::enabled: 'true'
