@@ -2,7 +2,9 @@ REPO = "gsc"
 CONTROLREPO="GSC_controlrepo"
 EMAIL_RECIPIENTS = 'matt.cengic@sherwin.com,brian.wagner@sherwin.com,jason.t.pappas@sherwin.com'
 
-node{
+ansiColor('xterm') {
+ logstash {
+  node (label: 'python && ansible'){
   try{
     stage('Checkout SCM'){
       checkout scm
@@ -25,4 +27,6 @@ node{
      sh "cd scripts; python post2teams.py 'Error deploying ${env.BUILD_TAG}' 'More info available at link below.'"
      error("Build failed: ${e}")
     }
+  }
+ }
 }

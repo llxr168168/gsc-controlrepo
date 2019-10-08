@@ -19,6 +19,13 @@ samba::shares:
   - 'path = /swdata/apps/bamboo/sw/db'
   - 'force user = bamboo'
   - 'writable = yes'
+  
+  bambnodes:
+  - 'comment = bamboo project node directory'
+  - 'valid users = @SW\gg-cgit-mdm-admins @SW\gg-adm-gcdunix'
+  - 'path = /swpkg/apps/node-v8.10.0-linux-x64/lib/node_modules'
+  - 'force user = bamboo'
+  - 'writable = yes'
 
 
 #Fix for SMB2 share issues

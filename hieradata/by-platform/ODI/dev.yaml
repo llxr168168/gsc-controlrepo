@@ -12,8 +12,10 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-app-etl-admin):ALL'
+  - '+:(gg-app-etl-devel):ALL'
   - '+:(gg-cg-wla-admins):ALL'
   - '+:(SW\gg-app-etl-admin):ALL'
+  - '+:(SW\gg-app-etl-devel):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(gg-cgit-dba-admins):ALL'
@@ -26,6 +28,7 @@ access_conf::access:
 
 sw_util::wrapper::hiera_package::params:
 - samba-client-libs: {}
+- samba-winbind-client: {}
 - libarchive: {}
 - samba: {}
 - samba-common: {}
@@ -91,3 +94,4 @@ ODI_SMB::smb_conf: |
     - 'writable = yes'
     - 'directory mask = 2770'
 #~ EOF
+
