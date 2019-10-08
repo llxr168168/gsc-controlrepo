@@ -289,7 +289,7 @@ mod 'eaton_ipp',
 mod 'ignition',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/ignition.git',
  :ref => '1.0.5'
- 
+
 mod 'sw_ignition8',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_ignition8.git',
  :ref => 'master'
@@ -806,3 +806,6 @@ mod 'sw_puppet_ansible',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_ansible.git',
 :ref => 'master'
 
+mod 'puppet_filebeat',
+:git =>'git@github.sherwin.com:SW-CORP-IT/puppet_filebeat.git',
+:ref => 'master'
