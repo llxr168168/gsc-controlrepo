@@ -1,0 +1,40 @@
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+postfix::enabled: 'true'
+
+  
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} %{::hostname} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '-:ALL:ALL'
+
+sw_util::wrapper::hiera_package::params:
+- samba-client-libs: {}
+- samba-winbind-clients: {}
+- libarchive: {}
+- samba: {}
+- samba-common: {}
+- samba-common-libs: {}
+- samba-libs: {}
+- samba-winbind: {}
+- samba-common-tools: {}
+- samba-client: {}
+- compat-libcap1.x86_64: {}
+- compat-libstdc++-33.x86_64: {}
+- numactl.x86_64: {}
+- numactl-devel.x86_64: {}
+- motif-devel.x86_64: {}
+- redhat-lsb.x86_64: {}
+
+
+
+
+
+
