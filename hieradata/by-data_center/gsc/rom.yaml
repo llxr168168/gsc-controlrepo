@@ -3,7 +3,7 @@
 classes:
   - avamar
 
-avamar::grid: 'cgavmcst.sherwin.com'
+avamar::grid: 'swavmcst.sherwin.com'
 
 #Site Specific overrides
 
