@@ -1,31 +1,30 @@
-classes:
-    - sw_ignition8_v2
-    
-## Default ignition version for regular ignnition is 7.9.9 at this time and that is set in sw_ignition8_v2 , but is overridable in by-host
-## including a template for a platform wide upgrade in version, uncomment the line below and set the version correctly 
-#sw_ignition8_v2::ign_ver: 7.9.9
+ 
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
+postfix::enabled: 'true'
+
+  
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
-  - '+:ignition:LOCAL cgwatsondr.consumer.sherwin.com'
-  - '+:zabbix:LOCAL'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
+  - '+:(gg-app-etl-admin):ALL'
+  - '+:(gg-app-etl-devel):ALL'
+  - '+:(gg-cg-wla-admins):ALL'
+  - '+:(SW\gg-app-etl-admin):ALL'
+  - '+:(SW\gg-app-etl-devel):ALL'
+  - '+:(SW\gg-cg-wla-admins):ALL'
   - '+:(gg-adm-gcdunix):ALL'
-  - '+:(gg-cgit-watson):ALL'
-  - '+:(SW\gg-adm-gcdunix):ALL' 
-  - '+:(SW\gg-cgit-watson):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
-  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} %{::hostname} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'
 
-hosts::hosts_group: ignition
-
 sw_util::wrapper::hiera_package::params:
-- jdk9u4.x86_64: {}
-- nano.x86_64: {}
 - samba-client-libs: {}
+- samba-winbind-clients: {}
 - libarchive: {}
 - samba: {}
 - samba-common: {}
@@ -34,7 +33,12 @@ sw_util::wrapper::hiera_package::params:
 - samba-winbind: {}
 - samba-common-tools: {}
 - samba-client: {}
-
+- compat-libcap1.x86_64: {}
+- compat-libstdc++-33.x86_64: {}
+- numactl.x86_64: {}
+- numactl-devel.x86_64: {}
+- motif-devel.x86_64: {}
+- redhat-lsb.x86_64: {}
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
@@ -42,17 +46,21 @@ profiles_unix::gsc::base::auth::sssd_auth: 'true'
 sw_util::wrapper::hiera_file::params:
   - /etc/samba/smb.conf: {
   ensure: "file",
-  content: "IGNITION8_TST::smb_conf",
+  content: "ODI_SMB::smb_conf",
   owner: "root", 
   group: "root",
   mode: "655",
   }  
 
 
-IGNITION8_TST::smb_conf: |
+ODI_SMB::smb_conf: |
   # File controlled by puppet 
 
   [global]
+        min protocol = SMB2                                                                                 
+        max protocol = SMB2                                                                                 
+        client min protocol = SMB2
+        client max protocol = SMB2
         client ipc signing = auto
         workgroup = SW
         realm = SW.SHERWIN.COM
@@ -73,25 +81,12 @@ IGNITION8_TST::smb_conf: |
         restrict anonymous = 2
         wide links = no
         log level = 5
-        min protocol = SMB2
         
-  [ignition]
-  comment = Ignition
-  valid users = @gg-adm-gcdunix @gg-cgit-watson @SW\gg-adm-gcdunix @SW\gg-cgit-watson
-  path = /swpkg/ignition
-  force user = ignition
-  writable = yes
-  create mask = 2770
-  directory mask = 2770
-
-  [backups]
-  comment = backups
-  valid users = @gg-adm-gcdunix @gg-cgit-watson @SW\gg-adm-gcdunix @SW\gg-cgit-watson
-  path = /swdata/ignition
-  force user = ignition
-  writable = yes
-  create mask = 2770
-  directory mask = 2770
-  #~ EOF
-
-
+    odi_data:
+    - 'comment = ODI Studio Folders'
+    - 'valid users = @SW\gg-app-etl-admin,@SW\gg-adm-gcdunix,odiadm,SW\sa-etlclient,SW\sa-etlclient1'
+    - 'path = /swdata/odi_data'
+    - 'force user = odiadm'
+    - 'writable = yes'
+    - 'directory mask = 2770'
+#~ EOF

@@ -289,7 +289,7 @@ mod 'eaton_ipp',
 mod 'ignition',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/ignition.git',
  :ref => '1.0.5'
- 
+
 mod 'sw_ignition8',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_ignition8.git',
  :ref => 'master'
@@ -304,7 +304,7 @@ mod 'sw_ignition8_v2',
 
 mod 'awcs',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/awcs.git',
- :ref => '1.0.7'
+ :ref => '1.0.8'
 
 mod 'mes',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mes.git',
@@ -804,5 +804,13 @@ mod 'sw_aacp_puppet',
 
 mod 'sw_puppet_ansible',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_ansible.git',
+:ref => 'master'
+
+mod 'puppet_filebeat',
+:git =>'git@github.sherwin.com:SW-CORP-IT/puppet_filebeat.git',
+:ref => 'master'
+
+mod 'sw_samba_fixer',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_samba_fixer.git',
 :ref => 'master'
 
