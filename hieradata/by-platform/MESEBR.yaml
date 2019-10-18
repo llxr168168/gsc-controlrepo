@@ -22,3 +22,14 @@ access_conf::access:
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
+
+tomcat_gsc::tomcat_password: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAoHrKzAh4P40Ly/yfKICuEciSPELxLHikx9rA
+    dCFQBDD1igCleNhEpzIIsXypHYVk5J9qXZOwpeIoOx/0nLKd0GUKgc/Zl/tb
+    d+CxLMXuhgpNHMzf+LHuMGy9Qj6zU30Hnk0TOeTmbskJ2Dl/UEwiUEVdbYVg
+    Xn3XTfzg8Ocxa/c5HHEwPPcfaczmXZltc6nokPb6TY69eqXkZsN5slIEzKD8
+    Tivt9WJdvqtWg3f2JVpIJNkz/KgVyI71soqdbZ5fnvUalB7bj6F8a29YVpcZ
+    Ef78HoAUZ+u9YGTlEujvG3YrLr8PqHETO4FxDD1Lev3V6gzQ67BQYZV6eORE
+    z/xcQzA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD0YMHEKOcMWE8Dze4c
+    FqNhgBCh6QgGZ0FqGZyw5G8U+foc]

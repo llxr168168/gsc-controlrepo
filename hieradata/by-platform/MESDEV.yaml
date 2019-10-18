@@ -123,7 +123,7 @@ mes::mes_developers:
 
 mes::oracle_apachectl: /swpkg/oracle/product/Middleware/Oracle_WT1/ohs/bin/.apachectl
 
-mes::tomcat_password: >
+tomcat_gsc::tomcat_password: >
     ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAoHrKzAh4P40Ly/yfKICuEciSPELxLHikx9rA
     dCFQBDD1igCleNhEpzIIsXypHYVk5J9qXZOwpeIoOx/0nLKd0GUKgc/Zl/tb
