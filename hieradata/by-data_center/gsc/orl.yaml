@@ -29,3 +29,4 @@ sw_os_update_management::redhat::yum_repo_file: remotesite.yum
 tz::region: 'America'
 tz::locality: 'New_York'
 site_code: orl
+sw_os_update_management::redhat::plugins_enabled: 'true'

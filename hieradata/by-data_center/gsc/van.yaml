@@ -32,3 +32,4 @@ awcs::telnet_allow:
 site_code: van
 tz::region: 'America'
 tz::locality: 'Los_Angeles'
+sw_os_update_management::redhat::plugins_enabled: 'true'

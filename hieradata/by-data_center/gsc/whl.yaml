@@ -21,3 +21,4 @@ profiles_unix::gsc::oracle::base::nfs_mounts:
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvewhl.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
+sw_os_update_management::redhat::plugins_enabled: 'true'

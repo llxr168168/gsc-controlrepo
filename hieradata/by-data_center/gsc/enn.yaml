@@ -33,3 +33,4 @@ awcs::telnet_allow:
 site_code: enn
 tz::region: 'America'
 tz::locality: 'Chicago'
+sw_os_update_management::redhat::plugins_enabled: 'true'
