@@ -17,3 +17,4 @@ site_code: rck
 
 tz::region: 'America'
 tz::locality: 'Chicago'
+sw_os_update_management::redhat::plugins_enabled: 'true'
