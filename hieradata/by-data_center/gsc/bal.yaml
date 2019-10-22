@@ -28,3 +28,4 @@ tz::region: 'America'
 tz::locality: 'New_York'
 site_code: bal
 sw_os_update_management::redhat::plugins_enabled: 'true'
+sw_os_update_management::yum_conf_additional: 'http_caching=none'
