@@ -22,3 +22,4 @@ site_code: mem
 tz::region: 'America'
 tz::locality: 'Chicago'
 sw_os_update_management::redhat::plugins_enabled: 'true'
+sw_os_update_management::yum_conf_additional: 'http_caching=none'
