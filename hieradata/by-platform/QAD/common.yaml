@@ -1,0 +1,19 @@
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+postfix::enabled: 'true'
+
+  
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\gg-cg-wla-admins):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-dba-admins):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} %{::hostname} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - '-:ALL:ALL'
