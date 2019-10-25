@@ -3,6 +3,7 @@ classes:
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
   - profiles_unix::gsc::apps::apex
+  - profiles_unix::gsc::apps::printing  
   
 oracle_build::tns::tns_webhost: pulp.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/mes.tns
