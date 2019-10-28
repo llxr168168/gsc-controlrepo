@@ -19,6 +19,8 @@ yum::errata_target: 2019_Q2
 
 sw_os_update_management::patching_target: CURRENT
 sw_os_update_management::redhat::yum_repo_file: 'swrepo.yum'
+sw_os_update_management::yum_conf_excludes: 'jdk* logstash* glusterfs*'
+sw_os_update_management::yum_conf_additional: ''
 
 
 # ###############
