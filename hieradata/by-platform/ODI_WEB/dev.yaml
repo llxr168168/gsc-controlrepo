@@ -1,6 +1,4 @@
-classes:
-  - profiles_unix::gsc::oracle7::asm
-
+ 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 postfix::enabled: 'true'
@@ -12,13 +10,13 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-app-etl-admin):ALL'
+  - '+:(gg-app-etl-devel):ALL'
   - '+:(gg-cg-wla-admins):ALL'
   - '+:(SW\gg-app-etl-admin):ALL'
+  - '+:(SW\gg-app-etl-devel):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
   - '+:(gg-adm-gcdunix):ALL'
-  - '+:(gg-cgit-dba-admins):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
-  - '+:(SW\gg-cgit-watson):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '+:oracle:LOCAL %{::fqdn} %{::hostname} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
@@ -26,6 +24,7 @@ access_conf::access:
 
 sw_util::wrapper::hiera_package::params:
 - samba-client-libs: {}
+- samba-winbind-client: {}
 - libarchive: {}
 - samba: {}
 - samba-common: {}
@@ -35,11 +34,11 @@ sw_util::wrapper::hiera_package::params:
 - samba-common-tools: {}
 - samba-client: {}
 - compat-libcap1.x86_64: {}
+- compat-libstdc++-33.x86_64: {}
 - numactl.x86_64: {}
 - numactl-devel.x86_64: {}
 - motif-devel.x86_64: {}
 - redhat-lsb.x86_64: {}
-- cifs-utils.x86_64: {}
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 

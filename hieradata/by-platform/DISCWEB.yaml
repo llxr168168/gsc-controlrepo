@@ -1,13 +1,13 @@
 samba::shares:
   jboss:
   - 'comment = Jboss6'
-  - 'valid users = SW\jtp353 SW\bbw82c SW\ada76c SW\zxw628'
+  - 'valid users = SW\jtp353 SW\bbw82c SW\ada76c SW\zxw628 SW\rjl702'
   - 'path = /swdata/jboss6'
   - 'force user = jboss'
   - 'writable = yes'
   repository:
   - 'comment = Maven Repo'
-  - 'valid users = SW\jtp353 SW\bbw82c SW\ada76c SW\zxw628'
+  - 'valid users = SW\jtp353 SW\bbw82c SW\ada76c SW\zxw628 SW\rjl702'
   - 'path = /swdata/deploy/repository'
   - 'force user = jboss'
   - 'writable = yes'
