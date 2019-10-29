@@ -677,10 +677,6 @@ mod 'webcentersites',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/webcentersites.git',
  :ref => '0.0.3'
 
-mod 'sametime',
- :git => 'git@github.sherwin.com:Corp-IT-Puppet/sametime.git',
- :ref => '0.0.2'
-
 mod 'sw_tripwire',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_tripwire.git',
  :ref => 'master'
