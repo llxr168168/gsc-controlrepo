@@ -5,6 +5,7 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-dba-admins):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
   - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
   - '+:oracle:LOCAL cgawcsazpoc.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
