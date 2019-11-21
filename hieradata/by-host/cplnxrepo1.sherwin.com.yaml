@@ -1,5 +1,6 @@
-#classes:
+classes:
 #  - sw_oracle_client
+- sw_splunk 
 
 samba::shares:
   installers_gsc:
