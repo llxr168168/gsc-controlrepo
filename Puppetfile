@@ -802,6 +802,10 @@ mod 'sw_puppet_ansible',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_ansible.git',
 :ref => 'master'
 
+mod 'mq_p2p_client',
+ :git => 'git@github.sherwin.com:Corp-IT-Puppet/mq_p2p_client.git',
+ :ref => 'master'
+
 mod 'puppet_filebeat',
 :git =>'git@github.sherwin.com:SW-CORP-IT/puppet_filebeat.git',
 :ref => 'master'
@@ -809,4 +813,3 @@ mod 'puppet_filebeat',
 mod 'sw_samba_fixer',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_samba_fixer.git',
 :ref => 'master'
-
