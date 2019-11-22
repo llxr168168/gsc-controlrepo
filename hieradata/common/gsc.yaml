@@ -7,18 +7,18 @@ classes:
   - sw_util::hiera_wrapper
   - puppet5_maint
   - stdbuild::pam
-  - sw_aacp_puppet
+  - sw_samba_fixer
 
 
 #### Defaults
 zabbix::zabbixserver: 'zabbix.consumer.sherwin.com,cgzbxproxy1.consumer.sherwin.com,cgzbxproxy2.consumer.sherwin.com,cgmgt05.sherwin.com, cgzbxproxy3.consumer.sherwin.com, cgzbxproxy1d.consumer.sherwin.com, zabbixdev.consumer.sherwin.com'
-ntp::servers: 
+ntp::servers:
   - 'time.sherwin.com'
-  
+
 resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
-  
+
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
@@ -29,8 +29,8 @@ access_conf::access:
   - '+:(gg-adm-gcdunix):ALL'
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
-  - '-:ALL:ALL'  
-  
+  - '-:ALL:ALL'
+
 samba::short_domain: 'SW'
 samba::fqdn_domain: 'sw.sherwin.com'
 

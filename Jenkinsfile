@@ -1,40 +1,32 @@
 REPO = "gsc"
-REPOFULLNAME = "GSC_Controlrepo"
+CONTROLREPO="GSC_controlrepo"
 EMAIL_RECIPIENTS = 'matt.cengic@sherwin.com,brian.wagner@sherwin.com,jason.t.pappas@sherwin.com'
 
-
-SERVER = "cpopupmasp01"
-SSH_OPTS = "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no webdeploy@$SERVER"
-
-node{
+ansiColor('xterm') {
+ logstash {
+  node (label: 'python && ansible'){
   try{
     stage('Checkout SCM'){
       checkout scm
     }
-    stage ('Run r10k script'){
-        def output = sh returnStdout: true, script: "${SSH_OPTS} sudo /usr/local/sbin/r10kdocker.sh ${REPO}_${env.BRANCH_NAME}"
-        println output
+    stage ('Run r10k via ansible'){
+      withCredentials([file(credentialsId: 'sa_ansible_ssh_key', variable: 'ANSIBLEKEY')]) {
+        sh "cd ansible/; ansible-playbook -u sa-ansible --private-key='${ANSIBLEKEY}' -e 'r10kenv=${REPO}_${env.BRANCH_NAME}' -i inventory.ini runr10k.yml"
+      }
     }
-    stage ('Run merge script '){ 
-        def output = sh returnStdout: true, script: "${SSH_OPTS} sudo /usr/local/sbin/mergecheck.sh ${REPOFULLNAME} ${env.BRANCH_NAME}" 
-        println output 
-    } 
-   stage ('Email success'){
-     emailext (
-       subject: "GSC_CONTROLREPO JENKINS JOB SUCCEEDED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-       body: """SUCCESS: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]  \n\nFeel free to filter me if you don't want to see successes. Check console output at: ${env.BUILD_URL}console """,
-       recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-       to: EMAIL_RECIPIENTS
-     )
+    stage ('Run merge via ansible'){
+      withCredentials([file(credentialsId: 'sa_ansible_ssh_key', variable: 'ANSIBLEKEY')]) {
+        sh "cd ansible/; ansible-playbook -u sa-ansible --private-key='${ANSIBLEKEY}' -e 'controlrepo=${CONTROLREPO} branchname=${env.BRANCH_NAME}' -i inventory.ini promote.yml"
+      }
+    }
+   stage ('Teams success'){
+        sh "cd scripts; python post2teams.py 'Success deploying ${env.BUILD_TAG}' 'More info available at link below.'"
     }
    }
    catch (Exception e){
-     emailext ( 
-       subject: "GSC_CONTROLREPO JENKINS JOB FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-       body: """FAILED: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]: ${e}.   \n\nCheck console output at: ${env.BUILD_URL}console   """,
-       recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-       to: EMAIL_RECIPIENTS
-     )
+     sh "cd scripts; python post2teams.py 'Error deploying ${env.BUILD_TAG}' 'More info available at link below.'"
      error("Build failed: ${e}")
     }
+  }
+ }
 }

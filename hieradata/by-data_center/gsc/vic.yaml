@@ -33,3 +33,5 @@ awcs::telnet_allow:
 site_code: vic
 tz::region: 'America'
 tz::locality: 'Los_Angeles'
+sw_os_update_management::redhat::plugins_enabled: 'true'
+sw_os_update_management::yum_conf_additional: 'http_caching=none'

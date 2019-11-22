@@ -1,5 +1,6 @@
 access_conf::access:
   - '+:root:LOCAL 10.148.16.105 10.140.16.27 10.140.16.28'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:weblogic:ALL'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'

@@ -7,6 +7,8 @@ classes:
   - sw_former_admin_cleaner
   - sw_os_update_management
   - sw_puppet_ansible
+  - sw_aacp_puppet
+
 
 resolv_conf::nameserver:
   - '10.20.103.6'
@@ -17,8 +19,10 @@ yum::errata_target: 2019_Q2
 
 sw_os_update_management::patching_target: CURRENT
 sw_os_update_management::redhat::yum_repo_file: 'swrepo.yum'
+sw_os_update_management::yum_conf_excludes: 'jdk* logstash* glusterfs*'
+sw_os_update_management::yum_conf_additional: ''
 
-  
+
 # ###############
 # Tripwire settings.
 tripwire::host: 'cptrip2hq.sw.sherwin.com'
@@ -42,7 +46,7 @@ sudo::sudoers_d_template: 'zabbix_appstatus'
 # Splunk forwarder configuration.
 sw_splunk::agent::uf_deployment_srv_uri: 'slogmgt01.sherwin.com:8089'
 
-access_conf::qualys_ips: '10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181 10.240.6.27 10.20.101.97 10.140.5.70 10.140.5.71 10.140.5.72 10.140.5.73 10.140.5.74 10.140.5.75'  
+access_conf::qualys_ips: '10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181 10.240.6.27 10.20.101.97 10.140.5.70 10.140.5.71 10.140.5.72 10.140.5.73 10.140.5.74 10.140.5.75'
 access_conf::cyberark_ips: '10.240.29.55 10.148.41.34 10.140.41.49'
 
 
@@ -73,7 +77,7 @@ sw_util::wrapper::hiera_package::params::defaults:
   ensure: present
 
 sw_util::wrapper::hiera_schedule::params::defaults:
-  name: hiera_default_name 
+  name: hiera_default_name
 
 sw_util::wrapper::hiera_service::params::defaults:
   ensure: running
@@ -87,7 +91,7 @@ sw_util::wrapper::hiera_user::params::defaults:
 
 
 ##################################################################
-# Puppet Device Hieradata Section - Since "puppet device" does not 
+# Puppet Device Hieradata Section - Since "puppet device" does not
 # allow setting custom facts like "puppet agent" does, device
 # facts need to be included in the common.yaml or the host specific.
 ##################################################################

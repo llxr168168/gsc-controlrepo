@@ -25,3 +25,5 @@ sw_os_update_management::redhat::yum_repo_file: international.yum
 tz::region: 'Europe'
 tz::locality: 'Budapest'
 site_code: ebel
+sw_os_update_management::redhat::plugins_enabled: 'true'
+sw_os_update_management::yum_conf_additional: 'http_caching=none'

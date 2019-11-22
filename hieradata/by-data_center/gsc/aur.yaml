@@ -8,7 +8,7 @@ yum::plugins_enabled: 'true'
 
 #Enable Avamar for all VMs at this site
 avamar::disable: 'false'
-avamar::grid: 'cgavmmst.sherwin.com'
+avamar::grid: 'swavmmst.sherwin.com'
 
 avamar::disable: 'true'
 resolv_conf::nameserver:
@@ -33,3 +33,5 @@ awcs::telnet_allow:
 tz::region: 'America'
 tz::locality: 'Boise'
 site_code: aur
+sw_os_update_management::redhat::plugins_enabled: 'true'
+sw_os_update_management::yum_conf_additional: 'http_caching=none'

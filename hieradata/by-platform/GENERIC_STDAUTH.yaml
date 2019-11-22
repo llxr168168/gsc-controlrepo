@@ -1,6 +1,8 @@
 profiles_unix::gsc::base::auth::use_std_accounts: 'yes'
 access_conf::access:
-  - '-:root:except LOCAL'
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '-:(sa-local):except LOCAL'
-  - '+:SW\sa-qualys-linux:10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181 10.240.6.27 10.20.101.97' 
-  
+  - '+:SW\sa-qualys-linux:10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181 10.240.6.27 10.20.101.97'
+  - '-:ALL:ALL'
+

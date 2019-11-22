@@ -5,7 +5,7 @@ classes:
 sudo::sudoers_d_template: 'ctm_server'
 
 sw_util::wrapper::hiera_user::params:
-  - ctmuser: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/csh"}
+  - ctmuser: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/csh", password: "!!"}
  
   
 sw_util::wrapper::hiera_mount::params:

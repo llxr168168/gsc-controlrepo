@@ -1,5 +1,7 @@
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
+sw_app_status::app_status_script: 'itop_status.sh'
+
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
