@@ -803,7 +803,7 @@ mod 'sw_puppet_ansible',
 :ref => 'master'
 
 mod 'mq_p2p_client',
- :git => 'git@github.sherwin.com:Corp-IT-Puppet/mq_p2p_client.git',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/mq_p2p_client.git',
  :ref => 'master'
 
 mod 'puppet_filebeat',
