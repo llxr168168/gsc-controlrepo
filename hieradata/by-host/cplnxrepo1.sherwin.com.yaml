@@ -1,6 +1,7 @@
 classes:
 #  - sw_oracle_client
 - sw_splunk 
+- mq_p2p_client
 
 samba::shares:
   installers_gsc:
