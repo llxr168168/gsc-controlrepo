@@ -1,12 +1,14 @@
 classes:
   - profiles_unix::gsc::apps::mes_plant
   - profiles_unix::gsc::apps::apex
-  - profiles_unix::gsc::apps::mqclient
+  #- profiles_unix::gsc::apps::mqclient
+  - mq_p2p_client
   - profiles_unix::gsc::apps::printing
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
-
+  
+mq_p2p_client::account_lock_status: 'true'  
 
 oracle_build::create_grid: 'false'
 sw_app_status::app_status_script: 'mes_status.sh'
