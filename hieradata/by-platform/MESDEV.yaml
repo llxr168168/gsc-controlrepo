@@ -2,11 +2,12 @@ classes:
   - profiles_unix::gsc::apps::mes_plant
   - profiles_unix::gsc::apps::apex
   #- profiles_unix::gsc::apps::mqclient
-  - SW-CORP-IT/mq_p2p_client
+  - mq_p2p_client
   - profiles_unix::gsc::apps::printing
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
+
 oracle_build::create_grid: 'false'
 oracle_build::eunfs_mount_dirs:
   - '/swdata/nfs/oraremote_bell_sheff'
