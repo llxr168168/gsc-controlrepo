@@ -12,7 +12,9 @@ oracle_build::eunfs_mount_dirs:
   - '/swdata/nfs/oraremote_bell_sheff'
   - '/swdata/nfs/oraremote_pianoro'
   - '/swdata/nfs/oraremote_poland'
-  
+
+mq_p2p_client::account_lock_status: 'true'
+
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
