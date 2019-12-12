@@ -11,6 +11,7 @@ access_conf::access:
   - '+:(gg-app-etl-admin):ALL'
   - '+:(gg-cg-wla-admins):ALL'
   - '+:(SW\gg-app-etl-admin):ALL'
+  - '+:(SW\gg-app-etl-devel):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
