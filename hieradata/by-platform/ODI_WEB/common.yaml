@@ -9,6 +9,7 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-app-etl-admin):ALL'
+  - '+:(gg-app-etl-devel):ALL'
   - '+:(gg-cg-wla-admins):ALL'
   - '+:(SW\gg-app-etl-admin):ALL'
   - '+:(SW\gg-app-etl-devel):ALL'
