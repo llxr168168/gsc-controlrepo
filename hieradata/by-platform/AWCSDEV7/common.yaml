@@ -1,6 +1,6 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
-  - profiles_unix::gsc::apps::awcs_whs
+  - profiles_unix::gsc::apps::awcs_whs7
   - profiles_unix::gsc::apps::apex9
   - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::printing
@@ -34,7 +34,7 @@ sw_apex_print::local_group: 'awcs'
 
 sw_app_status::app_status_script: 'awcs_dev_status.sh'
 
-profiles_unix::gsc::oracle::base::nfs_mounts:
+profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
   - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafgps01rw-nfs01.sherwin.com:/CP_oramedia/oracle'
@@ -110,7 +110,7 @@ samba::shares:
     - 'writable = no'
     - 'force user = root'
     
-awcs::awcs_developers:
+awcs7::awcs_developers:
   - pxa137
   - egb01l
   - wkd846
@@ -131,7 +131,7 @@ awcs::awcs_developers:
   - tjp226
   
 
-awcs::awcs_developers_retire:
+awcs7::awcs_developers_retire:
   - mxl974
   - wem18c
   - mew661
@@ -142,11 +142,11 @@ awcs::awcs_developers_retire:
   - jxm425
   - jxk678
   
-awcs::oracle_apachectl: /swpkg/oracle/product/Middleware/Oracle_WT1/ohs/bin/.apachectl
+awcs7::oracle_apachectl: /swpkg/oracle/product/Middleware/Oracle_WT1/ohs/bin/.apachectl
 
 tomcat9_gsc::tomcat_password:  ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEAncQkIJxM5XkMx53/xY+fpy2TOZCXRE724KjlJAg4rusSEY+S/sQqgdTYmCdVkct6NFu7Mxo5P2d4GVPm6rUsGUA6PL9vu24QkN9IcGAj6nJmuxdoRufzXqOvdgaxaPx9iTtUm6t6jSkecWIxByKoRpQsANmgV6B1aMQ3sSmbIBDPzDBbxoVsyQEuCzu62lKqsmayLm44vfwQ25Kc43JKUhDdIGW/jRpFS+e2yMlR2TEE9vqgcGHCApLyvBKpI10SttrErpMQjXGSvznArRrIARjLJDuQSJkECiZGhLO0Q8qa/8BNljf7L54cFHvRWrWvoFjLBjGBMHQnN6m+w1uz9TA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBeHpRw0unvtAXbvzIIIpR2gBAgRb/nHo8YnN//dWfcO45O]
 
-awcs::awcs_authorized_keys: >
+awcs7::awcs_authorized_keys: >
     ENC[PKCS7,MIIEnQYJKoZIhvcNAQcDoIIEjjCCBIoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAQE84CZ6OQOsabM9mPy2ol2lnP0otoR7ya2E0
     eZQvjJ4Wo7rrOBdx/7gqbzjz5iq0Odykynuoi1Sy0wW6mmr8sspsKCS2uRAY
@@ -174,7 +174,7 @@ awcs::awcs_authorized_keys: >
     1+M04QvM/qNlI4kupADSJgg+U/0GbmRmn8cMaoifULghy0lRLfrBoyk0Y3t0
     /GgrwwlvfiH+mhouMZYkdoyfbuHsqeJXNJpqEYlSjiacbxIl8nHMAVG/aNyF
     lWyCj6uzqQ7G0wU00cDl]
-awcs::awcs_id_rsa: >
+awcs7::awcs_id_rsa: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAHwOpCt9IgEyVm06cEbdUhS4vK7hCHXFFPk8U
     R3MF9Ul/g3FjfNKpBRzb10jV6jZaIW3Z3aQyBWS/sFxDkiswH0oN7o7a/5tq
@@ -221,7 +221,7 @@ awcs::awcs_id_rsa: >
     odbWc5UM1Z0LclcckizteMXinMurC+GPJl4ioLkCvmix9tG1/mhxa+3qGOvu
     5W5Q96/NY/eXoSFl727j+0IwTEnVZmHmnYC0WexgCNR2c04Q9tzoZlCKPxgt
     4CyqR2WsgPj3tfuBqija4c+bTs6kg6DH]
-awcs::awcs_id_rsa_pub: >
+awcs7::awcs_id_rsa_pub: >
     ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEABCCZXQli3zwZBPhMIkcfs6wRztLA9nlISUsg
     8NDWZbUd/4aK5BI4IOTKDAVCJYFC/3IHG99rp0ZmrbcXAoS0qOcKX1/xQbS/
@@ -240,7 +240,7 @@ awcs::awcs_id_rsa_pub: >
     jK7jccfqizjAkN9QAbXdfmFJkxqO378PWvz/JG7r27azoiXGe8jXpg7rffMg
     adRkbhN1Xv7N3994SkNseAAssd83yMpNbXZDO6U4nOLjuSM0qP8VmRQrjuWB
     d/6DjtqVlejJgFfCAOhd8qIsIu/nP9Nbf0sKp+/xfwrR+PST]
-awcs::tc_id_rsa_pub: >
+awcs7::tc_id_rsa_pub: >
     ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAY+3lt+lYDJ7U54tgc1B0YnrdJCbHuFSRQgYV
     S9oIYuu3M5e+T0L7GQo0eViKOCOE47GLERNv4LrIjCMBchoIJCq3VHbf5k3H
@@ -259,7 +259,7 @@ awcs::tc_id_rsa_pub: >
     +uah1laXvoPVBNalcXq0Z44e9COxDgclE8wn5TdlAZNY+zFY1k7gYwqBvR4Z
     6j1Ze/7LKqcFdSGEsgSUATW5i+xiC7vrRq/1NAzfDQk6dK9bTYkD+tDU9W2L
     wBJT5A==]
-awcs::tc_id_rsa: >
+awcs7::tc_id_rsa: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAWs2mojPMI5LujFgdYMcv3FnnLt24Zgxlb3Hq
     k26CrjwLHj0dQaYjhxyx9yfAKLtq4HIRMfe14t74rDbDX0S668dqFCQgdljG
@@ -306,7 +306,7 @@ awcs::tc_id_rsa: >
     zivW+C+crQwyI+gTqGXMYqfCgsLB+jOQwR0etxUbXYJnCgHk7yKdlJjMpOcd
     u3T6vafoX7mNVO5ze5LRN20Zg74UUVb6EIRtO6NSFrhh9fWIzAhPJ07ymRpz
     RHaNoP5kk5uaaGHW+Laa2WsDEjG077ba]
-awcs::tc_authorized_keys: >
+awcs7::tc_authorized_keys: >
     ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEApnUyS+HDMf9IYFvwM7Biv3vNZtHMTXGmDEZy
     qQLHY4jvSwOnBY5Q3zpB8r8qMkmuh0KchWO8ciEeJh/9kzw16oG3I+mwuXIq
