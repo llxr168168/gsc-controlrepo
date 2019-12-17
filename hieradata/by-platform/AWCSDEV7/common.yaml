@@ -4,8 +4,8 @@ classes:
   - profiles_unix::gsc::apps::apex9
   - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::printing
-  - profiles_unix::gsc::oracle::base
-  - profiles_unix::gsc::oracle::tns
+  - profiles_unix::gsc::oracle7::base
+  - profiles_unix::gsc::oracle7::tns
   - oracle_build::sudoers
   - tanium_client
   - stdbuild::pam
