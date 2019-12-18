@@ -2,3 +2,5 @@
 resolv_conf::nameserver:
   - '10.21.46.20'
   - '10.21.46.25'
+
+avamar::grid: 'swavmvrwval01.valspar.local'
