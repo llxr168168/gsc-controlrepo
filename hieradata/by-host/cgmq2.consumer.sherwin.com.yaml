@@ -4,7 +4,7 @@ access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:SupHubMDMq:LOCAL mdmerpq1.sherwin.com mdmerpq2.sherwin.com mdmerpn1x.sherwin.com mdmerpn2x.sherwin.com mdmerpp1.sherwin.com mdmerpp2.sherwin.com mdmerpp1x.sherwin.com mdmextp2.sherwin.com mdmerpd1.sherwin.com mdmerpd2.sherwin.com'
-  - '+:onbemea:LOCAL euerpprj1.sherwin.com euerpprj2.sherwin.com euerpq1.sherwin.com euerpq2.sherwin.com euerpd1.sherwin.com euerpd2.sherwin.com'
+  - '+:onbemea:LOCAL 10.140.68.100 10.140.68.49 euerpprj1.sherwin.com euerpprj2.sherwin.com euerpq1.sherwin.com euerpq2.sherwin.com euerpd1.sherwin.com euerpd2.sherwin.com'
   - '+:onbswerp:LOCAL swerpd1.sherwin.com swerpd2.sherwin.com swerpq1.sherwin.com swerpq2.sherwin.com swerpq3.sherwin.com swerpq4.sherwin.com'
   - '+:obieeuser:e-corp-obiee1-devint.sherwin.com e-corp-obiee2-devint.sherwin.com e-corp-obiee1-qaint.sherwin.com e-corp-obiee2-qaint.sherwin.com'
   - '+:mms:LOCAL swerpq1.sherwin.com swerpq2.sherwin.com swerpprj1.sherwin.com swerpprj2.sherwin.com swerpd1.sherwin.com swerpd2.sherwin.com'
