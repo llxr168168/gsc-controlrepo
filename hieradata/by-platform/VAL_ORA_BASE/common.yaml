@@ -7,3 +7,18 @@ autofs::make_default_dir: false
 
 #Enable Avamar client backups on all Valspar Oracle database
 avamar::disable: 'false'
+
+
+
+sw_util::wrapper::hiera_file::params:
+  - /opt/puppetlabs/facter/facts.d/custom_patch_task.txt: {
+  ensure: "file",
+  content: "VAL_ORA_BASE::custom_patch_task",
+  owner: "root",
+  group: "root",
+  mode: "644",
+  }
+  
+VAL_ORA_BASE::custom_patch_task: |
+  custom_admin_ansible_prestep_role=val_oracle
+  custom_admin_ansible_poststep_role=val_oracle
