@@ -5,7 +5,7 @@ postfix::enabled: 'true'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 
-oracle_build7::kernel::vm_nr_hugepages: 3000
+oracle_build7::kernel::vm_nr_hugepages: 1547
 
 access_conf::access:
     - '+:root:LOCAL'
