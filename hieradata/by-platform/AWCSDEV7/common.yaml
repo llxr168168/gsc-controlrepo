@@ -1,16 +1,16 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
-  - profiles_unix::gsc::apps::awcs_whs7
   - profiles_unix::gsc::apps::apex9
   - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::printing
   - profiles_unix::gsc::oracle7::base
   - profiles_unix::gsc::oracle7::tns
-  - oracle_build::sudoers
+  - oracle_build7::sudoers
   - tanium_client
   - stdbuild::pam
   - sw_apex_print
   - mq_p2p_client::client
+  - awcs7
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
