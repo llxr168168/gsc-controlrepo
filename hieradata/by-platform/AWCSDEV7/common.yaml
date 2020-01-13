@@ -1,7 +1,6 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
   - profiles_unix::gsc::apps::apex9
-  - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::printing
   - profiles_unix::gsc::oracle7::base
   - profiles_unix::gsc::oracle7::tns
