@@ -1,29 +1,28 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
-  - profiles_unix::gsc::apps::awcs_whs7
   - profiles_unix::gsc::apps::apex9
-  - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::printing
   - profiles_unix::gsc::oracle7::base
   - profiles_unix::gsc::oracle7::tns
-  - oracle_build::sudoers
+  - oracle_build7::sudoers
   - tanium_client
   - stdbuild::pam
   - sw_apex_print
+  - mq_p2p_client::client
+  - awcs7
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
-oracle_build::kernel::vm_nr_hugepages: 2304
+oracle_build7::kernel::vm_nr_hugepages: 2304
 
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:awcs:LOCAL cgawcsaur.consumer.sherwin.com cgawcsdb0.consumer.sherwin.com cgawcsdb1.consumer.sherwin.com cgawcsdb2.consumer.sherwin.com cgawcsdb3.consumer.sherwin.com cgawcsdb4.consumer.sherwin.com cgawcsdb5.consumer.sherwin.com cgawcsdb6.consumer.sherwin.com cgawcsdb7.consumer.sherwin.com cgawcsdb8.consumer.sherwin.com cgawcsdb9.sherwin.com cgawcsdb10.sherwin.com cgawcsdb11.sherwin.com cgawcsdb12.sherwin.com cgawcsdb13.sherwin.com buford.sherwin.com effing.sherwin.com fred.sherwin.com reno.sherwin.com winter.sherwin.com awcsdev.sherwin.com awcstrac.consumer.sherwin.com cgbufawcs.consumer.sherwin.com cgeffawcs.consumer.sherwin.com cgespawcs.consumer.sherwin.com cgfrdawcs.consumer.sherwin.com cgrnoawcs.consumer.sherwin.com cgwntawcs.consumer.sherwin.com cgptrawcs.consumer.sherwin.com cgaurawcs.consumer.sherwin.com cgmrvawcs.consumer.sherwin.com cgennawcs.consumer.sherwin.com cgfloawcs.consumer.sherwin.com cgricawcs.consumer.sherwin.com cgjamawcs.consumer.sherwin.com cgmatawcs.sherwin.com cgmssawcs.sherwin.com cgpdmawcs.sherwin.com cgrckawcs.sherwin.com cgromawcs.sherwin.com cgsacawcs.sherwin.com cgstaawcs.sherwin.com cgwhlawcs.sherwin.com cgawcsrom.sherwin.com cgdomawcs.consumer.sherwin.com cgesoawcs.consumer.sherwin.com cgvanawcs.consumer.sherwin.com cgwtxawcs.consumer.sherwin.com cgawcsbuf.consumer.sherwin.com cgawcseff.consumer.sherwin.com cgawcseso.consumer.sherwin.com cgawcsesp.consumer.sherwin.com cgawcsfrd.consumer.sherwin.com cgawcsmrv.consumer.sherwin.com cgawcsrno.consumer.sherwin.com cgawcsric.consumer.sherwin.com cgawcswtx.consumer.sherwin.com cgawcswnt.consumer.sherwin.com cgmslawcs.sherwin.com'
   - '+:(sa-local):LOCAL'
-  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
   - '+:(sa-remote):ALL'
-  - '+:(gg-adm-gcdunix):ALL'
-  - '+:(gg-cgit-dba-admins):ALL'  
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-cgit-dba-admins):ALL'  
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
@@ -82,14 +81,13 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/gsc_ora_disaster_leb -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_leb'
 
 
-oracle_build::tns::tns_webhost: pulp.sherwin.com
-oracle_build::tns::tns_webhost_file: /webroot/oracle/awcsdev.tns
-oracle_build::tns::localfile: 
+oracle_build7::tns::tns_webhost: pulp.sherwin.com
+oracle_build7::tns::tns_webhost_file: /webroot/oracle/awcsdev.tns
+oracle_build7::tns::localfile: 
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
   
   
-oracle_build::oracleshared_path: '/swdata/nfs/oraremote'
-oracle_build::create_grid: 'false'
+oracle_build7::oracleshared_path: '/swdata/nfs/oraremote'
 
 postfix::enabled: 'true'
 samba::shares:
@@ -109,41 +107,7 @@ samba::shares:
     - 'public = no'
     - 'writable = no'
     - 'force user = root'
-    
-awcs7::awcs_developers:
-  - pxa137
-  - egb01l
-  - wkd846
-  - cxf665
-  - zrh535
-  - jnk865
-  - axm768
-  - rbp01l
-  - pnv01l
-  - dmb01l
-  - bdl01l
-  - jaw19l
-  - jah62c
-  - jvs87c
-  - jyp787
-  - apt135
-  - ecs348	
-  - tjp226
   
-
-awcs7::awcs_developers_retire:
-  - mxl974
-  - wem18c
-  - mew661
-  - mwl01s
-  - jav01l
-  - jsh56c
-  - jmv488
-  - jxm425
-  - jxk678
-  
-awcs7::oracle_apachectl: /swpkg/oracle/product/Middleware/Oracle_WT1/ohs/bin/.apachectl
-
 tomcat9_gsc::tomcat_password:  ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEAncQkIJxM5XkMx53/xY+fpy2TOZCXRE724KjlJAg4rusSEY+S/sQqgdTYmCdVkct6NFu7Mxo5P2d4GVPm6rUsGUA6PL9vu24QkN9IcGAj6nJmuxdoRufzXqOvdgaxaPx9iTtUm6t6jSkecWIxByKoRpQsANmgV6B1aMQ3sSmbIBDPzDBbxoVsyQEuCzu62lKqsmayLm44vfwQ25Kc43JKUhDdIGW/jRpFS+e2yMlR2TEE9vqgcGHCApLyvBKpI10SttrErpMQjXGSvznArRrIARjLJDuQSJkECiZGhLO0Q8qa/8BNljf7L54cFHvRWrWvoFjLBjGBMHQnN6m+w1uz9TA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBeHpRw0unvtAXbvzIIIpR2gBAgRb/nHo8YnN//dWfcO45O]
 
 awcs7::awcs_authorized_keys: >
@@ -240,88 +204,3 @@ awcs7::awcs_id_rsa_pub: >
     jK7jccfqizjAkN9QAbXdfmFJkxqO378PWvz/JG7r27azoiXGe8jXpg7rffMg
     adRkbhN1Xv7N3994SkNseAAssd83yMpNbXZDO6U4nOLjuSM0qP8VmRQrjuWB
     d/6DjtqVlejJgFfCAOhd8qIsIu/nP9Nbf0sKp+/xfwrR+PST]
-awcs7::tc_id_rsa_pub: >
-    ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQAw
-    DQYJKoZIhvcNAQEBBQAEggEAY+3lt+lYDJ7U54tgc1B0YnrdJCbHuFSRQgYV
-    S9oIYuu3M5e+T0L7GQo0eViKOCOE47GLERNv4LrIjCMBchoIJCq3VHbf5k3H
-    vmDmuRpiqHU8vUk0PIlOH4JfZPn/6+qf/Lj8gM5UqOqc4rfwgfpTYoaeg6C3
-    2qvj2lo7a3ILJ5pykmQWg6LyZ4j5ZcDSKaXj5wOBCdoqO0w6mNd9l+olhQ0D
-    VD9OA/iS+u2yAlZ9mJu2aI6F1heI9VhgghpnoN3tNW9eOADi+7rI/Osz7S73
-    XIqf+KuuQLdEwdfWqSGEtVw6RargWkqcIknieqN6IU4AXvt/rZlInRR3yoeB
-    ayzlqTCCAb4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEOB2bUenrxF8eRVG
-    iNCAmz+AggGQKGYKpWQnRkfW7NDM1QQuezFUNl+Me5r95PUj1tJipkluwcTn
-    38fQclMCOLRarKuoA0KnXYHXg2dzQBYN9zNGSoOpKQcSyo7emkfLtgVjCIGO
-    4w7oVRzVMcU5Ui2XuedhDXlJXyABHxufiUYqc6eIvhJwA1UcS09fpQaU+7dl
-    SWwH4CYG+8JkpvUL2eVGz4aJ2xRXGqanc32kYDWqztyRX+51dQRr6YAaMbhv
-    XSofVZQ71ifUpmVpBFFErNeeT+MBEB5T237A/KceivtcdGj3obkbGsFKr2nn
-    SaNB4Tj0JH5jwjmux/aGDY9YG4+9QSDVu8YqphdyxZkZGfKGgJ3540IVs5oq
-    uPpzsDpUFwIuvmFhBeSUg+KAsVNmBMlPp5u6GgxRAihQP79aDL9vg0ahv9O6
-    +uah1laXvoPVBNalcXq0Z44e9COxDgclE8wn5TdlAZNY+zFY1k7gYwqBvR4Z
-    6j1Ze/7LKqcFdSGEsgSUATW5i+xiC7vrRq/1NAzfDQk6dK9bTYkD+tDU9W2L
-    wBJT5A==]
-awcs7::tc_id_rsa: >
-    ENC[PKCS7,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
-    RHaNoP5kk5uaaGHW+Laa2WsDEjG077ba]
-awcs7::tc_authorized_keys: >
-    ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQAw
-    DQYJKoZIhvcNAQEBBQAEggEApnUyS+HDMf9IYFvwM7Biv3vNZtHMTXGmDEZy
-    qQLHY4jvSwOnBY5Q3zpB8r8qMkmuh0KchWO8ciEeJh/9kzw16oG3I+mwuXIq
-    DfkBK0b3N5jgcAqQvVz2rlSPc6dj6bq/cBe6Dz1VX5Bs4ht5Jm5fJnSwhtAu
-    6K85bZNyTK48q/uhmrOVv+aT3021r6oCnD8tXMm7EvrDNJcgSYBy++XpHeEk
-    p+Ks3z1fzqvpbiEwU4ngNf4N83BR4EVDsD20Ufzz6vmDUGwu+Z8GFitPH2lH
-    6ILFujKTtrqEho9mvbYnVqM3yNXZuMecSQd8ELl0h9mEO7JGqkAlLG5pPkFg
-    vWVRYTCCAb4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEJ6fAUfN+Kcs63FR
-    vPbpH8SAggGQqj80SyHusMUdaOwHLlmIphJcS20RsDKpX4mrUtCHc/SM+pq7
-    ALNm88H94F6KmAn5CODMITsJSIJvW+Edx3Natsy3PFaTVnRoHstZ/o+gPc7I
-    NTiN6G7jXlLJXv3v9otxK5YCrbK7XqFCmyjboGXrELoxij39HbY01UDMEJT5
-    Z22w2mDP8a5S/tvIHnNRRRRNQzKG1klOi8YfSATWQC7QfsgfLuj3PvXeh4g6
-    2AOsi+8zzhVm4ANedwooyGdzfELoqb0ZFsxgfkipGB3tK5O5NmrarbbxKqec
-    SEFzJAqjlrZ9/cnuYnVNwLcrQO3XaxCEhF3uCUM3DgPFjiVl4+vt20nc7OCk
-    DhUBteA+GEJqF12vaSryIn/VynEDexFCMYuLaYY561CXGMKcvh+0OaH93rty
-    uT+EFWLHrp9wihFew1z1tHEgPVuOoCDtflN0X0bzHigaaJBAJ4HunIZaGLB9
-    xe3vtIkCRi9tZbONB1p3mF7Y2XdOvSF2WQ8qjrmo+021kgADzXank3A8Op5n
-    VFda+Q==]
