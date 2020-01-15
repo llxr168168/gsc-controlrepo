@@ -83,10 +83,10 @@ ODI_SMB::smb_conf: |
         log level = 5
         
     odi_data:
-    - 'comment = ODI Studio Folders'
-    - 'valid users = @SW\gg-app-etl-admin,@SW\gg-adm-gcdunix,odiadm,SW\sa-etlclient,SW\sa-etlclient1'
-    - 'path = /swdata/odi_data'
-    - 'force user = odiadm'
-    - 'writable = yes'
-    - 'directory mask = 2770'
+    comment = ODI Studio Folders
+    valid users = @SW\gg-app-etl-admin,@SW\gg-adm-gcdunix,odiadm,SW\sa-etlclient,SW\sa-etlclient1,SW\egh629
+    path = /swdata/odi_data
+    force user = odiadm
+    writable = yes
+    directory mask = 2770
 #~ EOF
