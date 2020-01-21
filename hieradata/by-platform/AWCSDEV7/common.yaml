@@ -7,9 +7,10 @@ classes:
   - oracle_build7::sudoers
   - tanium_client
   - stdbuild::pam
-  - sw_apex_print
+  - sw_apex_print7
   - mq_p2p_client::client
   - awcs7
+  - apex_tomcat7
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
@@ -28,8 +29,8 @@ access_conf::access:
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'
 
-sw_apex_print::local_user: 'awcs'
-sw_apex_print::local_group: 'awcs'
+sw_apex_print7::local_user: 'awcs'
+sw_apex_print7::local_group: 'awcs'
 
 sw_app_status::app_status_script: 'awcs_dev_status.sh'
 
@@ -100,15 +101,9 @@ samba::shares:
     - 'force user = awcs'
     - 'follow symlinks = yes'
     - 'wide links = yes'
-  ohslogs:
-    - 'comment = OHS Logs'
-    - 'path = /swpkg/oracle/product/Middleware/Oracle_WT1/instances/instance1/diagnostics/logs/OHS/ohs1'
-    - 'valid users = @SW\gg-cgit-awcs-admins, @SW\gg-adm-gcdunix'
-    - 'public = no'
-    - 'writable = no'
-    - 'force user = root'
+
   
-tomcat9_gsc::tomcat_password:  ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEAncQkIJxM5XkMx53/xY+fpy2TOZCXRE724KjlJAg4rusSEY+S/sQqgdTYmCdVkct6NFu7Mxo5P2d4GVPm6rUsGUA6PL9vu24QkN9IcGAj6nJmuxdoRufzXqOvdgaxaPx9iTtUm6t6jSkecWIxByKoRpQsANmgV6B1aMQ3sSmbIBDPzDBbxoVsyQEuCzu62lKqsmayLm44vfwQ25Kc43JKUhDdIGW/jRpFS+e2yMlR2TEE9vqgcGHCApLyvBKpI10SttrErpMQjXGSvznArRrIARjLJDuQSJkECiZGhLO0Q8qa/8BNljf7L54cFHvRWrWvoFjLBjGBMHQnN6m+w1uz9TA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBeHpRw0unvtAXbvzIIIpR2gBAgRb/nHo8YnN//dWfcO45O]
+apex_tomcat7::tomcat_password:  ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEAncQkIJxM5XkMx53/xY+fpy2TOZCXRE724KjlJAg4rusSEY+S/sQqgdTYmCdVkct6NFu7Mxo5P2d4GVPm6rUsGUA6PL9vu24QkN9IcGAj6nJmuxdoRufzXqOvdgaxaPx9iTtUm6t6jSkecWIxByKoRpQsANmgV6B1aMQ3sSmbIBDPzDBbxoVsyQEuCzu62lKqsmayLm44vfwQ25Kc43JKUhDdIGW/jRpFS+e2yMlR2TEE9vqgcGHCApLyvBKpI10SttrErpMQjXGSvznArRrIARjLJDuQSJkECiZGhLO0Q8qa/8BNljf7L54cFHvRWrWvoFjLBjGBMHQnN6m+w1uz9TA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBeHpRw0unvtAXbvzIIIpR2gBAgRb/nHo8YnN//dWfcO45O]
 
 awcs7::awcs_authorized_keys: >
     ENC[PKCS7,MIIEnQYJKoZIhvcNAQcDoIIEjjCCBIoCAQAxggEhMIIBHQIBADAFMAACAQAw
