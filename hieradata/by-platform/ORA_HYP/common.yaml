@@ -14,3 +14,4 @@ access_conf::access:
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.157'
   - '-:ALL:ALL'
+sudo::sudoers_d_template: 'oracle-hyp'
