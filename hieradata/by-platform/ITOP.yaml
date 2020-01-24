@@ -1,6 +1,7 @@
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 sw_app_status::app_status_script: 'itop_status.sh'
+postfix::enabled: 'true'
 
 access_conf::access:
   - '+:root:LOCAL'
