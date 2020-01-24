@@ -307,7 +307,7 @@ mod 'awcs',
  :ref => 'master'
 
 mod 'awcs7',
- :git => 'git@github.sherwin.com:Corp-IT-Puppet/awcs7.git',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/awcs7.git',
  :ref => 'master'
 
 mod 'mes',
