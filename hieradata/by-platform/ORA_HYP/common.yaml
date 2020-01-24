@@ -9,7 +9,7 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   
   - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01rw-nas1.sherwin.com:/data/col1/oracle_rw/exet'
   - '/hyp_util -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 nafgps01rw-nfs02:/HYP_util_dev'
-  - '/util -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 nafgps01rwnfs01.sherwin.com:/EBS_util_nonprd'
+  - '/util -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 nafgps01rw-nfs01.sherwin.com:/EBS_util_nonprd'
   
 access_conf::access:
   - '+:root:LOCAL'
