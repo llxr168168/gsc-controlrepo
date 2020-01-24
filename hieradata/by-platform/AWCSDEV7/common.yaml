@@ -1,6 +1,5 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
-  - profiles_unix::gsc::apps::apex9
   - profiles_unix::gsc::apps::printing
   - profiles_unix::gsc::oracle7::base
   - profiles_unix::gsc::oracle7::tns
@@ -11,6 +10,7 @@ classes:
   - mq_p2p_client
   - awcs7
   - apex_tomcat7
+  - apex_tomcat7::apex_images_1810
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
