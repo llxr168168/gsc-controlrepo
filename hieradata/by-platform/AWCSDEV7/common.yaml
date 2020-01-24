@@ -8,7 +8,7 @@ classes:
   - tanium_client
   - stdbuild::pam
   - sw_apex_print7
-  - mq_p2p_client::client
+  - mq_p2p_client
   - awcs7
   - apex_tomcat7
 
