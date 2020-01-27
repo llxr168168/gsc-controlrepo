@@ -1,9 +1,12 @@
 classes:
-  - profiles_unix::gsc::oracle7::asm
-  - profiles_unix::gsc::apps::printing
+  - cups
+  - swprint
   - profiles_unix::gsc::oracle7::base
-  - profiles_unix::gsc::oracle7::tns
+  - oracle_build7::kernel
+  - oracle_build7::asm
   - oracle_build7::sudoers
+  - oracle_build7::sudoers
+  - oracle_build7::tns
   - tanium_client
   - stdbuild::pam
   - sw_apex_print7
