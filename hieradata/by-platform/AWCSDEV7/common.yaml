@@ -10,7 +10,6 @@ classes:
   - stdbuild::pam
   - sw_apex_print7
   - mq_p2p_client
-  - awcs7
   - apex_tomcat7
   - apex_tomcat7::apex_sudo
   - apex_tomcat7::apex_images_1810
