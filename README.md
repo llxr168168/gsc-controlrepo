@@ -2,7 +2,6 @@
 Puppet 5 control repo for GSC/VAL custom_admin_org.
 
 # Testing in progress
-DEVLOCK
 
 
 # Locking
