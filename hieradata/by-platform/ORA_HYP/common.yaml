@@ -7,6 +7,32 @@ sudo::sudoers_d_template: 'oracle-hyp'
 
 oracle_build7::kernel::shmmax: 8358017024
 
+sw_util::wrapper::hiera_mount::params:
+  - /dev/shm:
+      ensure: mounted
+      options: defaults,size=2G
+      device: none
+      atboot: true
+      fstype: tmpfs
+      dump: 0
+      pass: 0
+  - /run:
+      ensure: mounted
+      options: defaults,size=2G
+      device: none
+      atboot: true
+      fstype: tmpfs
+      dump: 0
+      pass: 0
+  - /sys/fs/cgroup:
+      ensure: mounted
+      options: defaults,size=2G
+      device: none
+      atboot: true
+      fstype: tmpfs
+      dump: 0
+      pass: 0
+
 profiles_unix::gsc::oracle7::base::nfs_mounts:
   
   - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01rw-nas1.sherwin.com:/data/col1/oracle_rw/exet'
