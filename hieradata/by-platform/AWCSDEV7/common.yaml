@@ -4,7 +4,6 @@ classes:
   - profiles_unix::gsc::oracle7::base
   - oracle_build7::kernel
   - oracle_build7::asm
-  - oracle_build7::sudoers
   - oracle_build7::tns
   - tanium_client
   - stdbuild::pam
