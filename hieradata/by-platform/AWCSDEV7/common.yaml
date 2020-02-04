@@ -5,6 +5,7 @@ classes:
   - oracle_build7::kernel
   - oracle_build7::asm
   - oracle_build7::tns
+  - oracle_build7::sudoers
   - tanium_client
   - stdbuild::pam
   - sw_apex_print7
@@ -90,7 +91,7 @@ oracle_build7::tns::localfile:
   - '/swpkg/oracle/product/19.3.0/db_1/network/admin/tnsnames.ora'
   
   
-oracle_build7::oracleshared_path: '/swdata/nfs/oraremote'
+oracle_build7::oracleshared_path: '/swdata/nfs/oramedia'
 
 postfix::enabled: 'true'
 samba::shares:
