@@ -1,6 +1,6 @@
 classes:
-  - GSC_ORA_ASM7
-  - profiles_unix::gsc::apps::mqclient
+  - profiles_unix::gsc::oracle::asm
+  - mq_p2p_client
   - profiles_unix::gsc::apps::ftpserver
   - sw_apex_print
   
