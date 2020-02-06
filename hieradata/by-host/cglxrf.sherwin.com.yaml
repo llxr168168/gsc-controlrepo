@@ -34,4 +34,6 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-awcs-admins):ALL'
+  - '+:tc:ALL'
   - '-:ALL:ALL' 
