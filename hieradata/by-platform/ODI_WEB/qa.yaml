@@ -82,7 +82,7 @@ ODI_SMB::smb_conf: |
         
     [odi_data]
    comment = ODI Studio Folders'
-   valid users = @"gg-app-etl-admin", @"gg-adm-gcdunix, odiadm, SW\sa-etlclient, SW\sa-etlclient1
+   valid users = @"gg-app-etl-admin", @"gg-adm-gcdunix", odiadm, SW\sa-etlclient, SW\sa-etlclient1
    path = /swdata/odi_data
    force user = odiadm
    writable = yes
