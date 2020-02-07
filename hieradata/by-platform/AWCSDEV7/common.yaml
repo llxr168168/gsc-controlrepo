@@ -86,7 +86,7 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
 
 
 oracle_build7::tns::tns_webhost: pulp.sherwin.com
-oracle_build7::tns::tns_webhost_file: /webroot/oracle/awcsdev.tns
+oracle_build7::tns::tns_webhost_file: /webroot/oracle/awcsdev7.tns
 oracle_build7::tns::localfile: 
   - '/swpkg/oracle/product/19.3.0/db_1/network/admin/tnsnames.ora'
   
