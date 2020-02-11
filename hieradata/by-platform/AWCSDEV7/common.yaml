@@ -13,7 +13,6 @@ classes:
   - awcs7
   - apex_tomcat7
   - apex_tomcat7::apex_sudo
-  - apex_tomcat7::apex_images_1810
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
