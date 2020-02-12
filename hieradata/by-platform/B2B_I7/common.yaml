@@ -25,11 +25,9 @@ b2b_si::b2b_si_developers:
   - dxl756
   - gag99c
   - jch98c
-  - kxh70c
+  - jmc788 
   - rss58c
+  - rxa163
   - tkk62c
-  - kmr356
-  - cdf508
-  - kxb831
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
