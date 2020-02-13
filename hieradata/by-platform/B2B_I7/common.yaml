@@ -9,6 +9,7 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
   - '+:(SIUser):LOCAL swb2bsip1a.consumer.sherwin.com swb2bsip1b.consumer.sherwin.com swb2bsiq2a.consumer.sherwin.com swb2bsiq2b.consumer.sherwin.com swb2bsid3a.consumer.sherwin.com swb2bsid3b.consumer.sherwin.com'
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
@@ -24,12 +25,9 @@ b2b_si::b2b_si_developers:
   - dxl756
   - gag99c
   - jch98c
-  - kxh70c
+  - jmc788 
   - rss58c
+  - rxa163
   - tkk62c
-  - kmr356
-  - cdf508
-  - kxb831
 
-
-sw_app_status::app_status_script: 'b2b_gluster.sh'
+profiles_unix::gsc::base::auth::sssd_auth: 'true'

@@ -1,0 +1,16 @@
+classes:
+  - sudo
+  - access_conf
+  - ssh
+
+sudo::sudoers_template: 'sudoers.gcd'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-awcs-admins):ALL'
+  - '+:tc:ALL'
+  - '-:ALL:ALL' 

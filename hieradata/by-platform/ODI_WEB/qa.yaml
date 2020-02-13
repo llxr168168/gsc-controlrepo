@@ -57,10 +57,7 @@ ODI_SMB::smb_conf: |
   # File controlled by puppet 
 
   [global]
-        min protocol = SMB2                                                                                 
-        max protocol = SMB2                                                                                 
-        client min protocol = SMB2
-        client max protocol = SMB2
+        protocol = SMB2                                                                                 
         client ipc signing = auto
         workgroup = SW
         realm = SW.SHERWIN.COM
@@ -81,12 +78,14 @@ ODI_SMB::smb_conf: |
         restrict anonymous = 2
         wide links = no
         log level = 5
+        allow trusted domain = yes 
         
-    odi_data:
-    - 'comment = ODI Studio Folders'
-    - 'valid users = @SW\gg-app-etl-admin,@SW\gg-adm-gcdunix,odiadm,SW\sa-etlclient,SW\sa-etlclient1'
-    - 'path = /swdata/odi_data'
-    - 'force user = odiadm'
-    - 'writable = yes'
-    - 'directory mask = 2770'
+    [odi_data]
+   comment = ODI Studio Folders'
+   valid users = @"gg-app-etl-admin", @"gg-adm-gcdunix", odiadm, SW\sa-etlclient, SW\sa-etlclient1
+   path = /swdata/odi_data
+   force user = odiadm
+   writable = yes
+   directory mask = 2770
+   browseable = yes
 #~ EOF
