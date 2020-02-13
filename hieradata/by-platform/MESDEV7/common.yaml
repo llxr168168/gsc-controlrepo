@@ -1,0 +1,225 @@
+classes:
+  - mes7
+  - profiles_unix::gsc::apps::apex
+  - mq_p2p_client
+  - cups
+  - swprint
+  - profiles_unix::gsc::oracle7::base
+  - oracle_build7::tns
+  - oracle_build7::sudoers
+  - tanium_client
+  - apex_tomcat7
+  - apex_tomcat7:apex_sudo
+  - stdbuild::pam
+  - sw_apex_print7
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+oracle_build7::create_grid: 'false'
+oracle_build7::eunfs_mount_dirs:
+  - '/swdata/nfs/oraremote_bell_sheff'
+  - '/swdata/nfs/oraremote_pianoro'
+  - '/swdata/nfs/oraremote_poland'
+
+mq_p2p_client::account_lock_status: 'true'
+
+sw_apex_print7::local_user: 'plt_adm'
+sw_apex_print7::local_group: 'plt_adm'
+
+profiles_unix::gsc::oracle7::base::nfs_mounts:
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafgps01rw-nfs01.sherwin.com:/CP_oramedia/oracle'
+  - '/swdata/nfs/oraremote -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd03rw.sherwin.com:/data/col1/gsc_oraremote_rw'
+  - '/swdata/nfs/oraremote_bell_sheff -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cpnas22wv.sherwin.com:/vol/oraremote_ebel'
+  - '/swdata/nfs/oraremote_pianoro -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafclerepb-nfs01ext.sherwin.com:/oraremote_epia'
+  - '/swdata/nfs/oraremote_poland -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafrfsrw-nfs02.sherwin.com:/oraremote'
+  - '/swdata/nfs/ora_disaster_ric -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_ric'
+  - '/swdata/nfs/ora_disaster_flo -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_flo'
+  - '/swdata/nfs/ora_disaster_orl -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_orl'
+  - '/swdata/nfs/ora_disaster_wep -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_wep'
+  - '/swdata/nfs/ora_disaster_san -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_san'
+  - '/swdata/nfs/ora_disaster_wac -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_wac'
+  - '/swdata/nfs/ora_disaster_bra -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_bra'
+  - '/swdata/nfs/ora_disaster_van -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_van'
+  - '/swdata/nfs/ora_disaster_fte -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_fte'
+  - '/swdata/nfs/ora_disaster_enn -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_enn'
+  - '/swdata/nfs/ora_disaster_grn -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_grn'
+  - '/swdata/nfs/ora_disaster_vic -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_vic'
+  - '/swdata/nfs/ora_disaster_mor -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_mor'
+  - '/swdata/nfs/ora_disaster_bal -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_bal'
+  - '/swdata/nfs/ora_disaster_bel -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_bel'
+  - '/swdata/nfs/ora_disaster_cep -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_cep'
+  - '/swdata/nfs/ora_disaster_grl -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_grl'
+  - '/swdata/nfs/ora_disaster_jam -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1a.consumer.sherwin.com:/vol/ora_disaster_jam'
+  - '/swdata/nfs/gsc_ora_disaster_aur -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_aur'
+  - '/swdata/nfs/gsc_ora_disaster_bal -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_bal'
+  - '/swdata/nfs/gsc_ora_disaster_bel -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_bel'
+  - '/swdata/nfs/gsc_ora_disaster_bra -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_bra'
+  - '/swdata/nfs/gsc_ora_disaster_buf -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_buf'
+  - '/swdata/nfs/gsc_ora_disaster_cep -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_cep'
+  - '/swdata/nfs/gsc_ora_disaster_eff -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_eff'
+  - '/swdata/nfs/gsc_ora_disaster_enn -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_enn'
+  - '/swdata/nfs/gsc_ora_disaster_wep -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_wep'
+  - '/swdata/nfs/gsc_ora_disaster_flo -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_flo'
+  - '/swdata/nfs/gsc_ora_disaster_frd -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_frd'
+  - '/swdata/nfs/gsc_ora_disaster_fte -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_fte'
+  - '/swdata/nfs/gsc_ora_disaster_grl -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_grl'
+  - '/swdata/nfs/gsc_ora_disaster_grn -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_grn'
+  - '/swdata/nfs/gsc_ora_disaster_jam -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_jam'
+  - '/swdata/nfs/gsc_ora_disaster_mor -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_mor'
+  - '/swdata/nfs/gsc_ora_disaster_mrv -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_mrv'
+  - '/swdata/nfs/gsc_ora_disaster_orl -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_orl'
+  - '/swdata/nfs/gsc_ora_disaster_ric -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_ric'
+  - '/swdata/nfs/gsc_ora_disaster_rno -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_rno'
+  - '/swdata/nfs/gsc_ora_disaster_san -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_san'
+  - '/swdata/nfs/gsc_ora_disaster_van -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_van'
+  - '/swdata/nfs/gsc_ora_disaster_vic -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_vic'
+  - '/swdata/nfs/gsc_ora_disaster_wtx -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_wtx'
+  - '/swdata/nfs/gsc_ora_disaster_wnt -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_wnt'
+  - '/swdata/nfs/gsc_ora_disaster_leb -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_leb'
+  - '/swdata/nfs/gsc_ora_disaster_whl -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_whl'
+  - '/swdata/nfs/gsc_ora_disaster_sta -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_sta'
+  - '/swdata/nfs/gsc_ora_disaster_cov -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_cov'
+  - '/swdata/nfs/gsc_ora_disaster_chl -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_chl'
+  - '/swdata/nfs/gsc_ora_disaster_mol -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_mol'
+  - '/global/dd_backup -rw,nointr,soft,tcp,bg,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw/%{::hostname}'
+  - '/global/dd_backup_rw -ro,nointr,soft,tcp,bg,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw'
+  - '/global/dd_backup_ak -ro,nointr,soft,tcp,bg,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_ak'
+
+
+
+oracle_build7::tns::tns_webhost: pulp.sherwin.com
+oracle_build7::tns::tns_webhost_file: /webroot/oracle/mesdev.tns
+oracle_build7::tns::localfile: 
+  - '/swpkg/oracle/product/19.3.0/db_1/network/admin/tnsnames.ora'
+
+oracle_build7::oracleshared_path: '/swdata/nfs/oraremote'
+
+postfix::enabled: 'true'
+samba::shares:
+  tomcat:
+    - 'comment = AWCS'
+    - 'path = /swpkg/plt_sys/prod/tomcat'
+    - 'valid users = @SW\gg-adm-gcdunix @SW\gg-usr-cgit-mesadmins'
+    - 'public = no'
+    - 'writable = yes'
+    - 'force user = plt_adm'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:plt_adm:LOCAL ennplt.sherwin.com,floplt.sherwin.com,ontplt.sherwin.com,ceplt.sherwin.com,vicplt.sherwin.com,balplt.sherwin.com,belt.sherwin.com,cepplt.sherwin.com,garplt.sherwin.com,grnplt.sherwin.com,morplt.sherwin.com,ordplt.sherwin.comwepplt.sherwin.com,mesdevi.sherwin.com,awcsmesq.sherwin.com,cgmesdb3.consumer.sherwin.com,cgennmes.consumer.sherwin.com,cgflomes.consumer.sherwin.com,cgftemes.consumer.sherwin.com,cgricmes.consumer.sherwin.com,cgvicmes.consumer.sherwin.com,cggrnmes.consumer.sherwin.com,cgbalmes.consumer.sherwin.com,cgbelmes.consumer.sherwin.com,cgcepmes.consumer.sherwin.com,cgmormes.consumer.sherwin.com,cgorlmes.consumer.sherwin.com,cgwepmes.consumer.sherwin.com,cggrlmes.consumer.sherwin.com,cgmesdb1.consumer.sherwin.com,cgmesdb2.consumer.sherwin.com,cgmesdb4.consumer.sherwin.com,cgmesdb5.consumer.sherwin.com,cgmesdb6.consumer.sherwin.com,ctgdb2.sherwin.com,cgbonmes.consumer.sherwin.com,cgjammes.consumer.sherwin.com,cgctz1db1.consumer.sherwin.com,cgetz1db1.consumer.sherwin.com'
+  - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 cgepiames.consumer.sherwin.com cgflomes.consumer.sherwin.com cgmesdb3.consumer.sherwin.com cgmesdb6.consumer.sherwin.com cgmesdb7.consumer.sherwin.com cgmesdb8.consumer.sherwin.com ctgdb2.sherwin.com cgewupmes.consumer.sherwin.com'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '-:ALL:ALL'
+
+mes7::mes_developers:
+  - edk96c
+  - jeh935 
+  - bxk742
+  - cxr58c
+  - aps17c
+  - rjg18c
+  - jvs87c
+  - las19c
+  - jxm425
+  - mas90r
+  - mxp17c
+  - nab719
+  - vmd460
+
+mes7::oracle_apachectl: /swpkg/oracle/product/Middleware/Oracle_WT1/ohs/bin/.apachectl
+
+apex_tomcat7::tomcat_password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEATYIly5H+zJ5xDXDJMRaTMsOMhZXSSYmNa2AkNGQLNgm5teXX5E0k46gQWqgTkLEs5DbOVsxV2llSi43ENn53FvtXBeoMFh8/ZYMELnutIOuslRbIKpJrw4apQ5qRr8GVrYobHvho5XimzcH6o90Cqz0qsc8/7mj55CA9GsHJQmZnReNCWuaDziPOww0XDuK02e3coLISIYSoBGkLWIxAX2+/lriWzskziyMcMB0JLGMyW1VjjCurgOnRunMpStYCLqkH27mhxyTR4CtnaGYNnt/HSNwhgAS8pJfj7Z49e/n8TETzSap8FCcBGngQc1ssKabNrPTym3XZBuTt6w+H0zA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBfFCXs2Zi1CTtdCjKaQ0JwgBAMs42iXICSvHy+U42xmis1]
+
+mes7::mes_authorized_keys: >
+    ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAY4RMmOXupdV8noYPcVq9FK1KJDFTQ/1bRf/L
+    mW42OBrqNK3UEBgFXOCe2u1Y8rKkJea5jfat+jr38VRTj8PJ4C6WHF5OSvv7
+    ffXFI24gk+wK1A3BOabAdgjJ/OBqUJRoIKaF0yeXlcz5IqSAhGbQqJ9T/UEJ
+    IGXfq60I7PI4qtjZleHeRUB8+MwC9h0pGU2QKZ9L9xkYGZ+f0J2sZ0+OSt8K
+    8f/GQmEY83jAuBmjag8cNzgtsbn6SBF5/368MrWZ5nYY07QTan7rJWnIQpa7
+    hXVThZ//FXYZC09TOmRs++RVYpIObqRFOkHJqkA3Xrq11aRAiCv2A89QRTyj
+    3hKRwDCCAd4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEOmrq3PlcXqJ6/PJ
+    TiN8iJuAggGwK9xM7ZWR8bKJxzGM5uHHrVzqn5LSqJmC3cLeo7MSvlCSpBYN
+    TGt/zQ1cB3/cHat8ZW0OiiqVRxTQePrBdoXEhABtLTtcm+voHJGm+YZOiO46
+    toUk4rZJa4+++FDQiZefKC4P2hSlOfHhHgNnkVy59RVVNS/6TbEEEeftPOF+
+    2ZGruJddLjDXFx4V3l7N7LueqUX/QQ3PaWhotQ8naKrdyw0Xm2c0OzmK7PXd
+    vFZoCIQDz2DFhj0NmD6g28yNZFLH5z5c4N6QwjH2jiPlCulhhNhWrUoU5PJK
+    CAPXSYsjJ7MPeZzYrhYgg0Npx+ArGlT1/rsdfzNPHKMo5XE02ZGwAn9YKIwE
+    SaO0Q0qDNV3ullbUzCIjLTvxgWInAwnbw8hEPGg5UyRhppXGMqN3DsDmXJB7
+    lNwryU/3ipQnnCKEEwMcoNjlGVB4oh3/bRpLd7W0+IO1ag0jfPDz2z0cMR5+
+    lDPdHAkO9ebkEJEofHSE6VJg4x5DXbohzPxepL0dC0rOCY8dHqpUCZss3YLj
+    6ezOcVqvNXHiazt5kwZrLNt/uwDMOSEIR6DKSsy6rFfELSoK]
+mes7::mes_id_rsa: >
+    ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAoQkM3ZJO5YsPqWW2STzzrpT8GVz9COxzofTi
+    eNCEseVabQKV02QFG9qb5pqqc9Kle8k0mvjpxfjzG8f/5hahwZc6D8MBluY6
+    +q2+mDEM7/IQ4Nw6Lj0iTSPeNuTfXjp2u82OTs4guP62EbqnGCNofoZp+YUF
+    Y56luV9EJrsvfvH29IimlzNafKKoP6Y0Yi1TR4KQspZbcMYOKQlLdN4qikKf
+    4dOXbr1Hhd6WSzy7kyVUDgVIUxU5blQDYA0evrpLEFUg/y6+7ZjYyjoBS2Rr
+    hnpJWufWFSQA34t4QtIMDVlGsRftwy0JqfAG2k8JTWeZQXuUHdaicXxWcrgo
+    Yp0ISTCCBr4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEDDWHAGGAtSdtXKQ
+    zgq6Lt6AggaQ5VQ48KrCttuNOHVVzDU+BEkXMX3WOb6yTBzWKfqUZHFjMl43
+    3jHkNnK9x8Up/3wQ+F6NBuSuG7/Fvs+/H7xQ76rcMpttI0fhf6Sa2lKGvsak
+    sHTqmdZqMzEAPEe84ZNA4fSVgdFBc9iP0jkZNl7dyqf2iEFQkOaPqFVabZ/3
+    DAAPdY5JUArWSxof8xGyxlkKLznngD4kjAG7WNhzdYEIoW0xsRORE0IqOBTC
+    UIxOg5CPox8f+sQUyx8/N1PsgKjZPVDdIERArQpqJUqNeo3zuQaWa24Ca5wK
+    JpsSvF7q2rM5drfVUQGNpBrLOQUS0Inre/HU8JzDMbmniTfyHnRramx9aN7X
+    aPvOzmRKVxB1kbc30xxL4K/jQB/vphbktuIWniHWZadt9lV6JE7BnjveDQM2
+    nJHcSfwb9BUBPHJ8zjPWtKEWomJBeIc2BiXaxNnHyQ1c0e2P/5EIILhG69Ye
+    N2vgzAh3xwN4VT6l/9bDaRzLSn1O0z2e6OP6w/TkpI7IoUHQxvpYYN3Ykxn/
+    xpE8r18n8qaSOayesvmJtmqsEpXIQv5Hmv5VtAXrjMl/yFru/xQtrMT6O5Cd
+    u8Ypu9+5rnTmRgDij+MFHWBpYKRcjKD2WTfbTxp+noEP2LSf+8rva8VnG/bD
+    46gCoAsB9CIvOU0YRMFh5f+csTY0WRn7WhMEHUHwoOu2ibOQNybVXtVsSsXx
+    cY4u5umuwJ7g+9FkCcU5UJwdBAVfdnD5VP6WpLZ7MnnLBIIJi01y3qn/eZt+
+    tI8KEN4cBfA6JnQWo1wk+YHQS3KE1RYQbZe2Lnun34k5RK1M4Q10WKb4zxAJ
+    cKNhvEPsY2UE8ArCFKIuAyKp42EScBvy7Pcn8DHTkgw4B2t1cJ/8/929RJyP
+    IhreVn5XhUvpf94Blfud0yI7juijbA+GZaUHBPCG0/v/9j/YY1W+8Jrr3I5q
+    AKO0iWTFQMzbZkyxy0rdf2MssglcLxOGwmyCmx0mMohzcoIzATD2pG4UZHyL
+    hiWQ+ZJthUPK6baGPizOSd4+2A/rO9QLCKXblpCe/kgjyLT4wEYS2br/BgSB
+    0GeTnyc5Zfc+Fwc+muzCq0NCd2KQ1oq/82qS9nnlhSSql4Iywq4T+McMES+1
+    N73VWgAuz6OE4TzsS6sn83qHU/IbWYGYFJGEURwovWBwAlQwHnWcTmnkOm2+
+    DFzFxXZ2Fh8FxS0Fb7sQQ13gSKOq6hcbMJifzaeuXGpwwHuLe28peK9BPkjA
+    D/2ZXort2hRt8YbAMeb+ACffn8zZ4SI1p/qv/6XXVUkEYMTSHKc9ZAw4OOF2
+    J/XN+6l9y8Pc+zaS4c/KwqX5ggMl6fJqxkhKv6+eU40DPC1w01OPLSz/i5i8
+    /OZlszy1blp6tBoLR8VH+/Q9KTK0eNocNJF4PgIY0OGIlsHdpoYFKe9LftoO
+    OsfA6+W+vy6jPDfq8m9eGvnysZoomUZXnrnEwEdRDrpcpcINzrplCF7CcJWk
+    OiA+Je/ncXm38/w3Q17r3AIpyGEmSR9yePeZs6EEIJYX8PrBnRwXCti/+SJX
+    XLhWAwiXWpnmpjwWvb7G2WTpua54l+12EUcEtTvRme8zJ24IWEOfQckn7oDJ
+    kQ2lUe2zaecg4oc+cE5cdved3X4pxZjymejQQO/pr+szwr+rP+T6HEUdfnKV
+    z5iLS6vRSDcGYaRTHh6hYtxIRyn7rvxHxfCOHe5mnszX24UPCcS8CMFf9BZ3
+    nqwXZLmzavbMn4eX8fblNlAwNS5OjlpBZBLaQVO8XAkmhybFdDzy7aqE8nuY
+    ehwyLULjIXZxf/F5hu7QH7+Lme48OkqOT37OJczmNxHIzZ6cDAbByxM65pzG
+    qXHfLLk1YavcUlzmK2ZjhL5m71hdpWdeQfF0Db48I/XhyziSe1MLWz/wPo0X
+    HixKMgGrvidA95U1JVpUp7QPb11FCLqc5b3ml3pFwsTzDgtFmU1k38msuT4l
+    kT46xD4k4iyvGoBQz/pkEKIsQB9MpQfMNFtQ67BylzEBu+HkSbahXkpB8Yky
+    vT/mc/QHGQrUnXSQjYHJrCHrr6nhAQW4MSmBXEjJeaT334GtX0lQSlqHNNXP
+    3RsMKmymDEKNSQ4EpHoF9bhwLm9qU9sgsmYDIV0pMbVdfxKJrGsuJAyynvgS
+    q5f4yyjP/aD64Z0T3Ko//wtOgIJv2xCg1wiOy7AWLDHErPwnSbiDaX2hFxco
+    fV3ZFaUeKQ1rIlX1+q1p+JsIlQbId7Pi]
+mes7::mes_id_rsa_pub: >
+    ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAJzLWiHTJoAX3LcwSJuPO1t69Cj35alnjmOng
+    4nIRo9jGFG9anBLKnIPlVaqVlisgJa2iUoMuRG3NKjf1cSM5QjDkqCnLs8yV
+    eYcLT/Wk8M9Xk6V+lSE8XGH329BwdeuJYIhezFH21da54ozaywF0y2OzuCpg
+    UuhhRIKJEZHR6hPcE87GPGu3iK8YpuNX6jcjDxKBfw4hPPB1xai0F8jQFYE+
+    SfRxPSQL+bBV6jsMd9nwfLxfcEizFRww9wg4hTpJ6c32Hk/MQ/ekBuM3nGVX
+    +TtfIwwgTStmcTOrLWPAay00EXKK4kUO29CiyHXusOdcR0FdMW5jvvYUK5DV
+    NEL+ZzCCAd4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEEsOBkcQslfGE9Zz
+    deMalw+AggGwK5lsEjLprDjsDjnaAf/l1tyE0vdsH8epFFNCr3XO0ul38nUH
+    1aOpiLb7TvwF28TTm7Sxf9U0jpoI7ZMniPsWABi9JKVKptDyIFtrk1AwFhtI
+    v/9hocMVyFi4sju6Lx2Vr2reCJ4YqB02gQPiE5+yCVEd8xmwwPaXt2dTw2ys
+    VSzK5wRvUKgxfXATM1lLJ9MFRBXzTnSK6yBmBz3UTGLjicb81JfaIwv5IC5H
+    VkWLQWBccapT+K6UwBpHHBkMVTPo92AJEsYSiEmzT/dzycZSqYnaDUqq283w
+    HPaGplPIDSzX/AJPl2Uz4jKqENVvytIw3D/G82nEDPZ9hpWNDctnv7FXmqzo
+    /EDOTdVXEfcRnv2xi8rbdVcvrx0D2M8DLX+vA7Udr0nhDw3OShI3bxFSRCVx
+    dDz/wveKqSWUsMWs6zgmWYI4ibNxGGAjtFjTwVlP7XQN60F/buOqgNS8sNbt
+    h9sfr1dx+Pv0ZLV/w8DhCJ+qSO1T5F6dJ7pKZbLRO8NAaOyzAK9SOhRLL73n
+    IvZjwLZoitXGr49F7aTYldu212n/nW/e5e9qdyQw8PQecIkN]
