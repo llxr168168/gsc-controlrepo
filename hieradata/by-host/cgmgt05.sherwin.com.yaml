@@ -1,0 +1,4 @@
+classes:
+  - sw_splunk
+
+hosts::hosts_template: cgdmz.hosts
