@@ -1,0 +1,27 @@
+samba::shares:
+  tomcat:
+  - 'comment = tomcat app directory'
+  - 'valid users = @SW\dl-app-bi-superadmin @SW\gg-adm-gcdunix'
+  - 'path = /swpkg/busobj/sap_bobj/tomcat'
+  - 'force user = boweb'
+  - 'writable = yes'
+
+sudo::sudoers_template: sudoers.busobj
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-busobj-adm):ALL'  
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:boweb:LOCAL %{::fqdn} 10.14.65.185'
+  - '-:ALL:ALL'
+
+
+#Fix for SMB2 share issues
+samba::smb_template: 'smb.conf_SMB2.erb'
