@@ -1,7 +1,7 @@
 samba::shares:
   tomcat:
   - 'comment = tomcat app directory'
-  - 'valid users = @SW\dl-app-bi-superadmin @SW\gg-adm-gcdunix'
+  - 'valid users = @dl-app-bi-superadmin @gg-adm-gcdunix'
   - 'path = /swpkg/busobj/sap_bobj/tomcat'
   - 'force user = boweb'
   - 'writable = yes'
