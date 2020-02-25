@@ -1,2 +1,14 @@
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(secureusers):ALL'
+  - '+:(admin):ALL'
+  - '+:sa-qualys-linux:10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181'
+  - '+:sa-cyberark-linux:10.240.29.55 10.148.41.34 10.140.41.49'
+  - '-:ALL:ALL'
+
+
 classes:
   - sw_splunk
