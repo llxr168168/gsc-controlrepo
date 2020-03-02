@@ -1,8 +1,2 @@
-classes:
-  - sw_apex_print
-
-sw_apex_print::local_user: 'jboss'
-sw_apex_print::local_group: 'jboss'
-
 jboss::jdk_version: java-1.7.0-openjdk-1.7.0.141
 jboss::java_home: /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.141.x86_64/jre

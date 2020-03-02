@@ -1,5 +1,0 @@
-classes:
-  - sw_apex_print
-
-sw_apex_print::local_user: 'jboss'
-sw_apex_print::local_group: 'jboss'
