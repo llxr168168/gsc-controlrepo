@@ -1,2 +1,0 @@
-oracle_build::kernel::vm_nr_hugepages: 1536
-oracle_build::sudoers::oraclesudo_template: 'sudoers_ans'
