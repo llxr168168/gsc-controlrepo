@@ -4,6 +4,7 @@ classes:
   - cups
   - swprint
   - profiles_unix::gsc::oracle7::base
+  - oracle_build7::asm
   - oracle_build7::tns
   - oracle_build7::sudoers
   - tanium_client
@@ -11,10 +12,11 @@ classes:
   - apex_tomcat7:apex_sudo
   - stdbuild::pam
   - sw_apex_print7
+  - sw_dataguard_status
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
-oracle_build7::create_grid: 'false'
+oracle_build7::create_grid: 'true'
 oracle_build7::eunfs_mount_dirs:
   - '/swdata/nfs/oraremote_bell_sheff'
   - '/swdata/nfs/oraremote_pianoro'
@@ -91,14 +93,14 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
 oracle_build7::tns::tns_webhost: pulp.sherwin.com
 oracle_build7::tns::tns_webhost_file: /webroot/oracle/mesdev.tns
 oracle_build7::tns::localfile: 
-  - '/swpkg/oracle/product/19.3.0/db_1/network/admin/tnsnames.ora'
+  - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
 oracle_build7::oracleshared_path: '/swdata/nfs/oraremote'
 
 postfix::enabled: 'true'
 samba::shares:
   tomcat:
-    - 'comment = AWCS'
+    - 'comment = MES'
     - 'path = /swpkg/plt_sys/prod/tomcat'
     - 'valid users = @SW\gg-adm-gcdunix @SW\gg-usr-cgit-mesadmins'
     - 'public = no'
@@ -112,26 +114,27 @@ access_conf::access:
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 cgepiames.consumer.sherwin.com cgflomes.consumer.sherwin.com cgmesdb3.consumer.sherwin.com cgmesdb6.consumer.sherwin.com cgmesdb7.consumer.sherwin.com cgmesdb8.consumer.sherwin.com ctgdb2.sherwin.com cgewupmes.consumer.sherwin.com'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-cgit-dba-admins):ALL'
+  - '+:(SW\gg-usr-cgit-mesadmins):ALL'
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
 
-mes7::mes_developers:
-  - edk96c
-  - jeh935 
-  - bxk742
-  - cxr58c
-  - aps17c
-  - rjg18c
-  - jvs87c
-  - las19c
-  - jxm425
-  - mas90r
-  - mxp17c
-  - nab719
-  - vmd460
+#mes7::mes_developers:
+#  - edk96c
+#  - jeh935 
+#  - bxk742
+#  - cxr58c
+#  - aps17c
+#  - rjg18c
+#  - jvs87c
+#  - las19c
+#  - jxm425
+#  - mas90r
+#  - mxp17c
+#  - nab719
+#  - vmd460
 
 mes7::oracle_apachectl: /swpkg/oracle/product/Middleware/Oracle_WT1/ohs/bin/.apachectl
 
