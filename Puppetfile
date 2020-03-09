@@ -827,5 +827,5 @@ mod 'sw_samba_fixer',
 :ref => 'master'
 
 mod 'sw_dataguard_status',
-:git =>'git@github.sherwin.com/SW-CORP-IT/sw_dataguard_status.git',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_dataguard_status.git',
 :ref => 'master'
