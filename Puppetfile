@@ -825,3 +825,7 @@ mod 'puppet_filebeat',
 mod 'sw_samba_fixer',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_samba_fixer.git',
 :ref => 'master'
+
+mod 'sw_dataguard_status',
+:git =>'git@github.sherwin.com/SW-CORP-IT/sw_dataguard_status.git',
+:ref => 'master'

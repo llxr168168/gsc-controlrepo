@@ -13,6 +13,7 @@ classes:
   - awcs7
   - apex_tomcat7
   - apex_tomcat7::apex_sudo
+  - sw_dataguard_status
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
