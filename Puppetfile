@@ -829,3 +829,7 @@ mod 'sw_samba_fixer',
 mod 'sw_dataguard_status',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_dataguard_status.git',
 :ref => 'master'
+
+mod 'mes7',
+:git =>'git@github.sherwin.com:SW-CORP-IT/mes7.git',
+:ref => 'master'
