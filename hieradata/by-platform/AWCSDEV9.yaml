@@ -9,6 +9,7 @@ classes:
   - tanium_client
   - stdbuild::pam
   - sw_apex_print
+  - sw_dataguard_status
   
 sw_apex_print::local_user: 'awcs'
 sw_apex_print::local_group: 'awcs'
