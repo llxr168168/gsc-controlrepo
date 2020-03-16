@@ -9,7 +9,7 @@ classes:
   - oracle_build7::sudoers
   - tanium_client
   - apex_tomcat7
-  - apex_tomcat7:apex_sudo
+  - apex_tomcat7::apex_sudo
   - stdbuild::pam
   - sw_apex_print7
   - sw_dataguard_status
