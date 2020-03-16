@@ -7,6 +7,7 @@ classes:
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
+  - sw_dataguard_status
 
 oracle_build::create_grid: 'false'
 oracle_build::eunfs_mount_dirs:
