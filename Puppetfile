@@ -833,3 +833,7 @@ mod 'sw_dataguard_status',
 mod 'mes7',
 :git =>'git@github.sherwin.com:SW-CORP-IT/mes7.git',
 :ref => 'master'
+
+mod 'sw_custom_patchfact',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_custom_patchfact.git',
+:ref => 'master'
