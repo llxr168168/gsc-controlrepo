@@ -1,5 +1,5 @@
 classes:
-  - profiles_unix::gsc::oracle::asm7
+  - profiles_unix::gsc::oracle7::asm
   
 access_conf::access: 
   - '+:root:LOCAL'
