@@ -818,7 +818,7 @@ mod 'mq_p2p_client',
  :git => 'git@github.sherwin.com:SW-CORP-IT/mq_p2p_client.git',
  :ref => 'master'
 
-mod 'puppet_filebeat',
+mod 'filebeat',
 :git =>'git@github.sherwin.com:SW-CORP-IT/puppet_filebeat.git',
 :ref => 'master'
 
