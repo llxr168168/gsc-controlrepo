@@ -28,7 +28,7 @@ oracle_build7::tns::tns_webhost_file: /webroot/oracle/mes7.tns
 oracle_build7::tns::localfile: 
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
-oracle_build7::oracleshared_path: '/swdata/nfs/oraremote'
+oracle_build7::oracleshared_path: '/swdata/nfs/oramedia'
 
 postfix::enabled: 'true'
 samba::shares:
