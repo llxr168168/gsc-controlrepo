@@ -14,28 +14,7 @@ classes:
   - apex_tomcat7
   - apex_tomcat7::apex_sudo
   - sw_dataguard_status
-  - filebeat
 
-packages:
-  - filebeat
-
-filebeat::manage_repo: false
-filebeat::major_version: '5'
-filebeat::prospectors:
-  awcs_log:
-    paths:
-      - '/var/log/apache-tomcat/*.log'
-      - '/var/log/apache-tomcat/catalina.out'
-      - '/var/log/httpd/*.log'
-    doc_type: 'awcslogs'
-filebeat::tags:
-  - 'awcs'
-
-filebeat::outputs:
-  logstash:
-    hosts:
-      - 'dev.esxelkstack.sherwin.com:30044'
-    loadbalance: true
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
