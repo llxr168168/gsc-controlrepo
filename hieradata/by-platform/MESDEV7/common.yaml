@@ -97,15 +97,62 @@ oracle_build7::tns::localfile:
 
 oracle_build7::oracleshared_path: '/swdata/nfs/oramedia'
 
+sw_util::wrapper::hiera_package::params:
+- samba-client-libs: {}
+- libarchive: {}
+- samba: {}
+- samba-common: {}
+- samba-common-libs: {}
+- samba-libs: {}
+- samba-winbind: {}
+- samba-common-tools: {}
+- samba-client: {}
+
+sw_util::wrapper::hiera_file::params:
+  - /etc/samba/smb.conf: {
+  ensure: "file",
+  content: "MES::smb_conf",
+  owner: "root", 
+  group: "root",
+  mode: "655",
+  }  
+
+
+MES::smb_conf: |
+  # File controlled by puppet MES7 platform common.yaml 
+
+  [global]
+        client ipc signing = auto
+        workgroup = SW
+        realm = SW.SHERWIN.COM
+        server string = Samba Server Version %v
+        security = ADS
+        log file = /var/log/samba/log.%m
+        max log size = 50
+        template shell = /bin/bash
+        encrypt passwords = yes
+        winbind use default domain = no
+        winbind offline logon = no
+        idmap config * : backend = hash
+        idmap config * : range = 10000-4000000000
+        map to guest = Never
+        load printers = no
+        printing = bsd
+        printcap name = /dev/null
+        restrict anonymous = 2
+        wide links = no
+        log level = 5
+        
+  [tomcat]
+  comment = tomcat
+  valid users = @gg-adm-gcdunix @gg-usr-cgit-mesadmins
+  path = /swpkg/plt_sys/prod/tomcat
+  force user = plt_adm
+  writable = yes
+  create mask = 2770
+  directory mask = 2770
+
 postfix::enabled: 'true'
-samba::shares:
-  tomcat:
-    - 'comment = MES'
-    - 'path = /swpkg/plt_sys/prod/tomcat'
-    - 'valid users = @SW\gg-adm-gcdunix @SW\gg-usr-cgit-mesadmins'
-    - 'public = no'
-    - 'writable = yes'
-    - 'force user = plt_adm'
 
 access_conf::access:
   - '+:root:LOCAL'
