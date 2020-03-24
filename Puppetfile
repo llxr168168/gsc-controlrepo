@@ -508,6 +508,11 @@ mod 'b2b_si',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/b2b_si.git',
  :ref => '1.0.19'
 
+# B2B's New Integrator module
+mod 'b2b_i',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/b2b_i.git',
+ :ref => 'master'
+
 # SW dynatrace, wrappers the vendor provided module.
 mod 'sw_dynatrace',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_dynatrace.git',
