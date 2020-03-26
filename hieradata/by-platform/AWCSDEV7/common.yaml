@@ -56,20 +56,6 @@ awcs7::awcs_developers:
   - jyp787
   - apt135	
   - tjp226
-  
-
-awcs7::awcs_developers_retire:
-  - ecs348
-  - wkd846
-  - mxl974
-  - wem18c
-  - mew661
-  - mwl01s
-  - jav01l
-  - jsh56c
-  - jmv488
-  - jxm425
-  - jxk678
 
 profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
