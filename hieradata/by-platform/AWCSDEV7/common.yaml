@@ -39,6 +39,24 @@ sw_apex_print7::local_group: 'awcs'
 
 sw_app_status::app_status_script: 'awcs_dev_status.sh'
 
+awcs7::awcs_developers:
+  - pxa137
+  - egb01l
+  - cxf665
+  - zrh535
+  - jnk865
+  - axm768
+  - rbp01l
+  - pnv01l
+  - dmb01l
+  - bdl01l
+  - jaw19l
+  - jah62c
+  - jvs87c
+  - jyp787
+  - apt135	
+  - tjp226
+
 profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
   - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
