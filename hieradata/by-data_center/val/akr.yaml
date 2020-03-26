@@ -25,5 +25,5 @@ sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0j
 sw_sssd_authentication::krb5_server: 'lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
 sw_sssd_authentication::krb5_kpasswd: 'lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
 sw_sssd_authentication::kdc1: 'lbusldap.sherwin.com'
-sw_sssd_authentication::kdc2: 'usldap.sherwin.com'
+sw_sssd_authentication::kdc2: 'usldap.sw.sherwin.com'
 
