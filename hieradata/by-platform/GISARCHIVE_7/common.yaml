@@ -1,5 +1,5 @@
 classes:
-  - profiles_unix::gsc::apps::gis_archive
+  - gisarchive
   - sw_splunk
   
 profiles_unix::gsc::base::auth::sssd_auth: 'true'  
