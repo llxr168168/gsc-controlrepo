@@ -23,11 +23,11 @@ resolv_conf::nameserver:
 
 
 
-sw_sssd_authentication::ldap_uris: 'ldap://SWADS1AU.SW.SHERWIN.COM,ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'
+sw_sssd_authentication::ldap_uris: 'ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'
 sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
 sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5zUAAQID'
-sw_sssd_authentication::krb5_server: 'SWADS1AU.SW.SHERWIN.COM,lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
-sw_sssd_authentication::krb5_kpasswd: 'SWADS1AU.SW.SHERWIN.COM:88,lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
+sw_sssd_authentication::krb5_server: 'lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
+sw_sssd_authentication::krb5_kpasswd: 'lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
 sw_sssd_authentication::kdc1: 'SWADS1AU.SW.SHERWIN.COM'
 sw_sssd_authentication::kdc2: 'lbusldap.sherwin.com'
 sw_sssd_authentication::kdc3: 'usldap.sw.sherwin.com'
