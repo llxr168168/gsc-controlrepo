@@ -18,7 +18,7 @@ profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 bellse-nfs01.sherwin.com:/svm_nafrfsrw_oraremote_DP'
 
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 bellse-nfs01:/svm_nafrfsrw_lnxremote_DP'
+  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddveblo.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
 yum::yum_repo_file: international.yum
 sw_os_update_management::redhat::yum_repo_file: international.yum

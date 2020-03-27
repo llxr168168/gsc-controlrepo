@@ -13,6 +13,8 @@ classes:
   - awcs7
   - apex_tomcat7
   - apex_tomcat7::apex_sudo
+  - sw_dataguard_status
+
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
@@ -21,11 +23,12 @@ oracle_build7::kernel::vm_nr_hugepages: 2304
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
-  - '+:awcs:LOCAL cgawcsaur.consumer.sherwin.com cgawcsdb0.consumer.sherwin.com cgawcsdb1.consumer.sherwin.com cgawcsdb2.consumer.sherwin.com cgawcsdb3.consumer.sherwin.com cgawcsdb4.consumer.sherwin.com cgawcsdb5.consumer.sherwin.com cgawcsdb6.consumer.sherwin.com cgawcsdb7.consumer.sherwin.com cgawcsdb8.consumer.sherwin.com cgawcsdb9.sherwin.com cgawcsdb10.sherwin.com cgawcsdb11.sherwin.com cgawcsdb12.sherwin.com cgawcsdb13.sherwin.com buford.sherwin.com effing.sherwin.com fred.sherwin.com reno.sherwin.com winter.sherwin.com awcsdev.sherwin.com awcstrac.consumer.sherwin.com cgbufawcs.consumer.sherwin.com cgeffawcs.consumer.sherwin.com cgespawcs.consumer.sherwin.com cgfrdawcs.consumer.sherwin.com cgrnoawcs.consumer.sherwin.com cgwntawcs.consumer.sherwin.com cgptrawcs.consumer.sherwin.com cgaurawcs.consumer.sherwin.com cgmrvawcs.consumer.sherwin.com cgennawcs.consumer.sherwin.com cgfloawcs.consumer.sherwin.com cgricawcs.consumer.sherwin.com cgjamawcs.consumer.sherwin.com cgmatawcs.sherwin.com cgmssawcs.sherwin.com cgpdmawcs.sherwin.com cgrckawcs.sherwin.com cgromawcs.sherwin.com cgsacawcs.sherwin.com cgstaawcs.sherwin.com cgwhlawcs.sherwin.com cgawcsrom.sherwin.com cgdomawcs.consumer.sherwin.com cgesoawcs.consumer.sherwin.com cgvanawcs.consumer.sherwin.com cgwtxawcs.consumer.sherwin.com cgawcsbuf.consumer.sherwin.com cgawcseff.consumer.sherwin.com cgawcseso.consumer.sherwin.com cgawcsesp.consumer.sherwin.com cgawcsfrd.consumer.sherwin.com cgawcsmrv.consumer.sherwin.com cgawcsrno.consumer.sherwin.com cgawcsric.consumer.sherwin.com cgawcswtx.consumer.sherwin.com cgawcswnt.consumer.sherwin.com cgmslawcs.sherwin.com'
+  - '+:awcs:LOCAL cgawcsdb03a.sherwin.com cgawcsaur.consumer.sherwin.com cgawcsdb0.consumer.sherwin.com cgawcsdb1.consumer.sherwin.com cgawcsdb2.consumer.sherwin.com cgawcsdb3.consumer.sherwin.com cgawcsdb4.consumer.sherwin.com cgawcsdb5.consumer.sherwin.com cgawcsdb6.consumer.sherwin.com cgawcsdb7.consumer.sherwin.com cgawcsdb8.consumer.sherwin.com cgawcsdb9.sherwin.com cgawcsdb10.sherwin.com cgawcsdb11.sherwin.com cgawcsdb12.sherwin.com cgawcsdb13.sherwin.com buford.sherwin.com effing.sherwin.com fred.sherwin.com reno.sherwin.com winter.sherwin.com awcsdev.sherwin.com awcstrac.consumer.sherwin.com cgbufawcs.consumer.sherwin.com cgeffawcs.consumer.sherwin.com cgespawcs.consumer.sherwin.com cgfrdawcs.consumer.sherwin.com cgrnoawcs.consumer.sherwin.com cgwntawcs.consumer.sherwin.com cgptrawcs.consumer.sherwin.com cgaurawcs.consumer.sherwin.com cgmrvawcs.consumer.sherwin.com cgennawcs.consumer.sherwin.com cgfloawcs.consumer.sherwin.com cgricawcs.consumer.sherwin.com cgjamawcs.consumer.sherwin.com cgmatawcs.sherwin.com cgmssawcs.sherwin.com cgpdmawcs.sherwin.com cgrckawcs.sherwin.com cgromawcs.sherwin.com cgsacawcs.sherwin.com cgstaawcs.sherwin.com cgwhlawcs.sherwin.com cgawcsrom.sherwin.com cgdomawcs.consumer.sherwin.com cgesoawcs.consumer.sherwin.com cgvanawcs.consumer.sherwin.com cgwtxawcs.consumer.sherwin.com cgawcsbuf.consumer.sherwin.com cgawcseff.consumer.sherwin.com cgawcseso.consumer.sherwin.com cgawcsesp.consumer.sherwin.com cgawcsfrd.consumer.sherwin.com cgawcsmrv.consumer.sherwin.com cgawcsrno.consumer.sherwin.com cgawcsric.consumer.sherwin.com cgawcswtx.consumer.sherwin.com cgawcswnt.consumer.sherwin.com cgmslawcs.sherwin.com'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
-  - '+:(SW\gg-cgit-dba-admins):ALL'  
+  - '+:(SW\gg-cgit-dba-admins):ALL'
+  - '+:(SW\gg-cgit-awcs-admins):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
@@ -35,6 +38,24 @@ sw_apex_print7::local_user: 'awcs'
 sw_apex_print7::local_group: 'awcs'
 
 sw_app_status::app_status_script: 'awcs_dev_status.sh'
+
+awcs7::awcs_developers:
+  - pxa137
+  - egb01l
+  - cxf665
+  - zrh535
+  - jnk865
+  - axm768
+  - rbp01l
+  - pnv01l
+  - dmb01l
+  - bdl01l
+  - jaw19l
+  - jah62c
+  - jvs87c
+  - jyp787
+  - apt135	
+  - tjp226
 
 profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
@@ -82,6 +103,7 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/gsc_ora_disaster_whl -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_whl'
   - '/swdata/nfs/gsc_ora_disaster_sta -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_sta'
   - '/swdata/nfs/gsc_ora_disaster_leb -rw,nointr,hard,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd02rw.sherwin.com:/data/col1/gsc_ora_disaster_leb'
+
 
 
 oracle_build7::tns::tns_webhost: pulp.sherwin.com
