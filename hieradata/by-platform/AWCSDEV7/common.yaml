@@ -168,7 +168,7 @@ AWCS7::smb_conf: |
         
   [awcs]
         comment = AWCS config directory
-        valid users = @gg-adm-gcdunix gg-cgit-awcs-admins
+        valid users = @gg-adm-gcdunix @gg-cgit-awcs-admins
         path = /swpkg/awcs_sys
         force user = awcs
         writable = yes
