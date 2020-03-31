@@ -57,6 +57,8 @@ awcs7::awcs_developers:
   - apt135	
   - tjp226
 
+
+
 profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
   - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
@@ -108,23 +110,14 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
 
 oracle_build7::tns::tns_webhost: pulp.sherwin.com
 oracle_build7::tns::tns_webhost_file: /webroot/oracle/awcsdev7.tns
-oracle_build7::tns::localfile: 
-  - '/swpkg/oracle/product/19.3.0/db_1/network/admin/tnsnames.ora'
+
+#oracle_build7::tns::localfile: 
+#  - '/swpkg/oracle/product/19.3.0/db_1/network/admin/tnsnames.ora'
   
   
 oracle_build7::oracleshared_path: '/swdata/nfs/oramedia'
 
 postfix::enabled: 'true'
-samba::shares:
-  awcs:
-    - 'comment = AWCS'
-    - 'path = /swpkg/awcs_sys'
-    - 'valid users = @SW\gg-cgit-awcs-admins'
-    - 'public = no'
-    - 'writable = yes'
-    - 'force user = awcs'
-    - 'follow symlinks = yes'
-    - 'wide links = yes'
 
   
 apex_tomcat7::tomcat_password:  ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEAncQkIJxM5XkMx53/xY+fpy2TOZCXRE724KjlJAg4rusSEY+S/sQqgdTYmCdVkct6NFu7Mxo5P2d4GVPm6rUsGUA6PL9vu24QkN9IcGAj6nJmuxdoRufzXqOvdgaxaPx9iTtUm6t6jSkecWIxByKoRpQsANmgV6B1aMQ3sSmbIBDPzDBbxoVsyQEuCzu62lKqsmayLm44vfwQ25Kc43JKUhDdIGW/jRpFS+e2yMlR2TEE9vqgcGHCApLyvBKpI10SttrErpMQjXGSvznArRrIARjLJDuQSJkECiZGhLO0Q8qa/8BNljf7L54cFHvRWrWvoFjLBjGBMHQnN6m+w1uz9TA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBeHpRw0unvtAXbvzIIIpR2gBAgRb/nHo8YnN//dWfcO45O]
