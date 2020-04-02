@@ -48,14 +48,14 @@ awcs7::awcs_developers:
   - axm768
   - rbp01l
   - pnv01l
-  - dmb01l
-  - bdl01l
   - jaw19l
   - jah62c
   - jvs87c
   - jyp787
   - apt135	
   - tjp226
+  - pjk25c
+  - daw633
 
 
 
@@ -108,8 +108,8 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
 
 
 
-oracle_build7::tns::tns_webhost: pulp.sherwin.com
-oracle_build7::tns::tns_webhost_file: /webroot/oracle/awcsdev7.tns
+#oracle_build7::tns::tns_webhost: pulp.sherwin.com
+#oracle_build7::tns::tns_webhost_file: /webroot/oracle/awcsdev7.tns
 
 #oracle_build7::tns::localfile: 
 #  - '/swpkg/oracle/product/19.3.0/db_1/network/admin/tnsnames.ora'
