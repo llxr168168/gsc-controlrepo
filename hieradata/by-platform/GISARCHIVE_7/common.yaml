@@ -3,6 +3,9 @@ classes:
   - sw_splunk
   
 profiles_unix::gsc::base::auth::sssd_auth: 'true'  
+
+sw_util::wrapper::hiera_package::params:
+- vim: {}
   
 apache::user: B2Bapp
 apache::group: B2BUser
