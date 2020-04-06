@@ -39,3 +39,5 @@ samba::shares:
     - 'force user = root'
 
 samba::smb_template: 'smb.conf_SMB2.erb'
+
+
