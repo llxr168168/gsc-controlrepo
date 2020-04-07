@@ -11,18 +11,9 @@ sw_util::wrapper::hiera_package::params:
 - nodejs-docs-12.16.1-1nodesource.noarch: {}
 
   
-apache::user: B2Bapp
-apache::group: B2BUser
-apache::manage_user: false
-apache::manage_group: false
+
 syslog::rsyslog_file: pci_rsyslog.conf
-gisarchive::gis_ssl_type: all -SSLv2 -SSLv3
-apache::vhost::fqdn:options:
-              [ 'Indexes',
-                'MultiViews',
-                'FollowSymLinks',
-                'Includes',
-            ]
+
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
