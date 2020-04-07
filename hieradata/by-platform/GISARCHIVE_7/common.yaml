@@ -1,16 +1,8 @@
 classes:
-  - gisarchive
+  - gisarchive7
   - sw_splunk
   
 profiles_unix::gsc::base::auth::sssd_auth: 'true'  
-
-sw_util::wrapper::hiera_package::params:
-- vim: {}
-- cifs-utils: {}
-- nodejs-12.16.1-1nodesource.x86_64: {}
-- nodejs-docs-12.16.1-1nodesource.noarch: {}
-
-  
 
 syslog::rsyslog_file: pci_rsyslog.conf
 
