@@ -1,15 +1,11 @@
 classes:
-  - gisarchive
+  - gisarchive7
   - sw_splunk
   
 profiles_unix::gsc::base::auth::sssd_auth: 'true'  
-  
-apache::user: B2Bapp
-apache::group: B2BUser
-apache::manage_user: false
-apache::manage_group: false
+
 syslog::rsyslog_file: pci_rsyslog.conf
-gisarchive::gis_ssl_type: all -SSLv2 -SSLv3
+
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
@@ -17,7 +13,7 @@ access_conf::access:
   - '+:zabbix:LOCAL'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-cgit-edi-admins):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
