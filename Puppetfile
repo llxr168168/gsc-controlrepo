@@ -839,6 +839,6 @@ mod 'mes7',
 :git =>'git@github.sherwin.com:SW-CORP-IT/mes7.git',
 :ref => 'master'
 
-mod 'sw_odi_web
-:git =>'git@github.sherwin.com:SW-CORP-IT/sw_odi_web.git'
+mod 'sw_odi_web',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_odi_web.git',
 :ref => 'master'
