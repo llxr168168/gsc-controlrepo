@@ -20,13 +20,12 @@ profiles_unix::val::oracle::base::nfs_mounts:
   - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01rw-nas2.sherwin.com:/data/col1/oracle_val_ak'
   - '/global/dd_backup_msp -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_val_msp_ak'
 
-sw_sssd_authentication::ldap_uris: 'ldap://SWADS1HQ.SW.SHERWIN.COM,ldap://SWADS2HQ.SW.SHERWIN.COM,ldap://SWADS1WR.SW.SHERWIN.COM,ldap://SWADS2WR.SW.SHERWIN.COM'
+sw_sssd_authentication::ldap_uris: 'ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'
 sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
 sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5zUAAQID'
-sw_sssd_authentication::krb5_server: 'SWADS2HQ.SW.SHERWIN.COM:88,SWADS1HQ.SW.SHERWIN.COM:88,SWADS1WR.SW.SHERWIN.COM:88,SWADS2WR.SW.SHERWIN.COM:88'
-sw_sssd_authentication::krb5_kpasswd: 'SWADS2HQ.SW.SHERWIN.COM:88,SWADS1HQ.SW.SHERWIN.COM:88,SWADS1WR.SW.SHERWIN.COM:88,SWADS2WR.SW.SHERWIN.COM:88'
-sw_sssd_authentication::kdc1: 'SWADS2HQ.SW.SHERWIN.COM'
-sw_sssd_authentication::kdc2: 'SWADS1HQ.SW.SHERWIN.COM'
-sw_sssd_authentication::kdc3: 'SWADS1WR.SW.SHERWIN.COM'
-sw_sssd_authentication::kdc4: 'SWADS2WR.SW.SHERWIN.COM'
+sw_sssd_authentication::krb5_server: 'lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
+sw_sssd_authentication::krb5_kpasswd: 'lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
+sw_sssd_authentication::kdc1: 'lbusldap.sherwin.com'
+sw_sssd_authentication::kdc2: 'usldap.sw.sherwin.com'
+
 
