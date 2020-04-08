@@ -217,7 +217,7 @@ awcs7::awcs_id_rsa_pub: >
     adRkbhN1Xv7N3994SkNseAAssd83yMpNbXZDO6U4nOLjuSM0qP8VmRQrjuWB
     d/6DjtqVlejJgFfCAOhd8qIsIu/nP9Nbf0sKp+/xfwrR+PST]
 
-awcs::tc_id_rsa_pub: >
+awcs7::tc_id_rsa_pub: >
     ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAY+3lt+lYDJ7U54tgc1B0YnrdJCbHuFSRQgYV
     S9oIYuu3M5e+T0L7GQo0eViKOCOE47GLERNv4LrIjCMBchoIJCq3VHbf5k3H
@@ -236,7 +236,7 @@ awcs::tc_id_rsa_pub: >
     +uah1laXvoPVBNalcXq0Z44e9COxDgclE8wn5TdlAZNY+zFY1k7gYwqBvR4Z
     6j1Ze/7LKqcFdSGEsgSUATW5i+xiC7vrRq/1NAzfDQk6dK9bTYkD+tDU9W2L
     wBJT5A==]
-awcs::tc_id_rsa: >
+awcs7::tc_id_rsa: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAWs2mojPMI5LujFgdYMcv3FnnLt24Zgxlb3Hq
     k26CrjwLHj0dQaYjhxyx9yfAKLtq4HIRMfe14t74rDbDX0S668dqFCQgdljG
@@ -283,7 +283,7 @@ awcs::tc_id_rsa: >
     zivW+C+crQwyI+gTqGXMYqfCgsLB+jOQwR0etxUbXYJnCgHk7yKdlJjMpOcd
     u3T6vafoX7mNVO5ze5LRN20Zg74UUVb6EIRtO6NSFrhh9fWIzAhPJ07ymRpz
     RHaNoP5kk5uaaGHW+Laa2WsDEjG077ba]
-awcs::tc_authorized_keys: >
+awcs7::tc_authorized_keys: >
     ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEApnUyS+HDMf9IYFvwM7Biv3vNZtHMTXGmDEZy
     qQLHY4jvSwOnBY5Q3zpB8r8qMkmuh0KchWO8ciEeJh/9kzw16oG3I+mwuXIq
