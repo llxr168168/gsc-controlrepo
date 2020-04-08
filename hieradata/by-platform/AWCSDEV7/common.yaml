@@ -14,6 +14,7 @@ classes:
   - apex_tomcat7
   - apex_tomcat7::apex_sudo
   - sw_dataguard_status
+  - filebeat
 
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
@@ -56,6 +57,24 @@ awcs7::awcs_developers:
   - tjp226
   - pjk25c
   - daw633
+
+packages:
+  - filebeat
+
+filebeat::manage_repo: false
+filebeat::major_version: '5'
+filebeat::prospectors:
+  httpd_logs:
+    paths:
+      - 'var/log/httpd/*_log'
+    doc_type: 'weblogs'
+  apache_logs:
+    paths:
+      - '/swpkg/tomcat/apache-tomcat/logs/catalina.out'
+    doc_type: 'apachelogs'
+filebeat::tags:
+  - weblogs
+  - apachelogs
 
 
 
