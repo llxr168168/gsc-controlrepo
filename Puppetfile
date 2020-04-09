@@ -842,3 +842,7 @@ mod 'mes7',
 mod 'sw_odi_web',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_odi_web.git',
 :ref => 'master'
+
+mod 'sw_snow_disc',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_snow_disc.git',
+:ref => 'master'
