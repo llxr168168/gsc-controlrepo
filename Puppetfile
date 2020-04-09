@@ -8,8 +8,8 @@ forge 'forge.puppetlabs.com'
 # ###
 # puppetlabs/stdlib
 mod 'stdlib',
- :git => 'git@github.sherwin.com:Corp-IT-Puppet/puppetlabs-stdlib.git',
- :ref => '4.11.1'
+ :git => 'git@github.sherwin.com:SW-CORP-IT/puppetlabs-stdlib.git',
+ :ref => 'master'
 
 # puppetlabs/apache
 mod 'apache',
