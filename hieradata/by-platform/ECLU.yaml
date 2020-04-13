@@ -3,6 +3,7 @@ classes:
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:grid:LOCAL cgedb1a.consumer.sherwin.com cgedb1a-prv.consumer.sherwin.com cgedb1b.consumer.sherwin.com cgedb1b-prv.consumer.sherwin.com cgedb1c.consumer.sherwin.com cgedb1c-prv.consumer.sherwin.com cgedb1d.consumer.sherwin.com cgedb1d-prv.consumer.sherwin.com'
   - '+:oracle:LOCAL %{::fqdn} cgedb1a.consumer.sherwin.com cgedb1a-prv.consumer.sherwin.com cgedb1b.consumer.sherwin.com cgedb1b-prv.consumer.sherwin.com cgedb1c.consumer.sherwin.com cgedb1c-prv.consumer.sherwin.com cgedb1d.consumer.sherwin.com cgedb1d-prv.consumer.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'

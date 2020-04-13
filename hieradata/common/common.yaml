@@ -17,7 +17,7 @@ resolv_conf::nameserver:
 yum::yum_repo_file: 'swrepo.yum'
 yum::errata_target: 2019_Q2
 
-access_conf::snow_ips: '10.140.74.138 10.140.74.139'
+access_conf::snow_ips: '10.1.1.1'
 sw_snow_disc:snow_user: 'sa-cark-servicenow'
 sw_snow_disc:snow_role: 'snow_discoverer'
 
