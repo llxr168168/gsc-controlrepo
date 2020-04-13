@@ -23,6 +23,7 @@ vsftpd::vsftpd_umask: '002'
 ssh::sshd_config: cgjdadb.sshd.conf
 access_conf::access: 
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:oracle:LOCAL %{::fqdn} cgjdadb1.consumer.sherwin.com cgjdadb2.consumer.sherwin.com cgjdadb3.consumer.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '+:(sa-local):LOCAL'

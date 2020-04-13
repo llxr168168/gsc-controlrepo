@@ -8,6 +8,7 @@ syslog::rsyslog_file: pci_rsyslog.conf
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:B2Bapp:LOCAL swb2bw03a.consumer.sherwin.com swb2bw03.sherwin.com swb2bw01.sherwin.com swb2bw02.sherwin.com swb2bw06.consumer.sherwin.com swb2bw05.consumer.sherwin.com swb2bc02dr.consumer.sherwin.com swb2bc02.consumer.sherwin.com swb2bsid3a.consumer.sherwin.com swb2bsid3b.consumer.sherwin.com swb2bsiq2a.consumer.sherwin.com swb2bsiq2b.consumer.sherwin.com swb2bsip1a.consumer.sherwin.com swb2bsip1b.consumer.sherwin.com'
   - '+:zabbix:LOCAL'

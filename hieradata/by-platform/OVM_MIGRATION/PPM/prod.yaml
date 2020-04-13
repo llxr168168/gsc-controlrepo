@@ -17,6 +17,7 @@ oracle_rac::udev::oracle_shared_disk_rules: |
 # Production PPM Servers (cpprod16 & 17)
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-remote):ALL'
   - '+:(sa-local):LOCAL'
