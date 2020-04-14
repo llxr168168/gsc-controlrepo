@@ -67,14 +67,14 @@ filebeat::prospectors:
   httpd_logs:
     paths:
       - 'var/log/httpd/*_log'
-    doc_type: 'weblogs'
+    doc_type: 'awcs-httpd'
   apache_logs:
     paths:
       - '/swpkg/tomcat/apache-tomcat/logs/catalina.out'
-    doc_type: 'apachelogs'
+    doc_type: 'awcs-tomcat'
 filebeat::tags:
-  - weblogs
-  - apachelogs
+  - awcs-httpd
+  - awcs-tomcat
 
 
 
