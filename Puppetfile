@@ -846,3 +846,7 @@ mod 'sw_odi_web',
 mod 'sw_snow_disc',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_snow_disc.git',
 :ref => 'master'
+
+mod 'sw_resource_realizer',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_resource_realizer.git',
+:ref => 'master'
