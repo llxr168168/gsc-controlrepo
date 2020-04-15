@@ -76,6 +76,12 @@ filebeat::tags:
   - awcs_httpd
   - awcs_tomcat
 
+filebeat::outputs:
+  logstash:
+    hosts:
+      - 'dev.esxelkstack.sherwin.com:30044'
+    loadbalance: true
+
 
 
 profiles_unix::gsc::oracle7::base::nfs_mounts:
