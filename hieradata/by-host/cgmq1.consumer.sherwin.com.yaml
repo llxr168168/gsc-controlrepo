@@ -2,7 +2,7 @@ ssh::sshd_config: cgmq.sshd.conf
 
 access_conf::access:
   - '+:root:LOCAL'
-  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:SupHubMDMp:LOCAL mdmerpq1.sherwin.com mdmerpq2.sherwin.com mdmerpn1x.sherwin.com mdmerpn2x.sherwin.com mdmerpp1.sherwin.com mdmerpp2.sherwin.com mdmerpp1x.sherwin.com mdmextp2.sherwin.com mdmerpd1.sherwin.com mdmerpd2.sherwin.com'
   - '+:onbemea:LOCAL euerpp1.sherwin.com euerpp2.sherwin.com'
