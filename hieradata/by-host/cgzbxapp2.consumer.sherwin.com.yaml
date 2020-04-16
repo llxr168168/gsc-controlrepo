@@ -22,3 +22,7 @@ rundeck_ssh::allowed_ssh_key: >
     IEGv4e1PgGM7LkxlxPJlEuFjRKwP5R7mzR9cFmj5MI2M]
     
 avamar::disable: 'true'
+
+classes:
+  - sw_custom_patchstep
+sw_custom_patchstep::ansible_patch_role: "zabbix_post_dev"
