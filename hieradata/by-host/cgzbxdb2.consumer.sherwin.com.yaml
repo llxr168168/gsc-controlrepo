@@ -1,5 +1,2 @@
 mysql::kernel::vm_nr_hugepages: 8200
 
-classes:
-  - sw_custom_patchstep
-sw_custom_patchstep::ansible_patch_role: "zabbix_pre_dev"
