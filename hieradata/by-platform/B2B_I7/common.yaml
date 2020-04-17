@@ -1,6 +1,5 @@
 classes:
   - b2b_i
-  - vsftpd
   - sw_splunk
   
 access_conf::access:
@@ -18,8 +17,8 @@ access_conf::access:
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
   
-vsftpd::vsftpd_userlist:
-  - b2bxfer
+#vsftpd::vsftpd_userlist:
+#  - b2bxfer
 
 
 b2b_si::b2b_si_developers:
