@@ -13,9 +13,9 @@ resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
 profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock bellse-nfs01.sherwin.com:/ora_backup_ebel'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock bellse-nfs01.sherwin.com:/ora_disaster_ebel'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 bellse-nfs01.sherwin.com:/svm_nafrfsrw_oraremote_DP'
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddveblo.sherwin.com:/data/col1/gsc_ora_backup_blo'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddveblo.sherwin.com:/data/col1/gsc_ora_disaster_blo'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddveblo.sherwin.com:/data/col1/gsc_oraremote_rw'
 
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddveblo.sherwin.com:/data/col1/gsc_lnxremote_rw'
