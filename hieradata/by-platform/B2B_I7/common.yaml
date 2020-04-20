@@ -21,7 +21,7 @@ access_conf::access:
 #  - b2bxfer
 
 
-b2b_si::b2b_si_developers:
+b2b_i::b2b_i_developers:
   - exm509
   - dxl756
   - gag99c
