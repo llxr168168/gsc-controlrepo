@@ -15,6 +15,12 @@ classes:
   - apex_tomcat7::apex_sudo
   - sw_dataguard_status
   - filebeat
+  - resolv_conf
+
+resolv_conf::domain: 'sherwin.com'
+resolv_conf::search: 'sherwin.com sw.sherwin.com consumer.sherwin.com'
+resolv_conf::nameserver:
+  - '127.0.0.1'
 
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
