@@ -5,7 +5,6 @@ classes:
   - swprint
   - profiles_unix::gsc::oracle7::base
   - oracle_build7::asm
-  - oracle_build7::tns
   - oracle_build7::sudoers
   - tanium_client
   - apex_tomcat7
