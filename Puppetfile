@@ -838,3 +838,15 @@ mod 'sw_dataguard_status',
 mod 'mes7',
 :git =>'git@github.sherwin.com:SW-CORP-IT/mes7.git',
 :ref => 'master'
+
+mod 'sw_odi_web',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_odi_web.git',
+:ref => 'master'
+
+mod 'sw_snow_disc',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_snow_disc.git',
+:ref => 'master'
+
+mod 'sw_resource_realizer',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_resource_realizer.git',
+:ref => 'master'

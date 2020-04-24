@@ -1,17 +1,36 @@
 classes:
-  - profiles_unix::gsc::oracle7::asm
-
+  - sw_odi_web
+  
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
+postfix::enabled: 'true'
+
+  
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
+  - '+:(gg-app-etl-admin):ALL'
+  - '+:(gg-app-etl-devel):ALL'
+  - '+:(gg-cg-wla-admins):ALL'
+  - '+:(SW\gg-app-etl-admin):ALL'
+  - '+:(SW\gg-app-etl-devel):ALL'
+  - '+:(SW\gg-cg-wla-admins):ALL'
   - '+:(gg-adm-gcdunix):ALL'
-  - '+:(gg-cgit-dba-admins):ALL'  
+  - '+:(SW\gg-adm-gcdunix):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
-  - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 10.148.5.79 10.140.19.164'
+  - '+:oracle:LOCAL %{::fqdn} %{::hostname} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'
+
+sw_odi_web::hcm_admins:
+  - odiadm
+  - lxs891
+  - axp914
+  - yxm566
+  - sxk126 
+  - sxn628
+  - kxb864
+  - pxy635

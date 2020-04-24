@@ -5,6 +5,7 @@ postfix::enabled: 'true'
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:grid:LOCAL cgdwdb2a.consumer.sherwin.com cgdwdb2a-prv.consumer.sherwin.com cgdwdb2b.consumer.sherwin.com cgdwdb2b-prv.consumer.sherwin.com cgdwdb2c.consumer.sherwin.com cgdwdb2c-prv.consumer.sherwin.com cgdwdb2d.consumer.sherwin.com cgdwdb2d-prv.consumer.sherwin.com'
   - '+:oracle:LOCAL %{::fqdn} cgdwdb2a.consumer.sherwin.com cgdwdb2a-prv.consumer.sherwin.com cgdwdb2b.consumer.sherwin.com cgdwdb2b-prv.consumer.sherwin.com cgdwdb2c.consumer.sherwin.com cgdwdb2c-prv.consumer.sherwin.com cgdwdb2d.consumer.sherwin.com cgdwdb2d-prv.consumer.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'

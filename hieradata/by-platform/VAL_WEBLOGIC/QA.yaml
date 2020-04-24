@@ -1,5 +1,6 @@
   access_conf::access:
   - '+:root:LOCAL 10.148.16.105 10.140.16.100 10.140.16.94 10.140.16.29 10.140.16.30'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:weblogic:ALL'
   - '+:(sa-local):LOCAL'

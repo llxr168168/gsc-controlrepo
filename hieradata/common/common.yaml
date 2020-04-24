@@ -8,6 +8,7 @@ classes:
   - sw_os_update_management
   - sw_puppet_ansible
   - sw_aacp_puppet
+  - sw_snow_disc
 
 
 resolv_conf::nameserver:
@@ -16,6 +17,10 @@ resolv_conf::nameserver:
 
 yum::yum_repo_file: 'swrepo.yum'
 yum::errata_target: 2019_Q2
+
+access_conf::snow_ips: '10.1.1.1'
+sw_snow_disc:snow_user: 'sa-cark-servicenow'
+sw_snow_disc:snow_role: 'snow_discoverer'
 
 sw_os_update_management::patching_target: CURRENT
 sw_os_update_management::redhat::yum_repo_file: 'swrepo.yum'

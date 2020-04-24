@@ -18,13 +18,14 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
 
 access_conf::access:
     - '+:root:LOCAL'
+    - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
     - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
     - '+:(sa-local):LOCAL'
     - '+:(sa-remote):ALL'
     - '+:(gg-cgit-dba-admins):ALL'
     - '+:(gg-adm-gcdunix):ALL'
     - '+:grid:LOCAL cgeisdb2a.sherwin.com cgeisdb2a-prv.sherwin.com cgeisdb2b.sherwin.com cgeisdb2b-prv.sherwin.com cgeisdb2c.sherwin.com cgeisdb2c-prv.sherwin.com cgeisdb2d.sherwin.com cgeisdb2d-prv.sherwin.com'
-    - '+:oracle:LOCAL %{::fqdn} cgeisdb2a.sherwin.com cgeisdb2a-prv.sherwin.com cgeisdb2b.sherwin.com cgeisdb2b-prv.sherwin.com cgeisdb2c.sherwin.com cgeisdb2c-prv.sherwin.com cgeisdb2d.sherwin.com cgeisdb2d-prv.sherwin.com cpoempw1.sherwin.com cpoempw2.sherwin.com cpoempw3.sherwin.com cpoempw4.sherwin.com'
+    - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 cgeisdb2a.sherwin.com cgeisdb2a-prv.sherwin.com cgeisdb2b.sherwin.com cgeisdb2b-prv.sherwin.com cgeisdb2c.sherwin.com cgeisdb2c-prv.sherwin.com cgeisdb2d.sherwin.com cgeisdb2d-prv.sherwin.com cpoempw1.sherwin.com cpoempw2.sherwin.com cpoempw3.sherwin.com cpoempw4.sherwin.com'
     - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
     - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
     - '-:ALL:ALL'
