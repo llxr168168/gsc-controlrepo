@@ -65,17 +65,14 @@ packages:
 filebeat::manage_repo: false
 filebeat::major_version: '5'
 filebeat::prospectors:
-  awcs_httpd:
+  awcslogs:
     paths:
       - 'var/log/httpd/*_log'
-    doc_type: 'awcs_httpd'
-  awcs_tomcat:
-    paths:
       - '/swpkg/tomcat/apache-tomcat/logs/catalina.out'
-    doc_type: 'awcs_tomcat'
+      - '/swpkg/tomcat/apache-tomcat/logs/localhost*'
+    doc_type: 'awcslogs'
 filebeat::tags:
-  - awcs_httpd
-  - awcs_tomcat
+  - awcslogs
 
 filebeat::outputs:
   logstash:
