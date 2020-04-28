@@ -854,10 +854,7 @@ mod 'sw_resource_realizer',
 mod 'gisarchive7',
 :git =>'git@github.sherwin.com:SW-CORP-IT/gisarchive7.git',
 :ref => 'master'
-<<<<<<< HEAD
 
 mod 'sw_linux_dnsmasq',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_linux_dnsmasq.git',
  :ref => 'master' 
-=======
->>>>>>> 1f8c01f868ff9b6c154f284b8a8e31d03e000b61
