@@ -19,6 +19,12 @@ profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemol.sherwin.com:/data/col1/gsc_ora_disaster_mol'
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddvemol.sherwin.com:/data/col1/gsc_oraremote_rw'
 
+profiles_unix::gsc::oracle7::base::nfs_mounts:
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemol.sherwin.com:/data/col1/gsc_ora_backup_mol'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemol.sherwin.com:/data/col1/gsc_ora_disaster_mol'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddvemol.sherwin.com:/data/col1/gsc_oraremote_rw'
+
+
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddvemol.sherwin.com:/data/col1/gsc_lnxremote_rw'
 

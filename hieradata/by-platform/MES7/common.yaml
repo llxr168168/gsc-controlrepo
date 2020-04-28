@@ -5,7 +5,6 @@ classes:
   - swprint
   - profiles_unix::gsc::oracle7::base
   - oracle_build7::asm
-  - oracle_build7::tns
   - oracle_build7::sudoers
   - tanium_client
   - apex_tomcat7
@@ -22,11 +21,6 @@ mq_p2p_client::account_lock_status: 'true'
 
 sw_apex_print7::local_user: 'plt_adm'
 sw_apex_print7::local_group: 'plt_adm'
-
-oracle_build7::tns::tns_webhost: pulp.sherwin.com
-oracle_build7::tns::tns_webhost_file: /webroot/oracle/mes7.tns
-oracle_build7::tns::localfile: 
-  - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
 oracle_build7::oracleshared_path: '/swdata/nfs/oramedia'
 
@@ -89,6 +83,7 @@ MES::smb_conf: |
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:plt_adm:LOCAL' 
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'

@@ -19,6 +19,7 @@ pv::pv_developers:
 
 access_conf::access:
   - '+:root:LOCAL'
+  - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 cgapvdb1.consumer.sherwin.com cgapvdb2.consumer.sherwin.com cgepvdb1.consumer.sherwin.com cgepvdb2.consumer.sherwin.com cggpvdb1.consumer.sherwin.com cggpvdb2.consumer.sherwin.com cgpvdb1.consumer.sherwin.com cgpvdb2.consumer.sherwin.com cgpvdb3.consumer.sherwin.com cgspvdb1.consumer.sherwin.com cgspvdb2.consumer.sherwin.com'
   - '+:(sa-local):LOCAL'
