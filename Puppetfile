@@ -850,3 +850,8 @@ mod 'sw_snow_disc',
 mod 'sw_resource_realizer',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_resource_realizer.git',
 :ref => 'master'
+
+mod 'gisarchive7',
+:git =>'git@github.sherwin.com:SW-CORP-IT/gisarchive7.git',
+:ref => 'master'
+
