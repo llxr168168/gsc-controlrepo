@@ -1,5 +1,5 @@
 classes:
-  - sw_linux_dnsmasq
+  - dnsmasq_conf
 
 dnsmasq_conf::nameserver:
   - '10.20.103.6'
