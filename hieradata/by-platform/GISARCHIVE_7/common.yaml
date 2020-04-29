@@ -21,5 +21,25 @@ access_conf::access:
   - '-:ALL:ALL'
   
   
-  
+  gisarchive7::web_acl: >
+    ENC[PKCS7,MIIDXQYJKoZIhvcNAQcDoIIDTjCCA0oCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEACg+D/ZncsfPhRnFGMGwZUBGZHGnZPw0qVh0+
+    4kLt/9JQPD5Wom88uG+zypxPXbm4YHFWEXIRUmYbWP72zXwXk118y3x39Z25
+    jesryKv5GbYQcyhJ6VHjVnA5sCB+SHvztzn+++XisJl9s2f4oovBUpmJCNu+
+    khfkMZOfpTC/jfC8E9I+XhnEvFIiVpct+PDjWeSeoK1cW/YuEuuIucQ/1nhx
+    p4YZNyD83HuClM5hRA1OLC9WJ3lTq0/hxbswhPyE9qFLlPE8ONOjxqG6ZecG
+    nZqjfbG1mP/2ahmXCvq85rCfO0vFxmpcAtSh0HpxvVtB5jasMzEHQC+PLFi/
+    /doEYjCCAh4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEDRdxLU9SRFLM6zu
+    GFcyoWmAggHwiey2GDt/e5tZ02EnZl6MBWh0tQKK3+zfV8aoUxiRZryPpHAq
+    ttb59o7TGmWqEVd68JtyDiNLBBGDrn7GMXq2P2z23n37cZMx2BaFCoc4Gc+w
+    lBq2oKGu9q0WwKVg/Jtknty79kpiu4FjHPWyHJCNwiibBQvS33N7NJrE2gds
+    0WnsA45TL1+SwFkd40/myponamTOoX89R379DeKRImkqtiLGudZcxI38p0bN
+    pVECIvcRBG6I97ZfG15MOO2ANH2o5b1kXBMzD+EGarrNsmHJOO28Mn7/8icS
+    QJYqUvBHeYOjk7rPxL7wE810L0GkuGGd7Zhqohc/o+WohuWvakTG1XQ9MHxW
+    rW1wBmSuEjiygFih1nsgtyFT5yN3auHaZR+VkKL8ug+fdj4lztgUk8opJHVe
+    xXr/iGyMzj7IVhUxKszQkV4sHwpGUpgydNYu7QwNxSk0EcnJKxwUP7BisU51
+    MNktcbpmMVa4dv6Die4fClRRIKA7hrMokEOyGaad03w4dNMzew/gmWK/gh0q
+    JLr1HekeXfZufwvQm8PNQTOalMaJrmA1EXvgo27tBULNpgn/R/ZfgxKJgqD8
+    /YfyDo5Cb65s6xh8XyRIuClzAS2aOSPdghaLzMZMfGYuNDVcnCm/ueQ8Z+oJ
+    /v13z5DiQ+yH2A==]
   
