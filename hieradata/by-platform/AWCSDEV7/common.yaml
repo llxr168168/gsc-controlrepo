@@ -15,7 +15,16 @@ classes:
   - apex_tomcat7::apex_sudo
   - sw_dataguard_status
   - filebeat
+  - dnsmasq_conf
 
+dnsmasq_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+dnsmasq_conf::search: 'sherwin.com consumer.sherwin.com sw.sherwin.com'
+
+resolv_conf::nameserver:
+  - '127.0.0.1'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
