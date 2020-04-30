@@ -21,7 +21,7 @@ access_conf::access:
   - '-:ALL:ALL'
   
   
-  gisarchive7::web_acl: >
+gisarchive7::web_acl: >
     ENC[PKCS7,MIIDXQYJKoZIhvcNAQcDoIIDTjCCA0oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEACg+D/ZncsfPhRnFGMGwZUBGZHGnZPw0qVh0+
     4kLt/9JQPD5Wom88uG+zypxPXbm4YHFWEXIRUmYbWP72zXwXk118y3x39Z25
