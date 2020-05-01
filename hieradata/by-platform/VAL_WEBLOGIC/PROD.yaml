@@ -10,4 +10,4 @@ access_conf::access:
   - '+:(gg-adm-val-weblogic):ALL'
   - '-:ALL:ALL'  
   
-sudo::sudoers_template: 'oracle-weblogic'
+sudo::sudoers_d_template: 'oracle-weblogic'
