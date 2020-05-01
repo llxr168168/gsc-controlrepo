@@ -858,3 +858,7 @@ mod 'gisarchive7',
 mod 'dnsmasq_conf',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_linux_dnsmasq.git',
  :ref => 'master' 
+
+mod 'sw_os_ca_certs',
+ :git =>'git@github.sherwin.com:SW-CORP-IT/sw_os_ca_certs.git',
+ :ref => 'master'
