@@ -17,7 +17,7 @@ access_conf::access:
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
   - '-:ALL:ALL'
 
-oracle_build::kernel::vm_nr_hugepages: 8704
+oracle_build::kernel::vm_nr_hugepages: 10755
 oracle_build::kernel::kernel_shmall: 1073741824
 oracle_build::kernel::net_core_wmem_max: 4194304
 oracle_build::kernel::net_core_rmem_max: 4194304
