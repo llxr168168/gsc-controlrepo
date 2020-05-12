@@ -240,7 +240,7 @@ mod 'swprint',
 
 mod 'swmail',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/swmail.git',
- :ref => '1.0.0'
+ :ref => 'master'
 
 mod 'cups',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/cups.git',
