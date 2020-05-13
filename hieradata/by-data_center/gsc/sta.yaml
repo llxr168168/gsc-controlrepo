@@ -3,7 +3,7 @@
 classes:
   - avamar
 
-avamar::grid: 'cgavmsta.sherwin.com'
+avamar::grid: 'swavmest.sherwin.com'
 
 yum::plugins_enabled: 'true'
 
