@@ -862,3 +862,8 @@ mod 'dnsmasq_conf',
 mod 'sw_os_ca_certs',
  :git =>'git@github.sherwin.com:SW-CORP-IT/sw_os_ca_certs.git',
  :ref => 'master'
+
+mod 'sw_custom_patchstep',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_custom_patchstep.git',
+:ref => 'master'
+
