@@ -1,0 +1,5 @@
+classes:
+  - mes7
+
+mes7::mes_alias: 'mesdb3plt'
+mes7::mes_site_name: 'MESDB3PLT-BAL'
