@@ -1,6 +1,7 @@
 classes:
    - sw_util::hiera_wrapper
    - avamar
+   - sw_splunk
    
 avamar::disable: 'false'
 
