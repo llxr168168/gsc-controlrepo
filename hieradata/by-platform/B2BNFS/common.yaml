@@ -10,5 +10,5 @@ avamar::disable: 'false'
 sw_util::wrapper::hiera_package::params:
    - rpcbind: {}
    - nfs-utils: {}
-   - nfs-utils-lib: {}
+   
 
