@@ -1,6 +1,6 @@
 classes:
   - b2b_i
-  - sw_splunk
+ 
   
 access_conf::access:
   - '+:root:LOCAL'
