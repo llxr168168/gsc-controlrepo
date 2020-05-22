@@ -13,6 +13,11 @@ resolv_conf::nameserver:
   - '10.10.86.42'
   - '10.240.3.6'
   - '10.20.103.6'
+
+dnsmasq_conf::nameserver:
+  - '10.10.86.42'
+  - '10.240.3.6'
+  - '10.20.103.6'
   
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddverno.sherwin.com:/data/col1/gsc_ora_backup_rno'
