@@ -1,5 +1,10 @@
 access_conf::snow_ips: '10.140.74.138 10.140.74.139'
 
+dnsmasq_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/cgddorac1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
