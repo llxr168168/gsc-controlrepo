@@ -1,6 +1,7 @@
 classes:
   - b2b_i
   - sw_puppet_crowdstrike
+  - sw_splunk
   
   
 access_conf::access:
