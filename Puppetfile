@@ -867,3 +867,6 @@ mod 'sw_custom_patchstep',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_custom_patchstep.git',
 :ref => 'master'
 
+mod 'sw_puppet_crowdstrike',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_crowdstrike.git',
+:ref => 'master'
