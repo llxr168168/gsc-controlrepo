@@ -11,6 +11,9 @@ yum::plugins_enabled: 'true'
 avamar::disable: 'false'
 avamar::grid: 'swavmEST.sherwin.com'
 
+mes7::mes_alias: 'mesmorplt'
+mes7::mes_site_name: 'Morrow-MOR'
+
 resolv_conf::nameserver:
   - '10.10.48.23'
   - '10.20.103.6'

@@ -5,6 +5,9 @@ classes:
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
+mes7::mes_alias: 'mescepplt'
+mes7::mes_site_name: 'Chicago-CEP'
+
 
 #Enable Avamar for all VMs at this site
 avamar::disable: 'false'
