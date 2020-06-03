@@ -2,6 +2,8 @@
 sudo::sudoers_template: sudoers.gcd
 sudo::sudoers_d_template: 'ptl'
 
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
