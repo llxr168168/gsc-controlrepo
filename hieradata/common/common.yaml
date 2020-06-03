@@ -14,6 +14,8 @@ classes:
 resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
+  
+sw_puppet_ansible::authorized_keys: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeS88o1D/mmwsJzWbKznA/ClkmmRpSpndj4Et1R+3TVM9oqqTuoRM+TDZFPxF0e8ObRFjO/cMtO603/wGljczYG1PhslBZfWktdCTKj/wUkxKxBX5zRo+9Fky1fL26ulXq4UdCPoPQAYVolOQKDUWWAvUMeevc8MzDX5VCSrWrqGKFzGbMauumK26tqGYqKyGsTs3Teoh3GTZx13meH+QNgX5rs+iBqNRxt4k3uxJ9NBx5Rk2m2u4oXqtomiUlrvTasj7Voh0Tho7F5Qe0hKs5WsGd+pINwuNwiJhfEBvuv/1fsH6lc5eRga1HwVSZnVEkGkX1/pLw7C9dTBO30mvl sa-ansible@cputip01.sherwin.com'
 
 yum::yum_repo_file: 'swrepo.yum'
 yum::errata_target: 2019_Q2
