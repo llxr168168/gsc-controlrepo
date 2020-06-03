@@ -6,6 +6,9 @@ classes:
 yum::plugins_enabled: 'true'
 avamar::grid: 'swavmEST.sherwin.com'
 
+mes7::mes_alias: 'meslebplt'
+mes7::mes_site_name: 'Lebanon-687'
+
 site_code: leb
 tz::region: 'America'
 tz::locality: 'New_York'

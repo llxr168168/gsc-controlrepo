@@ -10,6 +10,9 @@ yum::yum_repo_file: 'swrepo.yum'
 site_code: whl
 avamar::grid: 'swavmcst.sherwin.com'
 
+mes7::mes_alias: 'meswhlplt'
+mes7::mes_site_name: 'Wheeling-686'
+
 tz::region: 'America'
 tz::locality: 'Chicago'
 

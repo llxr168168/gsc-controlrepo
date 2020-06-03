@@ -5,6 +5,8 @@ classes:
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
+mes7::mes_alias: 'mesgarplt'
+mes7::mes_site_name: 'Garland-GAR'
 
 #Enable Avamar for all VMs at this site
 avamar::disable: 'false'
