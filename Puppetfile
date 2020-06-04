@@ -240,7 +240,7 @@ mod 'swprint',
 
 mod 'swmail',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/swmail.git',
- :ref => '1.0.0'
+ :ref => 'master'
 
 mod 'cups',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/cups.git',
@@ -862,3 +862,11 @@ mod 'dnsmasq_conf',
 mod 'sw_os_ca_certs',
  :git =>'git@github.sherwin.com:SW-CORP-IT/sw_os_ca_certs.git',
  :ref => 'master'
+
+mod 'sw_custom_patchstep',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_custom_patchstep.git',
+:ref => 'master'
+
+mod 'sw_puppet_crowdstrike',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_crowdstrike.git',
+:ref => 'master'

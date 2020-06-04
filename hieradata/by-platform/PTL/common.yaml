@@ -1,13 +1,17 @@
+
+sudo::sudoers_template: sudoers.gcd
+sudo::sudoers_d_template: 'ptl'
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
 access_conf::access:
-  - '+:root:LOCAL 10.148.16.105 10.140.16.27 10.140.16.28'
-  - '+:oracle:10.148.37.52 10.148.37.53 10.140.16.48'
+  - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
-  - '+:weblogic:ALL'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
-  - '+:(gg-adm-val-weblogic):ALL'
-  - '-:ALL:ALL'  
-  
-sudo::sudoers_d_template: 'oracle-weblogic'
+  - '+:(gg-adm-ptl):ALL'
+  - '+:rds:ALL'
+  - '+:rds: cron crond :0'
+  - '-:ALL:ALL'

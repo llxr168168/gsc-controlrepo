@@ -1,2 +1,3 @@
 tz::region: 'Australia'
 tz::locality: 'Adelaide'
+oracle_build::kernel::vm_nr_hugepages: 1536
