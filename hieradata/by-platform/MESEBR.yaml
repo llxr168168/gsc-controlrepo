@@ -3,13 +3,14 @@ classes:
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
   - profiles_unix::gsc::apps::apex
-  - profiles_unix::gsc::apps::printing  
-  
+  - profiles_unix::gsc::apps::printing
+
 oracle_build::tns::tns_webhost: pulp.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/mes.tns
-oracle_build::tns::localfile:  
+oracle_build::tns::localfile:
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
-  
+oracle_build::kernel::vm_swappiness: '0'
+
 oracle_build::create_grid: 'false'
 
 access_conf::access:
