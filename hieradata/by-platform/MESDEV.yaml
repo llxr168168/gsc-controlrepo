@@ -14,7 +14,7 @@ oracle_build::eunfs_mount_dirs:
   - '/swdata/nfs/oraremote_bell_sheff'
   - '/swdata/nfs/oraremote_pianoro'
   - '/swdata/nfs/oraremote_poland'
-oracle_build::kernel::vm.swappiness: '0'
+oracle_build::kernel::vm_swappiness: '0'
 
 mq_p2p_client::account_lock_status: 'true'
 
