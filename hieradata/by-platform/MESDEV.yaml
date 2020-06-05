@@ -14,6 +14,7 @@ oracle_build::eunfs_mount_dirs:
   - '/swdata/nfs/oraremote_bell_sheff'
   - '/swdata/nfs/oraremote_pianoro'
   - '/swdata/nfs/oraremote_poland'
+oracle_build::kernel::vm.swappiness: '0'
 
 mq_p2p_client::account_lock_status: 'true'
 
@@ -83,7 +84,7 @@ profiles_unix::gsc::oracle::base::nfs_mounts:
 
 oracle_build::tns::tns_webhost: pulp.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/mesdev.tns
-oracle_build::tns::localfile: 
+oracle_build::tns::localfile:
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
 oracle_build::oracleshared_path: '/swdata/nfs/oraremote'
@@ -114,7 +115,7 @@ access_conf::access:
 
 mes::mes_developers:
   - edk96c
-  - jeh935 
+  - jeh935
   - bxk742
   - cxr58c
   - aps17c
@@ -216,5 +217,5 @@ mes::mes_id_rsa_pub: >
     dDz/wveKqSWUsMWs6zgmWYI4ibNxGGAjtFjTwVlP7XQN60F/buOqgNS8sNbt
     h9sfr1dx+Pv0ZLV/w8DhCJ+qSO1T5F6dJ7pKZbLRO8NAaOyzAK9SOhRLL73n
     IvZjwLZoitXGr49F7aTYldu212n/nW/e5e9qdyQw8PQecIkN]
-    
-   
+
+
