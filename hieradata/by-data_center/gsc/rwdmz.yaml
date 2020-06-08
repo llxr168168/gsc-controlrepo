@@ -10,12 +10,12 @@ dnsmasq_conf::nameserver:
 site_code: war
 tz::region: 'America'
 tz::locality: 'New_York'
-avamar::grid: 'swavmuak1.sherwin.com'
+avamar::grid: 'swavmurw1.sherwin.com'
 
 
-sw_sssd_authentication::ldap_uris: 'ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'
+sw_sssd_authentication::ldap_uris: 'ldap://mushqadsdmz1.swext.lcl,ldap://mushqadsdmz2.swext.lcl'
 sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
-sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5zUAAQID'
+sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5ZUAAQID'
 sw_sssd_authentication::krb5_server: 'mushqadsdmz1.swext.lcl:88,mushqadsdmz2.swext.lcl:88'
 sw_sssd_authentication::krb5_kpasswd: 'mushqadsdmz1.swext.lcl:88,mushqadsdmz2.swext.lcl:88'
 sw_sssd_authentication::kdc1: 'mushqadsdmz1.swext.lcl'
