@@ -6,7 +6,7 @@ dnsmasq_conf::nameserver:
 
 
   
-site_code: war
+site_code: rwdmz
 tz::region: 'America'
 tz::locality: 'New_York'
 avamar::grid: 'swavmurw1.sherwin.com'
