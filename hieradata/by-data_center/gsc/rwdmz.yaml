@@ -1,0 +1,47 @@
+
+dnsmasq_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+
+
+  
+site_code: rwdmz
+tz::region: 'America'
+tz::locality: 'New_York'
+avamar::grid: 'swavmurw1.sherwin.com'
+
+
+sw_sssd_authentication::ldap_uris: 'ldap://mushqadsdmz1.swext.lcl,ldap://mushqadsdmz2.swext.lcl'
+sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
+sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5ZUAAQID'
+sw_sssd_authentication::krb5_server: 'mushqadsdmz1.swext.lcl:88,mushqadsdmz2.swext.lcl:88'
+sw_sssd_authentication::krb5_kpasswd: 'mushqadsdmz1.swext.lcl:88,mushqadsdmz2.swext.lcl:88'
+sw_sssd_authentication::kdc1: 'mushqadsdmz1.swext.lcl'
+sw_sssd_authentication::kdc2: 'mushqadsdmz2.swext.lcl'
+
+sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
+sw_sssd_authentication::default_realm: SWEXT
+sw_sssd_authentication::krb5_realm: SWEXT.LCL
+
+
+
+sw_splunk::default::splunk_home: '/opt/splunk/'
+sw_splunk::splunk_heavy_forwarder::thruput_maxKBps: 1024
+sw_splunk::agent::uf_deployment_srv_uri: 'slogmgt01.sherwin.com:8089'
+sw_splunk::splunk_secret: >
+    ENC[PKCS7,MIICfQYJKoZIhvcNAQcDoIICbjCCAmoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEApEpxQDenGx8ttb8H8rgzp6LlNAXUAjBLZZhI
+    l7psalx4KgAgw6qBhf/MGM2Dp8rD6RJvi14UePFz6+zpenPDuKykbM9H3ktb
+    Fy0+ZMrm4/RIaNv6CDMkEhRmTZzr7yZndr86hurzM1rPupiECz3oC1GHgYcw
+    zSUvbD9b8ltA3Eo+lpqd9y6g4A6FDZn3RVJs/lH311Dvtcs4ELYEWeZ6dpG2
+    NBkfYp+ZuQ2OaXDenRDfaal7IvTb6bNGEU2xfblN+j/JFuduScMNh41b6Fm+
+    aAebZENCMeo4sTlRKQor97mVz5d0pzdmL8C6GuCVSOo+oY/TZAxkxLqaWm33
+    n0fv8TCCAT4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEGqDySKtQ5q9LVjY
+    fq0RcmiAggEQ33ZebXMZOxsPEr93O2TqZIljyNpY5B09bDlioFiXPTETGoYH
+    dXmG0jsKTVPZkVUvdg/VRYKRBDv9H9MmGx7UVFlNzr8f6gUGQuQX+kzFwelP
+    ScfWPBnm1Annq4/IUMEHGyzV4U4XxI5skyfRl6JOuxkSkNDAg2O7IsPYgK8+
+    ZXzXBPkJi2dI0bx+Ku804kO3pjD6LSXW3Gxdon7skX9ifrNocqiaoDNbQwdH
+    TKPIvBbWtmd0az2h9S+sEtF9RAjoCAErOCZgcJviXrg+TXbeTwDxW4Whzd7K
+    DwJvalh+RfCsIFBVcOD+pqHOk6FBcG6++VgJBImEzY1u834i8OIK+1BLaK98
+    KOMbqyu/t2FUVlk=]
