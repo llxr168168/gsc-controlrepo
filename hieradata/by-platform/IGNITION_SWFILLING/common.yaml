@@ -1,0 +1,28 @@
+classes:
+    - sw_ignition8_v2
+
+
+## Default ignition version for regular ignition is 7.9.9 at this time and that is set in sw_ignition8_v2 , but is overridable in by-host
+## including a template for a platform wide upgrade in version, uncomment the line below and set the version correctly 
+
+sw_ignition8_v2::ign_ver: 7.9.12
+sw_ignition8_v2::jdk_ver: ignition-jdk8u60
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:ignition:LOCAL cgwatsondr.consumer.sherwin.com'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-watson):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL' 
+  - '+:(SW\gg-cgit-watson):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
+  - '-:ALL:ALL'
+
+hosts::hosts_group: ignition
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
