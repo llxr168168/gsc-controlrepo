@@ -4,6 +4,8 @@ classes:
   - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::ftpserver
   - profiles_unix::gsc::apps::edi_art
+  - sw_puppet_ansible_dmw
+
 oracle_build::kernel::vm_nr_hugepages: 2600
 
 vsftpd::vsftpd_userlist:
@@ -49,6 +51,7 @@ access_conf::access:
   - '+:root:LOCAL'
   - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
