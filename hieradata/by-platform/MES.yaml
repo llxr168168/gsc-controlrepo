@@ -7,6 +7,7 @@ classes:
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
+  - sw_puppet_ansible_dmw
 
 mq_p2p_client::account_lock_status: 'true'
 
@@ -34,6 +35,7 @@ access_conf::access:
   - '+:root:LOCAL'
   - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:plt_adm:LOCAL ennplt.sherwin.com,floplt.sherwin.com,ontplt.sherwin.com,ceplt.sherwin.com,vicplt.sherwin.com,balplt.sherwin.com,belt.sherwin.com,cepplt.sherwin.com,garplt.sherwin.com,grnplt.sherwin.com,morplt.sherwin.com,ordplt.sherwin.comwepplt.sherwin.com,mesdevi.sherwin.com,awcsmesq.sherwin.com,cgmesdb3.consumer.sherwin.com,cgennmes.consumer.sherwin.com,cgflomes.consumer.sherwin.com,cgftemes.consumer.sherwin.com,cgricmes.consumer.sherwin.com,cgvicmes.consumer.sherwin.com,cggrnmes.consumer.sherwin.com,cgbalmes.consumer.sherwin.com,cgbelmes.consumer.sherwin.com,cgcepmes.consumer.sherwin.com,cgmormes.consumer.sherwin.com,cgorlmes.consumer.sherwin.com,cgwepmes.consumer.sherwin.com,cggrlmes.consumer.sherwin.com,cgmesdb1.consumer.sherwin.com,cgmesdb2.consumer.sherwin.com,cgmesdb4.consumer.sherwin.com,cgmesdb5.consumer.sherwin.com,cgmesdb6.consumer.sherwin.com,ctgdb2.sherwin.com,cgbonmes.consumer.sherwin.com,cgjammes.consumer.sherwin.com,cgetz1db1.sherwin.com,cgctz1db1.sherwin.com,cglebmes.sherwin.com,cglebmes.consumer.sherwin.com,cgstames.sherwin.com,cgstames.consumer.sherwin.com,cgwhlmes.sherwin.com,cgwhlmes.consumer.sherwin.com'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'

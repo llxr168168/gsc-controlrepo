@@ -1,5 +1,6 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
+  - sw_puppet_ansible_dmw
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
@@ -7,6 +8,7 @@ access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
