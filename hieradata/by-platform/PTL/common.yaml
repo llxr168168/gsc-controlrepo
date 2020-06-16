@@ -2,6 +2,8 @@
 sudo::sudoers_template: sudoers.gcd
 sudo::sudoers_d_template: 'ptl'
 
+hosts::hosts_template: rds.hosts
+
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 access_conf::access:
