@@ -1,5 +1,6 @@
 classes:
   - profiles_unix::gsc::oracle::asm
+  - sw_puppet_ansible_dmw
   
 samba::shares:
    xfer:

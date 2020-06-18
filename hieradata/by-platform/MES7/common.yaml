@@ -12,6 +12,7 @@ classes:
   - stdbuild::pam
   - sw_apex_print7
   - sw_dataguard_status
+  - sw_puppet_ansible_dmw
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
@@ -85,6 +86,7 @@ access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:plt_adm:LOCAL' 
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '+:(sa-local):LOCAL'
@@ -183,3 +185,5 @@ mes7::mes_id_rsa_pub: >
     dDz/wveKqSWUsMWs6zgmWYI4ibNxGGAjtFjTwVlP7XQN60F/buOqgNS8sNbt
     h9sfr1dx+Pv0ZLV/w8DhCJ+qSO1T5F6dJ7pKZbLRO8NAaOyzAK9SOhRLL73n
     IvZjwLZoitXGr49F7aTYldu212n/nW/e5e9qdyQw8PQecIkN]
+
+

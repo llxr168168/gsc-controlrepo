@@ -7,16 +7,18 @@ classes:
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
-  
-mq_p2p_client::account_lock_status: 'true'  
+  - sw_puppet_ansible_dmw
+
+mq_p2p_client::account_lock_status: 'true'
 
 oracle_build::create_grid: 'false'
 sw_app_status::app_status_script: 'mes_status.sh'
 
 oracle_build::tns::tns_webhost: pulp.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/mes.tns
-oracle_build::tns::localfile: 
+oracle_build::tns::localfile:
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
+oracle_build::kernel::vm_swappiness: '0'
 
 postfix::enabled: 'true'
 
@@ -33,19 +35,20 @@ access_conf::access:
   - '+:root:LOCAL'
   - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:plt_adm:LOCAL ennplt.sherwin.com,floplt.sherwin.com,ontplt.sherwin.com,ceplt.sherwin.com,vicplt.sherwin.com,balplt.sherwin.com,belt.sherwin.com,cepplt.sherwin.com,garplt.sherwin.com,grnplt.sherwin.com,morplt.sherwin.com,ordplt.sherwin.comwepplt.sherwin.com,mesdevi.sherwin.com,awcsmesq.sherwin.com,cgmesdb3.consumer.sherwin.com,cgennmes.consumer.sherwin.com,cgflomes.consumer.sherwin.com,cgftemes.consumer.sherwin.com,cgricmes.consumer.sherwin.com,cgvicmes.consumer.sherwin.com,cggrnmes.consumer.sherwin.com,cgbalmes.consumer.sherwin.com,cgbelmes.consumer.sherwin.com,cgcepmes.consumer.sherwin.com,cgmormes.consumer.sherwin.com,cgorlmes.consumer.sherwin.com,cgwepmes.consumer.sherwin.com,cggrlmes.consumer.sherwin.com,cgmesdb1.consumer.sherwin.com,cgmesdb2.consumer.sherwin.com,cgmesdb4.consumer.sherwin.com,cgmesdb5.consumer.sherwin.com,cgmesdb6.consumer.sherwin.com,ctgdb2.sherwin.com,cgbonmes.consumer.sherwin.com,cgjammes.consumer.sherwin.com,cgetz1db1.sherwin.com,cgctz1db1.sherwin.com,cglebmes.sherwin.com,cglebmes.consumer.sherwin.com,cgstames.sherwin.com,cgstames.consumer.sherwin.com,cgwhlmes.sherwin.com,cgwhlmes.consumer.sherwin.com'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
-  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"  
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'
 
 mes::mes_developers:
   - edk96c
-  - jeh935 
+  - jeh935
   - bxk742
   - cxr58c
   - aps17c
@@ -58,7 +61,7 @@ mes::mes_developers:
   - mas90r
   - mxp17c
   - nab719
-  
+
 tomcat_gsc::tomcat_password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEATYIly5H+zJ5xDXDJMRaTMsOMhZXSSYmNa2AkNGQLNgm5teXX5E0k46gQWqgTkLEs5DbOVsxV2llSi43ENn53FvtXBeoMFh8/ZYMELnutIOuslRbIKpJrw4apQ5qRr8GVrYobHvho5XimzcH6o90Cqz0qsc8/7mj55CA9GsHJQmZnReNCWuaDziPOww0XDuK02e3coLISIYSoBGkLWIxAX2+/lriWzskziyMcMB0JLGMyW1VjjCurgOnRunMpStYCLqkH27mhxyTR4CtnaGYNnt/HSNwhgAS8pJfj7Z49e/n8TETzSap8FCcBGngQc1ssKabNrPTym3XZBuTt6w+H0zA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBfFCXs2Zi1CTtdCjKaQ0JwgBAMs42iXICSvHy+U42xmis1]
 
 mes::oracle_apachectl: /swpkg/oracle/product/Middleware/Oracle_WT1/ohs/bin/.apachectl
