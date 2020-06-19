@@ -870,3 +870,7 @@ mod 'sw_custom_patchstep',
 mod 'sw_puppet_crowdstrike',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_crowdstrike.git',
 :ref => 'master'
+
+mod 'sw_tripwire_v2',
+ :git => 'git@github.sherwin.com:Corp-IT-Puppet/sw_tripwire_v2.git',
+ :ref => 'master'
