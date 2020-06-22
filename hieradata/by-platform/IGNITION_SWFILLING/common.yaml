@@ -48,7 +48,7 @@ sw_resource_realizer::package:
 sw_util::wrapper::hiera_file::params:
   - /etc/samba/smb.conf: {
   ensure: "file",
-  content: "IGNITION_SWBATCH::smb_conf",
+  content: "IGNITION_SWFILLING::smb_conf",
   owner: "root", 
   group: "root",
   mode: "655",
