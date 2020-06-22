@@ -1,6 +1,7 @@
 classes:
     - sw_ignition8_v2
-
+    - sw_resource_realizer::package
+    - sw_resource_realizer::service
 
 ## Default ignition version for regular ignition is 7.9.9 at this time and that is set in sw_ignition8_v2 , but is overridable in by-host
 ## including a template for a platform wide upgrade in version, uncomment the line below and set the version correctly 
@@ -26,3 +27,76 @@ access_conf::access:
 hosts::hosts_group: ignition
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+sw_resource_realizer::package:
+  nano:
+    ensure: 'installed'
+  samba-client-libs:
+    ensure: 'installed'
+  libarchive:
+    ensure: 'installed'
+  samba-common:
+    ensure: 'installed'
+  samba-common-libs: 
+    ensure: 'installed'
+  samba-libs: 
+    ensure: 'installed'
+  samba-common-tools: 
+    ensure: 'installed'
+  samba-client: {}
+
+sw_util::wrapper::hiera_file::params:
+  - /etc/samba/smb.conf: {
+  ensure: "file",
+  content: "IGNITION_SWFILLING::smb_conf",
+  owner: "root", 
+  group: "root",
+  mode: "655",
+  }  
+
+
+IGNITION_SWFILLING::smb_conf: |
+  # File controlled by puppet IGNITION_SWFILLING platform common.yaml
+
+  [global]
+        client ipc signing = auto
+        workgroup = SW
+        realm = SW.SHERWIN.COM
+        server string = Samba Server Version %v
+        security = ADS
+        log file = /var/log/samba/log.%m
+        max log size = 50
+        template shell = /bin/bash
+        encrypt passwords = yes
+        winbind use default domain = no
+        winbind offline logon = no
+        idmap config * : backend = hash
+        idmap config * : range = 10000-4000000000
+        map to guest = Never
+        load printers = no
+        printing = bsd
+        printcap name = /dev/null
+        restrict anonymous = 2
+        wide links = no
+        log level = 5
+        name resolve order = wins bcast host lmhosts
+        protocol = SMB2
+
+  [ignition]
+  comment = Ignition
+  valid users = @gg-adm-gcdunix @gg-cgit-watson @SW\gg-adm-gcdunix @SW\gg-cgit-watson
+  path = /swpkg/ignition
+  force user = ignition
+  writable = yes
+  create mask = 2770
+  directory mask = 2770
+
+  [backups]
+  comment = backups
+  valid users = @gg-adm-gcdunix @gg-cgit-watson @SW\gg-adm-gcdunix @SW\gg-cgit-watson
+  path = /swdata/ignition
+  force user = ignition
+  writable = yes
+  create mask = 2770
+  directory mask = 2770
+  #~ EOF
