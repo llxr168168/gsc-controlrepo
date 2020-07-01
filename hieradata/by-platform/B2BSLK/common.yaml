@@ -5,8 +5,6 @@ profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 sudo::sudoers_template: 'sudoers.slk'
 
-ssh::sshd_config:  	'b2bslk.sshd.conf'
-
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
