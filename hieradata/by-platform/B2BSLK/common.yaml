@@ -20,3 +20,16 @@ access_conf::access:
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
+
+
+sw_slink::secureusers:
+  - securelink
+  - tkk62c
+  - pxm717
+  - gag99c
+  - jch98c 
+  - exm509
+  - dxl756
+  - rss451
+  - hxc846
+  
