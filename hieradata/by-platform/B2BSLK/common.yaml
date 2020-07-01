@@ -1,6 +1,10 @@
 ### note this platform is only to be used in hosts in dmz that have been assigned the datacenter RWDMZ or AKDMZ
 
-
+classes:
+  - sw_slink
+  - sw_puppet_crowdstrike
+  - sw_splunk
+  
 profiles_unix::gsc::base::auth::sssd_auth: 'true'  
 
 sudo::sudoers_template: 'sudoers.slk'
