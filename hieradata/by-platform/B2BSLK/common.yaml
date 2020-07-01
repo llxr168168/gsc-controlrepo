@@ -3,3 +3,4 @@
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'  
 
+sudo::sudoers_template: 'sudoers.slk'
