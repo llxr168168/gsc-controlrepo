@@ -12,8 +12,8 @@ access_conf::access:
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 cgepvdb01.sherwin.com cgepvdb02.sherwin.com cgepvdb03.sherwin.com'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(SW\gg-adm-gcdunix):ALL'
-  - '+:(SW\gg-cgit-dba-admins):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-dba-admins):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
