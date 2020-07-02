@@ -17,14 +17,14 @@ sw_util::wrapper::hiera_package::params:
 sw_util::wrapper::hiera_file::params:
   - /etc/samba/smb.conf: {
   ensure: "file",
-  content: "::smb_conf",
+  content: "BIWEB::smb_conf",
   owner: "root", 
   group: "root",
   mode: "655",
   }  
 
 
-BIOJ::smb_conf: |
+BIWEB::smb_conf: |
   # File controlled by puppet BIWEB platform common.yaml 
 
   [global]
@@ -68,7 +68,6 @@ access_conf::access:
   - '+:(gg-cgit-busobj-adm):ALL'  
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
-  - '+:boweb:LOCAL %{::fqdn} 10.14.65.185'
   - '-:ALL:ALL'
 
 
