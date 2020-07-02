@@ -878,3 +878,7 @@ mod 'sw_puppet_crowdstrike',
 mod 'sw_tripwire_v2',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_tripwire_v2.git',
  :ref => 'master'
+
+mod 'sw_slink',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_slink.git',
+ :ref => 'master'
