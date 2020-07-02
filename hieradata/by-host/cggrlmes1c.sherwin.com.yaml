@@ -1,0 +1,10 @@
+resolv_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+tz::region: 'America'
+tz::locality: 'Chicago'
+
+#Site Specific overrides
+mes7::mes_alias: 'mesgarplt'
+mes7::mes_site_name: 'Garland-GAR'

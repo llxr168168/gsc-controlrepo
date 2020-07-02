@@ -1,0 +1,9 @@
+resolv_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+tz::region: 'America'
+tz::locality: 'Los_Angeles'
+
+mes7::mes_alias: 'messanplt'
+mes7::mes_site_name: 'San Diego-673'
