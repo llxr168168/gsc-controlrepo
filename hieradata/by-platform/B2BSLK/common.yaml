@@ -25,7 +25,6 @@ access_conf::access:
 sw_slink::secureusers:
   - securelink
   - tkk62c
-  - pxm717
   - gag99c
   - jch98c 
   - exm509
