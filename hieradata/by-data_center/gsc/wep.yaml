@@ -3,7 +3,10 @@ classes:
   - avamar
 
 yum::plugins_enabled: 'true'
+
 #Site Specific overrides
+mes7::mes_alias: 'meswepplt'
+mes7::mes_site_name: 'Fernley Plant-658'
 
 #Enable Avamar for all VMs at this site
 avamar::disable: 'false'
