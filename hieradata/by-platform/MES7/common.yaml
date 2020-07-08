@@ -5,6 +5,7 @@ classes:
   - swprint
   - profiles_unix::gsc::oracle7::base
   - oracle_build7::asm
+  - oracle_build7::tns
   - oracle_build7::sudoers
   - tanium_client
   - apex_tomcat7
@@ -13,6 +14,11 @@ classes:
   - sw_apex_print7
   - sw_dataguard_status
   - sw_puppet_ansible_dmw
+
+oracle_build7::tns::tns_webhost: pulp.sherwin.com
+oracle_build7::tns::tns_webhost_file: /webroot/oracle/mes.tns
+oracle_build7::tns::localfile:
+  - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
