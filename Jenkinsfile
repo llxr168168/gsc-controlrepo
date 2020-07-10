@@ -20,11 +20,11 @@ ansiColor('xterm') {
       }
     }
    stage ('Teams success'){
-        sh "cd scripts; python post2teams.py 'Success deploying ${env.BUILD_TAG}' 'More info available at link below.'"
+        sh "cd scripts; python3 post2teams.py 'Success deploying ${env.BUILD_TAG}' 'More info available at link below.'"
     }
    }
    catch (Exception e){
-     sh "cd scripts; python post2teams.py 'Error deploying ${env.BUILD_TAG}' 'More info available at link below.'"
+     sh "cd scripts; python3 post2teams.py 'Error deploying ${env.BUILD_TAG}' 'More info available at link below.'"
      error("Build failed: ${e}")
     }
   }
