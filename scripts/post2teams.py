@@ -35,6 +35,6 @@ myresp = response.json()
 print myresp
 
 if str(myresp)=="1":
-  print "Submitted card successfully."
+  print("Submitted card successfully.")
 else:
-  print "Could not submit card. Error was: "+str(myresp)
+  print("Could not submit card. Error was: "+str(myresp))
