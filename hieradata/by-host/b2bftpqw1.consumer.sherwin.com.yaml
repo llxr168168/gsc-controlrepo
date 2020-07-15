@@ -1,4 +1,5 @@
 classes:
   - sw_splunk
+  - sw_puppet_qualys_dmz
 
 sw_app_status::app_status_script: 'b2b_gluster.sh'
