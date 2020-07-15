@@ -882,3 +882,7 @@ mod 'sw_tripwire_v2',
 mod 'sw_slink',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_slink.git',
  :ref => 'master'
+
+mod 'sw_puppet_qualys_dmz',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_qualys_dmz.git',
+:ref => 'master'
