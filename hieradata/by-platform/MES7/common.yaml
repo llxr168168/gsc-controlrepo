@@ -14,6 +14,8 @@ classes:
   - sw_apex_print7
   - sw_dataguard_status
   - sw_puppet_ansible_dmw
+  - sw_resource_realizer::package
+  - sw_resource_realizer::service
 
 oracle_build7::tns::tns_webhost: pulp.sherwin.com
 oracle_build7::tns::tns_webhost_file: /webroot/oracle/mes.tns
@@ -33,60 +35,27 @@ oracle_build7::oracleshared_path: '/swdata/nfs/oramedia'
 
 postfix::enabled: 'true'
 
-sw_util::wrapper::hiera_package::params:
-- samba-client-libs: {}
-- libarchive: {}
-- samba: {}
-- samba-common: {}
-- samba-common-libs: {}
-- samba-libs: {}
-- samba-winbind: {}
-- samba-common-tools: {}
-- samba-client: {}
-
-sw_util::wrapper::hiera_file::params:
-  - /etc/samba/smb.conf: {
-  ensure: "file",
-  content: "MES::smb_conf",
-  owner: "root", 
-  group: "root",
-  mode: "655",
-  }  
-
-
-MES::smb_conf: |
-  # File controlled by puppet MES7 platform common.yaml 
-
-  [global]
-        client ipc signing = auto
-        workgroup = SW
-        realm = SW.SHERWIN.COM
-        server string = Samba Server Version %v
-        security = ADS
-        log file = /var/log/samba/log.%m
-        max log size = 50
-        template shell = /bin/bash
-        encrypt passwords = yes
-        winbind use default domain = no
-        winbind offline logon = no
-        idmap config * : backend = hash
-        idmap config * : range = 10000-4000000000
-        map to guest = Never
-        load printers = no
-        printing = bsd
-        printcap name = /dev/null
-        restrict anonymous = 2
-        wide links = no
-        log level = 5
-        
-  [tomcat]
-  comment = tomcat
-  valid users = @gg-adm-gcdunix @gg-usr-cgit-mesadmins
-  path = /swpkg/plt_sys/prod/tomcat
-  force user = plt_adm
-  writable = yes
-  create mask = 2770
-  directory mask = 2770
+sw_resource_realizer::package:
+  samba-client-libs: 
+    ensure: 'installed'
+  samba-winbind-clients:
+    ensure: 'installed'
+  libarchive: 
+     ensure: 'installed'
+  samba: 
+    ensure: 'installed'
+  samba-common: 
+    ensure: 'installed'
+  samba-common-libs:
+    ensure: 'installed'
+  samba-libs:
+    ensure: 'installed'
+  samba-winbind: 
+    ensure: 'installed'
+  samba-common-tools: 
+    ensure: 'installed'
+  samba-client: 
+    ensure: 'installed'
 
 access_conf::access:
   - '+:root:LOCAL'
