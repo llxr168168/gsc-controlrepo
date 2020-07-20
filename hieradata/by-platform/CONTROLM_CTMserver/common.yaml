@@ -1,0 +1,22 @@
+classes:
+  - sw_util::hiera_wrapper
+  
+  
+sw_util::wrapper::hiera_user::params:
+  - ctmuser: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/csh", password: "!!"}
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-cg-wla-admins):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+
+sudo::sudoers_template: sudoers.gcd
+sudo::sudoers_d_template: 'ctm_server'
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
