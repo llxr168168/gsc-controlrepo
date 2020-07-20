@@ -861,7 +861,7 @@ mod 'gisarchive7',
 
 mod 'dnsmasq_conf',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_linux_dnsmasq.git',
- :ref => 'master' 
+ :ref => 'master'
 
 mod 'sw_os_ca_certs',
  :git =>'git@github.sherwin.com:SW-CORP-IT/sw_os_ca_certs.git',
@@ -886,3 +886,7 @@ mod 'sw_slink',
 mod 'sw_puppet_qualys_dmz',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_puppet_qualys_dmz.git',
 :ref => 'master'
+
+mod 'sw_zabbix_agent',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_zabbix_agent.git',
+ :ref => 'master'
