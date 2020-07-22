@@ -1,15 +1,16 @@
 classes:
   - oracle_build7::asm
-  - sw_puppet_ansible_dmw
   - oracle_build7::sudoers
   - oracle_build7::kernel
+  - pv::oracle
+  - sw_puppet_ansible_dmw
 
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
-  - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 cgepvdb01.sherwin.com cgepvdb02.sherwin.com cgepvdb03.sherwin.com'
+  - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 cgepvdb01.sherwin.com cgepvdb02.sherwin.com cgepvdb03.sherwin.com cgspvdb01.sherwin.com cgspvdb02.sherwin.com cgspvdb03.sherwin.com cgapvdb01.sherwin.com cgapvdb02.sherwin.com cgapvdb03.sherwin.com'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
@@ -17,3 +18,110 @@ access_conf::access:
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
+
+profiles_unix::gsc::oracle7::base::nfs_mounts:
+  - '/swdata/nfs/cgddorac1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
+  - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
+  - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01rw.sherwin.com:/data/col1/gsc_oracle_ak'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafgps01rw-nfs01.sherwin.com:/CP_oramedia/oracle'
+  - '/swdata/nfs/cgddoracv1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_vault'
+  - '/swdata/nfs/cgddoracv1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoravault.consumer.sherwin.com:/data/col1/gsc_oracle_vault'
+  - '/swdata/nfs/cgddorawv1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoravault.consumer.sherwin.com:/data/col1/gsc_oracle_vault_dev'
+
+postfix::enabled: 'true'
+
+pv::oracle::pv_oracle_auth_keys: >
+    ENC[PKCS7,MIIEvQYJKoZIhvcNAQcDoIIErjCCBKoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAUUIJTs0Cxb8M+9myxwQvknqNKJtMRzaDmMjl
+    jqNFJ2jrUZoI4uXZLGt0ABjc74ThkAvUESlqBF1oxok1LwXb90BSsJMl1Sze
+    5YavbI+r4H31hoOt5GeEzuCVeBk9s9mCGHq4iJvCJ6oQUL/MTFAki33amxnB
+    5I2vOy7XxfRH/rfN0XBR2by690P5m+s6Qe3Z8Q8e18BENlVGq/a2j49rxl1M
+    bNNNljJVOn/ta4DnqxZKvYnTvA/3uGcgzvE7HmGq6FcWhwE4S3cS0OrPNHpq
+    Vh+oNoWDhRTxRl1Mi0PwBpe2202MQxjPudMHuOTPMHC1i9N8IX+77ONHNzm9
+    c4SntjCCA34GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEN8xigRc9qQUyxJb
+    YNrPaVKAggNQXYziDukp/QKYUCyTtK/wB27Xs2hjQmwTomfSkb8hV4wFfF7W
+    hndPKEE3NGtPibmcI1yTLcVVMQ/PqWNEGVp2eI97vI+Yld2ZoQNcvpwZEPMC
+    WrD16I2cibqB9XEu5Rox1t6BkovlDkC/kwc62r+QqwFoUlutCqNChMDvbcCJ
+    fUZ07PkUWETBr/Iw23KzUclNjbcoD96SKcBcX8jLgqmIyegYFMgJiaO74C3R
+    GMgYHONQWWnduqc4JyLyI8IJN6sg6bvxnhAXRZmIPTqxHiMnblqahJp0OG4J
+    /CRmlp6ew5wQfleqSA/NEQgM5+J8FMkomz23TqmLKsWnPlM7FYOO2865UAIv
+    iiof+cLIuAwi2QeXujGrFzlrqQ0+dcZ4r1KoSfLWNtvnt4jdN6CoOemPA7x7
+    ihUMYvOT3uf72bQ/XRc32PaUa6ee3h6N7LLPM+QAGH7gELpcHCjhPUz9P/gs
+    /NcO768lbeA8ND5pfSHcKWRUwi2xmw/qd+j3/bxlSkfb8GspugPQcKhWXY8v
+    RvBosKzZiDTzEEW7dsa+paNkn7zSPwT995HCZJsx6NT3mKgm34aFOGp8Cn1s
+    rLHCQ8gyvv2cHpwFNDPh6gJ4KRRe3TRs5Yq3GFz4hBSRuu9BDwOKRNn/edUP
+    rGjc9jYNpr3ARNIXxrwUFBlYcohHHl3snOydZU/537EIUzlXQfrp/uPtcOIw
+    +sh5gEWaqWrNG2RvHVd7zkUmZT43lITZrCyK+Pn7+rLiC8jwnvj87iY+kcUW
+    T0CcE4KAMHN5o48BRMB4QC+8vuOMc8t9YzO4dOUSTxsY3/iO5UkkHJXeY7l8
+    WexrxxHbERBUKX2kObeSrCa4P4bRFL8G1NimjLAh6xFEUCoLwNDYmhe8ZVE7
+    LhmaUEGxVjum2hRKHgJ/+p9OiSxfwuA0o7AnbOEPPzeiIfWA8lUQGycVwnwG
+    3bhFNrqZww4GLCI5xkKmXfHfTfXY1GfG5CyTJHdjTRUhAh8qRNQLO6SB5UYF
+    AF3ZeiZm/W2WgPMFn0mKa1ezi8LrX5bdPChBlJvisLVTBJoeyehC9VV8RiOP
+    tmwaj6YC/MTsu7Z7hfwB8dUivciubqefPXd7IWuFDmEqnMyekekiwD+f/3xC
+    p+o=]
+pv::oracle::pv_oracle_pubkey:  >
+    ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAKQxJxvcqTcxzgDcd3BAXNrEA4nuGkq1m13hf
+    gcl+RL6u/4jJigb1p2kTB4z80deL/2YNqiqO73wqp11aaHaeEIyZ54JENROC
+    lAUdXNB9R14PmKGt4ed2BaiHaV9VFMhUucMtbsU8FnoZYlCjKw62ZhLMcesv
+    xddhxSrl7pqHuVcQvsmtcphKfUnwE18rsM4G1q1sDDS0sd6DvDYh2CzY7TPM
+    ZXMNi+2Lz7tj1LqMeas4gggyS9Ci4rsaJj7Npux9NY1DGM1LhNmZPB/YZwJn
+    PXAOfotrt19PlxuQQdZKpLzkeaWf77Em6bNejyUmP0hSqadrP8RaEBaCpLHt
+    bAqvfzCCAd4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEM+f5sr3Sd/XBF+8
+    bsRSh26AggGw2tocRllntNtDbcjEcoKeZWM9zr/rh7dCAV5xuri76LRnYP3T
+    urC40qZoUAhqKfJElwm7a1xSH0oEJ6h1OhZFEL6+OGAqKzJVh51NDrxlNU8N
+    97Qq91uJ6Yp2vja+ELz96yww9DBmR+uIFDxsF86jeDBxo79eKMXDin9Ii9Uw
+    Gw80lQ+emhvAtDIVTOxqlRF62a9FsxyhvA2ihhu1cBCXFHXbepM5dQ/yj721
+    KmaVsrNW2O5sgao79cFfmctaKMUfjufGuD1WNtojF3XQAGFZP7eD7dj/eCsA
+    MQGYChYKa+6ZCf+7giRuIDMrBavtQIn2pwv10bIO5vP6gPRddfmpLmLeH2yQ
+    OCCTTnP34X3h1Rsej4HnzF2cheFCarPr+15LQmSH33mUlV6EM6CbiRs6eIDy
+    ra1wztU8Ml+Yb+F++/3l7RSWcE7acoXWM+ln0NDgCtckHue6JvjZulP0DAa3
+    KdlZgnxN8rgZOdC+34yg52x+zR5DhokFpwsS/W91cxc4rvEeDS3PxH431R/g
+    Bqg/hQU/oI1n1zU8Ve6WGwNP52Do7CdG63qOadnxZRigX82H]
+pv::oracle::pv_oracle_prvkey: >
+    ENC[PKCS7,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
+    t0Iv0+XksrIMW09/T0LzqM04pldPHmF5]
