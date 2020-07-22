@@ -3,7 +3,7 @@ classes:
   
   
 sw_util::wrapper::hiera_user::params:
-  - ctmuser: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/csh", password: "!!"}
+  - ctmuser: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/bash", password: "!!"}
 
 sw_util::wrapper::hiera_file::params:
   - /swdata/bmc: {
