@@ -4,7 +4,7 @@ classes:
   - oracle_build7::kernel
   - oracle_build7::autofs
   - oracle_build7::sudoers
-  - pv::oracle
+  - oracle_build7::ora_keys
   - sw_puppet_ansible_dmw
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
@@ -34,7 +34,7 @@ oracle_build7::autofs::nfs_mounts:
 
 postfix::enabled: 'true'
 
-pv::oracle::pv_oracle_auth_keys: >
+oracle_build7::ora_keys::oracle_auth_keys: >
     ENC[PKCS7,MIIEvQYJKoZIhvcNAQcDoIIErjCCBKoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAUUIJTs0Cxb8M+9myxwQvknqNKJtMRzaDmMjl
     jqNFJ2jrUZoI4uXZLGt0ABjc74ThkAvUESlqBF1oxok1LwXb90BSsJMl1Sze
@@ -64,7 +64,7 @@ pv::oracle::pv_oracle_auth_keys: >
     tmwaj6YC/MTsu7Z7hfwB8dUivciubqefPXd7IWuFDmEqnMyekekiwD+f/3xC
     p+o=]
 
-pv::oracle::pv_oracle_pubkey:  >
+oracle_build7::ora_keys::oracle_pub_key:  >
     ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAKQxJxvcqTcxzgDcd3BAXNrEA4nuGkq1m13hf
     gcl+RL6u/4jJigb1p2kTB4z80deL/2YNqiqO73wqp11aaHaeEIyZ54JENROC
@@ -84,7 +84,7 @@ pv::oracle::pv_oracle_pubkey:  >
     KdlZgnxN8rgZOdC+34yg52x+zR5DhokFpwsS/W91cxc4rvEeDS3PxH431R/g
     Bqg/hQU/oI1n1zU8Ve6WGwNP52Do7CdG63qOadnxZRigX82H]
 
-pv::oracle::pv_oracle_prvkey: >
+oracle_build7::ora_keys::oracle_prv_key: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAHLj3RIs3Djz0ItkkHk8KRGp4i7obQ8W6aUUb
     wTVvelSK5NIwPs3KaMsYuIwhvZnSA+qU2Hljct5vjl5nEzAKtcQbXxwFjVmp
