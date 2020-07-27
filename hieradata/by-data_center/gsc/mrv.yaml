@@ -10,6 +10,8 @@ yum::plugins_enabled: 'true'
 avamar::disable: 'false'
 avamar::grid: 'swavmPST.sherwin.com'
 
+awcs7::awcs_alias: 'awcsmoreno'
+
 resolv_conf::nameserver:
   - '10.10.202.31'
   - '10.20.103.6'

@@ -18,6 +18,8 @@ tz::region: 'America'
 tz::locality: 'New_York'
 site_code: sta
 
+awcs7::awcs_alias: 'awcsstates'
+
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvesta.sherwin.com:/data/col1/gsc_ora_backup_sta'
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvesta.sherwin.com:/data/col1/gsc_ora_disaster_sta'
