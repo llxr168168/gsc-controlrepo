@@ -10,7 +10,6 @@ profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_ak'
 
 
-
 profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
   - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
@@ -20,14 +19,21 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw'
   - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_ak'
 
-
-
 profiles_unix::gsc::apps::mysqlserver::nfs_mounts:
   - '/swdata/nfs/cpdd01ak -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01ak-nas2.sherwin.com:/data/col1/gsc_mysql_ak'
   - '/swdata/nfs/cpdd01rw -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01rw-nas2.sherwin.com:/data/col1/gsc_mysql_rw'
   - '/swdata/nfs/cpdd01rw_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01ak-nas2.sherwin.com:/data/col1/gsc_mysql_rw'
   - '/swdata/nfs/cpdd01ak_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01rw-nas2.sherwin.com:/data/col1/gsc_mysql_ak'
   - '/swdata/nfs/mysqlmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafgps01rw-nfs02:/CP_mysqlmedia'
+
+oracle_build7::autofs::nfs_mounts:
+  - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
+  - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafgps01rw-nfs01.sherwin.com:/CP_oramedia/oracle'
+  - '/swdata/nfs/oraremote -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd03rw.sherwin.com:/data/col1/gsc_oraremote_rw'
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw/%{::hostname}'
+  - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw'
+  - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_ak'  
 
 site_code: war
 tz::region: 'America'

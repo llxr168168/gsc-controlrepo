@@ -2,6 +2,7 @@ classes:
   - oracle_build7
   - oracle_build7::asm
   - oracle_build7::kernel
+  - oracle_build7::autofs
   - oracle_build7::sudoers
   - oracle_build7::ora_keys
   - sw_puppet_ansible_dmw
