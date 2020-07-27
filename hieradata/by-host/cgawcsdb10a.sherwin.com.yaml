@@ -1,0 +1,4 @@
+classes:
+  - awcs7
+
+awcs7::awcs_alias: 'awcsdb10'

@@ -9,6 +9,8 @@ yum::plugins_enabled: 'true'
 avamar::disable: 'false'
 avamar::grid: 'swavmcst.sherwin.com'
 
+awcs7::awcs_alias: 'awcsflora'
+
 dnsmasq_conf::nameserver:
   - '10.10.28.45'
   - '10.20.103.6'

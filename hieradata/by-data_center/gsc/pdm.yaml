@@ -8,6 +8,8 @@ dnsmasq_conf::nameserver:
 
 yum::plugins_enabled: 'true'
 
+awcs7::awcs_alias: 'awcspiedmont'
+
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvearl.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
