@@ -1,7 +1,5 @@
 classes:
   - sw_util::hiera_wrapper
-  
-classes:
   - sw_resource_realizer::package
   
 sw_resource_realizer::package:
