@@ -2,7 +2,7 @@ samba::shares:
   apps:
     - 'comment = Applications'
     - 'path = /swdata/apps/'
-    - 'valid users = @SW\gg-adm-gcdunix, SW\rdc01d, SW\txs871'
+    - 'valid users = @SW\gg-adm-gcdunix, @SW\gg-cgit-storestrac'
     - 'force user = apache'
     - 'read only = No'
     - 'create mask = 02770'
