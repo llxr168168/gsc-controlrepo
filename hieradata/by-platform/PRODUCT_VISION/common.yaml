@@ -6,6 +6,7 @@ classes:
   - oracle_build7::sudoers
   - oracle_build7::ora_keys
   - sw_puppet_ansible_dmw
+  - sw_resource_realizer::package
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
@@ -22,6 +23,10 @@ access_conf::access:
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
+
+sw_resource_realizer::package:
+  swmail: 
+    ensure: 'installed'
 
 postfix::enabled: 'true'
 
