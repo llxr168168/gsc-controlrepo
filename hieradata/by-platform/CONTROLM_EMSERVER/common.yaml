@@ -9,7 +9,7 @@ sw_resource_realizer::package:
     ensure: 'installed'
 
 sw_util::wrapper::hiera_user::params:
-  - emuser: {uid: 500, home: "/swpkg/bmc", system: true, shell: "/bin/bash", password: "!!"}
+  - emuser: {uid: 500, home: "/swpkg/bmc", system: true, shell: "/bin/sh", password: "!!"}
 
 sw_util::wrapper::hiera_file::params:
   - /swdata/bmc: {
