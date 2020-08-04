@@ -69,6 +69,7 @@ awcs7::awcs_developers:
   - tjp226
   - pjk25c
   - daw633
+  - tjb976
 
 packages:
   - filebeat
