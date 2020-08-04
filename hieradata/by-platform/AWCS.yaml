@@ -65,6 +65,7 @@ awcs::awcs_developers:
   - apt135
   - ecs348
   - tjp226
+  - tjb976
   
 awcs::awcs_developers_retire:
   - mxl974
