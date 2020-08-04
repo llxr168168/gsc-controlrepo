@@ -890,3 +890,7 @@ mod 'sw_puppet_qualys_dmz',
 mod 'sw_zabbix_agent',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_zabbix_agent.git',
  :ref => 'master'
+
+mod 'tanium_client_test',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/tanium_client_test.git',
+ :ref => 'master'
