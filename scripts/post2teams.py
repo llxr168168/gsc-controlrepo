@@ -32,7 +32,7 @@ myjson={
 
 response = requests.post(myurl,  json=myjson)
 myresp = response.json()
-print myresp
+print(myresp)
 
 if str(myresp)=="1":
   print("Submitted card successfully.")
