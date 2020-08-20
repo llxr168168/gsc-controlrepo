@@ -34,6 +34,8 @@ hierarchy:
       - "by-data_center/%{custom_datacenter}.eyaml"
       - "by-env/%{custom_admin_org}/%{custom_env}.yaml"
       - "by-env/%{custom_admin_org}/%{custom_env}.eyaml"
+      - "by-env/agent-env/%{agent_specified_environment}.yaml"
+      - "by-env/agent-env/%{agent_specified_environment}.eyaml"
       - "by-env/%{custom_env}.yaml"
       - "by-env/%{custom_env}.eyaml"
       - "by-domain/%{custom_admin_org}/%{domain}.yaml"
