@@ -894,3 +894,7 @@ mod 'sw_zabbix_agent',
 mod 'tanium_client_test',
  :git => 'git@github.sherwin.com:SW-CORP-IT/tanium_client_test.git',
  :ref => 'master'
+
+mod 'mqseries9',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/mqseries9.git',
+  :ref => 'master'
