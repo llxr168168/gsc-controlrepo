@@ -23,6 +23,11 @@ sw_util::wrapper::hiera_file::params:
   mode: "655",
   }  
 
+sw_resource_realizer::service:
+  winbind:
+    ensure: 'running'
+    enable: true
+
 
 BIWEB::smb_conf: |
   # File controlled by puppet BIWEB platform common.yaml 
@@ -52,7 +57,7 @@ BIWEB::smb_conf: |
   [tomcat]
   comment = tomcat
   valid users = @gg-adm-gcdunix @gg-cgit-busobj-adm
-  path = /swpkg/busobj/sap_bobj/tomcat
+  path = /swpkg/busobj/
   force user = boweb
   writable = yes
   create mask = 2770
