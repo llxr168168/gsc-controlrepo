@@ -1,15 +1,3 @@
 classes:
   - sw_splunk
   - sw_puppet_qualys_dmz
-
-access_conf::access:
-  - '+:root:LOCAL'
-  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
-  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
-  - '+:(sa-local):LOCAL'
-  - '+:(sa-remote):ALL'
-  - '+:(secureusers):ALL'
-  - '+:(admin):ALL'
-  - '-:ALL:ALL'
-
-syslog::rsyslog_file: pci_rsyslog.conf
