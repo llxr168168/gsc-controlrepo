@@ -5,14 +5,17 @@ classes:
 
 yum::plugins_enabled: 'true'
 
-#Site Specific overrides
+
 
 #Enable Avamar for all VMs at this site
 avamar::disable: 'false'
 avamar::grid: 'swavmEST.sherwin.com'
 
+#Site Specific overrides
 mes7::mes_alias: 'mesmorplt'
 mes7::mes_site_name: 'Morrow-MOR'
+mes7::whs_site: 'morplt'
+mes7::whs_bar: 'WM'
 
 resolv_conf::nameserver:
   - '10.10.48.23'
