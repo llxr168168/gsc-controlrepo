@@ -7,3 +7,5 @@ tz::locality: 'Chicago'
 
 mes7::mes_alias: 'meswhlplt'
 mes7::mes_site_name: 'Wheeling-686'
+mes7::whs_site: 'whlplt'
+mes7::whs_bar: 'WV'
