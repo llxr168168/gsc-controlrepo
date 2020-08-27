@@ -2,6 +2,7 @@
 classes:
   - mq9::server9150
   - mq9::mqib
+profiles_unix::gsc::base::auth::sssd_auth: 'true'  
 
 mq9::server9150::mq_developers:
   - bks52c
