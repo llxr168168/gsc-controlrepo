@@ -7,3 +7,5 @@ tz::locality: 'New_York'
 
 mes7::mes_alias: 'mesmorplt'
 mes7::mes_site_name: 'Morrow-MOR'
+mes7::whs_site: 'morplt'
+mes7::whs_bar: 'WM'

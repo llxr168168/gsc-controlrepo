@@ -7,3 +7,5 @@ tz::locality: 'New_York'
 
 mes7::mes_alias: 'meslebplt'
 mes7::mes_site_name: 'Lebanon-687'
+mes7::whs_site: 'lebplt'
+mes7::whs_bar: 'LN'
