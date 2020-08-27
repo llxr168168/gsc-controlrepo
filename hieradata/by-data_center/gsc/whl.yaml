@@ -12,8 +12,11 @@ awcs7::awcs_alias: 'awcswheeling'
 site_code: whl
 avamar::grid: 'swavmcst.sherwin.com'
 
+#Site Specific overrides
 mes7::mes_alias: 'meswhlplt'
 mes7::mes_site_name: 'Wheeling-686'
+mes7::whs_site: 'whlplt'
+mes7::whs_bar: 'WV'
 
 tz::region: 'America'
 tz::locality: 'Chicago'
