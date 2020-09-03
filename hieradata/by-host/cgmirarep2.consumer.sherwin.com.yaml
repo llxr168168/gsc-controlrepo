@@ -13,7 +13,7 @@ access_conf::access:
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
   - "### DEV cgedi03 QA cgb2b03 EDI Servers"
-  - "-:miraftp:ALL EXCEPT LOCAL 10.25.32.37 10.240.16.22 swb2bw04.consumer.sherwin.com swb2bw14.consumer.sherwin.com swb2bw07.consumer.sherwin.com swb2bw16.consumer.sherwin.com swb2bc04.consumer.sherwin.com swb2bc14.consumer.sherwin.com"
+  - "-:miraftp:ALL EXCEPT LOCAL 10.25.32.37 10.240.16.22 swb2bw04.consumer.sherwin.com swb2bw14.consumer.sherwin.com swb2bw07.consumer.sherwin.com swb2bw16.consumer.sherwin.com swb2bc04.consumer.sherwin.com swb2bc14.consumer.sherwin.com mushqb2bbiz1pr.sw.sherwin.com mushqb2bbiz2pr.sw.sherwin.com"
   - '-:ALL:ALL'
 
 
