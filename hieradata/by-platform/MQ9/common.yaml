@@ -5,9 +5,7 @@ classes:
 profiles_unix::gsc::base::auth::sssd_auth: 'true'  
 
 mqseries9::server9150::mq_developers:
-  - bks52c
-  - mxc827
-  - cdc13c
   - mxl974
+  - sxp267
 mqseries9::server9150::mq_developers_retire: []
   
