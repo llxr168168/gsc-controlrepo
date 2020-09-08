@@ -5,6 +5,7 @@ classes:
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
+mes7::mes_alias: 'meschaplt'
 
 #Enable Avamar for all VMs at this site
 avamar::disable: 'false'
