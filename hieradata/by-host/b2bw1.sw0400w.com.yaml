@@ -1,2 +1,3 @@
 classes:
   - sw_splunk
+  - sw_puppet_qualys_dmz

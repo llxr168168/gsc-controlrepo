@@ -129,6 +129,10 @@ mes::mes_developers:
   - mxp17c
   - nab719
   - vmd460
+  - nxp435
+  - axq561
+  - jal174
+  - exe882
 
 mes::oracle_apachectl: /swpkg/oracle/product/Middleware/Oracle_WT1/ohs/bin/.apachectl
 
