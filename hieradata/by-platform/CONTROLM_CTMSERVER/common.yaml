@@ -20,6 +20,14 @@ sw_util::wrapper::hiera_file::params:
       group: "ctmuser",
       mode: "700"
     }
+  - /etc/init.d/ctm_server: {
+      ensure: "file",
+      content: "controlm::ctm_server",
+      owner: "root",
+      group: "root",
+      mode: "755",
+    }
+
   - /root/.ctmdocscred: {
       ensure: "file", 
       owner: "root", 
@@ -66,3 +74,78 @@ access_conf::access:
 sudo::sudoers_template: sudoers.gcd
 sudo::sudoers_d_template: 'ctm_server_new'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+sw_util::wrapper::hiera_service::params:
+  - ctm_server: {}
+
+controlm::ctm_server: |
+        #!/bin/sh
+        # chkconfig: 2345 99 1
+        # description: Script for starting and stopping Control-M, its Configuration \
+        #     Agent, and Database.
+
+        # CTM user home directory
+        CTMHOME=~ctmuser
+
+        # Path to the CTM scripts
+        CTMBASE=$CTMHOME/ctm_server/scripts;       export CTMBASE
+
+        prog=ctm_server
+
+        case $1 in
+
+        start_msg)
+                echo "Starting Control/M PostgreSQL Database and Server."
+                ;;
+
+        stop_msg)
+                echo "Stopping Control/M PostgreSQL Database and Server."
+                ;;
+
+        'stop')
+
+        su - ctmuser -c $CTMBASE/shut_ctm
+        if [ $? -ne 0 ]; then
+                echo "error! Failed to run shut_ctm"
+                exit
+        fi
+
+        su - ctmuser -c $CTMBASE/shut_ca
+        if [ $? -ne 0 ]; then
+                echo "error! Failed to run shut_ca"
+                exit
+        fi
+
+        su - ctmuser -c $CTMBASE/shutdb
+        if [ $? -ne 0 ]; then
+                echo "error! Failed to run shutdb"
+                exit
+        fi
+
+        rm -f /var/lock/subsys/$prog
+
+
+        ;;
+
+        'start')
+        [ -f /var/lock/subsys/$prog ] && exit
+
+        su - ctmuser -c $CTMBASE/startdb
+
+        echo "sleeping for 5 seconds..."
+        sleep 5
+
+        su - ctmuser -c $CTMBASE/start_ca
+
+        su - ctmuser -c $CTMBASE/start_ctm
+
+        su - ctmuser -c ctm_diag_comm << EOF
+        `uname -n`
+        EOF
+
+        touch /var/lock/subsys/$prog
+
+        ;;
+
+        esac
+        #- EOF
