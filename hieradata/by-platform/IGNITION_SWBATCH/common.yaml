@@ -25,16 +25,8 @@ sw_ignition8_v2::ign_ver: 7.9.10
 
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
-- nano.x86_64: {}
-- samba-client-libs: {}
-- libarchive: {}
 - samba: {}
-- samba-common: {}
-- samba-common-libs: {}
-- samba-libs: {}
-- samba-common-tools: {}
-- samba-client: {}
-
+# pushed most of these over into the sw_ignition8_v2 module
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
