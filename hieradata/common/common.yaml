@@ -1,7 +1,6 @@
 # Default Classes
 classes:
   - hiera_include_base
-  - tanium_client
   - sw_app_status
   - sw_custom_facts
   - sw_former_admin_cleaner
