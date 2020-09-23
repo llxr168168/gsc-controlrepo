@@ -312,7 +312,7 @@ mod 'awcs7',
 
 mod 'mes',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mes.git',
- :ref => '1.0.2'
+ :ref => 'master'
 
 mod 'mastersaf',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mastersaf.git',
