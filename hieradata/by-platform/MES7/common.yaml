@@ -22,8 +22,6 @@ oracle_build7::tns::tns_webhost_file: /webroot/oracle/mes.tns
 oracle_build7::tns::localfile:
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
-sw_app_status::app_status_script: 'mes7_status.sh'
-
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 oracle_build7::create_grid: 'true'
