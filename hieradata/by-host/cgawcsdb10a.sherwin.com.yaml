@@ -1,4 +1,5 @@
 classes:
   - awcs7
+  - tanium_client_test
 
 awcs7::awcs_alias: 'awcsdb10'
