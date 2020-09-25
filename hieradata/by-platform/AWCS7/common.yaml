@@ -6,7 +6,6 @@ classes:
   - oracle_build7::asm
   #- oracle_build7::tns
   - oracle_build7::sudoers
-  - tanium_client
   - stdbuild::pam
   - sw_apex_print7
   - mq_p2p_client
