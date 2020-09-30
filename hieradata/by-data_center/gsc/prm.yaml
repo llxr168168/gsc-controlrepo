@@ -6,25 +6,20 @@ classes:
 yum::plugins_enabled: 'true'
 avamar::grid: 'swavmEST.sherwin.com'
 
-mes7::mes_alias: 'mesprmplt'
-#mes7::mes_site_name: 'Parma-???'
-
 site_code: prm
 tz::region: 'America'
 tz::locality: 'New_York'
 
 profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveprm.sherwin.com:/data/col1/gsc_ora_backup_prm'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveprm.sherwin.com:/data/col1/gsc_ora_disaster_prm'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveprm.sherwin.com:/data/col1/gsc_oraremote_rw'
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddveprm.sherwin.com:/data/col1/gsc_ora_backup_prm'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddveprm.sherwin.com:/data/col1/gsc_ora_disaster_prm'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddveprm.sherwin.com:/data/col1/gsc_oraremote_rw'
 
 profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveprm.sherwin.com:/data/col1/gsc_ora_backup_prm'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveprm.sherwin.com:/data/col1/gsc_ora_disaster_prm'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveleb.sherwin.com:/data/col1/gsc_oraremote_rw'
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddveprm.sherwin.com:/data/col1/gsc_ora_backup_prm'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddveprm.sherwin.com:/data/col1/gsc_ora_disaster_prm'
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddveleb.sherwin.com:/data/col1/gsc_oraremote_rw'
 
 
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveprm.sherwin.com:/data/col1/gsc_lnxremote_rw'
 sw_os_update_management::redhat::plugins_enabled: 'true'
 sw_os_update_management::yum_conf_additional: 'http_caching=none'
