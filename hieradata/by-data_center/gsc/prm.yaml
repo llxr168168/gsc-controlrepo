@@ -7,7 +7,7 @@ yum::plugins_enabled: 'true'
 avamar::grid: 'swavmEST.sherwin.com'
 
 mes7::mes_alias: 'mesprmplt'
-mes7::mes_site_name: 'Parma-???'
+#mes7::mes_site_name: 'Parma-???'
 
 site_code: prm
 tz::region: 'America'
