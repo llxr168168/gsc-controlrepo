@@ -21,7 +21,7 @@ sw_util::wrapper::hiera_file::params:
       mode: "700"
     } 
 
- - /etc/init.d/controlm-em: {
+  - /etc/init.d/controlm-em: {
       ensure: "file",
       content: "controlm::controlm-em",
       owner: "root",

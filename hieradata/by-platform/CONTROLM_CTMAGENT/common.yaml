@@ -82,9 +82,7 @@ controlm::ctm_agent: |
         #!/bin/sh
         # chkconfig: 2345 98 14
         # description: Script for starting and stopping Control-M Agent
-                usage(){
-                        echo "$0 [start|stop|diag]"
-        }
+        
         prog=ctm_agent
 
         # CTM user home directory
@@ -103,33 +101,33 @@ controlm::ctm_agent: |
                 echo "Stopping Control/M Agent."
                 ;;
 
-       'stop')
+        'stop')
 
-        su - ctmusr -c "$CTMHOME/ctm/scripts/shut-ag -u ctmusr -p ALL"
-        if [ $? -eq 0 ]; then
-          rm -f /var/lock/subsys/$prog
-        fi
+          su - ctmusr -c "$CTMHOME/ctm/scripts/shut-ag -u ctmusr -p ALL"
+          if [ $? -eq 0 ]; then
+            rm -f /var/lock/subsys/$prog
+          fi
                 ;;
 
-       'start')
-       [ -f /var/lock/subsys/$prog ] && exit
+        'start')
+          [ -f /var/lock/subsys/$prog ] && exit
 
 
-        # Issue the agent shutdown to clean up the lock file and any other voodoo that
-        # might be required.  We do this just in case the last shutdown was non-clean;
-        # otherwise, the agent won't start.
+          # Issue the agent shutdown to clean up the lock file and any other voodoo that
+          # might be required.  We do this just in case the last shutdown was non-clean;
+          # otherwise, the agent won't start.
 
-       su - ctmusr -c "$CTMHOME/ctm/scripts/shut-ag -u ctmusr -p ALL"
+          su - ctmusr -c "$CTMHOME/ctm/scripts/shut-ag -u ctmusr -p ALL"
 
-        # Start the agent normally
-        su - ctmusr -c "$CTMHOME/ctm/scripts/start-ag -u ctmusr -p ALL"
-        if [ $? -eq 0 ]; then
-        touch /var/lock/subsys/ctm_agent
-        fi
+          # Start the agent normally
+          su - ctmusr -c "$CTMHOME/ctm/scripts/start-ag -u ctmusr -p ALL"
+          if [ $? -eq 0 ]; then
+            touch /var/lock/subsys/ctm_agent
+          fi
 
-        su - ctmusr -c ag_diag_comm
+          su - ctmusr -c ag_diag_comm
 
-        ;;
+          ;;
 
         esac
         #- EOF
