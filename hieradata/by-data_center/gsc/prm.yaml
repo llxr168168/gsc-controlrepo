@@ -23,3 +23,15 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
 
 sw_os_update_management::redhat::plugins_enabled: 'true'
 sw_os_update_management::yum_conf_additional: 'http_caching=none'
+
+sw_sssd_authentication::ldap_uris: 'ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'
+sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
+sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5zUAAQID'
+sw_sssd_authentication::krb5_server: 'lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
+sw_sssd_authentication::krb5_kpasswd: 'lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
+sw_sssd_authentication::kdc1: 'lbusldap.sherwin.com'
+sw_sssd_authentication::kdc2: 'usldap.sw.sherwin.com'
+
+sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
+sw_sssd_authentication::default_realm: SW
+sw_sssd_authentication::krb5_realm: SW.SHERWIN.COM
