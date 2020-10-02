@@ -1,0 +1,4 @@
+classes::
+  - sw_os_ca_certs
+
+sw_os_ca_certs::install_certs: 'swroot.pem'
