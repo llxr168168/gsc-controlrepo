@@ -9,6 +9,8 @@ sw_resource_realizer::package:
     ensure: 'installed'
   net-tools:
     ensure: 'installed'
+  tcsh:
+    ensure: 'installed'
 
 sw_util::wrapper::hiera_user::params:
   - ctmusr: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/bash", password: "!!"}
