@@ -16,7 +16,7 @@ sw_util::wrapper::hiera_user::params:
   - ctmuser: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/csh", password: "!!"}
 
 sw_util::wrapper::hiera_file::params:
-  - /swdata/bmc: {
+  - /swpkg/bmc: {
       ensure: "directory",
       owner: "ctmuser",
       group: "ctmuser",

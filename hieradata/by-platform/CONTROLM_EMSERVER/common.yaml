@@ -14,7 +14,7 @@ sw_util::wrapper::hiera_user::params:
   - emuser: {uid: 500, home: "/swpkg/bmc", system: true, shell: "/bin/sh", password: "!!"}
 
 sw_util::wrapper::hiera_file::params:
-  - /swdata/bmc: {
+  - /swpkg/bmc: {
       ensure: "directory", 
       owner: "emuser", 
       group: "emuser", 
