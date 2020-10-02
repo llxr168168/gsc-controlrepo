@@ -14,7 +14,7 @@ sw_util::wrapper::hiera_user::params:
   - ctmusr: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/bash", password: "!!"}
 
 sw_util::wrapper::hiera_file::params:
-  - /swdata/bmc: {
+  - /swpkg/bmc: {
       ensure: "directory", 
       owner: "ctmusr", 
       group: "ctmusr", 
