@@ -787,6 +787,14 @@ mod 'apex_tomcat7',
 :git =>'git@github.sherwin.com:SW-CORP-IT/apex_tomcat7.git',
 :ref => 'master'
 
+mod 'apex_tomcat_awcs7',
+:git =>'git@github.sherwin.com:SW-CORP-IT/apex_tomcat_awcs7.git',
+:ref => 'master'
+
+mod 'apex_tomcat_mes7',
+:git =>'git@github.sherwin.com:SW-CORP-IT/apex_tomcat_mes7.git',
+:ref => 'master'
+
 mod 'tomcat9_gsc',
 :git =>'git@github.sherwin.com:SW-CORP-IT/tomcat9_gsc.git',
 :ref => 'master'
