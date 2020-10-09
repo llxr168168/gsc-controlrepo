@@ -6,6 +6,11 @@ forge 'forge.puppetlabs.com'
 # ###
 # Place Third Party Modules below.
 # ###
+# sw_grusers
+mod 'sw_grusers',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_grusers.git',
+ :ref => 'master'
+
 # puppetlabs/stdlib
 mod 'stdlib',
  :git => 'git@github.sherwin.com:SW-CORP-IT/puppetlabs-stdlib.git',
