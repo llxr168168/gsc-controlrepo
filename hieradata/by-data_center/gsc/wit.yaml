@@ -1,0 +1,23 @@
+# Site: Wheeling
+classes:
+  - avamar
+
+yum::plugins_enabled: 'true'
+
+#No local util right now
+yum::yum_repo_file: 'swrepo.yum'
+
+awcs7::awcs_alias: 'awcswhitney'
+
+site_code: wit 
+#avamar::grid: 'swavmcst.sherwin.com'
+
+tz::region: 'Europe'
+tz::locality: 'Whitney'
+
+dnsmasq_conf::nameserver:
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+sw_os_update_management::redhat::plugins_enabled: 'true'
+sw_os_update_management::yum_conf_additional: 'http_caching=none'
