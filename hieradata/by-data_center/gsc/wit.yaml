@@ -13,7 +13,7 @@ site_code: wit
 #avamar::grid: 'swavmcst.sherwin.com'
 
 tz::region: 'Europe'
-tz::locality: 'Whitney'
+tz::locality: 'Witney'
 
 dnsmasq_conf::nameserver:
   - '10.20.103.6'
