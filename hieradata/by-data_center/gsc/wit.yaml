@@ -1,4 +1,4 @@
-# Site: Wheeling
+# Site: Witney
 classes:
   - avamar
 
@@ -7,7 +7,7 @@ yum::plugins_enabled: 'true'
 #No local util right now
 yum::yum_repo_file: 'swrepo.yum'
 
-awcs7::awcs_alias: 'awcswhitney'
+awcs7::awcs_alias: 'awcswitney'
 
 site_code: wit 
 #avamar::grid: 'swavmcst.sherwin.com'
