@@ -16,6 +16,8 @@ classes:
   - sw_resource_realizer::package
   - sw_resource_realizer::service
 
+sw_app_status::app_status_script: 'mes7_status.sh'
+
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 oracle_build7::create_grid: 'true'
