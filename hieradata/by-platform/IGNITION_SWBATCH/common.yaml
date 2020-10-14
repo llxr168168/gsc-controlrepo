@@ -25,7 +25,7 @@ sw_ignition8_v2::ign_ver: 7.9.10
 
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
-- samba: {}
+
 # pushed most of these over into the sw_ignition8_v2 module
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
