@@ -25,7 +25,7 @@ hosts::hosts_group: ignition
 
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
-- samba: {}
+
 
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
