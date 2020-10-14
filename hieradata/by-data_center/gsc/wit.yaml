@@ -17,7 +17,7 @@ tz::locality: 'Witney'
 
 # valspar bubble dns servers
 dnsmasq_conf::nameserver:
-  - '10.21.46.20'
+  - '10.96.3.95'
   - '10.21.46.25'
 
 sw_os_update_management::redhat::plugins_enabled: 'true'
