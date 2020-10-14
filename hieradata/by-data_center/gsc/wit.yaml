@@ -19,6 +19,9 @@ tz::locality: 'Witney'
 dnsmasq_conf::nameserver:
   - '10.96.3.95'
   - '10.21.46.25'
-
+resolv_conf::nameserver:
+  - '10.96.3.95'
+  - '10.21.46.25'
+  
 sw_os_update_management::redhat::plugins_enabled: 'true'
 sw_os_update_management::yum_conf_additional: 'http_caching=none'
