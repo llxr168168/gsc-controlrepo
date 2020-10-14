@@ -7,3 +7,5 @@ tz::locality: 'New_York'
 
 mes7::mes_alias: 'mesordplt'
 mes7::mes_site_name: 'Orlando-ORD'
+mes7::whs_site: 'ordplt'
+mes7::whs_bar: 'KM'

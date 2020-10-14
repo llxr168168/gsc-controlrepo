@@ -4,6 +4,8 @@ resolv_conf::nameserver:
 
 mes7::mes_alias: 'messtaplt'
 mes7::mes_site_name: 'Statesville-689'
+mes7::whs_site: 'staplt'
+mes7::whs_bar: 'SB'
 
 tz::region: 'America'
 tz::locality: 'New_York'

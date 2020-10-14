@@ -1,2 +1,5 @@
+classes:
+  - tanium_client_test
+
 samba::krb_template: krb5.conf.busobj
 postfix::enabled: 'true'

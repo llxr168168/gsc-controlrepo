@@ -7,3 +7,5 @@ tz::locality: 'Los_Angeles'
 
 mes7::mes_alias: 'messanplt'
 mes7::mes_site_name: 'San Diego-673'
+mes7::whs_site: 'sanplt'
+mes7::whs_bar: 'SD'

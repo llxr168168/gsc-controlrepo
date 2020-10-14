@@ -102,6 +102,25 @@ ignition::ign_auth_key: >
     EfNJ7Qv/JDD9RiplJCBsUJIzGMGLOHUV9NVtgQCA0YavXS2sOoqoWq2YdlMA
     nAFruAZBeDhT6tNAYt9w0CTXU3HX4O+VvCdyjDdZwqwMLSlaYNT55QZHGf0z
     U/T/8vwdtCaf/UAjNoneW0bxB5QNvUbEPsuH/J4W/AuUF9vN]
+sw_ignition8_v2::ign_auth_key: >
+    ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAS5OFwPOPtCR7cRCTEG5IGKPs5jAd36hqXON6
+    itiTF27g+gsUiBX4amFeyIUgBaU60vmCji9++QwdzLzuWKet5WuEhcTfz9s9
+    iL2+qOXfib7L/3fRRLCimy33e1TMw7BW5kUvBuxtaSMy0UVe+e4WACwaknkr
+    VTLE3KQK4fU/cq3aTx3LYCkkl5Aq0yRnsElOBtKY9/54vmu6spNCckWTMJZc
+    xGqizIP8gttXBLutUWKUX56c6TtzbsAHBqh7xaJd+BCfzjuLwziVOc5rITMo
+    WF/RlvZhfWaEaJgH6/dzNbkIM2DR7YpIK2bSZf7jEFZPvRZGJW3GTUNRf+4K
+    zIGjfjCCAd4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEENaKrsk4Th8aWPnx
+    TXy6S8uAggGwRZJxK2RVm77vDJhhexDvz1b6zWLVJ6XtSivzQLWRwuHmiXwy
+    +xuVEfwJ9keSB+ORymeF7TDIpyRc8ugD1OFcmRKOTewqRZkWXvktAC1qyrlX
+    lADh5b2qXyU8276smWJbP/UKckzWREeFe/4T3uD6UV42CGxyTyjVQh7Wr/tH
+    C2t2zY75BAho3FaLV2dQMdPN5nFKw5nszf5loMci0awKDZCnLDRPhK+Vcdb3
+    xa5OI/jWDOwBGCFzOVTd77FKISZRf730gfOTgAR1kUH01yQpqH9lAhMZgAG8
+    h3VunsZ3BRgzH80TVCbOOFSGRwjiciAipHbODCNhCp9xCijxoPumlVtD2VAj
+    kYu0FsNrhl6DeLrx+sWIVgVoP8iTQYeKfFnCiKNJ5KFHdgFQ9aycujm5vReR
+    EfNJ7Qv/JDD9RiplJCBsUJIzGMGLOHUV9NVtgQCA0YavXS2sOoqoWq2YdlMA
+    nAFruAZBeDhT6tNAYt9w0CTXU3HX4O+VvCdyjDdZwqwMLSlaYNT55QZHGf0z
+    U/T/8vwdtCaf/UAjNoneW0bxB5QNvUbEPsuH/J4W/AuUF9vN]    
 rundeck_ssh::sshd_enable: true
 rundeck_ssh::allowed_users: 'root@10.25.34.43 root@10.25.34.252 root@10.247.34.252 root@10.247.34.43 oracle@10.25.34.43 oracle@10.25.34.252 grid@10.25.34.43 grid@10.25.34.252 mysql@10.25.34.43 mysql@10.25.34.252'
 rundeck_ssh::allowed_root_ssh_key: >

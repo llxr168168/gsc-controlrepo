@@ -1,4 +1,6 @@
 classes:
   - awcs7
 
-awcs7::awcs_alias: 'awcseso'
+awcs7::awcs_alias: 'awcseffeso'
+
+oracle_build7::kernel::vm_nr_hugepages: 5121

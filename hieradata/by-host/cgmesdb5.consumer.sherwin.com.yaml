@@ -1,2 +1,6 @@
+classes:
+  - tanium_client_test
+
+
 tz::region: 'America'
 tz::locality: 'Los_Angeles'

@@ -1,7 +1,6 @@
 # Default Classes
 classes:
   - hiera_include_base
-  - tanium_client
   - sw_app_status
   - sw_custom_facts
   - sw_former_admin_cleaner
@@ -9,6 +8,7 @@ classes:
   - sw_puppet_ansible
   - sw_aacp_puppet
   - sw_snow_disc
+  - sw_puppet_crowdstrike
 
 
 resolv_conf::nameserver:
@@ -22,7 +22,7 @@ sw_puppet_ansible_dmw::authorized_keys: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD
 yum::yum_repo_file: 'swrepo.yum'
 yum::errata_target: 2019_Q2
 
-access_conf::snow_ips: '10.140.74.138 10.140.74.139'
+access_conf::snow_ips: '10.140.74.138 10.140.74.139 10.148.63.91 10.148.63.92 10.148.65.188 10.148.65.189'
 sw_snow_disc:snow_user: 'sa-cark-servicenow'
 sw_snow_disc:snow_role: 'snow_discoverer'
 

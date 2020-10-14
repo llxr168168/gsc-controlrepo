@@ -6,6 +6,11 @@ forge 'forge.puppetlabs.com'
 # ###
 # Place Third Party Modules below.
 # ###
+# sw_grusers
+mod 'sw_grusers',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_grusers.git',
+ :ref => 'master'
+
 # puppetlabs/stdlib
 mod 'stdlib',
  :git => 'git@github.sherwin.com:SW-CORP-IT/puppetlabs-stdlib.git',
@@ -312,7 +317,7 @@ mod 'awcs7',
 
 mod 'mes',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mes.git',
- :ref => '1.0.2'
+ :ref => 'master'
 
 mod 'mastersaf',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mastersaf.git',
@@ -787,6 +792,14 @@ mod 'apex_tomcat7',
 :git =>'git@github.sherwin.com:SW-CORP-IT/apex_tomcat7.git',
 :ref => 'master'
 
+mod 'apex_tomcat_awcs7',
+:git =>'git@github.sherwin.com:SW-CORP-IT/apex_tomcat_awcs7.git',
+:ref => 'master'
+
+mod 'apex_tomcat_mes7',
+:git =>'git@github.sherwin.com:SW-CORP-IT/apex_tomcat_mes7.git',
+:ref => 'master'
+
 mod 'tomcat9_gsc',
 :git =>'git@github.sherwin.com:SW-CORP-IT/tomcat9_gsc.git',
 :ref => 'master'
@@ -894,3 +907,7 @@ mod 'sw_zabbix_agent',
 mod 'tanium_client_test',
  :git => 'git@github.sherwin.com:SW-CORP-IT/tanium_client_test.git',
  :ref => 'master'
+
+mod 'mqseries9',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/mqseries9.git',
+  :ref => 'master'

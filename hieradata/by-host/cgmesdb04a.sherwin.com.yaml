@@ -1,0 +1,7 @@
+classes:
+  - mes7
+
+mes7::mes_alias: 'mesdb4plt'
+
+
+sw_app_status::app_status_script: 'mes7_status.sh'
