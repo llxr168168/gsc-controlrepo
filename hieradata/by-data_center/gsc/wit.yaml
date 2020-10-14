@@ -1,6 +1,6 @@
 # Site: Witney
-classes:
-  - avamar
+#classes:
+#  - avamar
 
 yum::plugins_enabled: 'true'
 
