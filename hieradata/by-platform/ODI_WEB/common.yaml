@@ -54,13 +54,13 @@ sw_util::wrapper::hiera_file::params:
   mode: "655",
   }  
 
- - /etc/init.d/ctm_agent: {
+  - /etc/init.d/ctm_agent: {
       ensure: "file",
       content: "controlm::ctm_agent",
       owner: "root",
       group: "root",
       mode: "755",
-    }
+  }
 
 
 ODI_SMB::smb_conf: |
