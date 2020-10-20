@@ -13,7 +13,7 @@ site_code: wit
 # avamar::grid: 'swavmcst.sherwin.com'
 
 tz::region: 'Europe'
-tz::locality: 'Witney'
+tz::locality: 'London'
 
 # valspar bubble dns servers
 dnsmasq_conf::nameserver:
