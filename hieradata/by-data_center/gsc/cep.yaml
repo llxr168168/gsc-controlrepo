@@ -1,5 +1,5 @@
 #Classes for this site
-classes:
+#classes:
 #- avamar
   
 yum::plugins_enabled: 'true'
