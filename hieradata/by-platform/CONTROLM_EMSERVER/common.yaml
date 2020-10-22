@@ -7,17 +7,29 @@ sw_resource_realizer::package:
     ensure: 'installed'
   cifs-utils:
     ensure: 'installed'
+  net-tools:
+    ensure: 'installed'
+  tcsh:
+    ensure: 'installed'
 
 sw_util::wrapper::hiera_user::params:
   - emuser: {uid: 500, home: "/swpkg/bmc", system: true, shell: "/bin/sh", password: "!!"}
 
 sw_util::wrapper::hiera_file::params:
-  - /swdata/bmc: {
+  - /swpkg/bmc: {
       ensure: "directory", 
       owner: "emuser", 
       group: "emuser", 
       mode: "700"
     } 
+
+  - /etc/init.d/controlm-em: {
+      ensure: "file",
+      content: "controlm::controlm-em",
+      owner: "root",
+      group: "root",
+      mode: "755",
+    }
 
   - /root/.ctmdocscred: {
       ensure: "file",
@@ -64,3 +76,71 @@ access_conf::access:
 sudo::sudoers_template: sudoers.gcd
 sudo::sudoers_d_template: 'emuser_new'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+sw_util::wrapper::hiera_service::params:
+  - controlm-em: {}
+
+controlm::controlm-em: |
+        #!/bin/bash +x
+        #
+        # Control-M EM - Start and stop Control-M EM related services for Linux
+        #
+        # chkconfig: 345 99 3
+        # description: Start and stop
+        #
+
+
+
+
+        EM_USER="emuser"
+        EM_HOME="/swpkg/bmc/em"
+        EM_NAME="controlm-em"
+
+
+        RETVAL=0
+
+
+        # Source function library.
+        . /etc/rc.d/init.d/functions
+
+
+        usage ()
+        {
+        echo "Usage: service ${$EM_NAME} {start|stop|restart|status}"
+        RETVAL=1
+        }
+
+
+        start ()
+        {
+        echo -n $"Starting ${EM_NAME}: "
+        su - ${EM_USER} -c 'start_ns_daemon'
+        su - ${EM_USER} -c 'start_server'
+        su - ${EM_USER} -c 'start_cms'
+        su - ${EM_USER} -c 'start_config_agent'
+        su - ${EM_USER} -c 'start_web_server'
+        echo
+        echo "May take serveral minutes for all servcies to fully start...."
+        echo
+        }
+
+        stop ()
+        {
+        echo -n "Stopping ${EM_NAME}: "
+        su - ${EM_USER} -c 'em ctl -U emuser -P empass -C Config_Agent -M sched01 -cmd shutdown'
+        su - ${EM_USER} -c stop_ns_daemon
+        su - ${EM_USER} -c stop_config_agent
+        su - ${EM_USER} -c stop_web_server
+        su - ${EM_USER} -c stop_cms
+        su - ${EM_USER} -c stop_server
+
+        echo
+        }
+ 
+        case "$1" in
+        start) start; RETVAL=$? ;;
+        stop) stop; RETVAL=$? ;;
+        *) usage ; RETVAL=2 ;;
+        esac
+
+        exit $RETVAL

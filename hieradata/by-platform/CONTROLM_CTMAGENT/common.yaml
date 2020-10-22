@@ -7,17 +7,30 @@ sw_resource_realizer::package:
     ensure: 'installed'  
   cifs-utils:
     ensure: 'installed'
+  net-tools:
+    ensure: 'installed'
+  tcsh:
+    ensure: 'installed'
 
 sw_util::wrapper::hiera_user::params:
   - ctmusr: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/bash", password: "!!"}
 
 sw_util::wrapper::hiera_file::params:
-  - /swdata/bmc: {
+  - /swpkg/bmc: {
       ensure: "directory", 
       owner: "ctmusr", 
       group: "ctmusr", 
       mode: "700"
     }
+
+  - /etc/init.d/ctm_agent: {
+      ensure: "file",
+      content: "controlm::ctm_agent",
+      owner: "root",
+      group: "root",
+      mode: "755",
+    }
+ 
   - /root/.ctmdocscred: {
       ensure: "file", 
       owner: "root", 
@@ -63,3 +76,60 @@ access_conf::access:
 sudo::sudoers_template: sudoers.gcd
 sudo::sudoers_d_template: 'ctm_agent_new'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+sw_util::wrapper::hiera_service::params:
+  - ctm_agent: {}
+
+controlm::ctm_agent: |
+        #!/bin/sh
+        # chkconfig: 2345 98 14
+        # description: Script for starting and stopping Control-M Agent
+        
+        prog=ctm_agent
+
+        # CTM user home directory
+        CTMHOME=~ctmusr
+
+        # Path to the CTM scripts
+        CTMBASE=$CTMHOME/ctm/scripts;       export CTMBASE
+
+        case $1 in
+
+        start_msg)
+                echo "Starting Control/M Agent."
+                ;;
+
+        stop_msg)
+                echo "Stopping Control/M Agent."
+                ;;
+
+        'stop')
+
+          su - ctmusr -c "$CTMHOME/ctm/scripts/shut-ag -u ctmusr -p ALL"
+          if [ $? -eq 0 ]; then
+            rm -f /var/lock/subsys/$prog
+          fi
+                ;;
+
+        'start')
+          [ -f /var/lock/subsys/$prog ] && exit
+
+
+          # Issue the agent shutdown to clean up the lock file and any other voodoo that
+          # might be required.  We do this just in case the last shutdown was non-clean;
+          # otherwise, the agent won't start.
+
+          su - ctmusr -c "$CTMHOME/ctm/scripts/shut-ag -u ctmusr -p ALL"
+
+          # Start the agent normally
+          su - ctmusr -c "$CTMHOME/ctm/scripts/start-ag -u ctmusr -p ALL"
+          if [ $? -eq 0 ]; then
+            touch /var/lock/subsys/ctm_agent
+          fi
+
+          su - ctmusr -c ag_diag_comm
+
+          ;;
+
+        esac
+        #- EOF

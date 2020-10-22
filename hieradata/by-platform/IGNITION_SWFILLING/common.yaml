@@ -1,6 +1,5 @@
 classes:
     - sw_ignition8_v2
-    - sw_resource_realizer::package
     - sw_resource_realizer::service
 
 ## Default ignition version for regular ignition is 7.9.9 at this time and that is set in sw_ignition8_v2 , but is overridable in by-host
@@ -28,22 +27,7 @@ hosts::hosts_group: ignition
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
-sw_resource_realizer::package:
-  nano:
-    ensure: 'installed'
-  samba-client-libs:
-    ensure: 'installed'
-  libarchive:
-    ensure: 'installed'
-  samba-common:
-    ensure: 'installed'
-  samba-common-libs: 
-    ensure: 'installed'
-  samba-libs: 
-    ensure: 'installed'
-  samba-common-tools: 
-    ensure: 'installed'
-  samba-client: {}
+# package installs are in the sw_ignition8_v2 module 
 
 sw_util::wrapper::hiera_file::params:
   - /etc/samba/smb.conf: {

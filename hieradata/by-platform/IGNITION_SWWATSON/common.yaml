@@ -25,15 +25,7 @@ hosts::hosts_group: ignition
 
 sw_util::wrapper::hiera_package::params:
 - jdk9u4.x86_64: {}
-- nano.x86_64: {}
-- samba-client-libs: {}
-- libarchive: {}
-- samba: {}
-- samba-common: {}
-- samba-common-libs: {}
-- samba-libs: {}
-- samba-common-tools: {}
-- samba-client: {}
+
 
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
