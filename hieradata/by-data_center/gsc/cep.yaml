@@ -1,6 +1,6 @@
 #Classes for this site
 classes:
-  - avamar
+#- avamar
   
 yum::plugins_enabled: 'true'
 
@@ -11,7 +11,7 @@ mes7::whs_site: 'cepplt'
 mes7::whs_bar: 'EC'
 
 #Enable Avamar for all VMs at this site
-avamar::disable: 'false'
+#avamar::disable: 'false'
 avamar::grid: 'swavmcst.sherwin.com'
 
 resolv_conf::nameserver:
