@@ -1,6 +1,6 @@
 #Classes for this site
-classes:
-  - avamar
+#classes:
+#  - avamar
 
 yum::plugins_enabled: 'true'
 
@@ -12,7 +12,7 @@ mes7::whs_bar: 'WE'
 
 
 #Enable Avamar for all VMs at this site
-avamar::disable: 'false'
+#avamar::disable: 'false'
 avamar::grid: 'swavmPST.sherwin.com'
 
 resolv_conf::nameserver:
