@@ -7,7 +7,6 @@ classes:
   - oracle_build7::asm
   - oracle_build7::tns
   - oracle_build7::sudoers
-  - tanium_client
   - apex_tomcat7
   - apex_tomcat7::apex_sudo
   - stdbuild::pam

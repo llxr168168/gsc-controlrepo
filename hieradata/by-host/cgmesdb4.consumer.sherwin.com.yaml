@@ -1,4 +1,1 @@
-classes:
-  - tanium_client_test
-
 oracle_build::kernel::vm_nr_hugepages: 1134
