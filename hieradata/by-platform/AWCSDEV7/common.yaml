@@ -17,8 +17,6 @@ classes:
   - dnsmasq_conf
   - sw_os_ca_certs
   - sw_puppet_ansible_dmw
-  - tanium_client_test
-
 
 
 sw_os_ca_certs::install_certs: 'swroot.pem'

@@ -6,7 +6,6 @@ classes:
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
-  - tanium_client_test
   - stdbuild::pam
   - sw_apex_print
   - sw_dataguard_status
