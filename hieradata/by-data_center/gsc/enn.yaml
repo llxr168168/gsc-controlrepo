@@ -1,13 +1,13 @@
 #Classes for this site
-classes:
-  - avamar
+#classes:
+#  - avamar
 
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
 
 #Enable Avamar for all VMs at this site
-avamar::disable: 'false'
+#avamar::disable: 'false'
 avamar::grid: 'swavmcst.sherwin.com'
 
 resolv_conf::nameserver:
