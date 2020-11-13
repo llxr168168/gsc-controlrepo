@@ -31,8 +31,6 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddverno.sherwin.com:/data/col1/gsc_ora_disaster_rno'
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddverno.sherwin.com:/data/col1/gsc_oraremote_rw'
 
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddverno.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
 
 yum::yum_repo_file: remotesite.yum
