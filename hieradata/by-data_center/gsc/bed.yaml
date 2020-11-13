@@ -4,8 +4,6 @@ classes:
   
 yum::plugins_enabled: 'true'
 
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvebed.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
 #Site Specific overrides
 avamar::disable: 'true'
