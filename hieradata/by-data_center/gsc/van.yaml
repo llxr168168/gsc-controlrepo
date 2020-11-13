@@ -31,9 +31,6 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvevan.sherwin.com:/data/col1/gsc_oraremote_rw'
 
 
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvevan.sherwin.com:/data/col1/gsc_lnxremote_rw'
-
 
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum
