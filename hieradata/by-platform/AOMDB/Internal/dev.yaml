@@ -1,6 +1,5 @@
 classes:
   - profiles_unix::gsc::oracle::asm
-  - tanium_client
 
 oracle_build::kernel::vm_nr_hugepages: 17000
 
