@@ -5,7 +5,6 @@ classes:
   - profiles_unix::gsc::apps::printing
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
-  - tanium_client
   - stdbuild::pam
 
 profiles_unix::gsc::oracle::base::nfs_mounts:
