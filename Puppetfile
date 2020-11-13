@@ -908,6 +908,10 @@ mod 'tanium_client_test',
  :git => 'git@github.sherwin.com:SW-CORP-IT/tanium_client_test.git',
  :ref => 'master'
 
+mod 'sw_linux_tanium_client',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_linux_tanium_client.git',
+ :ref => 'master'
+
 mod 'mqseries9',
   :git => 'git@github.sherwin.com:SW-CORP-IT/mqseries9.git',
   :ref => 'master'
