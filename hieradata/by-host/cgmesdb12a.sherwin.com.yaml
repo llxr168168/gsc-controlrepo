@@ -1,0 +1,4 @@
+classes:
+  - mes7
+
+mes7::mes_alias: 'mesdb12plt'
