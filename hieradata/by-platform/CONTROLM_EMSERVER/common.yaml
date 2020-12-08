@@ -20,7 +20,7 @@ sw_util::wrapper::hiera_file::params:
       ensure: "directory", 
       owner: "emuser", 
       group: "emuser", 
-      mode: "700"
+      mode: "775"
     } 
 
   - /etc/init.d/controlm-em: {
