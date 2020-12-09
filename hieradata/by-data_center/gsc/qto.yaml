@@ -5,5 +5,5 @@ tz::region: 'America'
 tz::locality: 'Guayaquil'
 site_code: qto
 
-avamar::disable: 'false'
+
 avamar::grid: 'swavmqto.sherwin.com'
