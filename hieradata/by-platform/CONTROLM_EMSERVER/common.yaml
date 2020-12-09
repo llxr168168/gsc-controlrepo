@@ -1,7 +1,7 @@
 classes:
   - sw_util::hiera_wrapper
   - sw_resource_realizer::package
-  
+  - sw_grusers::ctm_sched  
 sw_resource_realizer::package:
   libnsl:
     ensure: 'installed'
