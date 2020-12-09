@@ -1,6 +1,5 @@
 #Classes for this site
 
-
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
