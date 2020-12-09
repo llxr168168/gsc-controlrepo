@@ -1,14 +1,10 @@
 #Covington wave2 site
 
-classes:
-  - avamar
 
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
 
-#Enable Avamar for all VMs at this site
-avamar::disable: 'false'
 avamar::grid: 'swavmest.sherwin.com'
 
 resolv_conf::nameserver:
