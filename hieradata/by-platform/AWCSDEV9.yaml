@@ -6,7 +6,6 @@ classes:
   - profiles_unix::gsc::oracle::base
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
-  - tanium_client
   - stdbuild::pam
   - sw_apex_print
   - sw_dataguard_status
@@ -14,8 +13,6 @@ classes:
   
 sw_apex_print::local_user: 'awcs'
 sw_apex_print::local_group: 'awcs'
-
-sw_app_status::app_status_script: 'awcs_dev_status.sh'
 
 oracle_build::kernel::vm_nr_hugepages: 2304
 

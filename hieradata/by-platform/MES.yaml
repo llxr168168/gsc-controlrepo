@@ -8,6 +8,7 @@ classes:
   - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
   - sw_puppet_ansible_dmw
+  - sw_dataguard_status
 
 mq_p2p_client::account_lock_status: 'true'
 

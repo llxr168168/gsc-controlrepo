@@ -7,7 +7,6 @@ classes:
   - oracle_build7::asm
   - oracle_build7::tns
   - oracle_build7::sudoers
-  - tanium_client
   - apex_tomcat7
   - apex_tomcat7::apex_sudo
   - stdbuild::pam
@@ -23,6 +22,8 @@ oracle_build7::tns::localfile:
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+sw_app_status::app_status_script: 'mes7_status.sh'
 
 oracle_build7::create_grid: 'true'
 

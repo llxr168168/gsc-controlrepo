@@ -1,7 +1,8 @@
 classes:
   - sw_util::hiera_wrapper
-  - sw_resource_realizer::package
-  
+  - sw_resource_realizer::package 
+  - sw_grusers::ctm_sched
+
 sw_resource_realizer::package:
   libnsl:
     ensure: 'installed'  
@@ -16,11 +17,11 @@ sw_util::wrapper::hiera_user::params:
   - ctmuser: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/csh", password: "!!"}
 
 sw_util::wrapper::hiera_file::params:
-  - /swdata/bmc: {
+  - /swpkg/bmc: {
       ensure: "directory",
       owner: "ctmuser",
       group: "ctmuser",
-      mode: "700"
+      mode: "775"
     }
   - /etc/init.d/ctm_server: {
       ensure: "file",
@@ -78,6 +79,7 @@ access_conf::access:
   - '+:(SW\gg-adm-gcdunix):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
   - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:ctm_sched: 10.140.65.80 10.25.33.162 10.148.37.73 10.140.32.209'
   - '-:ALL:ALL'
 
 sudo::sudoers_template: sudoers.gcd

@@ -1,0 +1,27 @@
+# Site: Witney
+# classes:
+#  - avamar
+
+yum::plugins_enabled: 'true'
+
+#No local util right now
+yum::yum_repo_file: 'swrepo.yum'
+
+awcs7::awcs_alias: 'awcswitney'
+
+site_code: wit 
+# avamar::grid: 'swavmcst.sherwin.com'
+
+tz::region: 'Europe'
+tz::locality: 'London'
+
+# valspar bubble dns servers
+dnsmasq_conf::nameserver:
+  - '10.96.3.95'
+  - '10.21.46.25'
+resolv_conf::nameserver:
+  - '10.96.3.95'
+  - '10.21.46.25'
+  
+sw_os_update_management::redhat::plugins_enabled: 'true'
+sw_os_update_management::yum_conf_additional: 'http_caching=none'
