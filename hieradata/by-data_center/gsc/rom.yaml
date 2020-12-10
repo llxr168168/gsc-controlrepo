@@ -1,7 +1,5 @@
 # Site: Romeoville
 
-classes:
-  - avamar
 
 avamar::grid: 'swavmcst.sherwin.com'
 

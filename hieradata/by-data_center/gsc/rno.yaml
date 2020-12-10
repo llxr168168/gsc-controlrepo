@@ -1,11 +1,7 @@
 #Classes for this site
-classes:
-  - avamar
 
 yum::plugins_enabled: 'true'
 
-#Site Specific overrides
-avamar::disable: 'false'
 avamar::grid: 'swavmpst.sherwin.com'
 
 

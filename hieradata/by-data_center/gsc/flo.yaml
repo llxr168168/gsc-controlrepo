@@ -1,12 +1,8 @@
 #Classes for this site
-classes:
-  - avamar
   
 yum::plugins_enabled: 'true'
 #Site Specific overrides
 
-#Enable Avamar for all VMs at this site
-avamar::disable: 'false'
 avamar::grid: 'swavmcst.sherwin.com'
 
 awcs7::awcs_alias: 'awcsflora'

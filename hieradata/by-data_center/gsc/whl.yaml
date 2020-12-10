@@ -1,6 +1,4 @@
 # Site: Wheeling
-classes:
-  - avamar
 
 yum::plugins_enabled: 'true'
 

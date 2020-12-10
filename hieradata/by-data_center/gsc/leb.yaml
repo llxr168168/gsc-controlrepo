@@ -1,7 +1,5 @@
 # Site: Lebanon, PA
 
-classes:
-  - avamar
 
 yum::plugins_enabled: 'true'
 avamar::grid: 'swavmEST.sherwin.com'
