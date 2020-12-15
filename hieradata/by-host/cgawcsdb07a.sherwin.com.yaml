@@ -2,5 +2,3 @@ classes:
   - awcs7
 
 awcs7::awcs_alias: 'awcsdb07'
-
-oracle_build7::kernel::vm_nr_hugepages: 4608
