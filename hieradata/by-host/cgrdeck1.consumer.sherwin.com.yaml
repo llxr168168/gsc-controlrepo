@@ -1,4 +1,0 @@
-samba::krb_template: krb5.conf.busobj
-postfix::enabled: 'true'
-
-sw_app_status::app_status_script: 'rundeck_status.sh'
