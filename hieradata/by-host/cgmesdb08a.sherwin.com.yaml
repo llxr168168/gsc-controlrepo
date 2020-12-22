@@ -2,6 +2,3 @@ classes:
   - mes7
 
 mes7::mes_alias: 'mesdb8plt'
-
-
-oracle_build7::kernel::vm_nr_hugepages: 4608
