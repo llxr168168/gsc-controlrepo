@@ -1,0 +1,6 @@
+#
+# Server hosts the Thouars, France instance of Ignition from the Witney datacenter.  Needs to reflect site time.
+#
+
+tz::region: 'Europe'
+tz::locality: 'Paris'

@@ -1,7 +1,5 @@
 # Site: Statesville
 
-classes:
-  - avamar
 
 avamar::grid: 'swavmest.sherwin.com'
 

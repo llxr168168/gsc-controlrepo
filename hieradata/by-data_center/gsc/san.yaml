@@ -1,6 +1,4 @@
 #Classes for this site
-classes:
-  - avamar
 
 yum::plugins_enabled: 'true'
 
@@ -10,8 +8,6 @@ mes7::mes_site_name: 'San Diego-673'
 mes7::whs_site: 'sanplt'
 mes7::whs_bar: 'SD'
 
-#Enable Avamar for all VMs at this site
-avamar::disable: 'false'
 avamar::grid: 'swavmPST.sherwin.com'
 
 resolv_conf::nameserver:
