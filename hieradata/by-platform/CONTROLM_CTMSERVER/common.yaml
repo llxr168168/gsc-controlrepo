@@ -21,7 +21,7 @@ sw_util::wrapper::hiera_file::params:
       ensure: "directory",
       owner: "ctmuser",
       group: "ctmuser",
-      mode: "700"
+      mode: "755"
     }
   - /etc/systemd/system/ctmserver.service: {
       ensure: "file",
