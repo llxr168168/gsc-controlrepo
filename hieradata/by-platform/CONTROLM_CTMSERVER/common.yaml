@@ -86,6 +86,7 @@ access_conf::access:
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
+  - '+:ctm_sched: 10.140.65.80 10.25.33.162 10.148.37.73 10.140.32.209'
   - '-:ALL:ALL'
 
 sudo::sudoers_template: sudoers.gcd
