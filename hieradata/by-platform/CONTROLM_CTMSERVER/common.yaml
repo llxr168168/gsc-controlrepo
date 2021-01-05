@@ -1,6 +1,6 @@
 classes:
   - sw_util::hiera_wrapper
-  - sw_resource_realizer::package 
+  - sw_resource_realizer::package
   - sw_grusers::ctm_sched
 
 sw_resource_realizer::package:
@@ -23,19 +23,19 @@ sw_util::wrapper::hiera_file::params:
       group: "ctmuser",
       mode: "775"
     }
-  - /etc/init.d/ctm_server: {
+  - /etc/systemd/system/ctmserver.service: {
       ensure: "file",
-      content: "controlm::ctm_server",
+      content: "controlm::ctmserver_service",
       owner: "root",
       group: "root",
-      mode: "755",
+      mode: "644",
     }
-  - /etc/init.d/ctm_agent: {
+  - /etc/systemd/system/ctmagent.service: {
       ensure: "file",
-      content: "controlm::ctm_agent",
+      content: "controlm::ctmagent_service",
       owner: "root",
       group: "root",
-      mode: "755",
+      mode: "644",
     }
 
   - /root/.ctmdocscred: {
@@ -44,6 +44,14 @@ sw_util::wrapper::hiera_file::params:
       group: "root" , 
       content: "controlm::ctmdocscreds",
       mode: "600"
+    }
+
+  - /swpkg/bmc/ctmagent_control.sh: {
+      ensure: "file",
+      content: "controlm::ctmagent_control",
+      owner: "root",
+      group: "root",
+      mode: "755",
     }
 
 
@@ -78,7 +86,6 @@ access_conf::access:
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
-  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
   - '+:ctm_sched: 10.140.65.80 10.25.33.162 10.148.37.73 10.140.32.209'
   - '-:ALL:ALL'
 
@@ -87,134 +94,84 @@ sudo::sudoers_d_template: 'ctm_server_new'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 sw_util::wrapper::hiera_service::params:
-  - ctm_server: {}
-  - ctm_agent: {}
+  - ctmserver.service: {}
+  - ctmagent.service: {}
 
 
-controlm::ctm_agent: |
-    #!/bin/sh
-    # chkconfig: 2345 98 2
-    # description: Script for starting and stopping Control-M Agent
+controlm::ctmagent_service: |
+ [Unit]
+ Description=Control-M Agent
+ [Service]
+ Type=forking
+ RemainAfterExit=yes
+ ExecStart=/swpkg/bmc/ctmagent_control.sh start
+ ExecStop=/swpkg/bmc/ctmagent_control.sh stop
+ [Install]
+ WantedBy=multi-user.target
 
-    prog=ctm_agent
+controlm::ctmserver_service: |
+ [Unit]
+ Description=Control-M Server
+ After=systemd-user-sessions.service multi-user.target network.target
+ [Service]
+ ExecStart=/bin/sh -c /swpkg/bmc/ctm_server/data/rc.ctmuser
+ Type=forking
+ RemainAfterExit=yes
+ ExecStop=/usr/bin/su - ctmuser -c '/swpkg/bmc/ctm_server/scripts/shut_ca ; /swpkg/bmc/ctm_server/scripts/shut_ctm -CA; sleep 10 ; /swpkg/bmc/ctm_server/scripts/shutdb;'
+ [Install]
+ WantedBy=multi-user.target      
 
-    # CTM user home directory
-    CTMHOME=~ctmuser
+controlm::ctmagent_control: |
+ #!/bin/sh
+ # chkconfig: 2345 98 2
+ # description: Script for starting and stopping Control-M Agent
+ 
+ prog=ctm_agent
+ 
+ # CTM user home directory
+ CTMHOME=~ctmuser
 
-    # Path to the CTM scripts
-    CTMBASE=$CTMHOME/ctm_agent/scripts;       export CTMBASE
+ # Path to the CTM scripts
+ CTMBASE=$CTMHOME/ctm_agent/scripts;       
+ export CTMBASE 
+ 
+ case $1 in
 
-    case $1 in
-
-    start_msg)
-            echo "Starting Control/M Agent."
-            ;;
-
-    stop_msg)
-            echo "Stopping Control/M Agent."
-            ;;
-
-    'stop')
-
-      su - ctmuser -c "$CTMHOME/ctm_agent/ctm/scripts/shut-ag -u ctmuser -p ALL"
-      if [ $? -eq 0 ]; then
-        rm -f /var/lock/subsys/$prog
-      fi
-            ;;
-
-    'start')
-      [ -f /var/lock/subsys/$prog ] && exit
-
-
-      # Issue the agent shutdown to clean up the lock file and any other voodoo that
-      # might be required.  We do this just in case the last shutdown was non-clean;
-      # otherwise, the agent won't start.
-
-      su - ctmuser -c "$CTMHOME/ctm_agent/ctm/scripts/shut-ag -u ctmuser -p ALL"
-
-      # Start the agent normally
-      su - ctmuser -c "$CTMHOME/ctm_agent/ctm/scripts/start-ag -u ctmuser -p ALL"
-      if [ $? -eq 0 ]; then
-        touch /var/lock/subsys/ctm_agent
-      fi
-
-      su - ctmuser -c ag_diag_comm
-
-      ;;
-
-    esac
-    #- EOF
-
-
-
-controlm::ctm_server: |
-        #!/bin/sh
-        # chkconfig: 2345 99 1
-        # description: Script for starting and stopping Control-M, its Configuration \
-        #     Agent, and Database.
-
-        # CTM user home directory
-        CTMHOME=~ctmuser
-
-        # Path to the CTM scripts
-        CTMBASE=$CTMHOME/ctm_server/scripts;       export CTMBASE
-
-        prog=ctm_server
-
-        case $1 in
-
-        start_msg)
-                echo "Starting Control/M PostgreSQL Database and Server."
-                ;;
-
-        stop_msg)
-                echo "Stopping Control/M PostgreSQL Database and Server."
-                ;;
-
-        'stop')
-
-        su - ctmuser -c $CTMBASE/shut_ctm
-        if [ $? -ne 0 ]; then
-                echo "error! Failed to run shut_ctm"
-                exit
-        fi
-
-        su - ctmuser -c $CTMBASE/shut_ca
-        if [ $? -ne 0 ]; then
-                echo "error! Failed to run shut_ca"
-                exit
-        fi
-
-        su - ctmuser -c $CTMBASE/shutdb
-        if [ $? -ne 0 ]; then
-                echo "error! Failed to run shutdb"
-                exit
-        fi
-
-        rm -f /var/lock/subsys/$prog
-
-
+ start_msg)
+        echo "Starting Control/M Agent."
         ;;
 
-        'start')
-        [ -f /var/lock/subsys/$prog ] && exit
-
-        su - ctmuser -c $CTMBASE/startdb
-
-        echo "sleeping for 5 seconds..."
-        sleep 5
-
-        su - ctmuser -c $CTMBASE/start_ca
-
-        su - ctmuser -c $CTMBASE/start_ctm
-
-        su - ctmuser -c ctm_diag_comm << EOF
-        `uname -n`
-        EOF
-
-        touch /var/lock/subsys/$prog
-
+ stop_msg)
+        echo "Stopping Control/M Agent."
         ;;
 
-        esac
-        #- EOF
+ 'stop')
+
+  su - ctmuser -c "$CTMHOME/ctm_agent/ctm/scripts/shut-ag -u ctmuser -p ALL"
+  if [ $? -eq 0 ]; then
+    rm -f /var/lock/subsys/$prog
+  fi
+        ;;
+
+ 'start')
+  [ -f /var/lock/subsys/$prog ] && exit
+
+
+  # Issue the agent shutdown to clean up the lock file and any other voodoo that
+  # might be required.  We do this just in case the last shutdown was non-clean;
+  # otherwise, the agent won't start.
+
+  su - ctmuser -c "$CTMHOME/ctm_agent/ctm/scripts/shut-ag -u ctmuser -p ALL"
+
+  # Start the agent normally
+  su - ctmuser -c "$CTMHOME/ctm_agent/ctm/scripts/start-ag -u ctmuser -p ALL"
+  if [ $? -eq 0 ]; then
+    touch /var/lock/subsys/ctm_agent
+  fi
+
+  su - ctmuser -c ag_diag_comm
+
+  ;;
+
+ esac
+ #- EOF
