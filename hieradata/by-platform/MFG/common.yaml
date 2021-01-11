@@ -1,7 +1,6 @@
 classes:
   - profiles_unix::gsc::oracle7::base
   - oracle_build7::asm
-  - oracle_build7::tns
   - oracle_build7::sudoers
   - sw_puppet_ansible_dmw
   - mq_p2p_client
