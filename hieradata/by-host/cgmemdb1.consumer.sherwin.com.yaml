@@ -1,0 +1,3 @@
+---
+autofs::nfs_maps:
+  - '/global/mysql_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/gcd_mysql_ak'
