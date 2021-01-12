@@ -1,8 +1,5 @@
 # Site: Parma, OH
 
-classes:
-  - avamar
-
 yum::plugins_enabled: 'true'
 avamar::grid: 'swavmEST.sherwin.com'
 
