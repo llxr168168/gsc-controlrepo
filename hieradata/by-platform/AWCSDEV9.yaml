@@ -1,6 +1,7 @@
 classes:
   - profiles_unix::gsc::apps::awcs_whs
-  - profiles_unix::gsc::apps::apex9
+  - apex_tomcat9
+  - apex_tomcat9::apex_sudo
   - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::printing
   - profiles_unix::gsc::oracle::base
