@@ -2,3 +2,5 @@ classes:
   - awcs7
 
 awcs7::awcs_alias: 'awcspuerto'
+
+oracle_build7::kernel::vm_nr_hugepages: 2304
