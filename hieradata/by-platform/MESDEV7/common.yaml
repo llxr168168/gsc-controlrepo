@@ -16,7 +16,7 @@ classes:
   - sw_resource_realizer::package
   - sw_resource_realizer::service
 
-mes7::mes_httpd_conf: 'mes.dev.conf.erb'
+mes7::dev::mes_httpd_conf: 'mes.dev.conf.erb'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
@@ -124,7 +124,7 @@ access_conf::access:
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
 
-mes7::oracle_auth_keys: >
+mes7::dev::oracle_auth_keys: >
     ENC[PKCS7,MIIEvQYJKoZIhvcNAQcDoIIErjCCBKoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAUUIJTs0Cxb8M+9myxwQvknqNKJtMRzaDmMjl
     jqNFJ2jrUZoI4uXZLGt0ABjc74ThkAvUESlqBF1oxok1LwXb90BSsJMl1Sze
@@ -156,7 +156,7 @@ mes7::oracle_auth_keys: >
 
 apex_tomcat_mes7::tomcat_password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEATYIly5H+zJ5xDXDJMRaTMsOMhZXSSYmNa2AkNGQLNgm5teXX5E0k46gQWqgTkLEs5DbOVsxV2llSi43ENn53FvtXBeoMFh8/ZYMELnutIOuslRbIKpJrw4apQ5qRr8GVrYobHvho5XimzcH6o90Cqz0qsc8/7mj55CA9GsHJQmZnReNCWuaDziPOww0XDuK02e3coLISIYSoBGkLWIxAX2+/lriWzskziyMcMB0JLGMyW1VjjCurgOnRunMpStYCLqkH27mhxyTR4CtnaGYNnt/HSNwhgAS8pJfj7Z49e/n8TETzSap8FCcBGngQc1ssKabNrPTym3XZBuTt6w+H0zA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBfFCXs2Zi1CTtdCjKaQ0JwgBAMs42iXICSvHy+U42xmis1]
 
-mes7::mes_authorized_keys: >
+mes7::dev::mes_authorized_keys: >
     ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAY4RMmOXupdV8noYPcVq9FK1KJDFTQ/1bRf/L
     mW42OBrqNK3UEBgFXOCe2u1Y8rKkJea5jfat+jr38VRTj8PJ4C6WHF5OSvv7
@@ -175,7 +175,7 @@ mes7::mes_authorized_keys: >
     lNwryU/3ipQnnCKEEwMcoNjlGVB4oh3/bRpLd7W0+IO1ag0jfPDz2z0cMR5+
     lDPdHAkO9ebkEJEofHSE6VJg4x5DXbohzPxepL0dC0rOCY8dHqpUCZss3YLj
     6ezOcVqvNXHiazt5kwZrLNt/uwDMOSEIR6DKSsy6rFfELSoK]
-mes7::mes_id_rsa: >
+mes7::dev::mes_id_rsa: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAoQkM3ZJO5YsPqWW2STzzrpT8GVz9COxzofTi
     eNCEseVabQKV02QFG9qb5pqqc9Kle8k0mvjpxfjzG8f/5hahwZc6D8MBluY6
@@ -222,7 +222,7 @@ mes7::mes_id_rsa: >
     3RsMKmymDEKNSQ4EpHoF9bhwLm9qU9sgsmYDIV0pMbVdfxKJrGsuJAyynvgS
     q5f4yyjP/aD64Z0T3Ko//wtOgIJv2xCg1wiOy7AWLDHErPwnSbiDaX2hFxco
     fV3ZFaUeKQ1rIlX1+q1p+JsIlQbId7Pi]
-mes7::mes_id_rsa_pub: >
+mes7::dev::mes_id_rsa_pub: >
     ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAJzLWiHTJoAX3LcwSJuPO1t69Cj35alnjmOng
     4nIRo9jGFG9anBLKnIPlVaqVlisgJa2iUoMuRG3NKjf1cSM5QjDkqCnLs8yV
