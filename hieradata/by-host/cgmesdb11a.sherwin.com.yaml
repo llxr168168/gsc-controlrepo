@@ -1,4 +1,4 @@
 classes:
-  - mes7
+  - mes7::dev
 
-mes7::mes_alias: 'mesdb11plt'
+mes7::dev::mes_alias: 'mesdb11plt'
