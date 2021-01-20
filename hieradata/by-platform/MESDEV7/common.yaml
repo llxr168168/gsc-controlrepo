@@ -5,7 +5,6 @@ classes:
   - swprint
   - profiles_unix::gsc::oracle7::base
   - oracle_build7::asm
-  - oracle_build7::tns
   - oracle_build7::sudoers
   - apex_tomcat_mes7
   - apex_tomcat_mes7::apex_sudo
@@ -75,12 +74,6 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw'
   - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_ak'
 
-
-
-oracle_build7::tns::tns_webhost: pulp.sherwin.com
-oracle_build7::tns::tns_webhost_file: /webroot/oracle/mesdev.tns
-oracle_build7::tns::localfile: 
-  - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
 
 oracle_build7::oracleshared_path: '/swdata/nfs/oramedia'
 
