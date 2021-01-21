@@ -5,7 +5,7 @@ classes:
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
-avamar::disable: 'true'
+avamar::disable: 'swavmpia.sherwin.com'
 resolv_conf::nameserver:
   - '10.12.31.133'
   - '10.20.103.6'
