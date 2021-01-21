@@ -5,6 +5,11 @@ yum::plugins_enabled: 'true'
 
 avamar::grid: 'swavmcst.sherwin.com'
 
+#Site Specific overrides
+mes7::mes_alias: 'mesfloplt'
+mes7::mes_site_name: 'Flora-FLO'
+mes7::whs_site: 'floplt'
+mes7::whs_bar: 'FM'
 awcs7::awcs_alias: 'awcsflora'
 
 dnsmasq_conf::nameserver:
