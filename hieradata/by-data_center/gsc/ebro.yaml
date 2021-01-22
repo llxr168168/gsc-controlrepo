@@ -5,6 +5,8 @@ classes:
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
+mes7::mes_alias: 'mesbroplt'
+
 avamar::grid: 'swavmpia.sherwin.com'
 resolv_conf::nameserver:
   - '10.12.31.133'
