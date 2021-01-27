@@ -1,6 +1,3 @@
-oracle_build7::kernel::vm_nr_hugepages: 1160
-
-
 resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
@@ -13,3 +10,5 @@ mes7::mes_alias: 'mescepplt'
 mes7::mes_site_name: 'Chicago-CEP'
 mes7::whs_site: 'cepplt'
 mes7::whs_bar: 'EC'
+
+oracle_build7::kernel::vm_nr_hugepages: 4096
