@@ -2,7 +2,7 @@ resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
 
-oracle_build7::kernel::vm_nr_hugepages: 1150
+oracle_build7::kernel::vm_nr_hugepages: 4096
 
 tz::region: 'America'
 tz::locality: 'Chicago'
@@ -11,3 +11,4 @@ mes7::mes_alias: 'meswhlplt'
 mes7::mes_site_name: 'Wheeling-686'
 mes7::whs_site: 'whlplt'
 mes7::whs_bar: 'WV'
+
