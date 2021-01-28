@@ -3,6 +3,11 @@
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
+mes7::mes_alias: 'mesjamplt'
+mes7::mes_site_name: 'Jamaica-JAM'
+mes7::whs_site: 'stcplt'
+mes7::whs_bar: 'KJ'
+
 
 avamar::grid: 'swavmEST.sherwin.com'
 

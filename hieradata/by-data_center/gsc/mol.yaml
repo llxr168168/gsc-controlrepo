@@ -6,6 +6,12 @@ yum::plugins_enabled: 'true'
 
 avamar::grid: 'swavmcst.sherwin.com'
 
+#Site Specific overrides
+mes7::mes_alias: 'mesmolplt'
+mes7::mes_site_name: 'Moline-MOL'
+mes7::whs_site: 'molplt'
+mes7::whs_bar: 'ML'
+
 resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'

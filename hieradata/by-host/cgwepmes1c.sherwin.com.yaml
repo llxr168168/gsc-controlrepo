@@ -8,3 +8,6 @@ tz::locality: 'Los_Angeles'
 #Site Specific overrides
 mes7::mes_alias: 'meswepplt'
 mes7::mes_site_name: 'Fernley Plant-658'
+
+oracle_build7::kernel::vm_nr_hugepages: 4608
+

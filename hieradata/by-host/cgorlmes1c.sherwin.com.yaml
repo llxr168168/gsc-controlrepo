@@ -9,3 +9,6 @@ mes7::mes_alias: 'mesordplt'
 mes7::mes_site_name: 'Orlando-ORD'
 mes7::whs_site: 'ordplt'
 mes7::whs_bar: 'KM'
+
+oracle_build7::kernel::vm_nr_hugepages: 4608
+
