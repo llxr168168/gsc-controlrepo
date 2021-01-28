@@ -2,3 +2,5 @@ classes:
  - mes7
  
 mes7::mes_alias: 'mesemarplt'
+
+oracle_build7::kernel::vm_nr_hugepages: 4608

@@ -1,2 +1,4 @@
 tz::region: 'America'
 tz::locality: 'Chicago'
+
+oracle_build7::kernel::vm_nr_hugepages: 4608
