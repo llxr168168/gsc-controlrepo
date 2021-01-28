@@ -5,4 +5,5 @@ resolv_conf::nameserver:
 tz::region: 'America'
 tz::locality: 'New_York'
 
-oracle_build7::kernel::vm_nr_hugepages: 4096
+oracle_build7::kernel::vm_nr_hugepages: 4608
+
