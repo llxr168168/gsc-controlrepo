@@ -29,9 +29,9 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddverom.sherwin.com:/data/col1/gsc_ora_backup_rom'
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddverom.sherwin.com:/data/col1/gsc_ora_disaster_rom'
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddverom.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddverom.sherwin.com:/data/col1/gsc_ora_backup_rom/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddverom.sherwin.com:/data/col1/gsc_ora_disaster_rom/%{::hostname}'
-  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddverom.sherwin.com:/data/col1/gsc_ora_backup_rom'
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddverom.sherwin.com:/data/col1/gsc_ora_backup_rom/%{::hostname}'
+  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddverom.sherwin.com:/data/col1/gsc_ora_disaster_rom/%{::hostname}'
+  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddverom.sherwin.com:/data/col1/gsc_ora_backup_rom'
 
 
 
