@@ -11,4 +11,5 @@ mes7::mes_site_name: 'Chicago-CEP'
 mes7::whs_site: 'cepplt'
 mes7::whs_bar: 'EC'
 
-oracle_build7::kernel::vm_nr_hugepages: 4096
+oracle_build7::kernel::vm_nr_hugepages: 4608
+
