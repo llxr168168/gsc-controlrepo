@@ -10,4 +10,5 @@ mes7::mes_site_name: 'San Diego-673'
 mes7::whs_site: 'sanplt'
 mes7::whs_bar: 'SD'
 
-oracle_build7::kernel::vm_nr_hugepages: 4096
+oracle_build7::kernel::vm_nr_hugepages: 4608
+
