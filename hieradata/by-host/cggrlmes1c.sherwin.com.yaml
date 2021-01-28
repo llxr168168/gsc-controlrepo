@@ -11,4 +11,5 @@ mes7::mes_site_name: 'Garland-GAR'
 mes7::whs_site: 'garplt'
 mes7::whs_bar: '0T'
 
-oracle_build7::kernel::vm_nr_hugepages: 4096
+oracle_build7::kernel::vm_nr_hugepages: 4608
+
