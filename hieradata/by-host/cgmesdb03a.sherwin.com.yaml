@@ -3,3 +3,5 @@ classes:
 
 mes7::dev::mes_alias: 'mesdb3plt'
 mes7::dev::mes_site_name: 'MESDB3PLT-BAL'
+mes7::whs_site: 'ordplt'
+mes7::whs_bar: 'KM'
