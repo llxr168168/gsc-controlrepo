@@ -1,0 +1,7 @@
+classes:
+  - mes7::dev
+
+mes7::dev::mes_alias: 'mesdb3plt'
+mes7::dev::mes_site_name: 'MESDB3PLT-BAL'
+
+oracle_build7::kernel::vm_nr_hugepages: 4608
