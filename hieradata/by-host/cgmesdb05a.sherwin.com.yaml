@@ -1,4 +1,5 @@
 classes:
   - mes7::dev
+  - mes7::bcs_managed
 
 mes7::dev::mes_alias: 'mesdb5plt'
