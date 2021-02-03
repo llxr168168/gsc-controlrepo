@@ -1,6 +1,7 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
   - sw_puppet_ansible_dmw
+  - oracle_build7::sudoers
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
