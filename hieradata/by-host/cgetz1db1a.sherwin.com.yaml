@@ -1,1 +1,11 @@
+classes:
+  - mes7
+
+mes7::mes_alias: 'cgetz1db1'
+mes7::mes_site_name: 'MESDB3PLT-BAL'
+mes7::whs_bar: 'LN,SB'
+mes7::whs_site: 'cgetz1db1'
+
+
+
 oracle_build7::kernel::vm_nr_hugepages: 4608
