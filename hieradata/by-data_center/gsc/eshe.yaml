@@ -1,7 +1,6 @@
 #Classes for this site
 #Site Specific overrides
 mes7::mes_alias: 'messheplt'
-mes7::mes_site_name: 'Sheffield-SHE'
 mes7::whs_site: 'esheplt'
 mes7::whs_bar: 'SH'
 

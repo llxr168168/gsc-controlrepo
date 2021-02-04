@@ -3,6 +3,10 @@
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
+mes7::mes_alias: 'mesricplt'
+mes7::mes_site_name: 'Richmond-638'
+mes7::whs_site: 'ricplt'
+mes7::whs_bar: 'MQ'
 
 
 avamar::grid: 'swavmEST.sherwin.com'
