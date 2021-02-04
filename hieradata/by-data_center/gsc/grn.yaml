@@ -3,6 +3,10 @@
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
+mes7::mes_alias: 'mesgrnplt'
+mes7::mes_site_name: 'Greensboro Howard St-GRN'
+mes7::whs_site: 'grnplt'
+mes7::whs_bar: 'EM'
 
 avamar::grid: 'swavmEST.sherwin.com'
 

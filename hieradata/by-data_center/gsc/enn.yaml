@@ -4,6 +4,10 @@
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
+mes7::mes_alias: 'mesennplt'
+mes7::mes_site_name: 'Ennis-110'
+mes7::whs_site: 'ennplt'
+mes7::whs_bar: 'EZ'
 
 avamar::grid: 'swavmcst.sherwin.com'
 
