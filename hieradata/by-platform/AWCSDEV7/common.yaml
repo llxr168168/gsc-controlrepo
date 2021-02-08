@@ -29,7 +29,9 @@ dnsmasq_conf::dev::search: 'sherwin.com consumer.sherwin.com sw.sherwin.com'
 
 resolv_conf::nameserver:
   - '127.0.0.1'
-
+  - '10.20.103.6'
+  - '10.240.3.6'
+  
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 oracle_build7::kernel::vm_nr_hugepages: 2304
