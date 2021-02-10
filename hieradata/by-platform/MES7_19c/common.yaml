@@ -1,5 +1,5 @@
 classes:
-  - mes7::staging
+  - mes7::prod
   - mq_p2p_client
   - cups
   - swprint
