@@ -14,22 +14,24 @@ classes:
   - apex_tomcat_awcs7::apex_sudo
   - sw_dataguard_status
   - filebeat
-  - dnsmasq_conf
+  - dnsmasq_conf::dev
   - sw_os_ca_certs
   - sw_puppet_ansible_dmw
 
 
 sw_os_ca_certs::install_certs: 'swroot.pem'
 
-dnsmasq_conf::nameserver:
+dnsmasq_conf::dev::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
 
-dnsmasq_conf::search: 'sherwin.com consumer.sherwin.com sw.sherwin.com'
+dnsmasq_conf::dev::search: 'sherwin.com consumer.sherwin.com sw.sherwin.com'
 
 resolv_conf::nameserver:
   - '127.0.0.1'
-
+  - '10.20.103.6'
+  - '10.240.3.6'
+  
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 oracle_build7::kernel::vm_nr_hugepages: 2304
