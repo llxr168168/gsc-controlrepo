@@ -1,8 +1,11 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
   - sw_puppet_ansible_dmw
+  - oracle_build7::sudoers
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+sudo::sudoers_template: sudoers.dbapoc
 
 oracle_build7::kernel::vm_nr_hugepages: 1536
 

@@ -23,6 +23,9 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvegrn.sherwin.com:/data/col1/gsc_ora_backup_grn'
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvegrn.sherwin.com:/data/col1/gsc_ora_disaster_grn'
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvegrn.sherwin.com:/data/col1/gsc_oraremote_rw'
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvegrn.sherwin.com:/data/col1/gsc_ora_backup_grn/%{::hostname}'
+  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvegrn.sherwin.com:/data/col1/gsc_ora_disaster_grn/%{::hostname}'
+  - '/global/tmp -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvegrn.sherwin.com:/data/col1/gsc_ora_disaster_grn'
 
 
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
