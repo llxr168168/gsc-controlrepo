@@ -10,6 +10,11 @@ mes7::mes_site_name: 'Morrow-MOR'
 mes7::whs_site: 'morplt'
 mes7::whs_bar: 'WM'
 
+mes7::prod::mes_alias: 'mesmorplt'
+mes7::prod::mes_site_name: 'Morrow-MOR'
+mes7::prod::whs_site: 'morplt'
+mes7::prod::whs_bar: 'WM'
+
 resolv_conf::nameserver:
   - '10.10.48.23'
   - '10.20.103.6'

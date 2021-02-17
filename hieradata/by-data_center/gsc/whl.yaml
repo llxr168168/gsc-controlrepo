@@ -16,6 +16,11 @@ mes7::mes_site_name: 'Wheeling-686'
 mes7::whs_site: 'whlplt'
 mes7::whs_bar: 'WV'
 
+mes7::prod::mes_alias: 'meswhlplt'
+mes7::prod::mes_site_name: 'Wheeling-686'
+mes7::prod::whs_site: 'whlplt'
+mes7::prod::whs_bar: 'WV'
+
 tz::region: 'America'
 tz::locality: 'Chicago'
 
