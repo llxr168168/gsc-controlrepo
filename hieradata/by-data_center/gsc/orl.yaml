@@ -10,6 +10,12 @@ mes7::mes_site_name: 'Orlando-ORD'
 mes7::whs_site: 'ordplt'
 mes7::whs_bar: 'KM'
 
+mes7::prod::mes_alias: 'mesordplt'
+mes7::prod::mes_site_name: 'Orlando-ORD'
+mes7::prod::whs_site: 'ordplt'
+mes7::prod::whs_bar: 'KM'
+
+
 resolv_conf::nameserver:
   - '10.10.104.131'
   - '10.20.103.6'
