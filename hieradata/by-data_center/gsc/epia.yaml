@@ -2,10 +2,14 @@
 #Site Specific overrides
 avamar::disable: 'false'
 avamar::grid: 'swavmpia.sherwin.com'
+
+mes7::prod::mes_alias: 'mesepiaplt'
+
 resolv_conf::nameserver:
   - '10.12.31.133'
   - '10.20.103.6'
   - '10.240.3.6'
+
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvepia.sherwin.com:/data/col1/gsc_ora_backup_pia'
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvepia.sherwin.com:/data/col1/gsc_ora_disaster_pia'

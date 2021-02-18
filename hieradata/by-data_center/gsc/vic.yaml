@@ -3,10 +3,10 @@
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
-mes7::mes_alias: 'mesvicplt'
-mes7::mes_site_name: 'Victorville-VIC'
-mes7::whs_site: 'vicplt'
-mes7::whs_bar: 'VM'
+mes7::prod::mes_alias: 'mesvicplt'
+mes7::prod::mes_site_name: 'Victorville-VIC'
+mes7::prod::whs_site: 'vicplt'
+mes7::prod::whs_bar: 'VM'
 
 avamar::grid: 'swavmPST.sherwin.com'
 

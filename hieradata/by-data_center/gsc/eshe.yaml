@@ -1,8 +1,9 @@
 #Classes for this site
 #Site Specific overrides
-mes7::mes_alias: 'messheplt'
-mes7::whs_site: 'esheplt'
-mes7::whs_bar: 'SH'
+
+mes7::prod::mes_alias: 'messheplt'
+mes7::prod::whs_site: 'esheplt'
+mes7::prod::whs_bar: 'SH'
 
 avamar::grid: 'swavmpia.sherwin.com'
 resolv_conf::nameserver:
