@@ -1,8 +1,0 @@
-resolv_conf::nameserver:
-  - '10.20.103.6'
-  - '10.240.3.6'
-
-tz::region: 'America'
-tz::locality: 'Boise'
-
-oracle_build7::kernel::vm_nr_hugepages: 2304
