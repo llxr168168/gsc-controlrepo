@@ -8,7 +8,7 @@ avamar::grid: 'swavmcst.sherwin.com'
 
 #Site Specific overrides
 mes7::prod::mes_alias: 'mesmolplt'
-mes7::prod::mes_site_name: 'Moline-MOL'
+mes7::prod::mes_site_name: 'Moline-693'
 mes7::prod::whs_site: 'molplt'
 mes7::prod::whs_bar: 'ML'
 
