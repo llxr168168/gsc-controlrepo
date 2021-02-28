@@ -7,7 +7,7 @@ avamar::grid: 'swavmcst.sherwin.com'
 
 #Site Specific overrides
 mes7::prod::mes_alias: 'mesfloplt'
-mes7::prod::mes_site_name: 'Flora-FLO'
+mes7::prod::mes_site_name: 'Flora-140'
 mes7::prod::whs_site: 'floplt'
 mes7::prod::whs_bar: 'FM'
 
