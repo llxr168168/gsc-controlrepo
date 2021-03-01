@@ -6,10 +6,10 @@ tz::region: 'America'
 tz::locality: 'Chicago'
 
 #Site Specific overrides
-mes7::mes_alias: 'mescepplt'
-mes7::mes_site_name: 'Chicago-CEP'
-mes7::whs_site: 'cepplt'
-mes7::whs_bar: 'EC'
+mes7::prod::mes_alias: 'mescepplt'
+mes7::prod::mes_site_name: 'Chicago-CEP'
+mes7::prod::whs_site: 'cepplt'
+mes7::prod::whs_bar: 'EC'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
 

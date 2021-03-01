@@ -5,10 +5,10 @@ resolv_conf::nameserver:
 tz::region: 'America'
 tz::locality: 'Los_Angeles'
 
-mes7::mes_alias: 'messanplt'
-mes7::mes_site_name: 'San Diego-673'
-mes7::whs_site: 'sanplt'
-mes7::whs_bar: 'SD'
+mes7::prod::mes_alias: 'messanplt'
+mes7::prod::mes_site_name: 'San Diego-673'
+mes7::prod::whs_site: 'sanplt'
+mes7::prod::whs_bar: 'SD'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
 

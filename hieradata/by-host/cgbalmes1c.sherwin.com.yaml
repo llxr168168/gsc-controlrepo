@@ -6,9 +6,9 @@ tz::region: 'America'
 tz::locality: 'New_York'
 
 #Site Specific overrides
-mes7::mes_alias: 'mesbalplt'
-mes7::mes_site_name: 'Baltimore-BAL'
-mes7::whs_site: 'balplt'
-mes7::whs_bar: 'DM'
+mes7::prod::mes_alias: 'mesbalplt'
+mes7::prod::mes_site_name: 'Baltimore-BAL'
+mes7::prod::whs_site: 'balplt'
+mes7::prod::whs_bar: 'DM'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
