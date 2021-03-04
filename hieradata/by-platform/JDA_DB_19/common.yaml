@@ -3,8 +3,8 @@ classes:
   - sw_puppet_ansible_dmw
   - sw_apex_print7
 
-sw_apex_print::local_user: 'oracle'
-sw_apex_print::local_group: 'oinstall'
+sw_apex_print7::local_user: 'oracle'
+sw_apex_print7::local_group: 'oinstall'
   
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
