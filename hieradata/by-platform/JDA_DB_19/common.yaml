@@ -2,6 +2,9 @@ classes:
   - profiles_unix::gsc::oracle7::asm
   - sw_puppet_ansible_dmw
   - sw_apex_print7
+
+sw_apex_print::local_user: 'oracle'
+sw_apex_print::local_group: 'oinstall'
   
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
