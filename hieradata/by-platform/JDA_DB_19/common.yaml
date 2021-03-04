@@ -2,6 +2,7 @@ classes:
   - profiles_unix::gsc::oracle7::asm
   - sw_puppet_ansible_dmw
   - sw_apex_print7
+  - sw_os_ca_certs
 
 sw_apex_print7::local_user: 'oracle'
 sw_apex_print7::local_group: 'oinstall'
