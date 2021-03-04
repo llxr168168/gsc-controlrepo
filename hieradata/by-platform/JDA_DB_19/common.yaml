@@ -1,6 +1,7 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
   - sw_puppet_ansible_dmw
+  - sw_apex_print7
   
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
@@ -9,14 +10,14 @@ access_conf::access:
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
-  - '+:oracle:LOCAL %{::fqdn} cgjdadb01.consumer.sherwin.com cgjdadb02.consumer.sherwin.com cgjdadb03.consumer.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 127.0.0.1'
+  - '+:oracle:LOCAL %{::fqdn} cgjdadb01.sherwin.com cgjdadb02.sherwin.com cgjdadb03.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 127.0.0.1'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(gg-cgit-dba-admins):ALL'  
-  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
-  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
-oracle_build::kernel::vm_nr_hugepages: 2049
+
 
