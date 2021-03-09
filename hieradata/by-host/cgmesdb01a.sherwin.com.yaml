@@ -1,8 +1,8 @@
 classes:
-  - mes7::dev
+  - mes7::prod
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
 
-mes7::dev::mes_alias: 'mesdb1plt'
-mes7::dev::whs_site: 'ctgdb2qad'
-mes7::dev::whs_bar: 'CR,LM,CC,HA,LG,MP,BE,XM,AT,HL,PX,AD,PG,RK,DB,NT,GM,BR,ER'
+mes7::prod::mes_alias: 'mesdb1plt'
+mes7::prod::whs_site: 'ctgdb2qad'
+mes7::prod::whs_bar: 'CR,LM,CC,HA,LG,MP,BE,XM,AT,HL,PX,AD,PG,RK,DB,NT,GM,BR,ER'
