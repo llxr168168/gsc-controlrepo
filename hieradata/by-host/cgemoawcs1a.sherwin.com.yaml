@@ -4,3 +4,6 @@ classes:
 awcs7::awcs_alias: 'awcsemoline'
 
 oracle_build7::kernel::vm_nr_hugepages: 3328
+
+tz::region: 'America'
+tz::locality: 'Chicago'
