@@ -29,7 +29,7 @@ access_conf::access:
     - '+:(gg-cgit-dba-admins):ALL'
     - '+:(gg-adm-gcdunix):ALL'
     - '+:grid:LOCAL cplamsdb2a.sherwin.com cplamsdb2a-prv.sherwin.com cplamsdb2b.sherwin.com cplamsdb2b-prv.sherwin.com'
-    - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 cplamsdb2a-prv.sherwin.com cplamsdb2b.sherwin.com cplamsdb2b-prv.sherwin.com'
+    - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 cplamsdb2a.sherwin.com cplamsdb2a-prv.sherwin.com cplamsdb2b.sherwin.com cplamsdb2b-prv.sherwin.com'
     - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
     - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
     - '-:ALL:ALL'
