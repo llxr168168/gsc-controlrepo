@@ -5,6 +5,8 @@ classes:
 postfix::enabled: 'true'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
+tz::region: 'Brazil'
+tz::locality: 'East'
 
 oracle_build7::kernel::vm_nr_hugepages: 3000
 
