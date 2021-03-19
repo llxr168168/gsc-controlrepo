@@ -34,3 +34,10 @@ tz::locality: 'New_York'
 site_code: bal
 sw_os_update_management::redhat::plugins_enabled: 'true'
 sw_os_update_management::yum_conf_additional: 'http_caching=none'
+
+
+mes7::prod::mes_alias: 'mesbalplt' 
+mes7::prod::mes_site_name: 'Baltimore-BAL'   
+mes7::prod::whs_site: 'balplt' 
+mes7::prod::whs_bar: 'DM' 
+ 
