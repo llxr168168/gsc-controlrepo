@@ -1,15 +1,12 @@
-classes:
-  - sw_selinux
-  
+
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(gg-adm-gcdunix):ALL'
-  - "+:(%{facts.custom_cloud_admin_group}):ALL"
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-adm-gcdunix-cyberark):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
-
-sudo::sudoers_template: sudoers.gcd
-profiles_unix::gsc::base::auth::sssd_auth: 'true'

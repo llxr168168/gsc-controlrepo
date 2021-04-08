@@ -1,13 +1,7 @@
 classes:
-  - profiles_unix::gsc::oracle7::asm
-  - sw_puppet_ansible_dmw
-  - oracle_build7::sudoers
+  - sw_aomapp
 
-profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
-sudo::sudoers_template: sudoers.dbapoc
-
-oracle_build7::kernel::vm_nr_hugepages: 1536
 
 access_conf::access:
   - '+:root:LOCAL'
@@ -16,11 +10,20 @@ access_conf::access:
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
+  - '+:(gg-adm-mqm):ALL'
   - '+:(gg-adm-gcdunix):ALL'
-  - '+:(gg-adm-gcdunix-cyberark):ALL'  
-  - '+:(gg-cgit-dba-admins):ALL'  
-  - '+:(gg-adm-dba-ops):ALL'  
+  - '+:(gg-app-aom-rg19):ALL'
+  - '+:(gg-adm-aom):ALL'
+  - '+:(gg-cgit-dba-admins):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
-  - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'
+
+sudo::sudoers_d_template: 'aomapp'
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+sw_os_update_management::redhat::optional_repo_file: optional.yum
+sw_os_update_management::redhat::epel_repo_file: epel.yum
+sw_os_update_management::redhat::extras_repo_file: extra.yum
+

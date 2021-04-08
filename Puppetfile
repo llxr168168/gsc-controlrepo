@@ -11,6 +11,14 @@ mod 'sw_grusers',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_grusers.git',
  :ref => 'master'
 
+mod 'puppet-selinux',
+:git =>'git@github.sherwin.com:SW-CORP-IT/pf_selinux.git',
+:ref => 'master'
+
+mod 'sw_selinux',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_selinux.git',
+:ref => 'master'
+
 # puppetlabs/stdlib
 mod 'stdlib',
  :git => 'git@github.sherwin.com:SW-CORP-IT/puppetlabs-stdlib.git',
@@ -914,4 +922,8 @@ mod 'sw_linux_tanium_client',
 
 mod 'mqseries9',
   :git => 'git@github.sherwin.com:SW-CORP-IT/mqseries9.git',
+  :ref => 'master'
+
+mod 'sw_aomapp',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_aomapp.git',
   :ref => 'master'
