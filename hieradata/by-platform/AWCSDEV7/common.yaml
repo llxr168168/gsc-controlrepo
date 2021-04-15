@@ -58,7 +58,7 @@ sw_apex_print7::local_group: 'awcs'
 
 sw_app_status::app_status_script: 'awcs7_dev_status.sh'
 
-awcs7::awcs_developers:
+awcs7::dev::awcs_developers:
   - pxa137
   - egb01l
   - cxf665
@@ -154,7 +154,7 @@ postfix::enabled: 'true'
   
 apex_tomcat_awcs7::tomcat_password:  ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEAncQkIJxM5XkMx53/xY+fpy2TOZCXRE724KjlJAg4rusSEY+S/sQqgdTYmCdVkct6NFu7Mxo5P2d4GVPm6rUsGUA6PL9vu24QkN9IcGAj6nJmuxdoRufzXqOvdgaxaPx9iTtUm6t6jSkecWIxByKoRpQsANmgV6B1aMQ3sSmbIBDPzDBbxoVsyQEuCzu62lKqsmayLm44vfwQ25Kc43JKUhDdIGW/jRpFS+e2yMlR2TEE9vqgcGHCApLyvBKpI10SttrErpMQjXGSvznArRrIARjLJDuQSJkECiZGhLO0Q8qa/8BNljf7L54cFHvRWrWvoFjLBjGBMHQnN6m+w1uz9TA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBeHpRw0unvtAXbvzIIIpR2gBAgRb/nHo8YnN//dWfcO45O]
 
-awcs7::awcs_authorized_keys: >
+awcs7::dev::awcs_authorized_keys: >
     ENC[PKCS7,MIIEnQYJKoZIhvcNAQcDoIIEjjCCBIoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAQE84CZ6OQOsabM9mPy2ol2lnP0otoR7ya2E0
     eZQvjJ4Wo7rrOBdx/7gqbzjz5iq0Odykynuoi1Sy0wW6mmr8sspsKCS2uRAY
@@ -182,7 +182,7 @@ awcs7::awcs_authorized_keys: >
     1+M04QvM/qNlI4kupADSJgg+U/0GbmRmn8cMaoifULghy0lRLfrBoyk0Y3t0
     /GgrwwlvfiH+mhouMZYkdoyfbuHsqeJXNJpqEYlSjiacbxIl8nHMAVG/aNyF
     lWyCj6uzqQ7G0wU00cDl]
-awcs7::awcs_id_rsa: >
+awcs7::dev::awcs_id_rsa: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAHwOpCt9IgEyVm06cEbdUhS4vK7hCHXFFPk8U
     R3MF9Ul/g3FjfNKpBRzb10jV6jZaIW3Z3aQyBWS/sFxDkiswH0oN7o7a/5tq
@@ -229,7 +229,7 @@ awcs7::awcs_id_rsa: >
     odbWc5UM1Z0LclcckizteMXinMurC+GPJl4ioLkCvmix9tG1/mhxa+3qGOvu
     5W5Q96/NY/eXoSFl727j+0IwTEnVZmHmnYC0WexgCNR2c04Q9tzoZlCKPxgt
     4CyqR2WsgPj3tfuBqija4c+bTs6kg6DH]
-awcs7::awcs_id_rsa_pub: >
+awcs7::dev::awcs_id_rsa_pub: >
     ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEABCCZXQli3zwZBPhMIkcfs6wRztLA9nlISUsg
     8NDWZbUd/4aK5BI4IOTKDAVCJYFC/3IHG99rp0ZmrbcXAoS0qOcKX1/xQbS/
@@ -249,7 +249,7 @@ awcs7::awcs_id_rsa_pub: >
     adRkbhN1Xv7N3994SkNseAAssd83yMpNbXZDO6U4nOLjuSM0qP8VmRQrjuWB
     d/6DjtqVlejJgFfCAOhd8qIsIu/nP9Nbf0sKp+/xfwrR+PST]
 
-awcs7::tc_id_rsa_pub: >
+awcs7::dev::tc_id_rsa_pub: >
     ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAY+3lt+lYDJ7U54tgc1B0YnrdJCbHuFSRQgYV
     S9oIYuu3M5e+T0L7GQo0eViKOCOE47GLERNv4LrIjCMBchoIJCq3VHbf5k3H
@@ -268,7 +268,7 @@ awcs7::tc_id_rsa_pub: >
     +uah1laXvoPVBNalcXq0Z44e9COxDgclE8wn5TdlAZNY+zFY1k7gYwqBvR4Z
     6j1Ze/7LKqcFdSGEsgSUATW5i+xiC7vrRq/1NAzfDQk6dK9bTYkD+tDU9W2L
     wBJT5A==]
-awcs7::tc_id_rsa: >
+awcs7::dev::tc_id_rsa: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAWs2mojPMI5LujFgdYMcv3FnnLt24Zgxlb3Hq
     k26CrjwLHj0dQaYjhxyx9yfAKLtq4HIRMfe14t74rDbDX0S668dqFCQgdljG
@@ -315,7 +315,7 @@ awcs7::tc_id_rsa: >
     zivW+C+crQwyI+gTqGXMYqfCgsLB+jOQwR0etxUbXYJnCgHk7yKdlJjMpOcd
     u3T6vafoX7mNVO5ze5LRN20Zg74UUVb6EIRtO6NSFrhh9fWIzAhPJ07ymRpz
     RHaNoP5kk5uaaGHW+Laa2WsDEjG077ba]
-awcs7::tc_authorized_keys: >
+awcs7::dev::tc_authorized_keys: >
     ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEApnUyS+HDMf9IYFvwM7Biv3vNZtHMTXGmDEZy
     qQLHY4jvSwOnBY5Q3zpB8r8qMkmuh0KchWO8ciEeJh/9kzw16oG3I+mwuXIq
