@@ -1,3 +1,4 @@
+
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
@@ -13,7 +14,3 @@ access_conf::access:
 sudo::sudoers_template: sudoers.gcd
 sudo::sudoers_d_template: 'confhub'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
-~
-~
-~
-
