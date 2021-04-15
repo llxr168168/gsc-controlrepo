@@ -1,0 +1,10 @@
+classes:
+  - mes7::tz
+
+tz::region: 'America'
+tz::locality: 'Chicago'
+
+oracle_build7::kernel::vm_nr_hugepages: 4608
+
+mes7::tz::whs_bar: 'WV,SF,MC'
+mes7::tz::whs_site: 'cgctz1db1'
