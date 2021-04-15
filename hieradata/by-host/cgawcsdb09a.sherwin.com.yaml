@@ -1,4 +1,4 @@
 classes:
-  - awcs7
+  - awcs7::dev
 
-awcs7::awcs_alias: 'awcsdb09'
+awcs7::dev::awcs_alias: 'awcsdb09'
