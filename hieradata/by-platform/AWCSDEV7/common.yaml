@@ -18,6 +18,8 @@ classes:
   - sw_os_ca_certs
   - sw_puppet_ansible_dmw
 
+  
+oracle_build7::kernel::vm_swappiness: 10
 
 sw_os_ca_certs::install_certs: 'swroot.pem'
 
