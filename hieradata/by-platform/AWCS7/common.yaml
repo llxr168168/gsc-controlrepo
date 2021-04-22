@@ -18,10 +18,14 @@ classes:
   - sw_os_ca_certs
   - sw_puppet_ansible_dmw
 
+oracle_build7::kernel::vm_swappiness: 10
+
 sw_os_ca_certs::install_certs: 'swroot.pem'
 
 resolv_conf::nameserver:
   - '127.0.0.1'
+  - '10.20.103.6'
+  - '10.240.3.6'
 
 dnsmasq_conf::search: 'sherwin.com consumer.sherwin.com sw.sherwin.com'
 
