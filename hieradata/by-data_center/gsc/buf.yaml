@@ -35,6 +35,8 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum
 
+access_conf::awcs_dataguard: 'cgbufawcs1a.sherwin.com cgbufawcs1b.sherwin.com cgbufawcs1c.sherwin.com'
+
 awcs::telnet_allow:
   - '10.10.10.0/24'
   - '10.216.0.0/16'

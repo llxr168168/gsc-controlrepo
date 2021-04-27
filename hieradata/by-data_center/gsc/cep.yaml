@@ -40,6 +40,7 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvecep.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
+access_conf::mes_dataguard: 'cgcepmes1a.sherwin.com cgcepmes1b.sherwin.com cgcepmes1c.sherwin.com'
 
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum
