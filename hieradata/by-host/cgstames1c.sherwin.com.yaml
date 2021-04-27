@@ -2,10 +2,10 @@ resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
 
-mes7::mes_alias: 'messtaplt'
-mes7::mes_site_name: 'Statesville-689'
-mes7::whs_site: 'staplt'
-mes7::whs_bar: 'SB'
+mes7::prod::mes_alias: 'messtaplt'
+mes7::prod::mes_site_name: 'Statesville-689'
+mes7::prod::whs_site: 'staplt'
+mes7::prod::whs_bar: 'SB'
 
 tz::region: 'America'
 tz::locality: 'New_York'

@@ -3,10 +3,10 @@
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
-mes7::mes_alias: 'mesfteplt'
-mes7::mes_site_name: 'Fort Erie-ONT'
-mes7::whs_site: 'ontplt'
-mes7::whs_bar: 'MB'
+mes7::prod::mes_alias: 'mesfteplt'
+mes7::prod::mes_site_name: 'Fort Erie-ONT'
+mes7::prod::whs_site: 'ontplt'
+mes7::prod::whs_bar: 'MB'
 
 avamar::grid: 'swavmEST.sherwin.com'
 

@@ -5,7 +5,8 @@ classes:
 tz::region: 'America'
 tz::locality: 'Los_Angeles'
 
-oracle_build7::kernel::vm_nr_hugepages: 4608
+oracle_build7::kernel::vm_nr_hugepages: 3584
 
 mes7::tz::whs_bar: 'PX'
 mes7::tz::whs_site: 'cgptz1db1'
+mes7::tz::mes_alias: 'mesporplt'

@@ -5,6 +5,8 @@ yum::plugins_enabled: 'true'
 #Site Specific overrides
 mes7::mes_alias: 'meschaplt'
 
+mes7::prod::mes_alias: 'meschaplt'
+
 avamar::grid: 'swavmest.sherwin.com'
 
 resolv_conf::nameserver:

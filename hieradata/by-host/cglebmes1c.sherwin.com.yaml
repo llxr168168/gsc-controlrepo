@@ -5,11 +5,9 @@ resolv_conf::nameserver:
 tz::region: 'America'
 tz::locality: 'New_York'
 
-mes7::mes_alias: 'meslebplt'
-mes7::mes_site_name: 'Lebanon-687'
-mes7::whs_site: 'lebplt'
-mes7::whs_bar: 'LN'
+mes7::prod::mes_alias: 'meslebplt'
+mes7::prod::mes_site_name: 'Lebanon-687'
+mes7::prod::whs_site: 'lebplt'
+mes7::prod::whs_bar: 'LN'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
-
-

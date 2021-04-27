@@ -1,1 +1,6 @@
+classes:
+ - mes7::prod
+ 
+mes7::prod::mes_alias: 'mesemarplt'
+
 oracle_build7::kernel::vm_nr_hugepages: 4608

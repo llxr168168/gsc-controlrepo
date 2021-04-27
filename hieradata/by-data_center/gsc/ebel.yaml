@@ -5,6 +5,7 @@ classes:
   
 yum::plugins_enabled: 'true'
 
+mes7::prod::mes_alias: 'mesebelplt'
 
 #Site Specific overrides
 avamar::disable: 'true'

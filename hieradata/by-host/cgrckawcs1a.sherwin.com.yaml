@@ -1,1 +1,7 @@
 oracle_build7::kernel::vm_nr_hugepages: 3328
+
+# Site: Rockford 
+
+site_code: rck
+tz::region: 'America'
+tz::locality: 'Chicago'

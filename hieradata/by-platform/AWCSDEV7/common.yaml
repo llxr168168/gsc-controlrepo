@@ -9,7 +9,7 @@ classes:
   - stdbuild::pam
   - sw_apex_print7
   - mq_p2p_client
-  - awcs7
+  - awcs7::dev
   - apex_tomcat_awcs7
   - apex_tomcat_awcs7::apex_sudo
   - sw_dataguard_status
@@ -18,6 +18,8 @@ classes:
   - sw_os_ca_certs
   - sw_puppet_ansible_dmw
 
+  
+oracle_build7::kernel::vm_swappiness: 10
 
 sw_os_ca_certs::install_certs: 'swroot.pem'
 
@@ -31,7 +33,7 @@ resolv_conf::nameserver:
   - '127.0.0.1'
   - '10.20.103.6'
   - '10.240.3.6'
-  
+
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 oracle_build7::kernel::vm_nr_hugepages: 2304
@@ -44,7 +46,11 @@ access_conf::access:
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
+<<<<<<< HEAD
   - '+:awcs:LOCAL %{hiera('access_conf::awcs_hosts')}
+=======
+  - '+:awcs:LOCAL cgaurawcs1a.sherwin.com cgbufawcs1a.sherwin.com cgvanawcs1a.sherwin.com cgdomawcs1a.sherwin.com cgemoawcs1a.sherwin.com cgeffawcs1a.sherwin.com cgesoawcs1a.sherwin.com cgespawcs1a.sherwin.com cgennawcs1a.sherwin.com cgfloawcs1a.sherwin.com cgfrdawcs1a.sherwin.com cgjamawcs1a.sherwin.com cgmslawcs1a.sherwin.com cgmatawcs1a.sherwin.com cgmssawcs1a.sherwin.com cgmrvawcs1a.sherwin.com cgpdmawcs1a.sherwin.com cgptrawcs1a.sherwin.com cgrnoawcs1a.sherwin.com cgricawcs1a.sherwin.com cgrckawcs1a.sherwin.com cgromawcs1a.sherwin.com cgstaawcs1a.sherwin.com cgtrdawcs1a.sherwin.com cgwtxawcs1a.sherwin.com cgwhlawcs1a.sherwin.com cgwntawcs1a.sherwin.com cgaurawcs1b.sherwin.com cgbufawcs1b.sherwin.com cgfrdawcs1b.sherwin.com cgmrvawcs1b.sherwin.com cgrnoawcs1b.sherwin.com cgricawcs1b.sherwin.com cgromawcs1b.sherwin.com cgwtxawcs1b.sherwin.com cgwntawcs1b.sherwin.com cgaurawcs1c.sherwin.com cgbufawcs1c.sherwin.com cgfrdawcs1c.sherwin.com cgmrvawcs1c.sherwin.com cgrnoawcs1c.sherwin.com cgricawcs1c.sherwin.com cgromawcs1c.sherwin.com cgwtxawcs1c.sherwin.com cgwntawcs1c.sherwin.com cgawcsdb02a.sherwin.com cgawcsdb03a.sherwin.com cgawcsdb03b.sherwin.com cgawcsdb04a.sherwin.com cgawcsdb05a.sherwin.com cgawcsdb06a.sherwin.com cgawcsdb07a.sherwin.com cgawcsdb08a.sherwin.com cgawcsdb09a.sherwin.com cgawcsdb10a.sherwin.com cgawcsdb11a.sherwin.com cgawcsdb12a.sherwin.com cgawcsdb13a.sherwin.com cgawcsaur.consumer.sherwin.com cgawcsdb0.consumer.sherwin.com cgawcsdb1.consumer.sherwin.com cgawcsdb2.consumer.sherwin.com cgawcsdb3.consumer.sherwin.com cgawcsdb6.consumer.sherwin.com cgawcsdb9.sherwin.com cgawcsdb11.sherwin.com cgawcsdb12.sherwin.com buford.sherwin.com effing.sherwin.com fred.sherwin.com reno.sherwin.com winter.sherwin.com awcsdev.sherwin.com awcstrac.consumer.sherwin.com cgbufawcs.consumer.sherwin.com cgeffawcs.consumer.sherwin.com cgespawcs.consumer.sherwin.com cgfrdawcs.consumer.sherwin.com cgrnoawcs.consumer.sherwin.com cgwntawcs.consumer.sherwin.com cgptrawcs.consumer.sherwin.com cgaurawcs.consumer.sherwin.com cgmrvawcs.consumer.sherwin.com cgennawcs.consumer.sherwin.com cgfloawcs.consumer.sherwin.com cgricawcs.consumer.sherwin.com cgjamawcs.consumer.sherwin.com cgmatawcs.sherwin.com cgmssawcs.sherwin.com cgpdmawcs.sherwin.com cgrckawcs.sherwin.com cgromawcs.sherwin.com cgsacawcs.sherwin.com cgstaawcs.sherwin.com cgwhlawcs.sherwin.com cgawcsrom.sherwin.com cgdomawcs.consumer.sherwin.com cgvanawcs.consumer.sherwin.com cgwtxawcs.consumer.sherwin.com cgawcsbuf.consumer.sherwin.com cgawcseff.consumer.sherwin.com cgawcseso.consumer.sherwin.com cgawcsesp.consumer.sherwin.com cgawcsfrd.consumer.sherwin.com cgawcsmrv.consumer.sherwin.com cgawcsrno.consumer.sherwin.com cgawcsric.consumer.sherwin.com cgawcswtx.consumer.sherwin.com cgawcswnt.consumer.sherwin.com cgmslawcs.sherwin.com'
+>>>>>>> source/dev
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\gg-adm-mqm):ALL'
@@ -59,9 +65,9 @@ access_conf::access:
 sw_apex_print7::local_user: 'awcs'
 sw_apex_print7::local_group: 'awcs'
 
-sw_app_status::app_status_script: 'awcs_dev_status.sh'
+sw_app_status::app_status_script: 'awcs7_dev_status.sh'
 
-awcs7::awcs_developers:
+awcs7::dev::awcs_developers:
   - pxa137
   - egb01l
   - cxf665
@@ -157,7 +163,7 @@ postfix::enabled: 'true'
   
 apex_tomcat_awcs7::tomcat_password:  ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEAncQkIJxM5XkMx53/xY+fpy2TOZCXRE724KjlJAg4rusSEY+S/sQqgdTYmCdVkct6NFu7Mxo5P2d4GVPm6rUsGUA6PL9vu24QkN9IcGAj6nJmuxdoRufzXqOvdgaxaPx9iTtUm6t6jSkecWIxByKoRpQsANmgV6B1aMQ3sSmbIBDPzDBbxoVsyQEuCzu62lKqsmayLm44vfwQ25Kc43JKUhDdIGW/jRpFS+e2yMlR2TEE9vqgcGHCApLyvBKpI10SttrErpMQjXGSvznArRrIARjLJDuQSJkECiZGhLO0Q8qa/8BNljf7L54cFHvRWrWvoFjLBjGBMHQnN6m+w1uz9TA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBeHpRw0unvtAXbvzIIIpR2gBAgRb/nHo8YnN//dWfcO45O]
 
-awcs7::awcs_authorized_keys: >
+awcs7::dev::awcs_authorized_keys: >
     ENC[PKCS7,MIIEnQYJKoZIhvcNAQcDoIIEjjCCBIoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAQE84CZ6OQOsabM9mPy2ol2lnP0otoR7ya2E0
     eZQvjJ4Wo7rrOBdx/7gqbzjz5iq0Odykynuoi1Sy0wW6mmr8sspsKCS2uRAY
@@ -185,7 +191,7 @@ awcs7::awcs_authorized_keys: >
     1+M04QvM/qNlI4kupADSJgg+U/0GbmRmn8cMaoifULghy0lRLfrBoyk0Y3t0
     /GgrwwlvfiH+mhouMZYkdoyfbuHsqeJXNJpqEYlSjiacbxIl8nHMAVG/aNyF
     lWyCj6uzqQ7G0wU00cDl]
-awcs7::awcs_id_rsa: >
+awcs7::dev::awcs_id_rsa: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAHwOpCt9IgEyVm06cEbdUhS4vK7hCHXFFPk8U
     R3MF9Ul/g3FjfNKpBRzb10jV6jZaIW3Z3aQyBWS/sFxDkiswH0oN7o7a/5tq
@@ -232,7 +238,7 @@ awcs7::awcs_id_rsa: >
     odbWc5UM1Z0LclcckizteMXinMurC+GPJl4ioLkCvmix9tG1/mhxa+3qGOvu
     5W5Q96/NY/eXoSFl727j+0IwTEnVZmHmnYC0WexgCNR2c04Q9tzoZlCKPxgt
     4CyqR2WsgPj3tfuBqija4c+bTs6kg6DH]
-awcs7::awcs_id_rsa_pub: >
+awcs7::dev::awcs_id_rsa_pub: >
     ENC[PKCS7,MIIDHQYJKoZIhvcNAQcDoIIDDjCCAwoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEABCCZXQli3zwZBPhMIkcfs6wRztLA9nlISUsg
     8NDWZbUd/4aK5BI4IOTKDAVCJYFC/3IHG99rp0ZmrbcXAoS0qOcKX1/xQbS/
@@ -252,7 +258,7 @@ awcs7::awcs_id_rsa_pub: >
     adRkbhN1Xv7N3994SkNseAAssd83yMpNbXZDO6U4nOLjuSM0qP8VmRQrjuWB
     d/6DjtqVlejJgFfCAOhd8qIsIu/nP9Nbf0sKp+/xfwrR+PST]
 
-awcs7::tc_id_rsa_pub: >
+awcs7::dev::tc_id_rsa_pub: >
     ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAY+3lt+lYDJ7U54tgc1B0YnrdJCbHuFSRQgYV
     S9oIYuu3M5e+T0L7GQo0eViKOCOE47GLERNv4LrIjCMBchoIJCq3VHbf5k3H
@@ -271,7 +277,7 @@ awcs7::tc_id_rsa_pub: >
     +uah1laXvoPVBNalcXq0Z44e9COxDgclE8wn5TdlAZNY+zFY1k7gYwqBvR4Z
     6j1Ze/7LKqcFdSGEsgSUATW5i+xiC7vrRq/1NAzfDQk6dK9bTYkD+tDU9W2L
     wBJT5A==]
-awcs7::tc_id_rsa: >
+awcs7::dev::tc_id_rsa: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAWs2mojPMI5LujFgdYMcv3FnnLt24Zgxlb3Hq
     k26CrjwLHj0dQaYjhxyx9yfAKLtq4HIRMfe14t74rDbDX0S668dqFCQgdljG
@@ -318,7 +324,7 @@ awcs7::tc_id_rsa: >
     zivW+C+crQwyI+gTqGXMYqfCgsLB+jOQwR0etxUbXYJnCgHk7yKdlJjMpOcd
     u3T6vafoX7mNVO5ze5LRN20Zg74UUVb6EIRtO6NSFrhh9fWIzAhPJ07ymRpz
     RHaNoP5kk5uaaGHW+Laa2WsDEjG077ba]
-awcs7::tc_authorized_keys: >
+awcs7::dev::tc_authorized_keys: >
     ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEApnUyS+HDMf9IYFvwM7Biv3vNZtHMTXGmDEZy
     qQLHY4jvSwOnBY5Q3zpB8r8qMkmuh0KchWO8ciEeJh/9kzw16oG3I+mwuXIq

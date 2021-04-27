@@ -8,6 +8,11 @@ mes7::mes_site_name: 'Fernley Plant-658'
 mes7::whs_site: 'wepplt'
 mes7::whs_bar: 'WE'
 
+mes7::prod::mes_alias: 'meswepplt'
+mes7::prod::mes_site_name: 'Fernley Plant-658'
+mes7::prod::whs_site: 'wepplt'
+mes7::prod::whs_bar: 'WE'
+
 
 avamar::grid: 'swavmPST.sherwin.com'
 

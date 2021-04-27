@@ -1,0 +1,8 @@
+classes:
+  - mes7::tz
+
+mes7::tz::whs_bar: 'LN,SB'
+mes7::tz::whs_site: 'cgetz1db1'
+mes7::tz::mes_alias: 'mesmasplt'
+
+oracle_build7::kernel::vm_nr_hugepages: 4608
