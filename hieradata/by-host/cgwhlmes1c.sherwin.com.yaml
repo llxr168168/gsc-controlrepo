@@ -13,4 +13,4 @@ mes7::prod::mes_site_name: 'Wheeling-686'
 mes7::prod::whs_site: 'whlplt'
 mes7::prod::whs_bar: 'WV'
 
-access_conf::awcs_dataguard: 'cgwhlmes1a.sherwin.com cgwhlmes1b.sherwin.com cgwhlmes1c.sherwin.com'
+access_conf::mes_dataguard: 'cgwhlmes1a.sherwin.com cgwhlmes1b.sherwin.com cgwhlmes1c.sherwin.com'

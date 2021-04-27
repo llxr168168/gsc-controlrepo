@@ -7,4 +7,4 @@ tz::locality: 'New_York'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
 
-access_conf::awcs_dataguard: 'cgcovmes1a.sherwin.com cgcovmes1b.sherwin.com cgcovmes1c.sherwin.com'
+access_conf::mes_dataguard: 'cgcovmes1a.sherwin.com cgcovmes1b.sherwin.com cgcovmes1c.sherwin.com'

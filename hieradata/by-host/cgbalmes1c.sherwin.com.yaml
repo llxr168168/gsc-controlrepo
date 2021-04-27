@@ -13,4 +13,4 @@ mes7::prod::whs_bar: 'DM'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
 
-access_conf::awcs_dataguard: 'cgbalmes1a.sherwin.com cgbalmes1b.sherwin.com cgbalmes1c.sherwin.com'
+access_conf::mes_dataguard: 'cgbalmes1a.sherwin.com cgbalmes1b.sherwin.com cgbalmes1c.sherwin.com'
