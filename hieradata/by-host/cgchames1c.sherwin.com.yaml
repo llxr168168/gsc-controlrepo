@@ -7,3 +7,4 @@ tz::locality: 'New_York'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
 
+access_conf::awcs_dataguard: 'cgchames1a.sherwin.com cgchames1b.sherwin.com cgchames1c.sherwin.com'

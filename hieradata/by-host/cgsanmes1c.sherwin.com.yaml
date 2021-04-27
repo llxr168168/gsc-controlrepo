@@ -12,3 +12,4 @@ mes7::prod::whs_bar: 'SD'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
 
+access_conf::mes_dataguard: 'cgsanmes1a.sherwin.com cgsanmes1b.sherwin.com cgsanmes1c.sherwin.com'

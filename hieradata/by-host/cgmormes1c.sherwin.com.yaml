@@ -12,3 +12,5 @@ mes7::mes_alias: 'mesmorplt'
 mes7::mes_site_name: 'Morrow-MOR'
 mes7::whs_site: 'morplt'
 mes7::whs_bar: 'WM'
+
+access_conf::awcs_dataguard: 'cgmormes1a.sherwin.com cgmormes1b.sherwin.com cgmormes1c.sherwin.com'

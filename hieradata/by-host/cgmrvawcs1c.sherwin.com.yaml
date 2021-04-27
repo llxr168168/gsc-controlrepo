@@ -6,3 +6,5 @@ tz::region: 'America'
 tz::locality: 'Los_Angeles'
 
 oracle_build7::kernel::vm_nr_hugepages: 5171
+
+access_conf::awcs_dataguard: 'cgmrvawcs1a.sherwin.com cgmrvawcs1b.sherwin.com cgmrvawcs1c.sherwin.com'
