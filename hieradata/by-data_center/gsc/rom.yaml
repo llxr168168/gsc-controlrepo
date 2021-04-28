@@ -34,7 +34,7 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddverom.sherwin.com:/data/col1/gsc_ora_disaster_rom'
 
 
-
+access_conf::awcs_dataguard: 'cgromawcs1a.sherwin.com cgromawcs1b.sherwin.com cgromawcs1c.sherwin.com'
 
 yum::plugins_enabled: 'true'
 

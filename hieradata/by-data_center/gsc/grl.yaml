@@ -33,6 +33,8 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvegrl.sherwin.com:/data/col1/gsc_ora_disaster_grl'
 
 
+access_conf::mes_dataguard: 'cggrlmes1a.sherwin.com cggrlmes1b.sherwin.com cggrlmes1c.sherwin.com'
+
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvegrl.sherwin.com:/data/col1/gsc_lnxremote_rw'
 

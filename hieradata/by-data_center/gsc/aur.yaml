@@ -31,6 +31,8 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
 
 awcs7::awcs_alias: 'awcsaurora'
 
+access_conf::awcs_dataguard: 'cgaurawcs1a.sherwin.com cgaurawcs1b.sherwin.com cgaurawcs1c.sherwin.com'
+
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
   - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveaur.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
