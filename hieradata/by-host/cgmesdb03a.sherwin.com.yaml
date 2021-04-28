@@ -5,3 +5,5 @@ mes7::dev::mes_alias: 'mesdb3plt'
 mes7::dev::mes_site_name: 'MESDB3PLT-BAL'
 mes7::dev::whs_site: 'ordplt'
 mes7::dev::whs_bar: 'KM'
+
+mes7::dev::mes_httpd_conf: 'mes.db03a.conf'
