@@ -1,1 +1,1 @@
-oracle_build::kernel::vm_nr_hugepages: 1174
+oracle_build::kernel::vm_nr_hugepages: 4608
