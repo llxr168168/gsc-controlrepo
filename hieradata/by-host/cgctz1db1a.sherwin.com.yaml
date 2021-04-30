@@ -8,3 +8,5 @@ oracle_build7::kernel::vm_nr_hugepages: 2560
 
 mes7::tz::whs_bar: 'WV,SF,MC'
 mes7::tz::whs_site: 'cgctz1db1'
+
+mes7::tz::mes_httpd_conf: 'cgctz1db1.conf'
