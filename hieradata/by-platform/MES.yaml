@@ -19,7 +19,7 @@ oracle_build::tns::tns_webhost: pulp.sherwin.com
 oracle_build::tns::tns_webhost_file: /webroot/oracle/mes.tns
 oracle_build::tns::localfile:
   - '/swpkg/oracle/product/12.1.0/db_1/network/admin/tnsnames.ora'
-oracle_build::kernel::vm_swappiness: '0'
+oracle_build::kernel::vm_swappiness: '10'
 
 postfix::enabled: 'true'
 
