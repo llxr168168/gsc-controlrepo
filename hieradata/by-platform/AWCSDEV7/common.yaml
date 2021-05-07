@@ -61,7 +61,7 @@ access_conf::access:
 sw_apex_print7::local_user: 'awcs'
 sw_apex_print7::local_group: 'awcs'
 
-sw_app_status::app_status_script: 'awcs7_dev_status.sh'
+#sw_app_status::app_status_script: 'awcs7_dev_status.sh'
 
 awcs7::dev::awcs_developers:
   - pxa137
