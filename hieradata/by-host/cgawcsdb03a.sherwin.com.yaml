@@ -1,4 +1,5 @@
 classes:
   - awcs7::dev
+  - sw_oswatcher
 
 awcs7::dev::awcs_alias: 'awcsdb03'
