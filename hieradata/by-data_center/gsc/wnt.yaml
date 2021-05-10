@@ -32,6 +32,9 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvewnt.sherwin.com:/data/col1/gsc_ora_disaster_wnt'
 
 
+access_conf::awcs_dataguard: 'cgwntawcs1a.sherwin.com cgwntawcs1b.sherwin.com cgwntawcs1c.sherwin.com'
+
+
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum
 

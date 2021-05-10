@@ -11,3 +11,4 @@ mes7::prod::mes_site_name: 'Fernley Plant-658'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
 
+access_conf::mes_dataguard: 'cgwepmes1a.sherwin.com cgwepmes1b.sherwin.com cgwepmes1c.sherwin.com'

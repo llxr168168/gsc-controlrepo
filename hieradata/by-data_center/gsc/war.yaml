@@ -49,7 +49,7 @@ sw_sssd_authentication::krb5_kpasswd: 'lbusldap.sherwin.com:88,usldap.sw.sherwin
 sw_sssd_authentication::kdc1: 'lbusldap.sherwin.com'
 sw_sssd_authentication::kdc2: 'usldap.sw.sherwin.com'
 
-
+access_conf::awcs_dataguard: 'cgawcsdb03a.sherwin.com cgawcsdb03b.sherwin.com cgawcsdb03c.sherwin.com'
 
 sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
 sw_sssd_authentication::default_realm: SW

@@ -6,3 +6,5 @@ tz::region: 'America'
 tz::locality: 'Boise'
 
 oracle_build7::kernel::vm_nr_hugepages: 2560
+
+access_conf::awcs_dataguard: 'cgaurawcs1a.sherwin.com cgaurawcs1b.sherwin.com cgaurawcs1c.sherwin.com'

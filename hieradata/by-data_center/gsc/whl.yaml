@@ -41,6 +41,7 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvewhl.sherwin.com:/data/col1/gsc_ora_disaster_whl/%{::hostname}'
   - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvewhl.sherwin.com:/data/col1/gsc_ora_disaster_whl'
 
+access_conf::mes_dataguard: 'cgwhlmes1a.sherwin.com cgwhlmes1b.sherwin.com cgwhlmes1c.sherwin.com'
 
 
 profiles_unix::gsc::apps::utilserver::nfs_mounts:

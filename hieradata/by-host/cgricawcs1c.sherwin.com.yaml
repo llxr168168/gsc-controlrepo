@@ -5,4 +5,6 @@ resolv_conf::nameserver:
 tz::region: 'America'
 tz::locality: 'New_York'
 
-oracle_build7::kernel::vm_nr_hugepages: 4096
+oracle_build7::kernel::vm_nr_hugepages: 5171
+
+access_conf::awcs_dataguard: 'cgricawcs1a.sherwin.com cgricawcs1b.sherwin.com cgricawcs1c.sherwin.com'

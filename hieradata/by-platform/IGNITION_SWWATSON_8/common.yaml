@@ -23,7 +23,6 @@ access_conf::access:
 
 hosts::hosts_group: ignition
 
-sw_ignition8_v2::jdk_version: ignition-jdk8u282
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
