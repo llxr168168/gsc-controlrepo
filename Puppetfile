@@ -927,3 +927,7 @@ mod 'mqseries9',
 mod 'sw_aomapp',
   :git => 'git@github.sherwin.com:SW-CORP-IT/sw_aomapp.git',
   :ref => 'master'
+
+mod 'sw_oswatcher',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_oswatcher.git',
+  :ref => 'master'
