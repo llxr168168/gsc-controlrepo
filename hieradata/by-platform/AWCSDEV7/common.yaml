@@ -86,7 +86,8 @@ packages:
   - filebeat
 
 filebeat::manage_repo: false
-filebeat::major_version: '5'
+sw_os_update_management::redhat::elastic6_repo: true
+filebeat::major_version: '6'
 filebeat::inputs:
   awcslogs:
     paths:
