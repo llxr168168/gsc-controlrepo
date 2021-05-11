@@ -97,6 +97,7 @@ filebeat::prospectors:
 filebeat::tags:
   - awcslogs
 
+filebeat::registry_file: /var/lib/filebeat/registry
 filebeat::outputs:
   logstash:
     hosts:
