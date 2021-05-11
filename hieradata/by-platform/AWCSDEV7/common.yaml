@@ -87,13 +87,13 @@ packages:
 
 filebeat::manage_repo: false
 filebeat::major_version: '5'
-#filebeat::prospectors:
-#  awcslogs:
-#    paths:
-#      - 'var/log/httpd/*_log'
-#      - '/swpkg/tomcat/apache-tomcat/logs/catalina.out'
-#      - '/swpkg/tomcat/apache-tomcat/logs/localhost*'
-#    doc_type: 'awcslogs'
+filebeat::inputs:
+  awcslogs:
+    paths:
+      - 'var/log/httpd/*_log'
+      - '/swpkg/tomcat/apache-tomcat/logs/catalina.out'
+      - '/swpkg/tomcat/apache-tomcat/logs/localhost*'
+    doc_type: 'awcslogs'
 filebeat::tags:
   - awcslogs
 
