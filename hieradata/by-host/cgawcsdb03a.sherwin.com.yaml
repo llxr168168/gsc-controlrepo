@@ -1,6 +1,7 @@
 classes:
   - awcs7::dev
   - sw_oswatcher
+  - sw_resource_realizer::authorized_key
 
 awcs7::dev::awcs_alias: 'awcsdb03'
 
