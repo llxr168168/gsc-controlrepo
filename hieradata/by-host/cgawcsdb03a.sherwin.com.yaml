@@ -3,3 +3,17 @@ classes:
   - sw_oswatcher
 
 awcs7::dev::awcs_alias: 'awcsdb03'
+
+sw_resource_realizer::authorized_key:
+  oracle@cgawcsdb03a.sherwin.com:
+    type: 'ssh-rsa'
+    key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQCvkEFHYwFoHKhiS5Eei+qPGKKanTNh2t2eLIJFndQO/VwR54Mbc05mBh4dGHCtTG1MVK0kqwlQ6Xk0CbeiCLkWP7eSGURiHPWg+kydZHrHWk8R5JcvML0L5Pi0UBZj2uWWxrYtVy1PTqjIlvh20bawA0ncGADGHNtNAAiYL0FO4MxnQ5FBqjMuzsirfJVvBj9m2oKm5UlwE2FpAImwPPKFp104HPYR0ZhDDf7kpqddYouEYV2JMg7aGV5ienUQiiNh4SymLi5Gn6/j5IKX0AIirkWwjyNsoD103fuEVJxj+N1JhPmcCXOXmsT7s4+JjJcpVmfwmFSMCd0upNPpKYp3'
+    user: 'oracle'
+  oracle@cgawcsdb03b.sherwin.com:
+    type: 'ssh-rsa'
+    key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDAiimXUI6OCuEJPysvWZjxf1t4kepCi/5pyjzn0SiOUctzrpHCOpbfnCiDLq6NwgnLMnmQnbyLVKabkrHGX9Xpl7zFfp/UKX5popFIwWoC4xGJFLdDK9N2dOJvWIiW6j9ctwU+Ch8/a2+xZzVPibkQtH2zQDo0+mIhYEd6XAkzVowCgmHkGMJtxuiY36xp4VvkR01lYz0SyXwITgxom+Wc9aWExA2DXOIA1em2CvSJ+c3JCc85YcKW/Ga2GOYU/taSCoiBVWaiGfGyiCfhnqBJcLbwW29CNrb/wnJSU8VJcqxjUMeZ43dy91P7qdNuD1vtUnYQ4XgGl0Vv7ZF4YIOn'
+    user: 'oracle'
+  oracle@cgawcsdb03c.sherwin.com:
+    type: 'ssh-rsa'
+    key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDvpEbESGVmoLDrhD1aAZUpeboQxUJ4i/XWnBdtNasBpX78fVdg3wZKEZ13wBWatOmzNnwsP2xerlwO2sPckwkoL5qwbfPh77L+9wAdXxfX7YgxRMxfAaeKac8HX+5Agb0N86StT50aAoeUc8G4Tb/tipLVl3lVuC7XnYKZ8DDQeeQ+GbArGXx4k9/6p02ys3JdmN2c7GvsY1x9covPuBmgD62WEbj+ITEDfR3xxF4IZlzTB+qQHC0pNSaabiE8xzbdgwejI9Hc7Le+9OJN6zW+0BgwPdenyxbd8Z6vxCQfstidR6A19Nq6GTt2cXJ6cRgdq5BUV5A+e8WGGnRtZsK5'
+    user: 'oracle'
