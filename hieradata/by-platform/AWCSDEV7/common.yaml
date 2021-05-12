@@ -82,14 +82,12 @@ awcs7::dev::awcs_developers:
   - daw633
   - tjb976
 
-sw_os_update_management::redhat::elastic6_repo: true
-
 packages:
   - filebeat
 
 filebeat::manage_repo: false
-filebeat::major_version: '6'
-filebeat::inputs:
+filebeat::major_version: '5'
+filebeat::prospectors:
   awcslogs:
     paths:
       - 'var/log/httpd/*_log'
