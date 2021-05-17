@@ -1,3 +1,6 @@
+classes:
+  - awcs7
+
 resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
@@ -8,3 +11,5 @@ tz::locality: 'New_York'
 oracle_build7::kernel::vm_nr_hugepages: 9217
 
 access_conf::awcs_dataguard: 'cgfrdawcs1a.sherwin.com cgfrdawcs1b.sherwin.com cgfrdawcs1c.sherwin.com'
+
+awcs7::awcs_alias: 'awcsfred'
