@@ -1,6 +1,6 @@
 classes:
   - sw_aomapp
-
+  - sw_resource_realizer::service
 
 
 access_conf::access:
@@ -26,6 +26,9 @@ profiles_unix::gsc::base::auth::sssd_auth: 'true'
 sw_os_update_management::redhat::optional_repo_file: optional.yum
 sw_os_update_management::redhat::epel_repo_file: epel.yum
 sw_os_update_management::redhat::extras_repo_file: extra.yum
+
+
+
 
 sw_resource_realizer::service:
   httpd:
