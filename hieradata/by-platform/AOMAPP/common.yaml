@@ -1,6 +1,6 @@
 classes:
   - sw_aomapp
-
+  - sw_resource_realizer::service
 
 
 access_conf::access:
