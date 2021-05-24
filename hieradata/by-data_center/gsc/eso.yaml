@@ -1,0 +1,101 @@
+# Site config for Effingham building that ships the OEM branded scratch fix tubes (Ford, Chrysler, Honda, etc)
+
+ 
+yum::plugins_enabled: 'true'
+
+#Site Specific overrides
+
+avamar::grid: 'swavmcst.sherwin.com'
+
+resolv_conf::nameserver:
+  - '10.10.24.38'
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+dnsmasq_conf::nameserver:
+  - '10.10.24.38'
+  - '10.20.103.6'
+  - '10.240.3.6'
+  
+profiles_unix::gsc::oracle::base::nfs_mounts:
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_oraremote_rw'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_disaster_eff'
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_backup_eff'
+
+profiles_unix::gsc::oracle7::base::nfs_mounts:
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_oraremote_rw'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_disaster_eff'
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_backup_eff'
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_backup_eff/%{::hostname}'
+  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_disaster_eff/%{::hostname}'
+  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_backup_eff'
+
+profiles_unix::gsc::apps::utilserver::nfs_mounts:
+  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_lnxremote_rw'
+
+access_conf::awcs_dataguard: 'cgesoawcs1a.sherwin.com cgesoawcs1b.sherwin.com'
+
+
+yum::yum_repo_file: remotesite.yum
+sw_os_update_management::redhat::yum_repo_file: remotesite.yum
+
+awcs::telnet_allow:
+  - '10.10.24.0/24'
+  - '10.216.0.0/16'
+  - 'cgawcsdb3.consumer.sherwin.com'
+  
+tz::region: 'America'
+tz::locality: 'Chicago'
+site_code: eff
+sw_os_update_management::redhat::plugins_enabled: 'true'
+sw_os_update_management::yum_conf_additional: 'http_caching=none'
+
+
+awcs7::oracle_pub_key: ENC[PKCS7,MIIC7QYJKoZIhvcNAQcDoIIC3jCCAtoCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEAYM1OM5f9nMhmJPL3cxguuyN/0XotI0BfdpfIFme/ksUU1L61wYPLrR5f5KkTSC7o8xZgAQ7RfNoge60rXi6YRVtr6QtlwQC/mPBFt3wd9/7UUWvTnmpU4c/mPVuoHa9t/+EbD/zJb0txu+pwgBbqQHhSnJFfa07hdGOxNgqXWMkRd86UplqET36z31QtiohaC41NxeP1Q3R2I5vtI1wNV8ybvF44DNJVlHa5+4LDoaHwUsoKRMSQ2Sqgz9vyUwD9LY8jj5afhHUBXtXA57zOeg3L4F+f/ILxqlMhel85LmEpjD/58KbcR5ZZtcUzHerMh6bOQCz742gUcldKttCC0zCCAa4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEC6nkBfuq3rbGVQeJR13JCSAggGA99K1ycY2tnBc4hhbsId/DUiXkwHsTtqIMvxBW/rmsm6R1I/3D9qQtn34gw4DjnOL/NVEc/n86J29eHbHKKa/CMEEf4vYE0g9AoIK9FcJqD4xVRdE2VDndC/H4XEPZvhiWtbFDycAjdh+wMdOCcXqB1ZiflJ1H4Gx2EzBaZUo8wMtud1Oj0a/e8zKM9qr/qoXo7R3iwW4QnKxFxuVUGzhQuJVIkN6vSr9kZ6touhb3ttNQZZHnE9cv2L8gJ5Ha/VphyMh9C2MRIKwlg55sKOytvOjxIlii9CijbBngxyiTmfZsDAyhrtxU09QbtY9NhnX+wkEdy84R22KqOWmq+o8cVlDgOmKh2wtKBQQIrylX9RQdrNKeLi6HRSz6m31+OMYUnSABOaczCsOEQilgMRnzMBNYPl59qLDoi7L4H8S0MebO/yVQwfADDcT9piIO7XCf/evEzo+7/ZdnDYhi4SQEU8q8dMQNZtv/ScMFT5TjEtkvLQh+PYUOBXPxtThtOtP]
+awcs7::oracle_prv_key: >
+    ENC[PKCS7,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
+    bQvvzYbI4zsWkNS/R/TqPrHbsD/o8Qpb]
