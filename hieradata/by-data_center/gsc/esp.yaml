@@ -1,0 +1,100 @@
+# Site config for Effingham Specialty site
+ 
+yum::plugins_enabled: 'true'
+
+#Site Specific overrides
+
+avamar::grid: 'swavmcst.sherwin.com'
+
+resolv_conf::nameserver:
+  - '10.10.24.38'
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+dnsmasq_conf::nameserver:
+  - '10.10.24.38'
+  - '10.20.103.6'
+  - '10.240.3.6'
+  
+profiles_unix::gsc::oracle::base::nfs_mounts:
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_oraremote_rw'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_disaster_eff'
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_backup_eff'
+
+profiles_unix::gsc::oracle7::base::nfs_mounts:
+  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_oraremote_rw'
+  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_disaster_eff'
+  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_backup_eff'
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_backup_eff/%{::hostname}'
+  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_disaster_eff/%{::hostname}'
+  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_ora_backup_eff'
+
+profiles_unix::gsc::apps::utilserver::nfs_mounts:
+  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveeff.consumer.sherwin.com:/data/col1/gsc_lnxremote_rw'
+
+access_conf::awcs_dataguard: 'cgespawcs1a.sherwin.com cgespawcs1b.sherwin.com'
+
+
+yum::yum_repo_file: remotesite.yum
+sw_os_update_management::redhat::yum_repo_file: remotesite.yum
+
+awcs::telnet_allow:
+  - '10.10.24.0/24'
+  - '10.216.0.0/16'
+  - 'cgawcsdb3.consumer.sherwin.com'
+  
+tz::region: 'America'
+tz::locality: 'Chicago'
+site_code: eff
+sw_os_update_management::redhat::plugins_enabled: 'true'
+sw_os_update_management::yum_conf_additional: 'http_caching=none'
+
+
+awcs7::oracle_pub_key: ENC[PKCS7,MIIC7QYJKoZIhvcNAQcDoIIC3jCCAtoCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEAcic+mkF7RfebGAJ6fzmoIeqkEZHb3QkMxVAi43ithlQKNr/7RnuYJGWqVRyXj3X8ZwYFV1AZf+DKeK0vhqUFsVXWcSE9Ers6Cy03F85iqWh0UVjrUat9TVgybXDto98MHD7pszYTB8AsCNMZzcHAsz5AHMWPY1tCVq+LT2v8BCE1iolOHfk0umZmjwWBW/irzoJkD4gyEAVjqAEyeJIwqEbOA6ca1y+BoBmNnq6HEFSIsGdLYNYuK6Ti+HozaC+DpE6GVdeHAf6q/39L3X/BXNJqIdTmU1kMbDf7VHy+VjDqGodnXZMO23A68fumDFWeafo14bRP4Aq9+IzWHq5WVDCCAa4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEFaEVQlDuu/vTiM1UitmnEOAggGApF02vGrwEas6rHDJFxX9xfLSfCSLsUw+FWpB8EYbEA0jZ1TGRwPE8rRlP8E6u/nP/zua0Th9TGsLiK3qYTsnVeKW6PRFoboJWeKCjP5mb7JHPEeLt7Y4RHiofgGjAwBsD7KcjyXB+ybGPv7hzR916lDUkT0+HmR+D8cODAEUBZTcCP7WPZT1RsZn2w4RcQAy96aZx3pszySpHJQz2ie4NU+yIylNzNv9cw3TLbx1IlI+qM5idVMQrsmwb2U3ClfgX7h7aYwvkTLQc8cdANJw3spEy6Zl7ZSoEvpHHGTwcwqEeCoDtZeAc3dV4CMznVcypIjNrcyLYx+f2IrkFwtd43VxQXASkQeV8LbU7b8/LbGy35WinQy+9IxONavDAKXuiYJFl06YKgeUenznl4agsIolYYdTmutTWx5+tpPW6Mstik1iVXroCIM69gn6VXbPX3O27GNTizPeZ96iUIBapiRthB0kBsCxOsFgy+B6luEqj0wn6lScENZHQ5buLj1Q]
+awcs7::oracle_prv_key: >
+    ENC[PKCS7,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
+    4dra5523c++r75izbyZZ+4F2+5zpIuij]
