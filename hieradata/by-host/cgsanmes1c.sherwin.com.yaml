@@ -10,6 +10,6 @@ mes7::prod::mes_site_name: 'San Diego-673'
 mes7::prod::whs_site: 'sanplt'
 mes7::prod::whs_bar: 'SD'
 
-oracle_build7::kernel::vm_nr_hugepages: 4608
+oracle_build7::kernel::vm_nr_hugepages: 2560
 
 access_conf::mes_dataguard: 'cgsanmes1a.sherwin.com cgsanmes1b.sherwin.com cgsanmes1c.sherwin.com'

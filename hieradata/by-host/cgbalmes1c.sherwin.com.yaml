@@ -11,6 +11,6 @@ mes7::prod::mes_site_name: 'Baltimore-BAL'
 mes7::prod::whs_site: 'balplt'
 mes7::prod::whs_bar: 'DM'
 
-oracle_build7::kernel::vm_nr_hugepages: 4608
+oracle_build7::kernel::vm_nr_hugepages: 2560
 
 access_conf::mes_dataguard: 'cgbalmes1a.sherwin.com cgbalmes1b.sherwin.com cgbalmes1c.sherwin.com'
