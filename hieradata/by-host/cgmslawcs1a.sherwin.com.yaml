@@ -1,6 +1,5 @@
 classes:
   - awcs7
-  - sw_oswatcher
 
 awcs7::awcs_alias: 'awcsmassillon'
 

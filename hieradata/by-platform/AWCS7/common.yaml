@@ -17,6 +17,7 @@ classes:
   - dnsmasq_conf
   - sw_os_ca_certs
   - sw_puppet_ansible_dmw
+  - sw_oswatcher
 
 oracle_build7::kernel::vm_swappiness: 10
 
