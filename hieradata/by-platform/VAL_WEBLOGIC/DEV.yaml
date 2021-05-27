@@ -8,6 +8,7 @@
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(gg-adm-val-weblogic):ALL'
+  - '+:(gg-adm-webeng_linux):ALL'
   - '-:ALL:ALL'  
 
 sudo::sudoers_d_template: 'oracle-weblogic'
