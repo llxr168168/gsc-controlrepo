@@ -50,6 +50,7 @@ sw_sssd_authentication::kdc1: 'lbusldap.sherwin.com'
 sw_sssd_authentication::kdc2: 'usldap.sw.sherwin.com'
 
 access_conf::awcs_dataguard: 'cgawcsdb03a.sherwin.com cgawcsdb03b.sherwin.com cgawcsdb03c.sherwin.com'
+access_conf::mes_dataguard: 'cgmesdb03a.sherwin.com cgmesdb03b.sherwin.com cgmesdb03c.sherwin.com'
 
 sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
 sw_sssd_authentication::default_realm: SW
