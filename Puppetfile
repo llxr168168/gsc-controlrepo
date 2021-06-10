@@ -271,6 +271,10 @@ mod 'oracle_build7',
  :git => 'git@github.sherwin.com:SW-CORP-IT/oracle_build7.git',
  :ref => 'master'
 
+mod 'oracle_build8',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/oracle_build8.git',
+ :ref => 'master'
+
 mod 'mqseries',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mqseries.git',
  :ref => 'puppet5'
