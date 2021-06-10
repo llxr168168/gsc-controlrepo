@@ -3,4 +3,4 @@ classes:
 
 mes7::dev::mes_alias: 'mesdb13plt'
 
-oracle_build7::kernel::vm_nr_hugepages: 4608
+oracle_build7::kernel::vm_nr_hugepages: 2560
