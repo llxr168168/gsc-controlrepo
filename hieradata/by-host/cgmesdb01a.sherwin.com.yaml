@@ -1,7 +1,7 @@
 classes:
   - mes7::prod
 
-oracle_build7::kernel::vm_nr_hugepages: 10752
+oracle_build7::kernel::vm_nr_hugepages: 7024
 
 mes7::prod::mes_alias: 'mesdb1plt'
 mes7::prod::whs_site: 'ctgdb2qad'
