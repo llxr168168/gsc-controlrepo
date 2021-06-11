@@ -680,14 +680,6 @@ mod 'oracle_oem',
 # :git => 'git@github.sherwin.com:Corp-IT-Puppet/gfg_utils.git',
 # :ref => '1.0.1'
 
-# Tanium Client Install currently only for RHEL OEL coming soon
-# The ref number is client version with a SW Puppet version number on the end
-# it is expected that this SW Puppet Version will start back at 01 with each
-# client update.
-mod 'tanium_client',
- :git => 'git@github.sherwin.com:Corp-IT-Puppet/tanium_client.git',
- :ref => 'puppet5'
-
 # Config Mgmt - Artifactory Tool Server
 #mod 'artifactory',
 # :git => 'git@github.sherwin.com:Corp-IT-Puppet/artifactory.git',
