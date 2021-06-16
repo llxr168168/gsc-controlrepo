@@ -11,7 +11,7 @@ mes7::prod::mes_site_name: 'Garland-GAR'
 mes7::prod::whs_site: 'garplt'
 mes7::prod::whs_bar: '0T'
 
-oracle_build7::kernel::vm_nr_hugepages: 4608
+oracle_build7::kernel::vm_nr_hugepages: 2560
 
 access_conf::mes_dataguard: 'cggrlmes1a.sherwin.com cggrlmes1b.sherwin.com cggrlmes1c.sherwin.com'
 
