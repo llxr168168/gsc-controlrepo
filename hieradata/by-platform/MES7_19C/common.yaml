@@ -17,8 +17,6 @@ classes:
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
-sw_app_status::app_status_script: 'mes7_status.sh'
-
 mq_p2p_client::account_lock_status: 'true'
 
 sw_apex_print7::local_user: 'plt_adm'
