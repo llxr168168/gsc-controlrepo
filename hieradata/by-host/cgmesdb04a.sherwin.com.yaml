@@ -3,5 +3,6 @@ classes:
 
 mes7::dev::mes_alias: 'mesdb4plt'
 
+oracle_build7::kernel::vm_nr_hugepages: 2560
 
 sw_app_status::app_status_script: 'mes7_status.sh'

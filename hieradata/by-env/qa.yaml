@@ -1,5 +1,4 @@
-classes:
-  - sw_linux_tanium_client
+
   
 # Dynatrace OneAgent for QA
 dynatrace_oneagent::download_link_url: 'https://nextgen-dynatrace.sherwin.com/e/5e1ea06b-c032-4789-b7c6-31791b3da5eb/api/v1/deployment/installer/agent/unix/default/latest?Api-Token=vOL0eo8gQpi-AvFKZjjBH&arch=x86&flavor=default'

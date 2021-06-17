@@ -1,0 +1,3 @@
+tz::region: 'Australia'
+tz::locality: 'Sydney'
+oracle_build7::kernel::vm_nr_hugepages: 4608 

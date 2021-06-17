@@ -1,13 +1,14 @@
 
-classes:
-  - mqseries9::server9150
-  - mqseries9::mqib
-profiles_unix::gsc::base::auth::sssd_auth: 'true'  
+# this is commented out since the new MQ series requires further investigation
+#classes:
+#  - mqseries9::server9150
+#  - mqseries9::mqib
+#mqseries9::server9150::mq_developers:
+#  - mxl974
+#  - sxp267
+#mqseries9::server9150::mq_developers_retire: []
 
-mqseries9::server9150::mq_developers:
-  - mxl974
-  - sxp267
-mqseries9::server9150::mq_developers_retire: []
+profiles_unix::gsc::base::auth::sssd_auth: 'true'  
 
 access_conf::access:
   - '+:root:LOCAL'

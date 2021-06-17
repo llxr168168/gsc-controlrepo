@@ -2,3 +2,5 @@ classes:
   - mes7::dev
 
 mes7::dev::mes_alias: 'mesdb11plt'
+
+oracle_build7::kernel::vm_nr_hugepages: 2560

@@ -1,6 +1,6 @@
 classes:
-  - awcs7
+  - awcs7::dev
 
-awcs7::awcs_alias: 'awcsdb05'
+awcs7::dev::awcs_alias: 'awcsdb05'
 
 sw_app_status::app_status_script: 'awcs7_status.sh'
