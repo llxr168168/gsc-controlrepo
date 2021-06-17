@@ -21,7 +21,7 @@ profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
 
-sw_app_status::app_status_script: 'mes7_status.sh'
+sw_app_status::app_status_script: 'mes7_dev_status.sh'
 
 oracle_build7::create_grid: 'true'
 oracle_build7::eunfs_mount_dirs:
