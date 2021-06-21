@@ -1,0 +1,3 @@
+#Increase hugepages as part of memory increase in INC000002289112
+
+sw_ignition8_v2::nbr_hugepages: '4000'
