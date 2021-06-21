@@ -50,8 +50,6 @@ sw_resource_realizer::package:
     ensure: 'installed'
   samba-client: 
     ensure: 'installed'
-  git:
-    ensure: 'installed'
 
 access_conf::access:
   - '+:root:LOCAL'
