@@ -3,9 +3,7 @@
 #  - avamar
 
 yum::plugins_enabled: 'true'
-# appears to be in a bubble
-access_conf::ansible_ips: '10.252.32.49 10.172.5.50 10.172.38.97 10.172.38.96 10.172.38.95 10.172.38.94'
-access_conf::ansible_ips_dmw: '10.252.32.49 10.172.5.50 10.172.65.25 10.172.65.24'
+
 
 #No local util right now
 yum::yum_repo_file: 'swrepo.yum'
