@@ -3,9 +3,7 @@
 #  - avamar
 
 yum::plugins_enabled: 'true'
-# appears to be in a bubble
-access_conf::ansible_ips: '10.252.32.49 10.172.5.50 10.172.38.97 10.172.38.96 10.172.38.95 10.172.38.94'
-access_conf::ansible_ips_dmw: '10.252.32.49 10.172.5.50 10.172.65.25 10.172.65.24'
+
 
 #No local util right now
 yum::yum_repo_file: 'swrepo.yum'
@@ -20,11 +18,11 @@ tz::locality: 'London'
 
 # valspar bubble dns servers
 dnsmasq_conf::nameserver:
-  - '10.96.3.95'
-  - '10.21.46.25'
+  - '10.12.10.30'
+  - '10.20.103.6'
 resolv_conf::nameserver:
-  - '10.96.3.95'
-  - '10.21.46.25'
+  - '10.12.10.30'
+  - '10.20.103.6'
   
 sw_os_update_management::redhat::plugins_enabled: 'true'
 sw_os_update_management::yum_conf_additional: 'http_caching=none'
