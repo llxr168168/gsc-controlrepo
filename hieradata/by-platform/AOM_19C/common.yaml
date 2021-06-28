@@ -1,0 +1,21 @@
+
+classes:
+  - profiles_unix::gsc::oracle8::asm
+  - sw_puppet_ansible_dmw
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-dba-admins):ALL'  
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 cgaomdb03a.sherwin.com cgaomdb03b.sherwin.com cgaomdb03c.sherwin.com cgaomdb03d.sherwin.com 192.168.199.50 192.168.199.51 192.168.199.52 192.168.199.53'
+  - '+:grid:LOCAL cgaomdb03a.sherwin.com cgaomdb03b.sherwin.com cgaomdb03c.sherwin.com cgaomdb03d.sherwin.com 192.168.199.50 192.168.199.51 192.168.199.52 192.168.199.53'
+  - '-:ALL:ALL'
