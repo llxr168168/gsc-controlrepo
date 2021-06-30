@@ -1,6 +1,6 @@
 
 classes:
-  - profiles_unix::gsc::oracle8::asm
+  - profiles_unix::gsc::oracle8::rac
   - sw_puppet_ansible_dmw
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
