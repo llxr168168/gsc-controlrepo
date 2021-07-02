@@ -4,8 +4,6 @@ classes:
 postfix::enabled: 'true'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
-oracle_build7::kernel::vm_nr_hugepages: 1547
-
 profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/util -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 nafgps01rw-nfs01.sherwin.com:/ORA_cp_util_qa'
   - '/stage -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 nafgps01rw-nfs01.sherwin.com:/ORA_cp_stage_qa'
