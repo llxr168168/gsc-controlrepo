@@ -1,0 +1,3 @@
+#Allow TCS DevOps team to have full sudo access to these servers.
+
+sudo::sudoers_d_template: 'tcs_sudo'
