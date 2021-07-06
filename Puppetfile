@@ -931,3 +931,7 @@ mod 'sw_aomapp',
 mod 'sw_oswatcher',
   :git => 'git@github.sherwin.com:SW-CORP-IT/sw_oswatcher.git',
   :ref => 'master'
+
+mod 'sw_local_jmx',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_local_jmx.git',
+  :ref => 'master'
