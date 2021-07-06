@@ -14,7 +14,8 @@ classes:
   - sw_puppet_ansible_dmw
   - sw_resource_realizer::package
   - sw_resource_realizer::service
-
+  - sw_local_jmx
+  
 mes7::dev::mes_httpd_conf: 'mes.dev.conf.erb'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
