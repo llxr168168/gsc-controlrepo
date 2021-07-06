@@ -271,6 +271,10 @@ mod 'oracle_build7',
  :git => 'git@github.sherwin.com:SW-CORP-IT/oracle_build7.git',
  :ref => 'master'
 
+mod 'oracle_build8',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/oracle_build8.git',
+ :ref => 'master'
+
 mod 'mqseries',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/mqseries.git',
  :ref => 'puppet5'
@@ -676,14 +680,6 @@ mod 'oracle_oem',
 # :git => 'git@github.sherwin.com:Corp-IT-Puppet/gfg_utils.git',
 # :ref => '1.0.1'
 
-# Tanium Client Install currently only for RHEL OEL coming soon
-# The ref number is client version with a SW Puppet version number on the end
-# it is expected that this SW Puppet Version will start back at 01 with each
-# client update.
-mod 'tanium_client',
- :git => 'git@github.sherwin.com:Corp-IT-Puppet/tanium_client.git',
- :ref => 'puppet5'
-
 # Config Mgmt - Artifactory Tool Server
 #mod 'artifactory',
 # :git => 'git@github.sherwin.com:Corp-IT-Puppet/artifactory.git',
@@ -930,8 +926,4 @@ mod 'sw_aomapp',
 
 mod 'sw_oswatcher',
   :git => 'git@github.sherwin.com:SW-CORP-IT/sw_oswatcher.git',
-  :ref => 'master'
-
-mod 'sw_local_jmx',
-  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_local_jmx.git',
   :ref => 'master'
