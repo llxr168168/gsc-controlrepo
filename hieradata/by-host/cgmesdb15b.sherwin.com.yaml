@@ -1,0 +1,6 @@
+classes:
+  - mes7::dev
+
+mes7::dev::mes_alias: 'mesdb15plt'
+
+access_conf::mes_dataguard: 'cgmesdb15a.sherwin.com cgmesdb15b.sherwin.com cgmesdb15c.sherwin.com'
