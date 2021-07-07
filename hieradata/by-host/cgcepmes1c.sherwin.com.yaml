@@ -11,7 +11,7 @@ mes7::prod::mes_site_name: 'Chicago-CEP'
 mes7::prod::whs_site: 'cepplt'
 mes7::prod::whs_bar: 'EC'
 
-oracle_build7::kernel::vm_nr_hugepages: 4608
+oracle_build7::kernel::vm_nr_hugepages: 2560
 
 access_conf::mes_dataguard: 'cgcepmes1a.sherwin.com cgcepmes1b.sherwin.com cgcepmes1c.sherwin.com'
 
