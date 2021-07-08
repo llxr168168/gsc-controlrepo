@@ -14,7 +14,8 @@ classes:
   - sw_puppet_ansible_dmw
   - sw_resource_realizer::package
   - sw_resource_realizer::service
-
+  - sw_local_jmx
+  
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 sw_app_status::app_status_script: 'mes7_status.sh'
