@@ -1,1 +1,5 @@
 oracle_build7::kernel::vm_nr_hugepages: 7219
+
+site_code: rno
+tz::region: 'America'
+tz::locality: 'Los_Angeles'
