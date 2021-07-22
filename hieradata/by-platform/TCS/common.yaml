@@ -3,6 +3,8 @@ profiles_unix::gsc::base::auth::sssd_auth: 'true'
 #Allow TCS DevOps team to have full sudo access to these servers.
 sudo::sudoers_d_template: 'tcs_sudo'
 
+yum::epel_repo_file: epel.yum
+
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
