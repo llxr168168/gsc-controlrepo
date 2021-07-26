@@ -10,7 +10,7 @@ mes7::prod::mes_site_name: 'Lebanon-687'
 mes7::prod::whs_site: 'lebplt'
 mes7::prod::whs_bar: 'LN'
 
-oracle_build7::kernel::vm_nr_hugepages: 4608
+oracle_build7::kernel::vm_nr_hugepages: 2560
 
 
 access_conf::mes_dataguard: 'cglebmes1a.sherwin.com cglebmes1b.sherwin.com cglebmes1c.sherwin.com'
