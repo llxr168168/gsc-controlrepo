@@ -15,7 +15,8 @@ classes:
   - sw_resource_realizer::package
   - sw_resource_realizer::service
   - sw_local_jmx
-  
+  - filebeat
+
 mes7::dev::mes_httpd_conf: 'mes.dev.conf.erb'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
@@ -65,6 +66,30 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw/%{::hostname}'
   - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw'
   - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_ak'
+
+
+packages:
+  - filebeat
+
+filebeat::manage_repo: false
+sw_os_update_management::redhat::elastic6_repo: true
+filebeat::major_version: '6'
+filebeat::inputs:
+  meslogs:
+    paths:
+      - 'var/log/httpd/*_log'
+      - '/swpkg/tomcat/apache-tomcat/logs/catalina.out'
+      - '/swpkg/tomcat/apache-tomcat/logs/localhost*'
+    doc_type: 'meslogs'
+filebeat::tags:
+  - meslogs
+
+#filebeat::registry_file: /var/lib/filebeat/registry
+filebeat::outputs:
+  logstash:
+    hosts:
+      - 'dev.esxelkstack.sherwin.com:30044'
+    loadbalance: true
   
 
 
