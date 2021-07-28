@@ -1,19 +1,7 @@
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
-sw_sssd_authentication::ldap_uris: 'ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'
-sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
-sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5zUAAQID'
-sw_sssd_authentication::krb5_server: 'lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
-sw_sssd_authentication::krb5_kpasswd: 'lbusldap.sherwin.com:88,usldap.sw.sherwin.com:88'
-sw_sssd_authentication::kdc1: 'lbusldap.sherwin.com'
-sw_sssd_authentication::kdc2: 'usldap.sw.sherwin.com'
-
-sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
-sw_sssd_authentication::default_realm: SW
-
 postfix::enabled: 'true'
-
   
 access_conf::access:
   - '+:root:LOCAL'
@@ -23,10 +11,10 @@ access_conf::access:
   - '+:(sa-remote):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
   - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-qad-admin):ALL'
   - '+:(gg-cgit-dba-admins):ALL'
   - '+:(gg-adm-qad-progress):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
-  - '+:oracle:LOCAL %{::fqdn} %{::hostname} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'
