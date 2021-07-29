@@ -18,6 +18,8 @@ classes:
   - sw_os_ca_certs
   - sw_puppet_ansible_dmw
   - sw_oswatcher
+  - sw_resource_realizer::package
+
 
 sw_resource_realizer::package:
   python2-cryptography:
