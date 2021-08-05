@@ -1,2 +1,3 @@
 hosts::hosts_group: ignition
 
+ignition::nbr_hugepages: '0'
