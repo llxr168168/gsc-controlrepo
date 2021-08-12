@@ -931,3 +931,7 @@ mod 'sw_oswatcher',
 mod 'sw_local_jmx',
   :git => 'git@github.sherwin.com:SW-CORP-IT/sw_local_jmx.git',
   :ref => 'master'
+
+mod 'qad_progress',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/qad_progress.git',
+  :ref => 'master'  
