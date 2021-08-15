@@ -1,7 +1,6 @@
 classes:
   - profiles_unix::gsc::apps::pv_database
   - profiles_unix::gsc::oracle::asm
-  - profiles_unix::gsc::apps::mqclient
   - sw_puppet_ansible_dmw
 
 
