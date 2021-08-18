@@ -80,6 +80,9 @@ filebeat::inputs:
       - 'var/log/httpd/*_log'
       - '/swpkg/tomcat/apache-tomcat/logs/catalina.out'
       - '/swpkg/tomcat/apache-tomcat/logs/localhost*'
+      - '/swdata/plt_sys/logs/bar_qad/*.log'
+      - '/swdata/plt_sys/logs/somi/*.log'
+
     doc_type: 'meslogs'
 filebeat::tags:
   - meslogs
