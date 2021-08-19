@@ -1,1 +1,2 @@
 oracle_build7::kernel::vm_nr_hugepages: 4608
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
