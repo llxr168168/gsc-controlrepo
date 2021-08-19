@@ -1,3 +1,4 @@
 tz::region: 'Pacific'
 tz::locality: 'Auckland'
 oracle_build::kernel::vm_nr_hugepages: 1536 
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
