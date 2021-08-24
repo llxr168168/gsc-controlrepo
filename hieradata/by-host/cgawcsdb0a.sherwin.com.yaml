@@ -1,6 +1,6 @@
 classes:
-  - awcs7::dev
+  - awcs7
 
-awcs7::dev::awcs_alias: 'awcsdb0'
+awcs7::awcs_alias: 'awcsdb0'
 
 oracle_build7::kernel::vm_nr_hugepages: 2560
