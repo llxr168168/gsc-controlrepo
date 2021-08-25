@@ -1,6 +1,5 @@
 classes:
   - mes7::dev
-  - mq_p2p_client
   - cups
   - swprint
   - profiles_unix::gsc::oracle7::base
