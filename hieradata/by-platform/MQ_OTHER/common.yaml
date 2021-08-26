@@ -1,5 +1,5 @@
 classes:
-  - mq_other
+  - sw_mqother
 
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'  
