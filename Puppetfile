@@ -927,3 +927,7 @@ mod 'sw_local_jmx',
 mod 'qad_progress',
   :git => 'git@github.sherwin.com:SW-CORP-IT/qad_progress.git',
   :ref => 'master'  
+
+mod 'mq-other',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/mq-other.git',
+  :ref => 'master'  
