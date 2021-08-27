@@ -928,6 +928,6 @@ mod 'qad_progress',
   :git => 'git@github.sherwin.com:SW-CORP-IT/qad_progress.git',
   :ref => 'master'  
 
-mod 'mq-other',
-  :git => 'git@github.sherwin.com:SW-CORP-IT/mq-other.git',
+mod 'mq_other',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/mq_other.git',
   :ref => 'master'  
