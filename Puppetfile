@@ -828,6 +828,10 @@ mod 'sw_apex_print7',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_apex_print7.git',
 :ref => 'master'
 
+mod 'sw_apex_print_mes7',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_apex_print_mes7.git',
+:ref => 'master'
+
 mod 'sw_aacp_puppet',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_aacp_puppet.git',
 :ref => 'master'
