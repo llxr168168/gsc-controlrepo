@@ -1,9 +1,13 @@
 classes:
   - mes7::tz
-
+  - sw_apex_print_mes7
+  
 mes7::tz::whs_bar: 'LN,SB'
 mes7::tz::whs_site: 'cgetz1db1'
 mes7::tz::mes_alias: 'mesmasplt'
+
+sw_apex_print_mes7::local_user: 'plt_adm'
+sw_apex_print_mes7::local_group: 'plt_adm'
 
 oracle_build7::kernel::vm_nr_hugepages: 3226
 
