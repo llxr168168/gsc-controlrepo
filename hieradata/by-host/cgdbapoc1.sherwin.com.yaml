@@ -1,0 +1,8 @@
+profiles_unix::gsc::oracle7::base::nfs_mounts:
+  - '/swdata/nfs/cgddorac1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
+  - '/swdata/nfs/cgddoraw1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddorac1.consumer.sherwin.com:/data/col1/oracle_gsc_ak/%{::hostname}'
+  - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddorac1.consumer.sherwin.com:/data/col1/oracle_gsc_rw'
+  - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddorac1.consumer.sherwin.com:/data/col1/oracle_gsc_ak'
+  - '/global/tmp -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
+
