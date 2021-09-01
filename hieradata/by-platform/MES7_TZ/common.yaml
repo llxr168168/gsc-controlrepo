@@ -9,7 +9,7 @@ classes:
   - apex_tomcat_mes7
   - apex_tomcat_mes7::apex_sudo
   - stdbuild::pam
-  - sw_apex_print7
+  - sw_apex_print_mes7
   - sw_dataguard_status
   - sw_puppet_ansible_dmw
   - sw_resource_realizer::package
