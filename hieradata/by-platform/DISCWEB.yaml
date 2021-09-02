@@ -15,3 +15,17 @@ sudo::sudoers_template: sudoers.cgdiscweb
 
 #Fix for SMB2 share issues
 samba::smb_template: 'smb.conf_SMB2.erb'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-adm-gsc-discovery):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-gsc-discovery):ALL'  
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '-:ALL:ALL'
