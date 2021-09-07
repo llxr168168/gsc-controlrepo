@@ -1,13 +1,13 @@
 samba::shares:
   jboss:
   - 'comment = Jboss6'
-  - 'valid users = @gg-adm-gsc-discovery'
+  - 'valid users = @SW\gg-adm-gsc-discovery'
   - 'path = /swdata/jboss6'
   - 'force user = jboss'
   - 'writable = yes'
   repository:
   - 'comment = Maven Repo'
-  - 'valid users = @gg-adm-gsc-discovery'
+  - 'valid users = @SW\gg-adm-gsc-discovery'
   - 'path = /swdata/deploy/repository'
   - 'force user = jboss'
   - 'writable = yes'
