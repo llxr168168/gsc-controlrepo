@@ -912,14 +912,6 @@ mod 'sw_zabbix_agent',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_zabbix_agent.git',
  :ref => 'master'
 
-mod 'tanium_client_test',
- :git => 'git@github.sherwin.com:SW-CORP-IT/tanium_client_test.git',
- :ref => 'master'
-
-mod 'sw_linux_tanium_client',
- :git => 'git@github.sherwin.com:SW-CORP-IT/sw_linux_tanium_client.git',
- :ref => 'master'
-
 mod 'mqseries9',
   :git => 'git@github.sherwin.com:SW-CORP-IT/mqseries9.git',
   :ref => 'master'
@@ -938,4 +930,8 @@ mod 'sw_local_jmx',
 
 mod 'qad_progress',
   :git => 'git@github.sherwin.com:SW-CORP-IT/qad_progress.git',
+  :ref => 'master'  
+
+mod 'mq_other',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/mq_other.git',
   :ref => 'master'  

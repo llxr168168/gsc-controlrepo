@@ -27,7 +27,7 @@ sw_util::module_param::bool_exec_augeas_limits: true
 
 
 oracle_build::kernel::vm_swappiness: 0
-oracle_build::kernel::vm_nr_hugepages: 8000
+oracle_build::kernel::vm_nr_hugepages: 9024
 
 sw_util::wrapper::hiera_group::params:
   - aomapp: { gid: 1465, system: true, forcelocal: true}

@@ -3,6 +3,7 @@ classes:
   - profiles_unix::gsc::apps::utilserver
 
 
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 access_conf::access:
   - '+:root:LOCAL'

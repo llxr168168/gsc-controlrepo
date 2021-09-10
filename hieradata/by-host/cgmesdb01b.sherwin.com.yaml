@@ -1,7 +1,7 @@
 classes:
   - mes7::prod
 
-oracle_build7::kernel::vm_nr_hugepages: 4608
+oracle_build7::kernel::vm_nr_hugepages: 7024 
 
 profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
