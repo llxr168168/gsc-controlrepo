@@ -37,3 +37,32 @@ classes:
   - profiles_unix::gsc::apps::ignition_app
 
 hosts::hosts_group: ignition
+
+    # Sudo config
+    file {'/etc/sudoers.d/ignition':
+      ensure  => present,
+      source  =>  'puppet:///modules/sw_ignition8_v2/ignition.sudo',
+      mode    => '0400',
+      owner   => 'root',
+      group   => 'root',
+     }
+      ### sa-indapps-devopsadm file setup   
+    file{'/home/sa-indapps-devopsadm/':
+      ensure => directory,
+      mode   => '0700',
+      owner  => sa-indapps-devopsadm,
+      group  => gg-adm-nogroup,
+    }
+    file{'/home/sa-indapps-devopsadm/.ssh':
+      ensure => directory,
+      mode   => '0700',
+      owner  => sa-indapps-devopsadm,
+      group  => gg-adm-nogroup,
+    }
+    file { '/home/sa-indapps-devopsadm/.ssh/authorized_keys':
+      ensure  => present,
+      source  =>  'puppet:///modules/sw_ignition8_v2/sa-indapps-devopsadm-authorized_keys',
+      mode    => '0600',
+      owner   => sa-indapps-devopsadm,
+      group   => gg-adm-nogroup,
+    }
