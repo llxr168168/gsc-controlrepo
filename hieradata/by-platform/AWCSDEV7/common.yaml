@@ -21,7 +21,7 @@ classes:
   - sw_resource_realizer::package
 
 
-sw_os_update_management::redhat::versionlocks: 'libreoffice6.2* libobasis6.2* sw-apex-office-print-20.3.1*'
+sw_os_update_management::yum_conf_excludes: 'libreoffice6.2* libobasis6.2* sw-apex-office-print-20.3.1*'
 
 sw_resource_realizer::package:
   python2-cryptography:
