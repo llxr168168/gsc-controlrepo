@@ -21,12 +21,13 @@ classes:
   - sw_resource_realizer::package
 
 
-sw_os_update_management::yum_conf_excludes: 'jdk* logstash* glusterfs* *perl* libreoffice6.2* libobasis6.2* sw-apex-office-print-20.3.1*'
+sw_os_update_management::redhat::versionlocks: 'sw-apex-office-print-20.3.1-0.*'
+
 
 sw_resource_realizer::package:
   python2-cryptography:
     ensure: 'installed'
-  
+
 oracle_build7::kernel::vm_swappiness: 10
 
 sw_os_ca_certs::install_certs: 'swroot.pem'
