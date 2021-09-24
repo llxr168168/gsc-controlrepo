@@ -21,7 +21,8 @@ classes:
   - sw_resource_realizer::package
 
 
-sw_os_update_management::redhat::versionlocks: 'sw-apex-office-print-20.3.1-0.*'
+sw_os_update_management::redhat::versionlocks: 
+  - 'sw-apex-office-print-20.3.1-0.*'
 
 
 sw_resource_realizer::package:
