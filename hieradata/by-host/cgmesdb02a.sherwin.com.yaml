@@ -6,3 +6,5 @@ mes7::dev::whs_site: 'ctgdb2qad'
 mes7::dev::whs_bar: 'MP,WC,HL,MH,NF,CR,LG,BE,CC,PX,DB,HA,LM,BR,JF,XM,AT,RK,ER,AD,GM,NT,PG'
 
 oracle_build7::kernel::vm_nr_hugepages: 4608
+
+mes7::dev::mes_httpd_conf: 'mes.db02a.conf'
