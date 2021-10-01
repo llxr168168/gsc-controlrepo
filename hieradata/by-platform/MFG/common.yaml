@@ -3,7 +3,6 @@ classes:
   - oracle_build7::asm
   - oracle_build7::sudoers
   - sw_puppet_ansible_dmw
-  - mq_p2p_client
 
 access_conf::access:
   - '+:root:LOCAL'
@@ -12,7 +11,6 @@ access_conf::access:
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(SW\gg-adm-mqm):ALL'
   - '+:(SW\gg-cgit-dba-admins):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
