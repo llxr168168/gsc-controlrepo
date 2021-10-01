@@ -19,6 +19,11 @@ classes:
   - sw_puppet_ansible_dmw
   - sw_oswatcher
 
+
+sw_os_update_management::redhat::versionlocks: 
+  - 'sw-apex-office-print-20.3.1-0.*'
+
+
 oracle_build7::kernel::vm_swappiness: 10
 
 sw_os_ca_certs::install_certs: 'swroot.pem'
