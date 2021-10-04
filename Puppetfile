@@ -935,3 +935,7 @@ mod 'qad_progress',
 mod 'mq_other',
   :git => 'git@github.sherwin.com:SW-CORP-IT/mq_other.git',
   :ref => 'master'  
+
+mod 'sw_ignition',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_ignition',
+  :ref => 'master'
