@@ -1,5 +1,5 @@
 
-  
+profiles_unix::gsc::base::auth::sssd_auth: 'true' 
 samba::shares:
   ignition:
     - comment = Ignition
