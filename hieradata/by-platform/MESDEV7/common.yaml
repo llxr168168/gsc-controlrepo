@@ -16,6 +16,9 @@ classes:
   - sw_local_jmx
   - filebeat
 
+sw_os_update_management::redhat::versionlocks: 
+  - 'sw-apex-office-print-21.1.2-0.*'
+
 mes7::dev::mes_httpd_conf: 'mes.dev.conf.erb'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
