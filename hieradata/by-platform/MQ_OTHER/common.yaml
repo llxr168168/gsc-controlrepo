@@ -1,10 +1,10 @@
 classes:
-  - sudo
-  - access_conf
-  - ssh
+  - mq_other
 
 
-sudo::sudoers_template: 'sudoers.gcd'
+profiles_unix::gsc::base::auth::sssd_auth: 'true'  
+
+sudo::sudoers_template: 'sudoers.mq_other'
 
 access_conf::access:
   - '+:root:LOCAL'
@@ -12,8 +12,9 @@ access_conf::access:
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:mqm:ALL'
-  - '+:mqmadmin:ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(gg-adm-gea-mq):ALL'
-  - '-:ALL:ALL'  
+  - '+:(gg-adm-mqm):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '-:ALL:ALL'

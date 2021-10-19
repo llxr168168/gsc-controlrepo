@@ -1,8 +1,12 @@
 classes:
   - mes7::dev
+  - sw_apex_print_mes7
 
 mes7::dev::mes_alias: 'mesdb4plt'
 
 oracle_build7::kernel::vm_nr_hugepages: 2560
 
 sw_app_status::app_status_script: 'mes7_status.sh'
+
+sw_apex_print_mes7::local_user: 'plt_adm'
+sw_apex_print_mes7::local_group: 'plt_adm'

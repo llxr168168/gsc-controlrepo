@@ -40,8 +40,10 @@ access_conf::access:
   - '+:plt_adm:LOCAL ennplt.sherwin.com,floplt.sherwin.com,ontplt.sherwin.com,ceplt.sherwin.com,vicplt.sherwin.com,balplt.sherwin.com,belt.sherwin.com,cepplt.sherwin.com,garplt.sherwin.com,grnplt.sherwin.com,morplt.sherwin.com,ordplt.sherwin.comwepplt.sherwin.com,mesdevi.sherwin.com,awcsmesq.sherwin.com,cgmesdb3.consumer.sherwin.com,cgennmes.consumer.sherwin.com,cgflomes.consumer.sherwin.com,cgftemes.consumer.sherwin.com,cgricmes.consumer.sherwin.com,cgvicmes.consumer.sherwin.com,cggrnmes.consumer.sherwin.com,cgbalmes.consumer.sherwin.com,cgbelmes.consumer.sherwin.com,cgcepmes.consumer.sherwin.com,cgmormes.consumer.sherwin.com,cgorlmes.consumer.sherwin.com,cgwepmes.consumer.sherwin.com,cggrlmes.consumer.sherwin.com,cgmesdb1.consumer.sherwin.com,cgmesdb2.consumer.sherwin.com,cgmesdb4.consumer.sherwin.com,cgmesdb5.consumer.sherwin.com,cgmesdb6.consumer.sherwin.com,ctgdb2.sherwin.com,cgbonmes.consumer.sherwin.com,cgjammes.consumer.sherwin.com,cgetz1db1.sherwin.com,cgctz1db1.sherwin.com,cglebmes.sherwin.com,cglebmes.consumer.sherwin.com,cgstames.sherwin.com,cgstames.consumer.sherwin.com,cgwhlmes.sherwin.com,cgwhlmes.consumer.sherwin.com,mesbalplt.sherwin.com,mescepplt.sherwin.com,meswepplt.sherwin.com,mesgarplt.sherwin.com,mesordplt.sherwin.com,meslebplt.sherwin.com,meswhlplt.sherwin.com,mescovplt.sherwin.com,messtaplt.sherwin.com,mesmorplt.sherwin.com,meschaplt.sherwin.com,messanplt.sherwin.com,mesmasplt.sherwin.com,cgetz1db1a.sherwin.com,mesetz1plt.sherwin.com,mesmatplt.sherwin.com,mesrckplt.sherwin.com,mesctz1plt.sherwin.com,mesporplt.sherwin.com,mesptz1plt.sherwin.com'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
-  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-cgit-dba-admins):ALL'
+  - '+:(gg-cgit-dba-admins):ALL'
+  - '+:(gg-usr-cgit-mesadmins):ALL'  
+  - '+:(gg-adm-gcdunix):ALL'  
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'

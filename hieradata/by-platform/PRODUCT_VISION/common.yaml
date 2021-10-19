@@ -7,7 +7,6 @@ classes:
   - oracle_build7::ora_keys
   - sw_puppet_ansible_dmw
   - sw_resource_realizer::package
-  - sw_grusers::mqm
   
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 

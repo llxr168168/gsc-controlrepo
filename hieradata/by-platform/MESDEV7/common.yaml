@@ -1,6 +1,5 @@
 classes:
   - mes7::dev
-  - mq_p2p_client
   - cups
   - swprint
   - profiles_unix::gsc::oracle7::base
@@ -9,13 +8,16 @@ classes:
   - apex_tomcat_mes7
   - apex_tomcat_mes7::apex_sudo
   - stdbuild::pam
-  - sw_apex_print7
+  - sw_apex_print_mes7
   - sw_dataguard_status
   - sw_puppet_ansible_dmw
   - sw_resource_realizer::package
   - sw_resource_realizer::service
   - sw_local_jmx
   - filebeat
+
+sw_os_update_management::redhat::versionlocks: 
+  - 'sw-apex-office-print-21.1.2-0.*'
 
 mes7::dev::mes_httpd_conf: 'mes.dev.conf.erb'
 
@@ -33,8 +35,9 @@ oracle_build7::eunfs_mount_dirs:
 
 mq_p2p_client::account_lock_status: 'true'
 
-sw_apex_print7::local_user: 'plt_adm'
-sw_apex_print7::local_group: 'plt_adm'
+
+sw_apex_print_mes7::local_user: 'plt_adm'
+sw_apex_print_mes7::local_group: 'plt_adm'
 
 profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
@@ -80,6 +83,9 @@ filebeat::inputs:
       - 'var/log/httpd/*_log'
       - '/swpkg/tomcat/apache-tomcat/logs/catalina.out'
       - '/swpkg/tomcat/apache-tomcat/logs/localhost*'
+      - '/swdata/plt_sys/logs/bar_qad/*.log'
+      - '/swdata/plt_sys/logs/somi/*.log'
+
     doc_type: 'meslogs'
 filebeat::tags:
   - meslogs

@@ -9,21 +9,24 @@ classes:
   - apex_tomcat_mes7
   - apex_tomcat_mes7::apex_sudo
   - stdbuild::pam
-  - sw_apex_print7
+  - sw_apex_print_mes7
   - sw_dataguard_status
   - sw_puppet_ansible_dmw
   - sw_resource_realizer::package
   - sw_resource_realizer::service
   - sw_local_jmx
   
+sw_os_update_management::redhat::versionlocks: 
+  - 'sw-apex-office-print-21.1.2-0.*'
+
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 sw_app_status::app_status_script: 'mes7_status.sh'
 
 mq_p2p_client::account_lock_status: 'true'
 
-sw_apex_print7::local_user: 'plt_adm'
-sw_apex_print7::local_group: 'plt_adm'
+sw_apex_print_mes7::local_user: 'plt_adm'
+sw_apex_print_mes7::local_group: 'plt_adm'
 
 oracle_build7::oracleshared_path: '/swdata/nfs/oramedia'
 oracle_build7::create_grid: 'true'
