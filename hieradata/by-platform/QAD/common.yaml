@@ -4,6 +4,8 @@ classes:
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 postfix::enabled: 'true'
+
+sudo::sudoers_template: sudoers.gcd
   
 access_conf::access:
   - '+:root:LOCAL'
