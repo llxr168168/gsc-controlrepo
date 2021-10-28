@@ -1,4 +1,5 @@
 classes:
   - awcs7::dev
+  - sw_puppet_crowdstrike_test
 
 awcs7::dev::awcs_alias: 'awcsdb06'
