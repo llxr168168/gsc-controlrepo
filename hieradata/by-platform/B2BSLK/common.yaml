@@ -2,7 +2,6 @@
 
 classes:
   - sw_slink
-  - sw_puppet_crowdstrike
   - sw_splunk
   - sw_puppet_qualys_dmz
   
