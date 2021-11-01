@@ -943,3 +943,7 @@ mod 'mq_other',
 mod 'sw_ignition',
   :git => 'git@github.sherwin.com:SW-CORP-IT/sw_ignition',
   :ref => 'master'
+
+mod 'ctmagent',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/ctmagent.git',
+  :ref => 'master'
