@@ -1,6 +1,8 @@
 classes:
   - sw_aomapp
   - sw_resource_realizer::service
+  - mq_p2p_client
+  - ctmagent
 
 
 access_conf::access:
@@ -15,6 +17,7 @@ access_conf::access:
   - '+:(gg-app-aom-rg19):ALL'
   - '+:(gg-adm-aom):ALL'
   - '+:(gg-cgit-dba-admins):ALL'
+  - '+:(gg-cg-wla-admins):ALL'  
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
