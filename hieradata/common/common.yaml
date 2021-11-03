@@ -134,10 +134,7 @@ softlayer::f5::monitor_oud_health_passwd: >
 # mount agent installation share
 ##############################################################
 
-ctmagent::crepassword: "%{hiera('ctmagent::password')}"
-
-ctmagent::password: >
-
+ctmagent::crepassword: > 
     ENC[PKCS7,MIIBqQYJKoZIhvcNAQcDoIIBmjCCAZYCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAbAQJUbq+xejXCcra+RlAJRJMfaOCjwT02X0Q
     1nQItFDEK1yXuYTzSmcP/5XWsPyoRVVDxdsHZnWRJqZ78fcJxu/L1gzQSK71
