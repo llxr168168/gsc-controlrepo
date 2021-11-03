@@ -8,11 +8,7 @@ classes:
   - sw_puppet_ansible
   - sw_aacp_puppet
   - sw_snow_disc
-<<<<<<< HEAD
-=======
   - sw_puppet_crowdstrike
-  
->>>>>>> upstream/dev
 ###########################################
 # Falcon sensor version control goes here #
 ###########################################
