@@ -8,6 +8,11 @@ classes:
   - sw_puppet_ansible
   - sw_aacp_puppet
   - sw_snow_disc
+<<<<<<< HEAD
+=======
+  - sw_puppet_crowdstrike
+  
+>>>>>>> upstream/dev
 ###########################################
 # Falcon sensor version control goes here #
 ###########################################
@@ -134,7 +139,7 @@ softlayer::f5::monitor_oud_health_passwd: >
 #
 ##############################################################
 
-ctmagent::password: > 
+ctmagent::credentialfile: > 
     ENC[PKCS7,MIIBqQYJKoZIhvcNAQcDoIIBmjCCAZYCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAbAQJUbq+xejXCcra+RlAJRJMfaOCjwT02X0Q
     1nQItFDEK1yXuYTzSmcP/5XWsPyoRVVDxdsHZnWRJqZ78fcJxu/L1gzQSK71
