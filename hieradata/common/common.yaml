@@ -130,11 +130,11 @@ softlayer::f5::monitor_oud_health_passwd: >
     RXQNgCDg3NeWim3+s5OYyVMTASlIoT5hvoYAC84fEd9hUuMVBw==]
 
 ###############################################################
-# setup Control-M adm user, file system permission, start/stop 
-# mount agent installation share
+# setup the passwd for monting the agent instllation share 
+#
 ##############################################################
 
-ctmagent::crepassword: > 
+ctmagent::password: > 
     ENC[PKCS7,MIIBqQYJKoZIhvcNAQcDoIIBmjCCAZYCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAbAQJUbq+xejXCcra+RlAJRJMfaOCjwT02X0Q
     1nQItFDEK1yXuYTzSmcP/5XWsPyoRVVDxdsHZnWRJqZ78fcJxu/L1gzQSK71
