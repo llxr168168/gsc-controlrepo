@@ -1,0 +1,24 @@
+
+# this is commented out since the new MQ series requires further investigation
+classes:
+  - mqseries9::server9150
+#  - mqseries9::mqib
+mqseries9::server9150::mq_developers:
+  - mxl974
+  - sxp267
+mqseries9::server9150::mq_developers_retire: []
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'  
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-gea-mq):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '-:ALL:ALL'
+  

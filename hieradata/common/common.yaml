@@ -8,7 +8,7 @@ classes:
   - sw_puppet_ansible
   - sw_aacp_puppet
   - sw_snow_disc
-
+  - sw_puppet_crowdstrike
 ###########################################
 # Falcon sensor version control goes here #
 ###########################################
@@ -129,6 +129,23 @@ softlayer::f5::monitor_oud_health_passwd: >
     ebuCx5wEDGst11lGsQj9H9kul4QTMOOTAN9GNeViAdROoYKGGLWCfBZo/joK
     G1Zw3TBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBAtcxEyikwoWkf1KKdC
     RXQNgCDg3NeWim3+s5OYyVMTASlIoT5hvoYAC84fEd9hUuMVBw==]
+
+###############################################################
+# setup the passwd for monting the agent instllation share 
+#
+##############################################################
+
+ctmagent::credentialfile: > 
+    ENC[PKCS7,MIIBqQYJKoZIhvcNAQcDoIIBmjCCAZYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAbAQJUbq+xejXCcra+RlAJRJMfaOCjwT02X0Q
+    1nQItFDEK1yXuYTzSmcP/5XWsPyoRVVDxdsHZnWRJqZ78fcJxu/L1gzQSK71
+    hVC5X058YB1obbZMI45R5XVPJ2BQWQYhF3hdU8zYEkCt+nUNTrrXigKg8ZrJ
+    hoROxcqsTu5jqO3aPWgiBzN9LUMKI6LzEtoAdmBq4hd0wvg/JOyIq3T3NOjC
+    uRR8KV5MUwL+9YiKhvtl4GYdzIUY9UGz+QAY+9nD598cu8ahJRK0t2zbo8q+
+    ycYpjMdt8VNU0bL63Wz4tIjMTsTb2Ke7FVUpjBhaoj54plE/EkMrinPgjitZ
+    Arw/9jBsBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBAlV5GZI2j1CvS3H0mL
+    JqiMgEBIc0otEgQNem71+8TieDTgpcWe/pJ8MybRgQdDe6IPGvcM2sBRHlig
+    3DthFslpJBPdxGvcWy0Os2P3b1UgXOL0]
 
 
 sw_sssd_authentication::ldap_uris: 'ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'

@@ -1,6 +1,3 @@
-classes:
-  - sw_puppet_crowdstrike
-
 # Dynatrace OneAgent for Dev Env
 dynatrace_oneagent::download_link_url: 'https://nextgen-dynatrace.sherwin.com/e/b5c7c4dd-7e7c-4d85-bfac-a0b27d739a89/api/v1/deployment/installer/agent/unix/default/latest?Api-Token=K3radZeyTyGa7cgkofYuk&arch=x86&flavor=default'
 syslog::rsyslog_file: 'gcd-default-rsyslog-elk-dev.conf'
