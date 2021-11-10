@@ -9,7 +9,7 @@ postfix::enabled: 'true'
 
 sudo::sudoers_template: sudoers.gcd
 
-sw_os_update_management::redhat::epel_repo_file: epel.yum
+sw_os_update_management::redhat::epel_repo_file: epel8.yum
 
 access_conf::access:
   - '+:root:LOCAL'
