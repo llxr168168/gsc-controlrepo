@@ -137,6 +137,7 @@ access_conf::access:
   - '+:(SW\gg-adm-gcdunix):ALL'
   - '+:(SW\gg-cgit-dba-admins):ALL'
   - '+:(SW\gg-usr-cgit-mesadmins):ALL'
+  - '+:(gg-app-mes-apexdev):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
