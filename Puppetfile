@@ -947,3 +947,8 @@ mod 'sw_ignition',
 mod 'ctmagent',
   :git => 'git@github.sherwin.com:SW-CORP-IT/ctmagent.git',
   :ref => 'master'
+
+mod 'sw_linux_cohesity_agent',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_linux_cohesity_agent.git',
+ :ref => 'master'
+ 
