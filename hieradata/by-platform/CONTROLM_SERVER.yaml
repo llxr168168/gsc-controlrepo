@@ -1,3 +1,4 @@
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
 classes:
   - profiles_unix::gsc::apps::ctm_server
   
