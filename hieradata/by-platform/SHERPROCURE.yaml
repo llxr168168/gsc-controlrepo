@@ -6,7 +6,7 @@ classes:
 sher_procure::sp_developers:
   - tkk62c
   - axb831
-oracle_build::kernel::vm_nr_hugepages: 1032
+oracle_build::kernel::vm_nr_hugepages: 1280
 ssh::sshd_config: cgspdb.sshd.conf
 vsftpd::vsftpd_userlist:
   - xfer
