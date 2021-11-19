@@ -1,3 +1,4 @@
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
 sudo::sudoers_d_template: 'ctm_server'
 
 classes:
