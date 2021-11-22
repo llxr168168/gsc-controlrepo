@@ -1,1 +1,20 @@
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:SW\sa-cark-servicenow:10.140.74.138 10.140.74.139 10.148.63.91 10.148.63.92 10.148.65.188 10.148.65.189"
+  - "+:sa-ansible:10.148.5.50 10.140.32.49 10.148.38.97 10.148.38.96 10.148.38.95 10.148.38.94"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_CGCTMAG2):ALL'
+  - '+:(DL_ADMIN_CGCTMAG2):ALL'
+  - '+:(SW\gg-cg-wla-admins):ALL'
+  - '+:(gg-cg-wla-admins):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - "+:SW\sa-qualys-linux:10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181 10.240.6.27 10.20.101.97 10.140.5.70 10.140.5.71 10.140.5.72 10.140.5.73 10.140.5.74 10.140.5.75"
+  - "+:SW\sa-cyberark-linux:10.240.29.55 10.148.41.34 10.140.41.49"
+  - '-:ALL:ALL'
+
+sudo::sudoers_template: sudoers.gcd
+sudo::sudoers_d_template: 'ctm_agent_new'
