@@ -7,7 +7,7 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\DL_ADMIN_CGWLATEST1):ALL'
-  - '+:(DDL_ADMIN_CGWLATEST1):ALL'
+  - '+:(DL_ADMIN_CGWLATEST1):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
   - '+:(gg-cg-wla-admins):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
