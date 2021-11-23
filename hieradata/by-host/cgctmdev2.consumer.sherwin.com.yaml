@@ -6,8 +6,6 @@ access_conf::access:
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(SW\DL_ADMIN_CGCTMDEV2):ALL'
-  - '+:(DL_ADMIN_CGCTMDEV2):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
   - '+:(gg-cg-wla-admins):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
