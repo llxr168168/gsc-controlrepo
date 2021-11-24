@@ -16,4 +16,3 @@ access_conf::access:
 
 sudo::sudoers_template: sudoers.gcd
 sudo::sudoers_d_template: 'ctm_agent_new'
-sudo::sudoers_d_template: 'ctm_agent'
