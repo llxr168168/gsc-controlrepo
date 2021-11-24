@@ -1,2 +1,4 @@
 classes:
   - sw_linux_cohesity_agent
+
+oracle_build::kernel::vm_nr_hugepages: 5632
