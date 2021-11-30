@@ -3,6 +3,7 @@ classes:
   - sw_resource_realizer::service
   - mq_p2p_client
   - ctmagent
+  - autofs
 
 
 access_conf::access:
