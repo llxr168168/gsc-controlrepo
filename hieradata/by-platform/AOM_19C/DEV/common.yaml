@@ -1,2 +1,0 @@
-autofs::nfs_maps:
-  - "/swdata/imi -rw,noac,hard,rsize=32768,wsize=32768,nolock,vers=3 rwflb132d-nfs.sherwin.com:/CP_AOM_DEV_AK"
