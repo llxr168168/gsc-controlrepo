@@ -1,6 +1,7 @@
 classes:
   - sw_aomapp
   - sw_resource_realizer::service
+  - sw_resource_realizer::package
   - mq_p2p_client
   - ctmagent
   - autofs
@@ -27,11 +28,28 @@ sudo::sudoers_d_template: 'aomapp'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
+
 sw_os_update_management::redhat::optional_repo_file: optional.yum
 sw_os_update_management::redhat::epel_repo_file: epel.yum
 sw_os_update_management::redhat::extras_repo_file: extra.yum
 
-
+sw_resource_realizer::package:
+  glibc.i686:
+    ensure: 'installed'
+  glibc-devel.i686:
+    ensure: 'installed'
+  libstdc++.i686:
+    ensure: 'installed'
+  libstdc++-devel.i686:
+    ensure: 'installed'
+  libstdc++-static.i686:
+    ensure: 'installed'
+  compat-libstdc++-33.i686:
+    ensure: 'installed'
+  libaio.i686:
+    ensure: 'installed'
+  libaio-devel.i686:
+    ensure: 'installed'
 
 
 sw_resource_realizer::service:
