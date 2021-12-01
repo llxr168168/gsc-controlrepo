@@ -5,6 +5,8 @@ classes:
 postfix::enabled: 'true'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
+oracle_build7::ora_user_lock: 'true'
+
 profiles_unix::gsc::oracle7::base::nfs_mounts:
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
   - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
