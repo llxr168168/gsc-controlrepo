@@ -39,7 +39,7 @@ sw_snow_disc:snow_role: 'snow_discoverer'
 
 sw_os_update_management::patching_target: CURRENT
 sw_os_update_management::redhat::yum_repo_file: 'swrepo.yum'
-sw_os_update_management::yum_conf_excludes: 'jdk* logstash* glusterfs* *perl*modules*'
+sw_os_update_management::yum_conf_excludes: 'jdk* logstash* glusterfs* *perl*
 sw_os_update_management::yum_conf_additional: ''
 
 sw_puppet_crowdstrike::patching_target: 'CURRENT'
