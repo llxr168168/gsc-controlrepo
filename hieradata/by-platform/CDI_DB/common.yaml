@@ -1,3 +1,4 @@
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
 classes:
   - profiles_unix::gsc::oracle::asm
   - sw_puppet_ansible_dmw
