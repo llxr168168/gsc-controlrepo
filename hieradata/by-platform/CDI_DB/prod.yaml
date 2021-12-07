@@ -5,7 +5,7 @@ access_conf::access:
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(gg-cgit-mdm-admins):ALL'
+  - '+:(gg-cgit-dba-admins):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:mdm_xfer:swb2bc04.consumer.sherwin.com swb2bc14.consumer.sherwin.com MUSHQB2BBIZ1PR.sw.sherwin.com MUSHQB2BBIZ2PR.sw.sherwin.com'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
