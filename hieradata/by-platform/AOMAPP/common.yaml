@@ -27,6 +27,7 @@ access_conf::access:
   - '-:ALL:ALL'
 
 sudo::sudoers_d_template: 'aomapp'
+sudo::sudoers_d_template: 'mqm_p2p'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
