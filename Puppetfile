@@ -832,6 +832,10 @@ mod 'sw_apex_print_mes7',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_apex_print_mes7.git',
 :ref => 'master'
 
+mod 'sw_apex_print_std7',
+:git =>'git@github.sherwin.com:SW-CORP-IT/sw_apex_print_std7.git',
+:ref => 'master'
+
 mod 'sw_aacp_puppet',
 :git =>'git@github.sherwin.com:SW-CORP-IT/sw_aacp_puppet.git',
 :ref => 'master'
@@ -947,3 +951,12 @@ mod 'sw_ignition',
 mod 'ctmagent',
   :git => 'git@github.sherwin.com:SW-CORP-IT/ctmagent.git',
   :ref => 'master'
+
+mod 'sw_linux_cohesity_agent',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_linux_cohesity_agent.git',
+ :ref => 'master'
+
+mod 'sw_puppet_prisma_agent',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_puppet_prisma_agent.git',
+ :ref => 'master'
+ 

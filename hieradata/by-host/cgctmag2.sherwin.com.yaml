@@ -1,14 +1,20 @@
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
-  - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(gg-cgit-dba-admins):ALL'
+  - '+:(SW\DL_ADMIN_CGCTMAG2):ALL'
+  - '+:(DL_ADMIN_CGCTMAG2):ALL'
+  - '+:(SW\gg-cg-wla-admins):ALL'
+  - '+:(gg-cg-wla-admins):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
   - '+:(gg-adm-gcdunix):ALL'
-  - '+:mdm_xfer:swb2bw07.consumer.sherwin.com swb2bw16.consumer.sherwin.com'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
-  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
-  - '+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
   - '-:ALL:ALL'
+
+sudo::sudoers_template: sudoers.gcd
+sudo::sudoers_d_template: 'ctm_agent_new'

@@ -1,3 +1,6 @@
+classes:
+  - sw_puppet_prisma_agent
+
 dnsmasq_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
@@ -56,9 +59,17 @@ sw_sssd_authentication::krb5_kpasswd: 'lbusldap.sherwin.com:88,usldap.sw.sherwin
 sw_sssd_authentication::kdc1: 'lbusldap.sherwin.com'
 sw_sssd_authentication::kdc2: 'usldap.sw.sherwin.com'
 
-sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
-sw_sssd_authentication::default_realm: SW
-sw_sssd_authentication::krb5_realm: SW.SHERWIN.COM
+resolv_conf::search: 'swazure.com sherwin.com sw.sherwin.com'
+
+sw_sssd_authentication::short_domain: 'SW'
+sw_sssd_authentication::fqdn_domain: 'sw.sherwin.com'
+sw_sssd_authentication::ldap_search_base: 'DC=sw,DC=sherwin,DC=com'
+sw_sssd_authentication::ldap_user_search_base: 'DC=sw,DC=sherwin,DC=com?sub?&(msSFU30NisDomain=sw)'
+sw_sssd_authentication::ldap_group_search_base: 'DC=sw,DC=sherwin,DC=com?sub?(msSFU30NisDomain=sw)'
+sw_sssd_authentication::ldap_user_search_base5: 'DC=sw,DC=sherwin,DC=com'
+sw_sssd_authentication::ldap_group_search_base5: 'DC=sw,DC=sherwin,DC=com'
+sw_sssd_authentication::default_realm: 'SW.SHERWIN.COM'
+
 
 
 sw_splunk::default::splunk_home: '/opt/splunk/'
