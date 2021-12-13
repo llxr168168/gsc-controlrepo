@@ -1,10 +1,10 @@
 classes:
-  - profiles_unix::gsc::oracle7::rac
+  - profiles_unix::gsc::oracle8::rac
 
 postfix::enabled: 'true'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
-profiles_unix::gsc::oracle7::base::nfs_mounts:
+profiles_unix::gsc::oracle8::base::nfs_mounts:
   - '/util -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 nafgps01rw-nfs01.sherwin.com:/ORA_cp_util_qa'
   - '/stage -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 nafgps01rw-nfs01.sherwin.com:/ORA_cp_stage_qa'
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
@@ -31,7 +31,7 @@ access_conf::access:
     - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
     - '-:ALL:ALL'
 
-oracle_build7::rac::ssh::grid_pub_key: >
+oracle_build8::rac::ssh::grid_pub_key: >
     ENC[PKCS7,MIIDDQYJKoZIhvcNAQcDoIIC/jCCAvoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAZRbYoP3Z6hCYMmGQC+hY05MXX1Fmi2pdj+YA
     X4/qSvLmBUW2CepxZLLvQsmiDGGHoLpgzsv+0iWjuiJ0E6vMvYXHXMh6NE48
@@ -50,7 +50,7 @@ oracle_build7::rac::ssh::grid_pub_key: >
     WClvEUxp+AaSTWDJrqa8+UrUIzECkDgcfQ9vP0DR69OXoR6uduj8/pUT76CK
     dDz5JposoQvto3aKznUHZs68BwZp8O1Q9yBKVwFEjw2Is6HVOvBaLZcRHHZi
     LFYN73tvfW13SWBYZlPspF96/vg=]
-oracle_build7::rac::ssh::grid_prv_key: >
+oracle_build8::rac::ssh::grid_prv_key: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAtD0L6ucPY+VUc46znTnWohZ1/Rq36X7j8qe2
     k95zfPl9l3HIBb9uJn24Rn3hf/VHd3s8H7R6SHlVChhTt0zbMSJvoQvEx00V
@@ -97,7 +97,7 @@ oracle_build7::rac::ssh::grid_prv_key: >
     9gNOoxLcw262r2la/L2DctBy6RKYMCmQ4pbMD6ZRnw+Wu3ilWf+wmQ81+s0C
     pBz9JdriXmiOGWiPPXbSrA/15jcF+q5Zz6CuWpxs95pHCTO+OfThdt5V76zR
     MrzDFBJyOWnL4uH3STBb4YrlUmsQLZrY]
-oracle_build7::rac::ssh::grid_auth_keys: >
+oracle_build8::rac::ssh::grid_auth_keys: >
     ENC[PKCS7,MIIDDQYJKoZIhvcNAQcDoIIC/jCCAvoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAblk9cAgO+g8uJZWDyh4Pi8oXYKk2G6FRb6eF
     i2EFeY+78KwNtI5D0qi5kAxfWbg3qPEATfjxihX32AxKYC3yvM+r9Mr4v4HP
@@ -116,7 +116,7 @@ oracle_build7::rac::ssh::grid_auth_keys: >
     TWXYKyWV0Zn5Jr9/DMD3mx7IjKhI8MxrF4UAVqCPAlMlSWqomWURstyw1EaR
     3slkoIS0ZYB80lF7Z3nhwoW85CWLEjt+/oa1CFqU5ne78KQyiTGZI4djXCBf
     oXZ8w/HSVBTGZ1p+4zvepd/Pdx8=]
-oracle_build7::rac::ssh::oracle_pub_key: >
+oracle_build8::rac::ssh::oracle_pub_key: >
     ENC[PKCS7,MIIDDQYJKoZIhvcNAQcDoIIC/jCCAvoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAKfXV1yYeFu328EhjwYEeLB+xrErZznuKWT+b
     1CsFET8n07rXkB6JIW0aDV3+rO9Gbb1TRRhiIZhLrCNyPEp5hERmCVRNXszs
@@ -135,7 +135,7 @@ oracle_build7::rac::ssh::oracle_pub_key: >
     z1I/NmUF4Ic0zkvqPje4S2a8KKFeWM1CGU6EHfCo0Ue1z8vdmeLs8oGeyCqW
     2tY3Y++zVgHj4K3KoRy1y2Xv2wwAPh/rInyq5Df2ebMtY5cCKhvIIcoBr3S8
     WHWoOFvd1VnX85PHrrYGjvOmrpc=]
-oracle_build7::rac::ssh::oracle_prv_key: >
+oracle_build8::rac::ssh::oracle_prv_key: >
     ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAJImLbVoeq1lTzgiXEV0PuMChmbtZFWyQR3Wp
     TFmJP0z9Rq/prnG6A0/In9vizAMzGbeYHbaimByfqVrNzG5PWG5+7O3sLaVq
@@ -182,7 +182,7 @@ oracle_build7::rac::ssh::oracle_prv_key: >
     noo/GksZiwe3u8FE5BHVdkw7zH5Snvga9F9jJWh2Bzi5sP3Kkb9r6fSmSRfu
     FfPjyiaNy7ZN3oiMckVoRiNf5H9iSc283hl/9OuSWuSvwptDTUIGNQ8f4Tif
     sW/656ZlNDqGnZjDuqr5RhUiXUnCj3c1]
-oracle_build7::rac::ssh::oracle_auth_keys: >
+oracle_build8::rac::ssh::oracle_auth_keys: >
     ENC[PKCS7,MIIErQYJKoZIhvcNAQcDoIIEnjCCBJoCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAKJVPZGL1jFG/KebtThjjGpf0lJcs/sF5SPLc
     PgXbkQLmydwt+i4Oq5wD7YHIA/TMcBehSq4nY1fg+LzgcPqRjNS0QmIqJD3k
