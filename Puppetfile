@@ -955,4 +955,8 @@ mod 'ctmagent',
 mod 'sw_linux_cohesity_agent',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_linux_cohesity_agent.git',
  :ref => 'master'
+
+mod 'sw_puppet_prisma_agent',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_puppet_prisma_agent.git',
+ :ref => 'master'
  
