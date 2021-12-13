@@ -1,5 +1,4 @@
 classes:
-  - tz
   - sw_puppet_prisma_agent
 
 dnsmasq_conf::nameserver:
