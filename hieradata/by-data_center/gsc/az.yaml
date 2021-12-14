@@ -79,8 +79,9 @@ sw_sssd_authentication::ldap_user_search_base: 'DC=sw,DC=sherwin,DC=com?sub?&(ms
 sw_sssd_authentication::ldap_group_search_base: 'DC=sw,DC=sherwin,DC=com?sub?(msSFU30NisDomain=sw)'
 sw_sssd_authentication::ldap_user_search_base5: 'DC=sw,DC=sherwin,DC=com'
 sw_sssd_authentication::ldap_group_search_base5: 'DC=sw,DC=sherwin,DC=com'
-sw_sssd_authentication::default_realm: 'SW.SHERWIN.COM'
-
+sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
+sw_sssd_authentication::default_realm: SW
+sw_sssd_authentication::krb5_realm: SW.SHERWIN.COM
 
 
 sw_splunk::default::splunk_home: '/opt/splunk/'
