@@ -5,7 +5,6 @@ classes:
   - sw_linux_cohesity_agent
   - sw_grusers::tricore
 
-profiles_unix::gsc::base::auth::sssd_auth: 'true'
 oracle_build8::kernel::vm_nr_hugepages: 9728
 
 sudo::sudoers_template: sudoers.oracle_oem
