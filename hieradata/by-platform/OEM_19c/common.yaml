@@ -1,6 +1,6 @@
 
 classes:
-  - profiles_unix::gsc::oracle8::rac
+  - profiles_unix::gsc::oracle8::asm
   - sw_puppet_ansible_dmw
   - sw_linux_cohesity_agent
   - sw_grusers::tricore
