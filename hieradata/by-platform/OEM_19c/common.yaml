@@ -1,0 +1,28 @@
+
+classes:
+  - profiles_unix::gsc::oracle8::rac
+  - sw_puppet_ansible_dmw
+  - sw_linux_cohesity_agent
+  - sw_grusers::tricore
+
+oracle_build8::kernel::vm_nr_hugepages: 9728
+
+sudo::sudoers_template: sudoers.oracle_oem
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-oracle-oem):ALL'  
+  - '+:(gg-adm-dba-ops):ALL'  
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 10.140.76.117 10.140.76.116 10.140.76.9 192.168.101.117 192.168.101.116 192.168.101.9' 
+  - '+:grid:LOCAL 10.140.76.116 192.168.101.117 10.140.76.9 192.168.101.117 192.168.101.116 192.168.101.9'
+  - '+:tricore: 64.94.254.0/29'
+  - '-:ALL:ALL'
