@@ -7,7 +7,9 @@ classes:
 
 oracle_build8::kernel::vm_nr_hugepages: 9728
 
-sudo::sudoers_template: sudoers.oracle_oem
+sudo::sudoers_template: sudoers.gcd
+sudo::sudoers_d_template: 'oracleoem'
+
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 access_conf::access:
