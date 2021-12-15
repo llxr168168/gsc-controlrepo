@@ -1,8 +1,22 @@
+classes:
+  - sw_puppet_prisma_agent
+  - sw_os_ca_certs
+sw_os_ca_certs::install_certs: 'swroot.pem'
 dnsmasq_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
 
-
+sw_puppet_prisma_agent::prisma_api_key: >
+    ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAHrVhCzlHINv9il9FBOSuae8QyeH9nxFh3naL
+    u0cMwhTV/9AgQaIZLW6OWxKlEnaDWRZKKrVd9tkNioboce6UvPqTEGOWCGRJ
+    fIyv0DpUfuSVD2SKvPdg8+NKrGYzz4W2G4o0gccg7JufURlynUyvgDH6V1Ze
+    EnoXMQldhCvcZgE0a42clzcH6ULJzKkSEzJ6KdTaaS1oR2bQLLSbxcQW7vhy
+    FSJsPe/qrI7VTqZhl2V9v3qFoRCbDX79vycTSz1g+WPtPwEQzzz+AKkFEyC0
+    NStAlrn7mAgO8NGTGZTmMOij6Mtt4vli3GCbVzHSLIMWHtyFpeBPrllXeW6F
+    FP605jBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCZN28+KFWgnO5HLR6Z
+    IJVIgCAThorSPhzsYQOZTYqh2joSpmySh9iGetudiEZMhjvxSQ==]
+    
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/cgddorac1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
   - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
@@ -56,6 +70,15 @@ sw_sssd_authentication::krb5_kpasswd: 'lbusldap.sherwin.com:88,usldap.sw.sherwin
 sw_sssd_authentication::kdc1: 'lbusldap.sherwin.com'
 sw_sssd_authentication::kdc2: 'usldap.sw.sherwin.com'
 
+resolv_conf::search: 'swazure.com sherwin.com sw.sherwin.com'
+
+sw_sssd_authentication::short_domain: 'SW'
+sw_sssd_authentication::fqdn_domain: 'sw.sherwin.com'
+sw_sssd_authentication::ldap_search_base: 'DC=sw,DC=sherwin,DC=com'
+sw_sssd_authentication::ldap_user_search_base: 'DC=sw,DC=sherwin,DC=com?sub?&(msSFU30NisDomain=sw)'
+sw_sssd_authentication::ldap_group_search_base: 'DC=sw,DC=sherwin,DC=com?sub?(msSFU30NisDomain=sw)'
+sw_sssd_authentication::ldap_user_search_base5: 'DC=sw,DC=sherwin,DC=com'
+sw_sssd_authentication::ldap_group_search_base5: 'DC=sw,DC=sherwin,DC=com'
 sw_sssd_authentication::re_expression: '(((?P<domain>[^\\]+)\\(?P<name>.+$))|((?P<name>[^@]+)@(?P<domain>))|(^(?P<name>[^@\\]+)$))'
 sw_sssd_authentication::default_realm: SW
 sw_sssd_authentication::krb5_realm: SW.SHERWIN.COM

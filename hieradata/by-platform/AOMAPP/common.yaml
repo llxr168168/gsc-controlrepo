@@ -1,8 +1,10 @@
 classes:
   - sw_aomapp
   - sw_resource_realizer::service
+  - sw_resource_realizer::package
   - mq_p2p_client
   - ctmagent
+  - autofs
 
 
 access_conf::access:
@@ -18,19 +20,40 @@ access_conf::access:
   - '+:(gg-adm-aom):ALL'
   - '+:(gg-cgit-dba-admins):ALL'
   - '+:(gg-cg-wla-admins):ALL'  
+  - '+:(gg-cgit-edi-admins):ALL'  
+  - '+:(gg-cgit-edi-users):ALL'  
+  - '+:imess:cgimi1.sherwin.com'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
 
 sudo::sudoers_d_template: 'aomapp'
+sudo::sudoers_d_template: 'mqm_p2p'
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
 
 sw_os_update_management::redhat::optional_repo_file: optional.yum
 sw_os_update_management::redhat::epel_repo_file: epel.yum
 sw_os_update_management::redhat::extras_repo_file: extra.yum
 
-
+sw_resource_realizer::package:
+  glibc.i686:
+    ensure: 'installed'
+  glibc-devel.i686:
+    ensure: 'installed'
+  libstdc++.i686:
+    ensure: 'installed'
+  libstdc++-devel.i686:
+    ensure: 'installed'
+  libstdc++-static.i686:
+    ensure: 'installed'
+  compat-libstdc++-33.i686:
+    ensure: 'installed'
+  libaio.i686:
+    ensure: 'installed'
+  libaio-devel.i686:
+    ensure: 'installed'
 
 
 sw_resource_realizer::service:

@@ -1,14 +1,10 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
   - sw_puppet_ansible_dmw
-  - sw_apex_print7
   - sw_os_ca_certs
 
 sw_os_ca_certs::install_certs: 'swroot.pem'
 
-
-sw_apex_print7::local_user: 'oracle'
-sw_apex_print7::local_group: 'oinstall'
   
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 

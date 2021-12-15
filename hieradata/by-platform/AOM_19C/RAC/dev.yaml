@@ -15,6 +15,7 @@ profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw/cgaomclu3'
   - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw'
   - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_ak'
+  - '/swdata/imi -rw,noac,hard,rsize=32768,wsize=32768,nolock,vers=3 rwflb132d-nfs.sherwin.com:/CP_AOM_DEV_AK'
 
 
 
