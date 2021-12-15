@@ -3,16 +3,10 @@ classes:
   - profiles_unix::gsc::oracle8::rac
   - sw_puppet_ansible_dmw
   - sw_linux_cohesity_agent
+  - sw_grusers::tricore
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 oracle_build8::kernel::vm_nr_hugepages: 9728
-
-sw_util::wrapper::hiera_group::params:
-  - tricore: { gid: 1023 }
-
-# Third party oracle support user.
-sw_util::wrapper::hiera_user::params:
-  - tricore: { uid: 1023, gid: 1023, home: "/home/tricore", system: "false" }
 
 sudo::sudoers_template: sudoers.oracle_oem
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
