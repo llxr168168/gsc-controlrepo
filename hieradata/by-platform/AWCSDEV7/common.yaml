@@ -19,8 +19,6 @@ classes:
   - sw_puppet_ansible_dmw
   - sw_oswatcher
   - sw_resource_realizer::package
-  - sw_linux_cohesity_agent
-
 
 sw_os_update_management::redhat::versionlocks: 
   - 'sw-apex-office-print-20.3.1-0.*'

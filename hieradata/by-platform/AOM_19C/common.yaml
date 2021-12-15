@@ -2,7 +2,6 @@
 classes:
   - profiles_unix::gsc::oracle8::rac
   - sw_puppet_ansible_dmw
-  - sw_linux_cohesity_agent
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 oracle_build8::kernel::vm_nr_hugepages: 9728
