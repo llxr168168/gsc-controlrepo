@@ -1,0 +1,4 @@
+classes:
+  - mes7::dev
+
+mes7::dev::mes_alias: 'mesdb17plt'
