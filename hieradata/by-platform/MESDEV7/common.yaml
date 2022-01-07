@@ -16,7 +16,7 @@ classes:
   - sw_local_jmx
   - filebeat
 
-sw_os_update_management::redhat::versionlocks: 
+sw_os_update_management::redhat::versionlocks:
   - 'sw-apex-office-print-21.1.2-0.*'
 
 mes7::dev::mes_httpd_conf: 'mes.dev.conf.erb'
@@ -93,32 +93,33 @@ filebeat::outputs:
   logstash:
     hosts:
       - 'dev.esxelkstack.sherwin.com:30044'
+      - 'cpelklsp01.sherewin.com:5044'
     loadbalance: true
-  
+
 
 
 oracle_build7::oracleshared_path: '/swdata/nfs/oramedia'
 
 sw_resource_realizer::package:
-  samba-client-libs: 
+  samba-client-libs:
     ensure: 'installed'
   samba-winbind-clients:
     ensure: 'installed'
-  libarchive: 
+  libarchive:
      ensure: 'installed'
-  samba: 
+  samba:
     ensure: 'installed'
-  samba-common: 
+  samba-common:
     ensure: 'installed'
   samba-common-libs:
     ensure: 'installed'
   samba-libs:
     ensure: 'installed'
-  samba-winbind: 
+  samba-winbind:
     ensure: 'installed'
-  samba-common-tools: 
+  samba-common-tools:
     ensure: 'installed'
-  samba-client: 
+  samba-client:
     ensure: 'installed'
 
 postfix::enabled: 'true'
@@ -128,7 +129,7 @@ access_conf::access:
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
-  - '+:plt_adm:LOCAL cgmesdb1.consumer.sherwin.com cgmesdb01a.sherwin.com cgmesdb01b.sherwin.com' 
+  - '+:plt_adm:LOCAL cgmesdb1.consumer.sherwin.com cgmesdb01a.sherwin.com cgmesdb01b.sherwin.com'
   - "+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 127.0.0.1 %{hiera('access_conf::mes_dataguard')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
