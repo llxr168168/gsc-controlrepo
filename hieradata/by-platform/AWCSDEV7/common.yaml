@@ -20,7 +20,7 @@ classes:
   - sw_oswatcher
   - sw_resource_realizer::package
 
-sw_os_update_management::redhat::versionlocks: 
+sw_os_update_management::redhat::versionlocks:
   - 'sw-apex-office-print-20.3.1-0.*'
 
 
@@ -86,7 +86,7 @@ awcs7::dev::awcs_developers:
   - jah62c
   - jvs87c
   - jyp787
-  - apt135	
+  - apt135
   - tjp226
   - pjk25c
   - daw633
@@ -113,6 +113,7 @@ filebeat::outputs:
   logstash:
     hosts:
       - 'dev.esxelkstack.sherwin.com:30044'
+      - 'cpelklsp01.sherwin.com:5044'
     loadbalance: true
 
 
@@ -160,15 +161,15 @@ profiles_unix::gsc::oracle7::base::nfs_mounts:
 #oracle_build7::tns::tns_webhost: pulp.sherwin.com
 #oracle_build7::tns::tns_webhost_file: /webroot/oracle/awcsdev7.tns
 
-#oracle_build7::tns::localfile: 
+#oracle_build7::tns::localfile:
 #  - '/swpkg/oracle/product/19.3.0/db_1/network/admin/tnsnames.ora'
-  
-  
+
+
 oracle_build7::oracleshared_path: '/swdata/nfs/oramedia'
 
 postfix::enabled: 'true'
 
-  
+
 apex_tomcat_awcs7::tomcat_password:  ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAwDQYJKoZIhvcNAQEBBQAEggEAncQkIJxM5XkMx53/xY+fpy2TOZCXRE724KjlJAg4rusSEY+S/sQqgdTYmCdVkct6NFu7Mxo5P2d4GVPm6rUsGUA6PL9vu24QkN9IcGAj6nJmuxdoRufzXqOvdgaxaPx9iTtUm6t6jSkecWIxByKoRpQsANmgV6B1aMQ3sSmbIBDPzDBbxoVsyQEuCzu62lKqsmayLm44vfwQ25Kc43JKUhDdIGW/jRpFS+e2yMlR2TEE9vqgcGHCApLyvBKpI10SttrErpMQjXGSvznArRrIARjLJDuQSJkECiZGhLO0Q8qa/8BNljf7L54cFHvRWrWvoFjLBjGBMHQnN6m+w1uz9TA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBeHpRw0unvtAXbvzIIIpR2gBAgRb/nHo8YnN//dWfcO45O]
 
 awcs7::dev::awcs_authorized_keys: >
