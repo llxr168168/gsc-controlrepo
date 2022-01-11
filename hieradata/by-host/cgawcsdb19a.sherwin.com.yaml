@@ -1,0 +1,6 @@
+classes:
+  - awcs7::dev
+
+awcs7::dev::awcs_alias: 'awcsdb19'
+
+oracle_build7::kernel::vm_nr_hugepages: 2560
