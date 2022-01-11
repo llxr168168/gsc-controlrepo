@@ -1,0 +1,6 @@
+classes:
+  - sw_apex_print_std7
+
+
+sw_apex_print_std7::local_user: 'oracle'
+sw_apex_print_std7::local_group: 'oinstall'
