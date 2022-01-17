@@ -31,9 +31,6 @@ oracle_build7::eunfs_mount_dirs:
   - '/swdata/nfs/oraremote_pianoro'
   - '/swdata/nfs/oraremote_poland'
 
-mq_p2p_client::account_lock_status: 'true'
-
-
 sw_apex_print_mes7::local_user: 'plt_adm'
 sw_apex_print_mes7::local_group: 'plt_adm'
 
