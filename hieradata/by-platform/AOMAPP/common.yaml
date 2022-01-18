@@ -22,6 +22,8 @@ access_conf::access:
   - '+:(gg-cgit-edi-admins):ALL'  
   - '+:(gg-cgit-edi-users):ALL'  
   - '+:imess:cgimi1.sherwin.com'
+  - '+:etrac:LOCAL'
+  - '+:aomapp:LOCAL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
