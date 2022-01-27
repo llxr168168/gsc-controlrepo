@@ -1,3 +1,4 @@
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
 access_conf::access:
   - '+:root:LOCAL'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
@@ -5,9 +6,9 @@ access_conf::access:
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(SW\gg-adm-gcdunix):ALL'
-  - '+:(SW\gg-adm-gcdunix-contr):ALL'
-  - '+:(SW\gg-cgit-dba-admins):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-gcdunix-contr):ALL'
+  - '+:(gg-cgit-dba-admins):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - "+:oracle:LOCAL %{::fqdn} 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 127.0.0.1"
