@@ -1,5 +1,4 @@
 classes:
   - awcs7::dev
-  - apex_tomcat_awcs7::dev
-  
+
 awcs7::dev::awcs_alias: 'awcsdb04'
