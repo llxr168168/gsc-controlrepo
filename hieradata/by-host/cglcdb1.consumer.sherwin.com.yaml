@@ -1,11 +1,15 @@
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
 access_conf::access:
   - '+:root:LOCAL'
-  - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
-  - '+:oracle:LOCAL %{::fqdn} cglcdb1.consumer.sherwin.com cglcdb2.consumer.sherwin.com cglcdb3.consumer.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80' 
+  - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
-  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
-  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-dba-admins):ALL'
+  - '+:(gg-cgit-mdm-admins):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 cglcdb1.consumer.sherwin.com cglcdb2.consumer.sherwin.com cglcdb3.consumer.sherwin.com 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'

@@ -1,4 +1,3 @@
-oracle_build::kernel::vm_nr_hugepages: 2049
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 access_conf::access:
@@ -14,4 +13,3 @@ access_conf::access:
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'
-
