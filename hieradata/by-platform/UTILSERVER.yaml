@@ -1,7 +1,7 @@
 #Classes
 classes:
   - profiles_unix::gsc::apps::utilserver
-
+  - sw_puppet_crowdstrike_test
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
