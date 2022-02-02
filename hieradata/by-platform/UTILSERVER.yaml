@@ -3,6 +3,9 @@ classes:
   - profiles_unix::gsc::apps::utilserver
   - sw_puppet_crowdstrike_test
 
+sw_os_update_management::redhat::falconversionlocks:
+  - "falcon-sensor-6.34.0-13108.el%{facts.operatingsystemmajrelease}.*"
+
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 access_conf::access:
