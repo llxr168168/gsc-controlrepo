@@ -2,3 +2,6 @@ classes:
   - awcs7::dev
  
 awcs7::dev::awcs_alias: 'awcsdb04'
+
+sw_os_update_management::redhat::falconversionlocks:
+  - "falcon-sensor-6.34.0-13108.el%{facts.operatingsystemmajrelease}.*"
