@@ -12,7 +12,7 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
-  - '+:(SW\gg-cg-wla-admins):ALL'
+  - '+:(SW\gg-adm-gea-mq):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - '+:mmsonbs:swerpp1.sherwin.com swerpp2.sherwin.com swerpp3.sherwin.com swerpp4.sherwin.com swerpdr1.sherwin.com swerpdr2.sherwin.com swerpdr3.sherwin.com swerpdr4.sherwin.com'
