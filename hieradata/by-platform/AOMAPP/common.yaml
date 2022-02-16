@@ -23,6 +23,7 @@ access_conf::access:
   - '+:(gg-cgit-edi-admins):ALL'  
   - '+:(gg-cgit-edi-users):ALL'  
   - '+:imess:cgimi1.sherwin.com'
+  - '+:ediftpc:ALL'  
   - '+:etrac:LOCAL'
   - '+:aomapp:LOCAL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
