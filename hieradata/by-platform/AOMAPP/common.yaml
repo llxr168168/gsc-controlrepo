@@ -22,6 +22,7 @@ access_conf::access:
   - '+:(gg-cg-wla-admins):ALL'  
   - '+:(gg-cgit-edi-admins):ALL'  
   - '+:(gg-cgit-edi-users):ALL'  
+  - '+:(gg-app-etl-admins):ALL'  
   - '+:imess:cgimi1.sherwin.com'
   - '+:ediftpc:ALL'  
   - '+:etrac:LOCAL'
