@@ -2,8 +2,6 @@ classes:
   - qad_progress
   - mq_p2p_client
   - ctmagent
-  - cups
-  - swprint
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
