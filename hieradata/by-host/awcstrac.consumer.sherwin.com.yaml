@@ -1,7 +1,7 @@
 samba::shares:
   trac:
     - 'comment = Applications'
-    - 'valid users = SW\jtp353, SW\zrh535, SW\rbp01l, SW\jnk865, SW\pnv01l, SW\apt135'
+    - 'valid users = SW\jtp353, SW\zrh535, SW\rbp01l, SW\jnk865, SW\apt135'
     - 'path = /swdata/apps/'
     - 'force user = apache'
     - 'writable = yes'
