@@ -1,1 +1,1 @@
-ssh::sshd_config: ssh-MQ.conf
+ssh::sshd_config: MQ.sshd.conf
