@@ -12,7 +12,6 @@ mes7::prod::whs_bar: 'MQ'
 avamar::grid: 'swavmEST.sherwin.com'
 
 resolv_conf::nameserver:
-  - '10.10.58.119'
   - '10.20.103.6'
   - '10.240.3.6'
 
