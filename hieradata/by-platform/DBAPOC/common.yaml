@@ -1,8 +1,12 @@
 classes:
   - profiles_unix::gsc::oracle7::asm
   - sw_puppet_ansible_dmw
+  - oracle_build7::kernel
+  - oracle_build7::asm
   - oracle_build7::sudoers
+  - sw_os_ca_certs
 
+sw_os_ca_certs::install_certs: 'swroot.pem'
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 sudo::sudoers_template: sudoers.dbapoc
