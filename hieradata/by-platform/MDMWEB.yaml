@@ -1,6 +1,6 @@
 classes:
   - vsftpd
-
+  - sw_puppet_pimastartup
 sudo::sudoers_d_template: 'gea_bamboo'
 
 access_conf::access: 

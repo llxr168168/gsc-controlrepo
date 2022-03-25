@@ -959,4 +959,7 @@ mod 'sw_linux_cohesity_agent',
 mod 'sw_puppet_prisma_agent',
  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_puppet_prisma_agent.git',
  :ref => 'master'
- 
+
+mod 'sw_puppet_pimastartup',
+  :git => 'git@github.sherwin.com:SW-CORP-IT/sw_puppet_pimastartup.git',
+  :ref => 'master'
