@@ -94,6 +94,7 @@ awcs7::dev::awcs_developers:
   - pjk25c
   - daw633
   - tjb976
+  - mjkptr
 
 packages:
   - filebeat

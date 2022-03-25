@@ -127,6 +127,7 @@ awcs::awcs_developers:
   - tjp226
   - daw633
   - tjb976
+  - mjkptr
   
 
 awcs::awcs_developers_retire:
@@ -139,6 +140,7 @@ awcs::awcs_developers_retire:
   - jmv488
   - jxm425
   - jxk678
+  - pnv01l
   
 awcs::oracle_apachectl: /swpkg/oracle/product/Middleware/Oracle_WT1/ohs/bin/.apachectl
 
