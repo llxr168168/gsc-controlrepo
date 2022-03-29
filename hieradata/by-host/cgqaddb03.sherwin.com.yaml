@@ -1,3 +1,6 @@
+classes:
+  - qad_progress
+
 # update url during testing. Once live, this will be switched from mitilinux to miti and reload of apache
 qad_progress::miti_url: 'mitilinux'
 qad_progress::miti_dir_index: 'wsmfgt'
