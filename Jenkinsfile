@@ -3,7 +3,6 @@ CONTROLREPO="GSC_controlrepo"
 EMAIL_RECIPIENTS = 'matt.cengic@sherwin.com,brian.wagner@sherwin.com,jason.t.pappas@sherwin.com'
 
 ansiColor('xterm') {
- logstash {
   node (label: 'python && ansible'){
   try{
     stage('Checkout SCM'){
@@ -28,5 +27,4 @@ ansiColor('xterm') {
      error("Build failed: ${e}")
     }
   }
- }
 }
