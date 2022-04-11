@@ -1,2 +1,2 @@
 profiles_unix::gsc::oracle8::base::nfs_mounts:
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/oracle_ak/exlh'
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01rw-nas1.sherwin.com:/data/col1/oracle_rw/exwv'
