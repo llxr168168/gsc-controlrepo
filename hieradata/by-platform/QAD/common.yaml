@@ -2,6 +2,7 @@ classes:
   - qad_progress
   - mq_p2p_client
   - ctmagent
+  - sw_linux_cohesity_agent
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
@@ -28,6 +29,7 @@ access_conf::access:
   - '+:(gg-corpit-GCS):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:qadadmin:LOCAL'
   - '+:qaduser:LOCAL cgqadbb01.sherwin.com cgqaddb02.sherwin.com cgqaddb03.sherwin.com'
   - '-:ALL:ALL'
 
