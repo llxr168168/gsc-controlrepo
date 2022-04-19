@@ -19,3 +19,7 @@ access_conf::access:
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '-:ALL:ALL'
+
+# update url during testing. Once live, this will be switched from mitilinux to miti and reload of apache
+qad_progress::miti_url: 'mitilinux'
+qad_progress::miti_dir_index: 'wsmfgt'
