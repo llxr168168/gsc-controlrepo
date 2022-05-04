@@ -5,7 +5,7 @@ classes:
   - mq_p2p_client
   - ctmagent
   - autofs
-
+postfix::enabled: 'true'
 
 access_conf::access:
   - '+:root:LOCAL'
