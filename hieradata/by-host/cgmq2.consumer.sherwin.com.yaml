@@ -1,4 +1,4 @@
-ssh::sshd_config: cgmq.sshd.conf
+ssh::sshd_config: cgmq2.sshd.conf
 
 access_conf::access:
   - '+:root:LOCAL'
