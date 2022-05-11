@@ -373,7 +373,7 @@ mod 'jda',
 
 mod 'data_warehouse',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/data_warehouse.git',
- :ref => '1.0.1'
+ :ref => 'master'
 
 mod 'spectrumbo',
  :git => 'git@github.sherwin.com:Corp-IT-Puppet/spectrumbo.git',
