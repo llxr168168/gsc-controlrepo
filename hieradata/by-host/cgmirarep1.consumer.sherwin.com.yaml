@@ -1,6 +1,7 @@
 classes:
   - sw_puppet_ansible_dmw
-
+  - sw_linux_cohesity_agent
+  
 access_conf::access:
   - '+:root:LOCAL'
   - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"

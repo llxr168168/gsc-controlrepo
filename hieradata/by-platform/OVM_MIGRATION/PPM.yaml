@@ -9,7 +9,9 @@ source_yaml_conf: PPM
 
 sudo::sudoers_template: sudoers.ppmdb # Support users for Oracle && Control-m
 
-
+classes:
+  - sw_linux_cohesity_agent
+  
 # Shamelessly copied from GCD Controlm_v9 
 # With modifications for 
 controlm_ppm::rc_ctm_agent: |
