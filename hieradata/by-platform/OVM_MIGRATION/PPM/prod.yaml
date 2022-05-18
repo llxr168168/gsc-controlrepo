@@ -1,5 +1,8 @@
 #by-platform -> OVM_MIGRATION -> PPM -> prod.yaml
 
+classes:
+  - sw_linux_cohesity_agent
+  
 oracle_rac::udev::oracle_shared_disk_rules: |
   ## Puppet Managed File
   # by-platform -> OVM_MIGRATION -> PPM -> prod.yaml
