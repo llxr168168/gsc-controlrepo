@@ -87,6 +87,7 @@ awcs7::awcs_developers:
   - mjkptr
   - nia295
   - ijb878
+  - jww69c
 sw_os_update_management::redhat::elastic6_repo: true
 
 packages:
