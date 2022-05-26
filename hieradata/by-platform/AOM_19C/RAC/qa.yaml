@@ -51,7 +51,8 @@ oracle_build8::rac::ssh::grid_pub_key: >
     eKArE14WWejmZHeBPRRSvWfjgxRqPUQPxkIV7rPIePYUSLXX9Z0/QNpbR16B
     BHq8jvIpphORunvM9Lp83qu3Dpj76JwJ3uspY69+fwJnPGqudchtogFkl/eQ
     IT8GnSDDLpVsDgI5j2kBqXaC05Y5BDip+YLR3VZ7c8Nn]
-oracle_build8::rac::ssh::grid_prv_key: >        ENC[PKCS7,MIILrQYJKoZIhvcNAQcDoIILnjCCC5oCAQAxggEhMIIBHQIBADAFMAACAQAw
+oracle_build8::rac::ssh::grid_prv_key: >        
+    ENC[PKCS7,MIILrQYJKoZIhvcNAQcDoIILnjCCC5oCAQAxggEhMIIBHQIBADAFMAACAQAw
     DQYJKoZIhvcNAQEBBQAEggEAdna6fC3m4NKLsOZuj4M87TznfnRMarhGSh1+
     BQgqSyiyFjnGCdObU6hqAzE2mmUgmwZ8YFCLXdlugkN6Ijf1PAVwgDogAkjf
     i5UAAAL9Fe55KM4KGUDwdCAuRf4WLoSh6V2/o4oOAazDnWLV79R8qKhSaC9u
