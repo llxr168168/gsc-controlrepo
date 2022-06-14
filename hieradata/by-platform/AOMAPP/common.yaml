@@ -5,7 +5,7 @@ classes:
   - mq_p2p_client
   - ctmagent
   - autofs
-  - sw_grusers::tricore
+  - sw_grusers::webdeploy
   
 postfix::enabled: 'true'
 
