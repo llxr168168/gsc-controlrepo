@@ -5,7 +5,6 @@ classes:
   - profiles_unix::gsc::apps::mqclient
   - profiles_unix::gsc::apps::printing
   - profiles_unix::gsc::oracle::base
-  - profiles_unix::gsc::oracle::tns
   - oracle_build::sudoers
   - stdbuild::pam
   - sw_apex_print
