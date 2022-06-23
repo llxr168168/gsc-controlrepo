@@ -24,6 +24,13 @@ sw_os_update_management::redhat::falconversionlocks:
   - "falcon-sensor-6.35.0-13207.el%{facts.operatingsystemmajrelease}.*"
 ###########################################
 
+
+
+#Lock the Cohesity agent to 6.5 by default.  Certain DCs will be overridden.
+sw_os_update_management::redhat::versionlocks: 
+  - 'cohesity-agent-6.5.1f_u1-2.x86_64'
+
+
 resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
