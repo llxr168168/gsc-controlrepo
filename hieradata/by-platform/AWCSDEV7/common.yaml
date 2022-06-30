@@ -95,6 +95,13 @@ awcs7::dev::awcs_developers:
   - nia295
   - ijb878
   - jww69c
+  
+awcs7::awcs_developers_retire:  
+  - hxm538
+  - pnv01l
+  - wkd846  
+
+  
 packages:
   - filebeat
 
