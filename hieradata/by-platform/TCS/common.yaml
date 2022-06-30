@@ -15,6 +15,3 @@ access_conf::access:
   - '+:(gg-adm-gcdunix-contr):ALL' 
   - '+:(gg-corpit-GCS):ALL'
   - '-:ALL:ALL'
-
-sw_os_update_management::redhat::falconversionlocks:
-  - "falcon-sensor-6.34.0-13108.el%{facts.operatingsystemmajrelease}.*"
