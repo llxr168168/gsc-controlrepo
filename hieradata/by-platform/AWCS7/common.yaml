@@ -88,6 +88,13 @@ awcs7::awcs_developers:
   - nia295
   - ijb878
   - jww69c
+  
+  
+awcs7::awcs_developers_retire:  
+  - hxm538
+  - pnv01l
+  - wkd846
+  
 sw_os_update_management::redhat::elastic6_repo: true
 
 packages:
