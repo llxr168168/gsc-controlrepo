@@ -1,6 +1,6 @@
 classes:
   - profiles_unix::val::oracle::base
-  - avamar
+  #- avamar
   - sw_linux_cohesity_agent
   
 #Don't make the /swdata/nfs directory
