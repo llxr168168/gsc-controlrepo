@@ -1,6 +1,6 @@
 classes:
    - sw_util::hiera_wrapper
-   - avamar
+   #- avamar
    - sw_splunk
    
    
