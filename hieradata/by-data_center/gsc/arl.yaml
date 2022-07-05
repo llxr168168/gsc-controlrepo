@@ -1,10 +1,9 @@
-#classes:
-#- avamar
+classes:
+ - avamar
 
 #Classes for this site
 #Site Specific overrides
-avamar::disable: 'false'
-avamar::grid: 'swavmcst.sherwin.com'
+
 yum::plugins_enabled: 'true'
 
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
