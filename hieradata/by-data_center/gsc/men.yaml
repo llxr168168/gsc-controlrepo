@@ -1,13 +1,12 @@
 # Site: Menomonee Falls WI
 
-#classes:
-#  - avamar
+classes:
+  - avamar
   
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
-avamar::disable: 'false'
-avamar::grid: 'swavmcst.sherwin.com'
+
 
 resolv_conf::nameserver:
 - '10.20.103.6'
