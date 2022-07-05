@@ -1,11 +1,10 @@
 #Classes for this site
-#classes:
-#- avamar
+classes:
+  - avamar
   
 yum::plugins_enabled: 'true'
 
-#No Avamar at Elkhart, no backups
-avamar::disable: 'true'
+
 
 
 
