@@ -1,12 +1,11 @@
 #Classes for this site
-#classes:
-#- avamar
+classes:
+  - avamar
   
 yum::plugins_enabled: 'true'
 
 
-#Site Specific overrides
-avamar::disable: 'true'
+
 
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum
