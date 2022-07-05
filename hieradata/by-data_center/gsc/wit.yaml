@@ -1,6 +1,6 @@
 # Site: Witney
-# classes:
-#  - avamar
+classes:
+  - avamar
 
 yum::plugins_enabled: 'true'
 
@@ -11,7 +11,7 @@ yum::yum_repo_file: 'swrepo.yum'
 awcs7::awcs_alias: 'awcswitney'
 
 site_code: wit 
-# avamar::grid: 'swavmcst.sherwin.com'
+
 
 tz::region: 'Europe'
 tz::locality: 'London'
