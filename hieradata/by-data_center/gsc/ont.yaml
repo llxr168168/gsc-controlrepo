@@ -1,13 +1,12 @@
 #Classes for this site
-#classes:
-#  - avamar
+classes:
+  - avamar
 
 
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
-avamar::disable: 'false'
-avamar::grid: 'swavmPST.sherwin.com'
+
 
 
 yum::yum_repo_file: remotesite.yum
