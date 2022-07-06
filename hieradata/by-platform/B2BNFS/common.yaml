@@ -1,10 +1,10 @@
 classes:
    - sw_util::hiera_wrapper
-   #- avamar
+   - avamar
    - sw_splunk
    
    
-avamar::disable: 'false'
+
 
 
 sw_util::wrapper::hiera_package::params:

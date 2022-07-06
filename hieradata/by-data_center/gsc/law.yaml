@@ -1,11 +1,10 @@
 #Classes for this site
-#classes:
-#  - avamar
+classes:
+  - avamar
 
 yum::plugins_enabled: 'true'
 
-#Site Specific overrides
-avamar::disable: 'true'
+
 
 
 

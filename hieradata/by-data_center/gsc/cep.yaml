@@ -1,6 +1,6 @@
 #Classes for this site
-#classes:
-#- avamar
+classes:
+- avamar
   
 yum::plugins_enabled: 'true'
 
@@ -15,9 +15,7 @@ mes7::prod::mes_site_name: 'Chicago-CEP'
 mes7::prod::whs_site: 'cepplt'
 mes7::prod::whs_bar: 'EC'
 
-#Enable Avamar for all VMs at this site
-#avamar::disable: 'false'
-avamar::grid: 'swavmcst.sherwin.com'
+
 
 resolv_conf::nameserver:
   - '10.10.19.44'
