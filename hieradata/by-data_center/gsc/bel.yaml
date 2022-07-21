@@ -15,21 +15,6 @@ resolv_conf::nameserver:
   
 oracle_build::tns::localfile: 
   - '/swpkg/oracle/product/11.2.0/db_1/network/admin/tnsnames.ora'
-  
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvebel.sherwin.com:/data/col1/gsc_ora_backup_bel'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvebel.sherwin.com:/data/col1/gsc_ora_disaster_bel'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvebel.sherwin.com:/data/col1/gsc_oraremote_rw'
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvebel.sherwin.com:/data/col1/gsc_ora_backup_bel'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvebel.sherwin.com:/data/col1/gsc_ora_disaster_bel'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvebel.sherwin.com:/data/col1/gsc_oraremote_rw'
-
-
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvebel.sherwin.com:/data/col1/gsc_lnxremote_rw'
-
 
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum
@@ -37,7 +22,7 @@ sw_os_update_management::redhat::yum_repo_file: remotesite.yum
 awcs::telnet_allow:
   - '10.10.120.0/24'
   - '10.216.0.0/16'
-  - 'cgawcsdb3.consumer.sherwin.com'
+
 tz::region: 'America'
 tz::locality: 'New_York'
 site_code: bel

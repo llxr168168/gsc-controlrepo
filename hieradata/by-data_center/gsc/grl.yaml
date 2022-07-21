@@ -3,11 +3,6 @@
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
-mes7::mes_alias: 'mesgarplt'
-mes7::mes_site_name: 'Garland-GAR'
-mes7::whs_site: 'garplt'
-mes7::whs_bar: '0T'
-
 mes7::prod::mes_alias: 'mesgarplt'
 mes7::prod::mes_site_name: 'Garland-GAR'
 mes7::prod::whs_site: 'garplt'
@@ -19,24 +14,8 @@ resolv_conf::nameserver:
   - '10.10.52.118'
   - '10.20.103.6'
   - '10.240.3.6'
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvegrl.sherwin.com:/data/col1/gsc_ora_backup_grl'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvegrl.sherwin.com:/data/col1/gsc_ora_disaster_grl'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvegrl.sherwin.com:/data/col1/gsc_oraremote_rw'
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvegrl.sherwin.com:/data/col1/gsc_ora_backup_grl'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvegrl.sherwin.com:/data/col1/gsc_ora_disaster_grl'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvegrl.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvegrl.sherwin.com:/data/col1/gsc_ora_backup_grl/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvegrl.sherwin.com:/data/col1/gsc_ora_disaster_grl/%{::hostname}'
-  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvegrl.sherwin.com:/data/col1/gsc_ora_disaster_grl'
-
 
 access_conf::mes_dataguard: 'cggrlmes1a.sherwin.com cggrlmes1b.sherwin.com cggrlmes1c.sherwin.com'
-
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvegrl.sherwin.com:/data/col1/gsc_lnxremote_rw'
 
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum

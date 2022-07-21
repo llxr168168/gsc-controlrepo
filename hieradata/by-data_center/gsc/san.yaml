@@ -3,11 +3,6 @@
 yum::plugins_enabled: 'true'
 
 #Site Specific overrides
-mes7::mes_alias: 'messanplt'
-mes7::mes_site_name: 'San Diego-673'
-mes7::whs_site: 'sanplt'
-mes7::whs_bar: 'SD'
-
 mes7::prod::mes_alias: 'messanplt'
 mes7::prod::mes_site_name: 'San Diego-673'
 mes7::prod::whs_site: 'sanplt'
@@ -19,23 +14,6 @@ resolv_conf::nameserver:
   - '10.10.200.31'
   - '10.20.103.6'
   - '10.240.3.6'
-
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvesan.sherwin.com:/data/col1/gsc_ora_backup_san'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvesan.sherwin.com:/data/col1/gsc_ora_disaster_san'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvesan.sherwin.com:/data/col1/gsc_oraremote_rw'
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvesan.sherwin.com:/data/col1/gsc_ora_backup_san'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvesan.sherwin.com:/data/col1/gsc_ora_disaster_san'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvesan.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvesan.sherwin.com:/data/col1/gsc_ora_backup_san/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvesan.sherwin.com:/data/col1/gsc_ora_disaster_san/%{::hostname}'
-  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvesan.sherwin.com:/data/col1/gsc_ora_disaster_san'
-
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvesan.sherwin.com:/data/col1/gsc_lnxremote_rw'
-
 
 access_conf::mes_dataguard: 'cgsanmes1a.sherwin.com cgsanmes1b.sherwin.com cgsanmes1c.sherwin.com'
 
