@@ -8,7 +8,7 @@ mes7::prod::mes_site_name: 'Victorville-VIC'
 mes7::prod::whs_site: 'vicplt'
 mes7::prod::whs_bar: 'VM'
 
-avamar::grid: 'swavmPST.sherwin.com'
+
 
 resolv_conf::nameserver:
   - '10.10.73.49'
