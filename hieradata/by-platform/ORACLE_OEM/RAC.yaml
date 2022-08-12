@@ -1,9 +1,7 @@
 # by-platform -> ORACLE_OEM -> RAC.yaml
 
-# AVAMAR Client (DATABASE SERVERS)
-# Platform Common default. (Applied if not overridden.)
-# Overrides can be applied in more specific scopes
-avamar::client::version: "7.3.101-125"
+
+
 
 sw_util::wrapper::hiera_package::params:
   - binutils: {}
@@ -40,10 +38,7 @@ sw_util::wrapper::hiera_package::params:
   - libXi.i686: {}
   - make: {}
   - cvuqdisk: {}
-  # Avamar client backups for Oracle databases. 
-  # Note Backup software is version specific. 
-  # Linux 5.x and higher = 7.3
-  - AvamarClient: {ensure: "%{hiera('avamar::client::version')}"}
+
 
 
 
@@ -194,12 +189,7 @@ sw_util::wrapper::hiera_exec::params:
     alias: "OracleUdevWatcher",
     refreshonly: true,
     }
-  # Note: avamar::grid default set in by-datacenter->gcd-><datacenter name>.yaml
-  - register_avamar_client: {
-    command: "/usr/local/avamar/etc/avagent.d register %{hiera('avamar::grid')} Corporate/Corp_Linux",
-    unless: "test -f /usr/local/avamar/var/cid.bin",
-    require: [ "Package[AvamarClient]" ],
-    }
+
 
 # Unset domain value for rac servers. 
 # Oracle requires search attribute only
@@ -211,8 +201,6 @@ sw_util::wrapper::hiera_file_line::params:
   - set_shm_memory_size_fstab: {path: "/etc/fstab", match: "^tmpfs", line: "tmpfs                   /dev/shm                tmpfs   defaults,size=16384m        0 0"}
 
 
-# Start the Avamar agent
-sw_util::wrapper::hiera_service::params:
-  - avagent: {}
+
 
 
