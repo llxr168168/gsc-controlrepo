@@ -180,7 +180,6 @@ sw_util::wrapper::hiera_file::params:
     }
   - /etc/sysconfig/network-scripts/ifcfg-eth1: {ensure: "file", content: "oracle_oem::rac::network::private_network", owner: "root", group: "root" , mode: "644"}
   - /etc/profile.d/oracle_profile.sh: {ensure: "file", content: "oracle_oem::oracle::global::profile", owner: "root", group: "root" , mode: "644"}
-  - /usr/local/avamar/exclude_list: { ensure: "file", owner: "root", group: "root", require: [ "Package[AvamarClient]" ] }
 
 sw_util::wrapper::hiera_exec::params:
   - Oracle_Udev_Watcher_Exec: {
