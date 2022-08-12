@@ -8,7 +8,7 @@ mes7::prod::mes_site_name: 'San Diego-673'
 mes7::prod::whs_site: 'sanplt'
 mes7::prod::whs_bar: 'SD'
 
-avamar::grid: 'swavmPST.sherwin.com'
+
 
 resolv_conf::nameserver:
   - '10.10.200.31'
