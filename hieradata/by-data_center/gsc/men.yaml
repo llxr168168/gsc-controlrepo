@@ -1,7 +1,6 @@
 # Site: Menomonee Falls WI
 
-classes:
-  - avamar
+
   
 yum::plugins_enabled: 'true'
 
