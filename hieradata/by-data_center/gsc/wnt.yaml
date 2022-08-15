@@ -2,7 +2,7 @@
 
 yum::plugins_enabled: 'true'
 
-avamar::grid: 'swavmest.sherwin.com'
+
 
 #Site Specific overrides
 
