@@ -45,7 +45,7 @@ oracle_build7::autofs::nfs_mounts:
 site_code: cle
 tz::region: 'America'
 tz::locality: 'New_York'
-avamar::grid: 'swavmuak1.sherwin.com'
+
 
 
 sw_sssd_authentication::ldap_uris: 'ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'
