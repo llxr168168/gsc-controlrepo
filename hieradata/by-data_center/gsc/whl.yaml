@@ -8,7 +8,7 @@ yum::yum_repo_file: 'swrepo.yum'
 awcs7::awcs_alias: 'awcswheeling'
 
 site_code: whl
-avamar::grid: 'swavmcst.sherwin.com'
+
 
 #Site Specific overrides
 mes7::mes_alias: 'meswhlplt'
