@@ -6,6 +6,7 @@ access_conf::access:
   - '+:qadadmin:LOCAL'
   - '+:sftpbpm:10.128.66.60 10.128.66.68'
   - '+:qaduser:10.148.37.207 10.140.75.135 10.140.75.134'
+  - '+:sftpbpm:10.148.118.207 10.148.118.208'
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(SW\gg-cg-wla-admins):ALL'
