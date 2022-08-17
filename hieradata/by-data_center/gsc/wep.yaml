@@ -9,7 +9,6 @@ mes7::prod::whs_site: 'wepplt'
 mes7::prod::whs_bar: 'WE'
 
 
-avamar::grid: 'swavmPST.sherwin.com'
 
 resolv_conf::nameserver:
   - '10.10.164.173'

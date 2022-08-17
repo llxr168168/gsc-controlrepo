@@ -7,9 +7,9 @@ tz::region: 'Australia'
 tz::locality: 'Sydney'
 site_code: anz
 
-avamar::grid: 'cgavmanz.sherwin.com'
 
-avamar::disable: 'true'
+
+
 
 profiles_unix::gsc::oracle::base::nfs_mounts:
   - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemct.sherwin.com:/data/col1/gsc_ora_disaster_mct'

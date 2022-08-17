@@ -4,7 +4,6 @@ yum::plugins_enabled: 'true'
 
 #Site Specific overrides
 
-avamar::grid: 'swavmcst.sherwin.com'
 
 resolv_conf::nameserver:
   - '10.10.24.38'

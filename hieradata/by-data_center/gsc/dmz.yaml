@@ -1,7 +1,7 @@
 profiles_unix::gsc::base::auth::use_std_accounts: 'yes'
 hosts::hosts_group: admin
 
-avamar::disable: 'true'
+
 ssh::sshd_config: dmz.sshd.conf
 access_conf::access:
   - '+:root:LOCAL'

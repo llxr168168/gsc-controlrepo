@@ -3,7 +3,7 @@ classes:
   - resolv_conf
   - hosts
 
-avamar::grid: 'swavmuak1.sherwin.com'
+
 
 resolv_conf::domain: 'valspar.local'
 resolv_conf::search: 'valspar.local valspar.com corporate.root.corp europe.root.corp sherwin.com consumer.sherwin.com sw.sherwin.com'

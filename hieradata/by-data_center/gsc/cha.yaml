@@ -7,7 +7,7 @@ mes7::mes_alias: 'meschaplt'
 
 mes7::prod::mes_alias: 'meschaplt'
 
-avamar::grid: 'swavmest.sherwin.com'
+
 
 resolv_conf::nameserver:
   - '10.20.103.6'

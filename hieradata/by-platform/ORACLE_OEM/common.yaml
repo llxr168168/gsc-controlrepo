@@ -66,14 +66,4 @@ sw_util::wrapper::hiera_file::params:
 oracle_oem::nfs_mounts:
   - '/sw/install -rw,intr,soft,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3 nafgps01rw-nfs02:/oem_all_installation'
 
-# Note: avamar::grid default set in by-datacenter->gcd-><datacenter name>.yaml
-sw_util::wrapper::hiera_exec::params:
-  - register_avamar_client: {
-      command: "/usr/local/avamar/etc/avagent.d register %{hiera('avamar::grid')} Corporate/Corp_Linux",
-      unless: "test -f /usr/local/avamar/var/cid.bin",
-      require: [ "Package[AvamarClient]" ],
-    }
 
-# Start the Avamar agent
-sw_util::wrapper::hiera_service::params:
-  - avagent: {}

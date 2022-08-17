@@ -8,7 +8,7 @@ mes7::prod::mes_site_name: 'Garland-GAR'
 mes7::prod::whs_site: 'garplt'
 mes7::prod::whs_bar: '0T'
 
-avamar::grid: 'swavmcst.sherwin.com'
+
 
 resolv_conf::nameserver:
   - '10.10.52.118'

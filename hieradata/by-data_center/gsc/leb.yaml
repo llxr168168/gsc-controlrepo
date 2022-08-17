@@ -2,7 +2,7 @@
 
 
 yum::plugins_enabled: 'true'
-avamar::grid: 'swavmEST.sherwin.com'
+
 
 #Site Specific overrides
 mes7::prod::mes_alias: 'meslebplt'
