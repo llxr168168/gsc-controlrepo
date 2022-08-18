@@ -11,6 +11,12 @@ samba::shares:
   - 'path = /swdata/deploy/repository'
   - 'force user = jboss'
   - 'writable = yes'
+  wildfly:
+  - 'comment = Wildfly'
+  - 'valid users = @SW\gg-adm-gsc-discovery'
+  - 'path = /opt/wildfly'
+  - 'force user = jboss'
+  - 'writable = yes'
 sudo::sudoers_template: sudoers.cgdiscweb
 
 #Fix for SMB2 share issues
