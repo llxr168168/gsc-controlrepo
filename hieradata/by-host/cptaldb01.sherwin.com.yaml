@@ -1,2 +1,16 @@
 profiles_unix::gsc::oracle8::base::nfs_mounts:
   - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/oracle_ak/exlh'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-dba-admins):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80 10.148.18.110'
+  - '-:ALL:ALL'
