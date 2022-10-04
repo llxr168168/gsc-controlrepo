@@ -1,7 +1,7 @@
 # Site: Parma, OH
 
 yum::plugins_enabled: 'true'
-avamar::grid: 'swavmEST.sherwin.com'
+
 
 site_code: prm
 tz::region: 'America'

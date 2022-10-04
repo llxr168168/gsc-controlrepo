@@ -1,7 +1,6 @@
 #Classes for this site
 #Site Specific overrides
-avamar::disable: 'false'
-avamar::grid: 'swavmpia.sherwin.com'
+
 
 mes7::prod::mes_alias: 'mesepiaplt'
 
@@ -9,20 +8,6 @@ resolv_conf::nameserver:
   - '10.12.31.133'
   - '10.20.103.6'
   - '10.240.3.6'
-
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvepia.sherwin.com:/data/col1/gsc_ora_backup_pia'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvepia.sherwin.com:/data/col1/gsc_ora_disaster_pia'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddvepia.sherwin.com:/data/col1/gsc_oraremote_rw'
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvepia.sherwin.com:/data/col1/gsc_ora_backup_pia'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvepia.sherwin.com:/data/col1/gsc_ora_disaster_pia'
-  - '/swdata/nfs/oramedia -ro,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddvepia.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddvepia.sherwin.com:/data/col1/gsc_ora_backup_pia/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddvepia.sherwin.com:/data/col1/gsc_ora_disaster_pia/%{::hostname}'
-  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddvepia.sherwin.com:/data/col1/gsc_ora_disaster_pia'
-
 
 yum::yum_repo_file: international.yum
 sw_os_update_management::redhat::yum_repo_file: international.yum

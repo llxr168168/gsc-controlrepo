@@ -2,7 +2,7 @@
 
 yum::plugins_enabled: 'true'
 
-avamar::grid: 'swavmest.sherwin.com'
+
 
 #Site Specific overrides
 
@@ -18,20 +18,6 @@ dnsmasq_conf::nameserver:
 
 awcs7::awcs_alias: 'awcswinter'
   
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvewnt.sherwin.com:/data/col1/gsc_ora_backup_wnt'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvewnt.sherwin.com:/data/col1/gsc_ora_disaster_wnt'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvewnt.sherwin.com:/data/col1/gsc_oraremote_rw'
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvewnt.sherwin.com:/data/col1/gsc_ora_backup_wnt'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvewnt.sherwin.com:/data/col1/gsc_ora_disaster_wnt'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvewnt.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvewnt.sherwin.com:/data/col1/gsc_ora_backup_wnt/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvewnt.sherwin.com:/data/col1/gsc_ora_disaster_wnt/%{::hostname}'
-  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvewnt.sherwin.com:/data/col1/gsc_ora_disaster_wnt'
-
-
 access_conf::awcs_dataguard: 'cgwntawcs1a.sherwin.com cgwntawcs1b.sherwin.com cgwntawcs1c.sherwin.com'
 
 

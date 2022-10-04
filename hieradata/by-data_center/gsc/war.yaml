@@ -52,7 +52,7 @@ site_code: war
 tz::region: 'America'
 tz::locality: 'New_York'
 
-avamar::grid: 'swavmurw1.sherwin.com'
+
 
 sw_sssd_authentication::ldap_uris: 'ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'
 sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'

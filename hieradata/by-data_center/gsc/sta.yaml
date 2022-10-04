@@ -1,7 +1,7 @@
 # Site: Statesville
 
 
-avamar::grid: 'swavmest.sherwin.com'
+
 
 yum::plugins_enabled: 'true'
 

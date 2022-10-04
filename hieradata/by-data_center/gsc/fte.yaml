@@ -8,30 +8,12 @@ mes7::prod::mes_site_name: 'Fort Erie-ONT'
 mes7::prod::whs_site: 'ontplt'
 mes7::prod::whs_bar: 'MB'
 
-avamar::grid: 'swavmEST.sherwin.com'
+
 
 resolv_conf::nameserver:
   - '10.10.145.39'
   - '10.20.103.6'
   - '10.240.3.6'
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvefte.sherwin.com:/data/col1/gsc_ora_backup_fte'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvefte.sherwin.com:/data/col1/gsc_ora_disaster_fte'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvefte.sherwin.com:/data/col1/gsc_oraremote_rw'
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvefte.sherwin.com:/data/col1/gsc_ora_backup_fte'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvefte.sherwin.com:/data/col1/gsc_ora_disaster_fte'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvefte.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvefte.sherwin.com:/data/col1/gsc_ora_backup_fte/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvefte.sherwin.com:/data/col1/gsc_ora_disaster_fte/%{::hostname}'
-  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvefte.sherwin.com:/data/col1/gsc_ora_disaster_fte'
-
-
-
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvefte.sherwin.com:/data/col1/gsc_lnxremote_rw'
-
   
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum
@@ -39,7 +21,7 @@ sw_os_update_management::redhat::yum_repo_file: remotesite.yum
 awcs::telnet_allow:
   - '10.10.145.0/24'
   - '10.216.0.0/16'
-  - 'cgawcsdb3.consumer.sherwin.com'
+
 tz::region: 'America'
 tz::locality: 'New_York'
 site_code: fte

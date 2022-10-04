@@ -9,7 +9,7 @@ dnsmasq_conf::nameserver:
 site_code: rwdmz
 tz::region: 'America'
 tz::locality: 'New_York'
-avamar::grid: 'swavmurw1.sherwin.com'
+
 
 
 sw_sssd_authentication::ldap_uris: 'ldap://mushqadsdmz1.swext.lcl,ldap://mushqadsdmz2.swext.lcl'

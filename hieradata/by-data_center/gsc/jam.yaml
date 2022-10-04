@@ -9,7 +9,7 @@ mes7::prod::whs_site: 'stcplt'
 mes7::prod::whs_bar: 'KJ'
 
 
-avamar::grid: 'swavmEST.sherwin.com'
+
 
 resolv_conf::nameserver:
   - '10.27.16.36'

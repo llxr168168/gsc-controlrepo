@@ -2,7 +2,7 @@
 
 yum::plugins_enabled: 'true'
 
-avamar::grid: 'swavmpst.sherwin.com'
+
 
 
 resolv_conf::nameserver:

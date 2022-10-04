@@ -3,7 +3,7 @@
 yum::plugins_enabled: 'true'
 #Site Specific overrides
 
-avamar::grid: 'swavmcst.sherwin.com'
+
 
 #Site Specific overrides
 mes7::prod::mes_alias: 'mesfloplt'

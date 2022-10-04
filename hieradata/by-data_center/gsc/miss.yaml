@@ -1,7 +1,6 @@
 # Site: Mississauga 
 
-classes:
-  - avamar
+
 
 yum::plugins_enabled: 'true'
 

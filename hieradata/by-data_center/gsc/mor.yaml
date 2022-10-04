@@ -2,14 +2,9 @@
 
 yum::plugins_enabled: 'true'
 
-avamar::grid: 'swavmEST.sherwin.com'
+
 
 #Site Specific overrides
-mes7::mes_alias: 'mesmorplt'
-mes7::mes_site_name: 'Morrow-MOR'
-mes7::whs_site: 'morplt'
-mes7::whs_bar: 'WM'
-
 mes7::prod::mes_alias: 'mesmorplt'
 mes7::prod::mes_site_name: 'Morrow-MOR'
 mes7::prod::whs_site: 'morplt'
@@ -19,26 +14,9 @@ resolv_conf::nameserver:
   - '10.10.48.23'
   - '10.20.103.6'
   - '10.240.3.6'
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvemor.sherwin.com:/data/col1/gsc_ora_backup_mor'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvemor.sherwin.com:/data/col1/gsc_ora_disaster_mor'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvemor.sherwin.com:/data/col1/gsc_oraremote_rw'
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvemor.sherwin.com:/data/col1/gsc_ora_backup_mor'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvemor.sherwin.com:/data/col1/gsc_ora_disaster_mor'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvemor.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvemor.sherwin.com:/data/col1/gsc_ora_backup_mor/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvemor.sherwin.com:/data/col1/gsc_ora_disaster_mor/%{::hostname}'
-  - '/global/tmp -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvemor.sherwin.com:/data/col1/gsc_ora_disaster_mor'
-
 
 
 access_conf::mes_dataguard: 'cgmormes1a.sherwin.com cgmormes1b.sherwin.com cgmormes1c.sherwin.com'
-
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvemor.sherwin.com:/data/col1/gsc_lnxremote_rw'
-
 
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum

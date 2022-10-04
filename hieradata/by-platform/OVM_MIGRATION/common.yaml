@@ -91,9 +91,7 @@ ovm_migration::private_network::conf: |
   TYPE=Ethernet
   MTU=9000
 
-#Install avamar client on all hosts.
-sw_util::wrapper::hiera_package::params:
-  - AvamarClient: {}
+
 
 # Directories and permissions for RAC nodes
 sw_util::wrapper::hiera_file::params:
@@ -114,13 +112,7 @@ sw_util::wrapper::hiera_file::params:
       mode: "644",
       notify: "Exec[Network_Watcher]"
     }
-  - /usr/local/avamar/exclude_list: { 
-      ensure: "file",
-      require: [ "Package[AvamarClient]" ],
-      owner: "root", 
-      group: "root" , 
-      mode: "644",
-    }
+
   - /swpkg/oracle/gridinfra: {owner: "oracle", group: "dba"}
   - /global/dd_backup: {owner: "oracle", group: "dba"}
   - /swpkg/oracle/gcagent: {owner: "oracle", group: "dba"}
@@ -144,8 +136,4 @@ sw_util::wrapper::hiera_exec::params:
       alias: "OracleUdevWatcher",
       refreshonly: true,
     }
-  - register_avamar_client: {
-      command: "/usr/local/avamar/etc/avagent.d register %{hiera('avamar::grid')} Corporate/Corp_Linux",
-      unless: "test -f /usr/local/avamar/var/cid.bin",
-      require: [ "Package[AvamarClient]" ],
-    }
+

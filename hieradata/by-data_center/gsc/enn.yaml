@@ -9,7 +9,7 @@ mes7::prod::mes_site_name: 'Ennis-110'
 mes7::prod::whs_site: 'ennplt'
 mes7::prod::whs_bar: 'EZ'
 
-avamar::grid: 'swavmcst.sherwin.com'
+
 
 resolv_conf::nameserver:
   - '10.10.171.89'
