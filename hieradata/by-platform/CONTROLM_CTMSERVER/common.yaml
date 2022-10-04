@@ -1,6 +1,7 @@
 classes:
   - sw_util::hiera_wrapper
   - sw_resource_realizer::package
+  - sw_resource_realizer::ulimit
   - sw_grusers::ctm_sched
 
 sw_resource_realizer::package:
@@ -10,6 +11,10 @@ sw_resource_realizer::package:
     ensure: 'installed'
   tcsh:
     ensure: 'installed'
+
+sw_puppet_resource_realizer::ulimit:content: >
+    ctm_sched    soft    core       10240
+    ctm_sched    soft    nofile     8192
 
 sw_util::wrapper::hiera_user::params:
   - ctmuser: {uid: 1017, home: "/swpkg/bmc", system: true, shell: "/bin/csh", password: "!!"}
