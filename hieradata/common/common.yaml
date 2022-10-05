@@ -21,7 +21,7 @@ classes:
 # el7 http://pulp.sherwin.com/pulp/repos/extra/cloudstrife/x86_64/7/latest/Packages/f/
 # el8 http://pulp.sherwin.com/pulp/repos/extra/cloudstrife/x86_64/8/latest/Packages/f/
 sw_os_update_management::redhat::falconversionlocks:
-  - "falcon-sensor-6.40.0-13706.el%{facts.operatingsystemmajrelease}.*"
+  - "falcon-sensor-6.44.0-14108.el%{facts.operatingsystemmajrelease}.*"
 ###########################################
 
 
