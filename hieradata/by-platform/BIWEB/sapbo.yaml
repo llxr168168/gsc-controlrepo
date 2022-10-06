@@ -1,0 +1,125 @@
+classes:
+  - sw_resource_realizer::ulimit
+  - sw_resource_realizer::sysctl
+  - sw_resource_realizer::package
+  - sw_resource_realizer::file
+  - sw_grusers::boweb
+
+sudo::sudoers_template: sudoers.busobj
+
+sw_resource_realizer::package:
+  libnsl:
+    ensure: 'installed'
+  libnsl.i686:
+    ensure: 'installed'
+  libxcrypt.i686:
+    ensure: 'installed'
+  xz-libs.i686:
+    ensure: 'installed'
+  libstdc++.i686:
+    ensure: 'installed'
+  expat.i686:
+    ensure: 'installed'
+  libXcursor.i686:
+    ensure: 'installed'
+  libXcursor.x86_64:
+    ensure: 'installed'
+  samba-client:
+    ensure: 'installed'
+  cifs-utils:
+    ensure: 'installed'
+
+sw_puppet_resource_realizer::ulimit:content: >
+    boweb            soft    nofile          131072
+    boweb            hard    nofile          131072
+    boweb            soft    nproc           131072
+    boweb            hard    nproc           131072
+    boweb            soft    core            unlimited
+    boweb            hard    core            unlimited
+    boweb            soft    stack           10240
+    boweb            hard    stack           32768
+ 
+sw_resource_realizer::file:
+  /swpkg/busobj:
+    ensure: 'directory'
+    owner: 'boweb'
+    group: 'boweb'
+    mode : '755'
+
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+sw_util::wrapper::hiera_package::params:
+- samba-client-libs: {}
+- libarchive: {}
+- samba: {}
+- samba-common: {}
+- samba-common-libs: {}
+- samba-libs: {}
+- samba-winbind: {}
+- samba-common-tools: {}
+- samba-client: {}
+
+sw_util::wrapper::hiera_file::params:
+  - /etc/samba/smb.conf: {
+  ensure: "file",
+  content: "BIWEB::smb_conf",
+  owner: "root", 
+  group: "root",
+  mode: "655",
+  }  
+
+sw_resource_realizer::service:
+  winbind:
+    ensure: 'running'
+    enable: true
+
+
+BIWEB::smb_conf: |
+  # File controlled by puppet BIWEB platform common.yaml 
+
+  [global]
+        client ipc signing = auto
+        workgroup = SW
+        realm = SW.SHERWIN.COM
+        server string = Samba Server Version %v
+        security = ADS
+        log file = /var/log/samba/log.%m
+        max log size = 50
+        template shell = /bin/bash
+        encrypt passwords = yes
+        winbind use default domain = no
+        winbind offline logon = no
+        idmap config * : backend = hash
+        idmap config * : range = 10000-4000000000
+        map to guest = Never
+        load printers = no
+        printing = bsd
+        printcap name = /dev/null
+        restrict anonymous = 2
+        wide links = no
+        log level = 5
+        
+  [tomcat]
+  comment = tomcat
+  valid users = @gg-adm-gcdunix @gg-cgit-busobj-adm
+  path = /swpkg/busobj/
+  force user = boweb
+  writable = yes
+  create mask = 2770
+  directory mask = 2770
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-busobj-adm):ALL'  
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '-:ALL:ALL'
+
+
+
