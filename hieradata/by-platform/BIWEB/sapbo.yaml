@@ -23,8 +23,6 @@ sw_resource_realizer::package:
     ensure: 'installed'
   libXcursor.x86_64:
     ensure: 'installed'
-  samba-client:
-    ensure: 'installed'
   cifs-utils:
     ensure: 'installed'
 
