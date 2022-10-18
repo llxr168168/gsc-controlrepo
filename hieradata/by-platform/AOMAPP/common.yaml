@@ -31,6 +31,7 @@ access_conf::access:
   - '+:imess:cgimi1.sherwin.com'
   - '+:ediftpc:ALL'  
   - '+:webdeploy:ALL'  
+  - '+:sftpbpm:ALL'   
   - '+:etrac:LOCAL'
   - '+:aomapp:LOCAL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
