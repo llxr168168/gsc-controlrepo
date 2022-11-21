@@ -963,3 +963,8 @@ mod 'sw_puppet_prisma_agent',
 mod 'sw_puppet_pimastartup',
   :git => 'git@github.sherwin.com:SW-CORP-IT/sw_puppet_pimastartup.git',
   :ref => 'master'
+
+mod 'rundeck_ssh_test',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/rundeck_ssh_test.git',
+ :ref => 'master'
+
