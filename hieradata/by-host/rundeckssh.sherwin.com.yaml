@@ -1,0 +1,5 @@
+classes:
+  - rundeck_ssh_test
+rundeck_ssh::sshd_enable: false
+rundeck_ssh_test::sshd_enable: true
+
