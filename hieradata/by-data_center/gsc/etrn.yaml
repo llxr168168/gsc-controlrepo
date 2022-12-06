@@ -1,0 +1,14 @@
+#Classes for this site
+#Site Specific overrides
+
+
+resolv_conf::nameserver:
+  - '10.12.31.133'
+  - '10.20.103.6'
+  - '10.240.3.6'
+
+yum::yum_repo_file: international.yum
+sw_os_update_management::redhat::yum_repo_file: international.yum
+tz::region: 'Europe'
+tz::locality: 'Paris'
+site_code: etrn
