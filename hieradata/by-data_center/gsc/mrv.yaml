@@ -19,25 +19,12 @@ dnsmasq_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
 
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvemrv.sherwin.com:/data/col1/gsc_ora_backup_mrv'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvemrv.sherwin.com:/data/col1/gsc_ora_disaster_mrv'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvemrv.sherwin.com:/data/col1/gsc_oraremote_rw'
 
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvemrv.sherwin.com:/data/col1/gsc_ora_backup_mrv'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvemrv.sherwin.com:/data/col1/gsc_ora_disaster_mrv'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvemrv.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvemrv.sherwin.com:/data/col1/gsc_ora_backup_mrv/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvemrv.sherwin.com:/data/col1/gsc_ora_disaster_mrv/%{::hostname}'
-  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddvemrv.sherwin.com:/data/col1/gsc_ora_disaster_mrv'
 
 
 access_conf::awcs_dataguard: 'cgmrvawcs1a.sherwin.com cgmrvawcs1b.sherwin.com cgmrvawcs1c.sherwin.com'
 
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvemrv.sherwin.com:/data/col1/gsc_lnxremote_rw'
+
 
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum
