@@ -23,23 +23,11 @@ resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
   
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveflo.sherwin.com:/data/col1/gsc_ora_backup_flo'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveflo.sherwin.com:/data/col1/gsc_ora_disaster_flo'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveflo.sherwin.com:/data/col1/gsc_oraremote_rw'
 
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveflo.sherwin.com:/data/col1/gsc_ora_backup_flo'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddveflo.sherwin.com:/data/col1/gsc_ora_disaster_flo'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveflo.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddveflo.sherwin.com:/data/col1/gsc_ora_backup_flo/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddveflo.sherwin.com:/data/col1/gsc_ora_disaster_flo/%{::hostname}'
-  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddveflo.sherwin.com:/data/col1/gsc_ora_disaster_flo'
 
 
 
 profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddveflo.sherwin.com:/data/col1/gsc_lnxremote_rw'
   - '/swdata/nfs/cgflona1a_root -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgflona1a.consumer.sherwin.com:/vol/vol0'
   - '/swdata/nfs/cgflona1b_root -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgflona1b.consumer.sherwin.com:/vol/vol0'
 
