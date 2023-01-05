@@ -27,7 +27,7 @@ access_conf::access:
   - '+:(gg-cgit-edi-admins):ALL'  
   - '+:(gg-cgit-edi-users):ALL'  
   - '+:(gg-app-etl-admin):ALL'
-  - '+:imess:cgimi1.sherwin.com'
+  - '+:imess:ALL'
   - '+:ediftpc:ALL'  
   - '+:webdeploy:ALL'  
   - '+:sftpbpm:ALL'   
