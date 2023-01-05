@@ -8,3 +8,5 @@ mes7::dev::whs_bar: 'MP,WC,HL,MH,NF,CR,LG,BE,CC,PX,DB,HA,LM,BR,JF,XM,AT,RK,ER,AD
 oracle_build7::kernel::vm_nr_hugepages: 4608
 
 mes7::dev::mes_httpd_conf: 'mes.db02a.conf'
+
+access_conf::mes_dataguard: 'cgmesdb02a.sherwin.com cgmesdb02b.sherwin.com'
