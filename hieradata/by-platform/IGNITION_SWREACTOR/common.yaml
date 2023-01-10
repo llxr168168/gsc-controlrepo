@@ -13,6 +13,7 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-watson):ALL'
   - '+:(gg-swbatch-gscdeveloper):ALL'
   - '+:(gg-adm-gsc-emea-engineering):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
