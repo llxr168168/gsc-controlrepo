@@ -1,5 +1,6 @@
 classes:
   - awcs7::dev
+  - sw_grusers::awcsrsync
   
 awcs7::dev::awcs_alias: 'awcsdb17'
 
