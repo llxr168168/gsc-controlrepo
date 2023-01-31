@@ -1,2 +1,0 @@
-resolv_conf::domain: 'sherwin.com'
-resolv_conf::search: 'sherwin.com sw.sherwin.com'
