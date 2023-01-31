@@ -1,6 +1,0 @@
-classes:
-  - profiles_unix::gsc::apps::mysqlserver
-  
-sudo::sudoers_template: sudoers.sql
-
-postfix::enabled: 'true'
