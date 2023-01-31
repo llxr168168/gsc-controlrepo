@@ -44,7 +44,7 @@ sw_resource_realizer::file:
     mode : '755'
 
 
-#profiles_unix::gsc::base::auth::sssd_auth: 'true'
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
 
 sw_util::wrapper::hiera_package::params:
 - samba-client-libs: {}
