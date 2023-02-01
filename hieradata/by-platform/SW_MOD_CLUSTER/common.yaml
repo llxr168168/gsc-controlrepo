@@ -1,0 +1,2 @@
+#Sudoers file to use
+sudo::sudoers_template: 'sudoers.webeng'

@@ -1,0 +1,60 @@
+# by-platform -> POSTGRES -> common.yaml
+
+
+classes:
+  - sw_util::hiera_wrapper
+
+# Setting sw_util parameters
+sw_util::module_param::bool_exec_augeas_kernel: true
+sw_util::module_param::bool_exec_augeas_limits: true
+sw_util::module_param::bool_exec_audit: false
+
+
+sudo::sudoers_template: sudoers.postgres
+
+
+# Kernel Security Parameters
+sw_util::augeas::lnx_sysctl::params:
+  - "net.ipv6.conf.all.disable_ipv6 1"
+  - "net.ipv6.conf.default.disable_ipv6 1"
+  - "net.ipv4.conf.default.send_redirects 0"
+  - "net.ipv4.conf.all.send_redirects 0"
+  - "net.ipv4.ip_forward  0"
+  - "net.ipv4.conf.all.accept_source_route  0"
+  - "net.ipv4.conf.all.accept_redirects  0"
+  - "net.ipv4.conf.all.secure_redirects  0"
+  - "net.ipv4.conf.all.log_martians  1"
+  - "net.ipv4.conf.default.accept_redirects  0"
+  - "net.ipv4.conf.default.secure_redirects  0"
+  - "net.ipv4.icmp_echo_ignore_broadcasts  1"
+  - "net.ipv4.icmp_ignore_bogus_error_responses  1"
+  - "net.ipv4.conf.all.rp_filter  1"
+  - "net.ipv6.conf.default.accept_redirects  0"
+  - "kernel.randomize_va_space  2"
+  - "kernel.exec-shield  1"
+
+
+custom_postgres_repo: |
+  [Postgres_9.5_Comm]
+  name=Postgres 9.5 Community Edition
+  baseurl=http://cplnxrepo1.sherwin.com/pulp/repos/custom/db/pg/x86_64/7/2/
+  enabled=1
+  gpgcheck=0
+
+
+sw_util::wrapper::hiera_file::params:
+  - /etc/yum.repos.d/pg.repo: {ensure: "file", content: "custom_postgres_repo", owner: "root", group: "root" , mode: "644"}
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-postgres):ALL'
+  - '+:(gg-adm-scan):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'
+
+

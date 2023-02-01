@@ -1,0 +1,191 @@
+
+#Assume every control-m box has at least an v9 agent
+classes:
+  - sw_util::hiera_wrapper
+
+sw_util::module_param::bool_exec_augeas_kernel: true
+sw_util::module_param::bool_exec_augeas_limits: true
+
+sw_util::augeas::lnx_sysctl::params:
+  - "net.ipv4.ip_forward 0"
+  - "net.ipv4.conf.default.rp_filter 1"
+  - "net.ipv4.conf.default.accept_source_route 0"
+  - "kernel.sysrq 0"
+  - "kernel.core_uses_pid 1"
+  - "net.ipv4.tcp_syncookies 1"
+  - "kernel.msgmnb 65536"
+  - "kernel.msgmax 65536"
+  - "kernel.shmall 8600000000"
+  - "kernel.shmmax 8600000000"
+  - "kernel.shmmni 4096"
+  - "kernel.sem 250 32000 100 1000"
+  - "fs.file-max 65536"
+  - "net.ipv4.ip_local_port_range 32768 61000"
+  
+sw_util::augeas::ulimit::params:
+  topic: domain
+  context: /files/etc/security/limits.conf
+  index:
+    - { domain: ctmuser, type: soft, item: nofile, value: 131072 }
+    - { domain: ctmuser, type: hard, item: nofile, value: 131072 }
+    - { domain: ctmuser, type: soft, item: nproc, value: 131072 }
+    - { domain: ctmuser, type: hard, item: nproc, value: 131072 }  
+    - { domain: ctmuser, type: soft, item: core, value: unlimited }  
+    - { domain: ctmuser, type: hard, item: core, value: unlimited }  
+  
+  
+  
+sw_util::wrapper::hiera_file::params:
+  - /swpkg/bmc: {
+      ensure: "directory", 
+      owner: "ctmuser", 
+      group: "ctmuser" , 
+      mode: "700"
+    }
+  - /etc/init.d/ctm_server: {
+      ensure: "file",
+      content: "controlm_v9::rc_ctm_server",
+      owner: "root", 
+      group: "root",
+      mode: "755",
+    }
+  - /etc/init.d/ctm_agent: {
+      ensure: "file",
+      content: "controlm_v9::rc_ctm_agent",
+      owner: "root", 
+      group: "root",
+      mode: "755",
+    }  
+
+sw_util::wrapper::hiera_service::params:
+  - ctm_server: {}
+  - ctm_agent: {}
+
+
+
+controlm_v9::rc_ctm_agent: |
+    #!/bin/sh
+    # chkconfig: 2345 98 2
+    # description: Script for starting and stopping Control-M Agent
+    
+    prog=ctm_agent
+    
+    # CTM user home directory
+    CTMHOME=~ctmuser
+    
+    # Path to the CTM scripts
+    CTMBASE=$CTMHOME/ctm_agent/scripts;       export CTMBASE
+    
+    case $1 in
+    
+    start_msg)
+            echo "Starting Control/M Agent."
+            ;;
+    
+    stop_msg)
+            echo "Stopping Control/M Agent."
+            ;;
+    
+    'stop')
+    
+      su - ctmuser -c "$CTMHOME/ctm_agent/ctm/scripts/shut-ag -u ctmuser -p ALL"
+      if [ $? -eq 0 ]; then
+        rm -f /var/lock/subsys/$prog
+      fi
+            ;;
+    
+    'start')
+      [ -f /var/lock/subsys/$prog ] && exit
+    
+    
+      # Issue the agent shutdown to clean up the lock file and any other voodoo that
+      # might be required.  We do this just in case the last shutdown was non-clean;
+      # otherwise, the agent won't start.
+    
+      su - ctmuser -c "$CTMHOME/ctm_agent/ctm/scripts/shut-ag -u ctmuser -p ALL"
+    
+      # Start the agent normally
+      su - ctmuser -c "$CTMHOME/ctm_agent/ctm/scripts/start-ag -u ctmuser -p ALL"
+      if [ $? -eq 0 ]; then
+        touch /var/lock/subsys/ctm_agent
+      fi
+    
+      su - ctmuser -c ag_diag_comm
+    
+      ;;
+    
+    esac
+    #- EOF
+
+
+
+controlm_v9::rc_ctm_server: |
+  #!/bin/sh
+  # chkconfig: 2345 99 1
+  # description: Script for starting and stopping Control-M, its Configuration \
+  #     Agent, and Database.
+  
+  # CTM user home directory
+  CTMHOME=~ctmuser
+  
+  # Path to the CTM scripts
+  CTMBASE=$CTMHOME/ctm_server/scripts;       export CTMBASE
+  
+  prog=ctm_server
+  
+  case $1 in
+  
+  start_msg)
+          echo "Starting Control/M PostgreSQL Database and Server."
+          ;;
+  
+  stop_msg)
+          echo "Stopping Control/M PostgreSQL Database and Server."
+          ;;
+  
+  'stop')
+  	su - ctmuser -c $CTMBASE/shut_ctm
+  	if [ $? -ne 0 ]; then
+  		echo "error! Failed to run shut_ctm"
+  		exit
+  	fi
+  
+  	su - ctmuser -c $CTMBASE/shut_ca
+  	if [ $? -ne 0 ]; then
+  		echo "error! Failed to run shut_ca"
+  		exit
+  	fi
+  
+  	su - ctmuser -c $CTMBASE/shutdb
+  	if [ $? -ne 0 ]; then
+  		echo "error! Failed to run shutdb"
+  		exit
+  	fi
+  
+  	rm -f /var/lock/subsys/$prog
+  
+  
+          ;;
+  
+  'start')
+  	[ -f /var/lock/subsys/$prog ] && exit
+  
+  	su - ctmuser -c $CTMBASE/startdb
+  
+  	echo "sleeping for 5 seconds..."
+  	sleep 5
+  
+  	su - ctmuser -c $CTMBASE/start_ca
+  
+  	su - ctmuser -c $CTMBASE/start_ctm
+  
+  	su - ctmuser -c ctm_diag_comm << EOF
+  	`uname -n`
+  EOF
+  
+  	touch /var/lock/subsys/$prog
+          ;;
+  
+  esac
+  #- EOF
+

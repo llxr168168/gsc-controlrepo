@@ -1,0 +1,4 @@
+---
+#### Include Classes
+classes:
+- profiles_gfg::mosaic::ci_server

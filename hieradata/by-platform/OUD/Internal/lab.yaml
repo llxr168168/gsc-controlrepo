@@ -1,0 +1,42 @@
+
+# OUD Administrator Password.  
+#oud_admin_passwd: 'secret'
+oud_admin_passwd: '{SHA}5en6G6MezRroT3XKqkdPOmY/BfQ='
+
+pswdfile_value: 'secret'
+
+oud_console::weblogic_passwd: 'welcome1'
+
+# WebSphere Commerce password (lab=wcs123)
+wcs_user_passws: '{SHA}L8MInmibFUH7XzvE4PgUj7e1muw='
+
+# OUD Java
+oud_local_jvm: '/sw/pkg/java/jdk1.7.0_111'
+profiles_webeng::default::java_name: 'jdk-7u111'
+profiles_webeng::default::java_source: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/oracle/java/jdk-7u111-linux-x64.tar.gz'
+
+
+# ###############
+# List of Groups for SoftLayer nodes.
+softlayer_os_groups: |
+  # Needed for vagrant-local development.
+  +:vagrant:ALL
+  
+  # Need to allow ROOT from ALL for OUD Nodes.
+  # In case OUD LDAPs are not available.
+  +:root:ALL
+  
+  # Groups Allowed Access.
+  +:(osadmin):ALL
+  +:(security):ALL  
+  +:(oudadmin):ALL
+  # Allow crontab for oudadm
+  +:oudadm:cron crond:0 
+
+# ###############    
+# Sudoers.d configuration (additive because its a hieradata array).  
+softlayer_sudo::configs:       
+    'oudadmin':
+        'content'   : "%oudadmin ALL=(ALL) PASSWD: ALL"
+        'priority'  : 15
+        

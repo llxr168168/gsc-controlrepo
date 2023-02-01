@@ -1,0 +1,52 @@
+
+# OUD Administrator Password.  
+oud_admin_passwd: '{SHA}Slqp753zM/yFPoBZxsJiVBL9798='
+
+pswdfile_value: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAVYh5JK7eatUWzDcp7ANMsDVEPejKhlNA1ZVd
+    AVvnbzWFkQztWM36tP21nRks/Wb/LpmGel6RQWWUZcha+gnTDRAoBQ2W1DiK
+    7NuzRanJvPbJy79LYDl36VnwG9uqvfeixhrC9D+FtDxMVIuEjRZg4saQgvQ7
+    hMXYEG8aCa24Zfft2C2WwqfD5YvaeW5GM4WHcTFJ3Rxk2yqLcSwr+vObsqoA
+    Bd1PecTe+2izu3r0CjhJMoGBZhWtdQ0xJaxZF5Vr+7hFRoq3bh3zq4hjqSJH
+    kV5nC4vHyeIEGgOtZnQO2dOKAlN3ocVrwxozocW92yFabWIoTbVHUqN/QJX7
+    Df/JhTA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBQ2j27pd7YGeDITRSd
+    OK/0gBDozhRd1bMpJR2CghbnYTuL]
+
+oud_console::weblogic_passwd: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAcAB0MpGyyXY7TU9iOMd869PZdYiv1F2ypb9x
+    Emj6h+H0+eKWlp8DOrKea7H0cR6cxktc4Y9ZVjEiaYfWSzBoAAkbe8Pc4RmF
+    ZFZCntO42/bV2DjrjlYR5GPrRV4UrigMytpTHyWN6DUqlJEEthpbtDTLgj3f
+    sVBCLwb4bqFJ6TZDQJVUwiP+IwEVMDdreaAL6vJyo4SctOaI/feBjy57wbNL
+    39b+Lu7Z7bQOeeorsvfV/0mGKAHmRzZbAq4m2LUzCUJLik/lFW6XJltHTfsc
+    jZXtBBT9XaOqdYuz/pZl6cwW+tv4OuAqXjZLHJ1HEr19Wf90zNWx4J1a4JqF
+    XBBdHzA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDyQR/1LleE/a+5PrGo
+    EAsogBCbxQw6r0gZ5jsLHPvKykIK]
+
+# WebSphere Commerce password 
+wcs_user_passws: '{SHA}B4kExrAIRh3AAmekv8X7gQvHlGs='
+
+# Define JDK location (Java_Home) for OUD processes.
+oud_local_jvm: '/sw/pkg/java/jdk1.7.0_111'
+profiles_webeng::default::java_name: 'jdk-7u111'
+profiles_webeng::default::java_source: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/oracle/java/jdk-7u111-linux-x64.tar.gz'
+
+
+# ###############
+# List of Groups for SoftLayer nodes.
+softlayer_os_groups: |
+  # Groups Allowed Access.
+  +:(osadmin):ALL
+  +:(security):ALL  
+  +:(oudadmin):ALL
+  # Allow crontab for oudadm
+  +:oudadm:cron crond:0 
+
+# ###############    
+# Sudoers.d configuration (additive because its a hieradata array).  
+softlayer_sudo::configs:       
+    'oudadmin':
+        'content'   : "%oudadmin ALL=(ALL) PASSWD: ALL"
+        'priority'  : 15
+   

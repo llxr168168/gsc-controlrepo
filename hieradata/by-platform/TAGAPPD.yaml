@@ -1,0 +1,55 @@
+sw_util::wrapper::hiera_package::params:
+  - ftp: {}
+
+classes:
+  - autofs
+  
+sw_util::wrapper::hiera_group::params:
+  - ccn: { gid: "1016" }
+  - fldprrpt: { gid: "1017" }
+  - stordrft: { gid: "1018" }
+  - banking: { gid: "1019" }
+  
+sw_util::wrapper::hiera_user::params:
+  - ccn: { uid: 1016, gid: 1016, groups: ["sa-local"], home: "/swdata/tag/ccn/home", system: true, shell: "/bin/bash" }
+  - fldprrpt: { uid: 1017, gid: 1017, groups: ["sa-local"], home: "/swdata/tag/fldprrpt/home", system: true, shell: "/bin/bash" }
+  - stordrft: { uid: 1018, gid: 1018, groups: ["sa-local"], home: "/swdata/tag/stordrft/home", system: true, shell: "/bin/bash" }
+  - banking: { uid: 1019, gid: 1019, groups: ["sa-local"], home: "/swdata/tag/banking/home", system: true, shell: "/sbin/nologin" }
+  
+autofs::nfs_maps:
+  - '/swdata/tag/ccn/home -rw,vers=3,addr=10.148.12.18 nafgps01rw-nfs01.sherwin.com:/ST_cnn_app_nonprd'
+  - '/swdata/tag/stordrft/home -rw,vers=3,addr=10.148.12.18 nafgps01rw-nfs01.sherwin.com:/ST_app_ccnfpr_qa'
+  - '/swdata/tag/banking/home -rw,vers=3,rsize=65536,wsize=65536,bg,hard,addr=10.148.12.18 nafgps01rw-nfs01:/ST_ccn_dev'
+  - '/swdata/tag/fldprrpt/home -rw,vers=3,addr=10.148.12.18 nafgps01rw-nfs01:/ST_fldprrpt_devqa '
+
+sw_util::wrapper::hiera_file::params:
+  - /swdata/tag/banking: {
+      ensure: "directory", 
+      owner: "banking", 
+      group: "banking" , 
+      mode: "700"
+    }
+  - /swdata/tag/ccn: {
+      ensure: "directory", 
+      owner: "ccn", 
+      group: "ccn" , 
+      mode: "700"
+    }
+  - /swdata/tag/fldprrpt: {
+      ensure: "directory", 
+      owner: "fldprrpt", 
+      group: "fldprrpt" , 
+      mode: "700"
+    }
+  - /swdata/tag/stordrft: {
+      ensure: "directory", 
+      owner: "stordrft", 
+      group: "stordrft" , 
+      mode: "700"
+    }
+    
+    
+sudo::sudoers_d_template: 'ctm_agent'
+
+sw_util::wrapper::hiera_user::params:
+  - ctmuser: {uid: 1015, home: "/swpkg/bmc", system: true, shell: "/bin/csh", password: "!!"}

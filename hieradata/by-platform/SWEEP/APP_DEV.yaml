@@ -1,0 +1,32 @@
+# by-platform -> SWEEP -> APP_DEV.yaml
+# Applicaiton developemnt and deployment platform domain for Stores Sweep development.
+
+sw_util::wrapper::hiera_group::params:
+  - sweep: { gid: "1026" }
+
+sw_util::wrapper::hiera_user::params:
+  - sweep: { uid: 1026, gid: 1026, home: "/home/sweep", groups: ["sa-local", "tty" ], system: false, managehome: true}
+
+
+
+
+sw_util::wrapper::hiera_package::params:
+  - git: {}
+  # Applicatiion integration team requires multiple versions of java jdk
+  - jdk: { ensure: "1.6.0_45" }
+  - jdk1.8.0_92: { ensure: "1.8.0_92" }
+  - jenkins: {}
+  - nodejs: { ensure: "6.9.4" }
+
+
+
+
+sw_util::wrapper::hiera_file::params:
+  - /swdata/jenkins: {owner: "jenkins", group: "jenkins"}
+
+
+
+sw_util::wrapper::hiera_file_line::params:
+   - set_jenkins_home: { path: "/etc/sysconfig/jenkins", match: "^JENKINS_HOME", line: "JENKINS_HOME=\"/swdata/jenkins\"" }
+  
+

@@ -1,0 +1,31 @@
+# We don't have a class setup yet for this server
+classes:
+  - sw_mod_cluster
+
+sw_mod_cluster::SSLCertificateFile: 'stores-sherwin-wildcard.crt'
+sw_mod_cluster::SSLCertificateKeyFile: 'STAR_sherwin_com-2048.key'
+sw_mod_cluster::SSLCertificateChainFile: 'STAR_sherwin_Com_Entrust_Bundle.pem'
+sw_mod_cluster::SSLCACertificateFile: 'STAR_sherwin_Com_Entrust_Bundle.pem'
+sw_mod_cluster::configFile: 'mod_cluster.stores.prod.erb'
+sw_mod_cluster::ServerAlias: 'sweep.sherwin.com sherlink.sherwin.com cpapp1.sherwin.com cpapp2.sherwin.com posweb.sherwin.com smis.sherwin.com microstrategy.sherwin.com shercolor.sherwin.com'
+sw_mod_cluster::MaxNode: '500'
+sw_mod_cluster::MaxHost: '500'
+sw_mod_cluster::MaxContext: '600'
+sw_mod_cluster::sw_log_level: 'warn'
+
+
+
+sudo::sudoers_template: 'sudoers.apache24'
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-corp-unix):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-solutions-delivery):ALL'
+  - '+:(gg-adm-webeng_linux):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '-:ALL:ALL'

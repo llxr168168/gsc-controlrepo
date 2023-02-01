@@ -1,0 +1,49 @@
+classes:
+  - awcs_pickcart
+  - sw_util::hiera_wrapper
+    
+samba::shares:
+  logs:
+    - 'comment = Logs'
+    - 'valid users = ipti'
+    - 'path = /swpkg/ipti/logs'
+    - 'force user = ipti'
+    - 'writable = no'
+  csv:
+    - 'comment = CSV'
+    - 'valid users = ipti'
+    - 'path = /swpkg/ipti/csv'
+    - 'force user = ipti'
+    - 'writable = yes'
+
+awcs_pickcart::ipti_vncpasswd: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAcs7p7amh1qixLB+8C8dOYxRkrR0w6O6mBd7d
+    1DixVHWROX4ycC1koXrQD9FJkHDkMzUBZAoCEc+whuMsuGfuE9KOHuYtBjdA
+    3nZqQC88uYIPhl/MmLzKIQGG2UhIFWHdf80+0oMLjnIrY+oNl5rDHMj/89vO
+    4znk7a60CbDD/WkQk/itgSERJ6dN30yafwNL+dg0/xC6haKXxVm5aYOXjdCe
+    vEYIjDhN055S3TE+31DAq9bimzBxTFele8JsFkTbfTFwqFJZm85aLnYHMmBg
+    W12/7SPgQlD42xjLZe/mFUyjcpJzb/BeF+7gJmuLYARay3br6cosl1Eow2Oj
+    Pdi0GTA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBB/K4JNs7LvK+1AkEya
+    knewgBBA8fK7eL1OcDWCozp7WwlH]
+    
+sudo::sudoers_template: sudoers.awcs_pickcart
+
+sw_util::wrapper::hiera_file::params:
+  - /etc/logrotate.d/ipti_vnc: {
+      ensure: "file",
+      owner: "root",
+      group: "root",
+      content: "AWCS_PICKCART::logrotate_file",
+      mode: "644"
+    }
+    
+AWCS_PICKCART::logrotate_file: |
+  ###PUPPET Managed file AWCS_PICKCART::logrotate_file
+  /home/ipti/.vnc/*.log {
+        nodateext
+        monthly
+        copytruncate
+        rotate 6
+        compress
+  }

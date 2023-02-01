@@ -1,0 +1,31 @@
+yum::yum_repo_file: 'swrepo.yum'
+# OUD Administrator Password.  
+oud_admin_passwd: '{SHA}iD9/QOdw2yVnLTBiY1PMTO9fiAc='
+
+pswdfile_value: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAEqt7SV3Gh7MyN57s5CO58M+2rAOyjiVgpVrV
+    40dxP9ukcxme7wUTBktqnCqX88la/AKhyUIV8abp6wIS9kcTtfSzynchlzFT
+    Evfh0bdKScQusxLnlSMNU+e7vtuXiagmI1SoWpsryKWQi/ekLRC6gbt/cjF1
+    NM6I1WeZ14FppTndGtkopMDbQZ3uzdexAuZokKm+5+N2aeS1HTzn9ZyjoKoY
+    SshNAcpvaF/OCp/qnfqRvq4w2F3ZRqcp6YQ1SjlMYdnBky/x5vKzASx3U8SQ
+    iQ+96gT1zSs7L/GAEYloyVdhygSllqkbSqxlgXGQ0chldLqLq1vfcRIouqrV
+    xwYnYTA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBtkDWE/y8qf8pvvDd1
+    7xDsgBCKS1c0LObOtybvIxGx7o/D]
+
+oud_console::weblogic_passwd: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAJ89DMhDjrtyPYMyo48r++aAFTr2TEQvUb0Ci
+    vbHA0YKhaDLib03fzRfpp5n6QQ+Pgf/om/Icl8v0otxGZ48tsKM5ln3AP2h5
+    1PwRSkDf4UqKGc8SgrCs505l+iebv3sZ4YvyeARHPBkWuiT3kAFPo/XOyLt+
+    /Nenf8PyN0eVkYpboSw3Vm8Wm81M51A56Wbz+im+EVfaRDc5smaoUbBrkxzE
+    AQJ29g6fYULclDJ7nab5HeDMDsq/pfX85EzeH27A94di95C5c5FtI3B1ANQE
+    TXJ9LwKpLfr0q+R9Z+z7EO5fNjnYtYDSqhHXXsLzuCrn5Zlq1fu+MTJFL2Pq
+    uPshjzA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBwB9D4/d+7sYslsewh
+    K3IQgBD5xdYGegU72orOhiSdJRwS]
+
+# Define JDK location (Java_Home) for OUD processes.
+oud_local_jvm: '/sw/pkg/java/jdk1.7.0_111'
+profiles_webeng::default::java_name: 'jdk-7u111'
+profiles_webeng::default::java_source: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/oracle/java/jdk-7u111-linux-x64.tar.gz'
+
