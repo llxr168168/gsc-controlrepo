@@ -1,0 +1,39 @@
+profiles_unix::gsc::base::auth::sssd_auth: 'true' 
+samba::shares:
+  ignition:
+    - comment = Ignition
+    - valid users = @SW\gg-adm-gcdunix @SW\gg-cgit-watson
+    - path = /swpkg/ignition
+    - force user = ignition
+    - writable = yes
+    - create mask = 2770
+    - directory mask = 2770
+  backups:
+    - comment = backups
+    - valid users = @SW\gg-adm-gcdunix @SW\gg-cgit-watson
+    - path = /swdata/ignition
+    - force user = ignition
+    - writable = yes
+    - create mask = 2770
+    - directory mask = 2770
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - "+:sa-indapps-devopsadm:10.148.19.50 10.148.5.225 10.148.38.91"
+  - '+:ignition:LOCAL cgwatsondr.consumer.sherwin.com'
+  - '+:zabbix:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-watson):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
+  - '-:ALL:ALL'
+
+classes:
+  - profiles_unix::gsc::apps::ignition_app
+  - sw_ignition
+
+hosts::hosts_group: ignition
