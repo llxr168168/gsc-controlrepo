@@ -1,0 +1,12 @@
+classes:
+  - sw_docker_3_8::node
+
+
+
+sw_docker_3_8::node::log_server: 'udp://qaelkstack.sherwin.com:514'
+
+
+docker::registry_auth::registries:
+  'docker.cpartdc01.sherwin.com':
+    username: 'sa-rancher-nonprod'
+    password: 'sa-rancher-nonprod4builds'

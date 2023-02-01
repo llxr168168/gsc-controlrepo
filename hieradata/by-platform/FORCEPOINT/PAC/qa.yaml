@@ -1,0 +1,156 @@
+# by-platform -> FORCEPOINT -> PAC -> qa.yaml
+
+# Managed Content
+
+forcepoint::pac::domestic_pac_new: |
+  /*
+      Puppet Managed File
+      by-platform->FORCEPOINT->PAC->qa.yaml
+      forcepoint::pac::domestic_pac
+  */
+
+  //Owner: Sherwin Williams Information Security
+  //Contact: infosecuritygroup@sherwin.com
+  //Date Modified: 20180613
+  //Change Description: Updated to correct JavaScript interpretation issue with capital letters and Tax Web Application
+
+
+  function FindProxyForURL(url, host) {
+
+  //Standardize input
+  url = url.toLowerCase();
+  host = host.toLowerCase();
+
+  //Variables
+  var proxy = "PROXY proxy.proxysherwin.com:8080; PROXY proxy.proxysherwin.com:8080";
+  var hostIP = dnsResolve(host);
+
+  //Short names. Send direct
+  if (isPlainHostName(host)) {
+  return 'DIRECT';
+  }
+
+  //Sherwin sites that must be proxied
+  if (shExpMatch(host,"*swmdm.sherwin.com") ||
+  shExpMatch(host,"*akamai*.sherwin-williams.com") ||
+  shExpMatch(host,"*remedy.sherwin.com") ||
+  shExpMatch(host,"*remedy-qa.sherwin.com") ||
+  shExpMatch(host,"*remedy-dev.sherwin.com") ||
+  shExpMatch(host, "*reviews.sherwin-williams.com") ||
+  shExpMatch(host, "*itremote.sherwin.com")) {
+  return proxy;
+  }
+
+  //Sites that need to be proxied on Legacy VPN Architecture
+  //Add only when other options are exhausted
+  if ((shExpMatch(url,"*vportal.sherwin.com*") ||
+  shExpMatch(url,"*ipsportal*.sherwin.com*") ||
+  shExpMatch(url,"*192.168.11*")) &&
+  (isInNet(myIpAddress(), "10.200.4.0", "255.255.252.0") ||
+  isInNet(myIpAddress(), "10.100.100.0", "255.255.252.0") ||
+  isInNet(myIpAddress(), "10.100.104.0", "255.255.252.0") ||
+  isInNet(myIpAddress(), "10.100.108.0", "255.255.252.0") ||
+  isInNet(myIpAddress(), "10.100.112.0", "255.255.252.0"))) {
+  return proxy;
+  }
+
+  //Internal and special hosts. These should not be proxied
+  if (isInNet(hostIP, '10.0.0.0', '255.0.0.0') ||
+  isInNet(hostIP, '127.0.0.0', '255.0.0.0') ||
+  isInNet(hostIP, '169.254.0.0', '255.255.0.0') ||
+  isInNet(hostIP, '172.16.0.0', '255.240.0.0') ||
+  isInNet(hostIP, '192.168.0.0', '255.255.0.0') ||
+  isInNet(hostIP, '224.0.0.0', '240.0.0.0') ||
+  isInNet(hostIP, '240.0.0.0', '240.0.0.0') ||
+  isInNet(hostIP, '148.141.0.0', '255.255.0.0')) {
+  return 'DIRECT';
+  }
+
+  //Legacy - Do not proxy Sherwin sites
+  if (shExpMatch(host,"*.sherwin.com") ||
+  shExpMatch(host,"*.sherwin-williams.com") ||
+  shExpMatch(host,"*.mysherwin.com") ||
+  shExpMatch(host,"*.sherprocure.com") ||
+  shExpMatch(host,"*.swaerospace.com") ||
+  shExpMatch(host,"*.devsherwin.com") ||
+  shExpMatch(host,"*cgprod.grupocomex.com.mx") ||
+  shExpMatch(host,"*.gpcanada.local") ||
+  shExpMatch(host,"*.generalpaint.local") ||
+  shExpMatch(host,"*.sherwin-auto.com.br") ||
+  shExpMatch(host,"*intranet.ronseal.co.uk") ||
+  shExpMatch(url,"*.duplicolor.com*")) {
+  return "DIRECT";
+  }
+
+  //DO NOT UPDATE, ADD SITES, OR MODIFY
+  //Legacy list of external sites that do not work with the proxy. 
+  if 
+  //North America and Global
+  (shExpMatch(url,"*retaillink.wal-mart.com") ||
+  shExpMatch(url,"*rlnts180.wal-mart.com") ||
+  shExpMatch(url,"204.146.172") ||
+  shExpMatch(url,"*acehardware*") ||
+  shExpMatch(url,"*gotostrata*") ||
+  shExpMatch(url,"*avendra.com") ||
+  shExpMatch(url,"*d2ls.kodak.com") ||
+  shExpMatch(url,"*transportation.us.spireon.com") ||
+  shExpMatch(url,"*aceservices.com*") ||
+  shExpMatch(url,"*choicepointinc*") ||
+  shExpMatch(url,"*usolam.us.hsbc.com") ||
+  shExpMatch(url,"*www.hsbcnet.com") ||
+  shExpMatch(url,"*www1.secure.hsbcnet.com") ||
+  shExpMatch(url,"*www2.secure.hsbcnet.com") ||
+  shExpMatch(url,"*fedpay.gsa.gov") ||
+  shExpMatch(host,"maxtst.zilliant.com") ||
+  shExpMatch(host,"protective.swimages.com") ||
+  shExpMatch(host,"*apps.ocfo.gsa.gov") ||
+  shExpMatch(url,"*astm.org*") ||
+  //Ecuador
+  shExpMatch(url,"*ftp.support.baan.com*") ||
+  shExpMatch(url,"10.20.100.19") ||
+  //Italy
+  shExpMatch(url,"*hyperion.lindengruppen.se*") ||
+  //Malyasia
+  shExpMatch(url,"*reckon.com*") ||
+  //Sweden
+  shExpMatch(url,"*msbv.com*") ||
+  shExpMatch(url,"*intranet.ronseal.co.uk*") ||
+  //Austalia and New Zealand
+  shExpMatch(url, "*pacmetal-services.com*") ||
+  shExpMatch(url, "*remote.ingenia.com.au*") ||
+  shExpMatch(url, "*root.com*") ||
+  shExpMatch(url, "*eci.ato.gov.au*") ||
+  shExpMatch(url, "*sigmaflow.com*") ||
+  shExpMatch(url, "*sigmaflowdownloads.com*") ||
+  shExpMatch(url, "*webforms.leadtec.com.au*") ||
+  shExpMatch(url, "*micallefcorp.com.au*") ||
+  shExpMatch(url, "*debeer.com.au*") ||
+  shExpMatch(url, "*ism-knowledgecenter.ws*") ||
+  shExpMatch(url, "*ism.mindedgeonline.com*") ||
+  shExpMatch(url, "*homeimprovement.webforms.leadtec.com.au*") ||
+  shExpMatch(url, "*sequel.wattyl.com.au*")) {
+  return 'DIRECT';
+  }
+
+  //New List of Sites that Require Direct Access
+  if (
+  //20180613 - INC000000966473 - PTMSTAX Tax Application
+  shExpMatch(host, "*.ptmstax.com|ptmstax.com") ||
+  //20180622 - INC000001102969 - SW AWS Instance
+  shExpMatch(host, "*.poc.swaws|poc.swaws") ||
+  //20180622 - INC000001102969 - SW AWS Instance
+  shExpMatch(host, "*.ebus.swaws|ebus.swaws")
+  ){
+  return 'DIRECT';
+  }
+
+
+  if ((host == "localhost") ||
+  shExpMatch(host, "localhost.*")) {
+  return 'DIRECT'
+  }
+
+  //Default action
+  return proxy;
+  }
+  //EOF

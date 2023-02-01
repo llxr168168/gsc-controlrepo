@@ -1,0 +1,21 @@
+# by-platform -> FORCEPOINT -> PROXY.yaml
+
+sw_util::wrapper::hiera_package::params:
+  - apr: {}
+  - apr-util: {}
+  - compat-readline5: {}
+  - ftp: {}
+  - gd: {}
+  - krb5-workstation: {}
+  - libicu: {}
+  - nc: {}
+  - ncurses-devel: {}
+  - perl-URI: {}
+  - perl-libwww-perl: {}
+  - readline-devel: {}
+  - redhat-lsb: {}
+  - samba-winbind-clients: {}
+  - tcl: {}
+
+
+  

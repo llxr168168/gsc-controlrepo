@@ -1,0 +1,15 @@
+samba::shares:
+  webapps:
+    - 'comment = Tomcat'
+    - 'valid users = @SW\DL_ADMIN_%{::hostname_upcase}'
+    - 'path = /swpkg/bmc/em/ctm_em/etc/emweb/tomcat/webapps'
+    - 'force user = emuser'
+    - 'writable = yes'
+    - 'public = no'
+  emlogs:
+    - 'comment = EM'
+    - 'path = /swpkg/bmc/em/ctm_em/log'
+    - 'valid users = @SW\DL_ADMIN_%{::hostname_upcase}'
+    - 'public = no'
+    - 'writable = no'
+    - 'force user = emuser'

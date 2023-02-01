@@ -1,0 +1,6 @@
+sw_util::wrapper::hiera_file_line::params:
+  - set_nscd_4hr: { path: "/etc/nscd.conf", match: "\\s+positive-time-to-live\\s+hosts", line: "\tpositive-time-to-live\thosts           14400" }
+  
+  
+sw_util::wrapper::hiera_service::params:
+- nscd: {}

@@ -1,0 +1,86 @@
+# by-platform -> IBM_CONNECTIONS -> DB2.yaml
+
+# DB2 Instance Users
+ibm_connections::db2::inst_user:
+  - db2inst1
+  - db2inst2
+  - db2inst3
+
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-notes):ALL'
+  - '+:(gg-adm-db2):ALL'
+  - '+:(gg-adm-scan):10.20.101.96 10.240.6.26 10.20.101.177 10.20.101.178 10.20.101.179 10.20.101.180 10.20.101.181 10.240.6.27 10.20.101.97'
+  - '+:(gg-adm-infosec-admins-linux):ALL'
+  - '+:(DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:db2inst1:cron crond :0'
+  - '+:db2inst2:cron crond :0'
+  - '+:db2inst3:cron crond :0'
+  - '-:ALL:ALL'
+
+# setting sudo rights for database servers
+sudo::sudoers_template: sudoers.ibm_db2
+
+
+# Set Ulimit values for all IBM Connections DB2 servers.
+#Reference (v10.5) -> https://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.qb.server.doc/doc/r0052441.html
+# Note: 2.6 kernel limits nofiles to (1024 * 1024). 
+# - Exceeding this limit will cause PAM validation to fail. 
+# - Result: Session can not be opened for use...
+sw_util::augeas::ulimit::params:
+  topic: domain
+  context: /files/etc/security/limits.conf
+  index:
+    - { domain: db2inst1, type: hard, item: nofile, value: 65536 }
+    - { domain: db2inst1, type: soft, item: nofile,  value: 65536 }
+    - { domain: db2inst2, type: hard, item: nofile, value: 65536 }
+    - { domain: db2inst2, type: soft, item: nofile,  value: 65536 }
+    - { domain: db2inst1, type: hard, item: data, value: unlimited }
+    - { domain: db2inst1, type: soft, item: data, value: unlimited }
+    - { domain: db2inst2, type: hard, item: data, value: unlimited }
+    - { domain: db2inst2, type: soft, item: data, value: unlimited }
+    - { domain: db2inst1, type: hard, item: fsize, value: unlimited }
+    - { domain: db2inst1, type: soft, item: fsize, value: unlimited }
+    - { domain: db2inst2, type: hard, item: fsize, value: unlimited }
+    - { domain: db2inst2, type: soft, item: fsize, value: unlimited }
+    
+# Kernel parameters for DB2
+# Note:: - "kernel.sem 250 32000 32  128" <- Requires augeas update. 
+# work around: Add single quotes around data containing spaces
+
+sw_util::augeas::lnx_sysctl::params:
+  - "kernel.shmmax 68719476736"
+  - "kernel.shmall 4294967296"
+  - "kernel.shmmni 30208"
+  - "kernel.msgmax 65536"
+  - "kernel.msgmni 32768"
+  - "kernel.msgmnb 65536"
+  # Note: Parameters with spaces in them require single quotes to maintain the augeas key -> value relationship. 
+  - "kernel.sem '250 32000 32  128'"
+
+ibm_connections::db2::db2inst_ulimit_nproc: |
+  # The contents of this file are managed by Puppet; modifications are subject
+  # to being reverted without warning.
+  
+  # the "nproc" ulimit does not take effect if set in the usual file
+  # /etc/security/limits.conf -- it gets overridden by RedHat's custom
+  # /etc/security/limits.d/90-nproc.conf .
+  db2inst1 soft nproc 32768
+  db2inst1 hard nproc 32768
+  db2inst2 soft nproc 32768
+  db2inst2 hard nproc 32768
+
+sw_util::wrapper::hiera_file::params:
+  - /etc/security/limits.d/80-db2inst_nproc.conf: {
+      ensure: "file",
+      content: "ibm_connections::db2::db2inst_ulimit_nproc",
+      owner: "root",
+      group: "root",
+      mode: "644",
+    }

@@ -1,0 +1,43 @@
+
+# OUD Administrator Password.  
+oud_admin_passwd: '{SHA}EfoVmNq8Qy4aDXSLfBD9mjcy13E='
+
+pswdfile_value: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQAw
+    DQYJKoZIhvcNAQEBBQAEggEAPrBXC0rBQQgdAY559QDDPdNMCM2Awuw6aLaW
+    RgdTNop68RueL6LYjk92TsnY5LGM2l5Ux2OBL5t2BBC1/sa4jSvO9nQXFWb7
+    wdOmH+v2EmtmbhQdX/UYZ607/To9ZEmwWYhD6NIyqgII6bHuNnbCnVCS6Vth
+    omza3TN2VWI7RbX49fer5P5EG4JUr6/ZKyYzvZyb9AxfwQohd8Z3xz76e/bD
+    LlNWicmC0hRjEc05BU/ByiyfeZCOy/CCvf60T+cCL/Db7MYIV14wChqbv0Ah
+    B++D2aFHm5tNQq4xxch++G9d/NLgf7M6UWY6wHjODSi5yREUqRKnJ+TGZ7D9
+    Orv+xzA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCTiM/rX2avT2hdqrdS
+    8o4vgBCAp+Kv09rBudt5cddfExRQ]
+
+# WebSphere Commerce password 
+wcs_user_passws: '{SHA}HJ5FWx6pm+H59olpYvqfrcgJhkc='
+
+# Define JDK location (Java_Home) for OUD processes.
+oud_local_jvm: '/sw/pkg/java/jdk1.7.0_111'
+profiles_webeng::default::java_name: 'jdk-7u111'
+profiles_webeng::default::java_source: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/oracle/java/jdk-7u111-linux-x64.tar.gz'
+
+
+# ###############
+# List of Groups for SoftLayer nodes.
+softlayer_os_groups: |
+  # Groups Allowed Access.
+  +:(osadmin):ALL
+  +:(security):ALL  
+  +:(prdoudadmin):ALL
+  # Allow crontab for oudadm
+  +:oudadm:cron crond:0  
+  # Allow Access for root because of F5 SSSD LB issues.
+  +:root:ALL
+
+# ###############    
+# Sudoers.d configuration (additive because its a hieradata array).  
+softlayer_sudo::configs:       
+    'prdoudadmin':
+        'content'   : "%prdoudadmin ALL=(ALL) PASSWD: ALL"
+        'priority'  : 15
+   

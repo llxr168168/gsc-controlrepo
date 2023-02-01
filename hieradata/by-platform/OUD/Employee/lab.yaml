@@ -1,0 +1,16 @@
+yum::yum_repo_file: 'swrepo.yum'
+
+# OUD Administrator Password.  
+#oud_admin_passwd: 'secret'
+oud_admin_passwd: '{SHA}5en6G6MezRroT3XKqkdPOmY/BfQ='
+
+pswdfile_value: 'secret'
+
+oud_console::weblogic_passwd: 'welcome1'
+
+# OUD Java
+oud_local_jvm: '/sw/pkg/java/jdk1.7.0_111'
+profiles_webeng::default::java_name: 'jdk-7u111'
+profiles_webeng::default::java_source: 'http://cplnxrepo1.sherwin.com/webroot/installers/webeng/oracle/java/jdk-7u111-linux-x64.tar.gz'
+
+        

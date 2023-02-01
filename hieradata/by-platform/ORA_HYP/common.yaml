@@ -1,0 +1,53 @@
+classes:
+  - profiles_unix::gsc::oracle7::asm
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+sudo::sudoers_d_template: 'oracle-hyp'
+
+oracle_build7::kernel::shmmax: 8358017024
+
+sw_util::wrapper::hiera_mount::params:
+  - /dev/shm:
+      ensure: mounted
+      options: defaults,size=2G
+      device: none
+      atboot: true
+      fstype: tmpfs
+      dump: 0
+      pass: 0
+  - /run:
+      ensure: mounted
+      options: defaults,size=2G
+      device: none
+      atboot: true
+      fstype: tmpfs
+      dump: 0
+      pass: 0
+  - /sys/fs/cgroup:
+      ensure: mounted
+      options: defaults,size=2G
+      device: none
+      atboot: true
+      fstype: tmpfs
+      dump: 0
+      pass: 0
+
+profiles_unix::gsc::oracle7::base::nfs_mounts:
+  
+  - '/hyp_util -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 nafgps01rw-nfs02:/HYP_util_dev'
+  - '/util -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 nafgps01rw-nfs01.sherwin.com:/EBS_util_nonprd'
+  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_gsc_rw/cpepmdbd1'
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-dba-hyp):ALL'  
+  - '+:(gg-adm-sql):ALL'  
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:oracle:LOCAL %{::fqdn} 10.140.32.157 10.148.65.24'
+  - '-:ALL:ALL'

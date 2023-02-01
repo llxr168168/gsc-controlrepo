@@ -1,0 +1,43 @@
+classes:
+  - vsftpd
+  - sw_puppet_pimastartup
+sudo::sudoers_d_template: 'gea_bamboo'
+
+access_conf::access: 
+  - '+:root:LOCAL'
+  - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - '+:jboss:LOCAL 10.25.34.58 10.240.31.16'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:SW\\sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
+  - '+:SW\sa-geamdm-bamboo:cgmdmweb3.consumer.sherwin.com cgatlweb2.sherwin.com cgatlweb1.sherwin.com cgmdmweb2.consumer.sherwin.com cpjnks03.sherwin.com cpranchn09.sherwin.com cpranchn10.sherwin.com cpranchn11.sherwin.com cpranchn12.sherwin.com cpranchn13.sherwin.com cpranchn24.sherwin.com cpranchn15.sherwin.com cpranchn16.sherwin.com'
+  - '-:ALL:ALL'
+  
+vsftpd::vsftpd_userlist:
+  - sruser
+  - sprint_xfer
+vsftpd::vsftpd_umask: '002'
+
+samba::shares:
+  jboss:
+    - 'comment = JBoss'
+    - 'path = /swdata/'
+    - 'browseable = no'
+    - 'writable = yes'
+    - 'valid users = @SW\DL_ADMIN_%{::hostname_upcase}'
+    - 'force user = jboss'
+  httpd:
+    - 'comment = apache_logs'
+    - 'path = /var/log/httpd'
+    - 'browseable = no'
+    - 'writable = no'
+    - 'valid users = @SW\DL_ADMIN_%{::hostname_upcase}'
+    - 'force user = root'
+
+samba::smb_template: 'smb.conf_SMB2.erb'
+
+

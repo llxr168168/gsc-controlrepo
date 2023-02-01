@@ -1,0 +1,69 @@
+classes:
+  - sw_util::hiera_wrapper
+  
+#install qpidd, pulp, and all sorts of other things 
+sw_util::wrapper::hiera_package::params:
+  - qpid-cpp-server: {}
+  - qpid-cpp-server-linearstore: {}
+  - pulp-server: {}
+  - python-gofer-qpid: {}
+  - qpid-tools: {}
+  - pulp-rpm-plugins: {}
+  - pulp-puppet-plugins: {}
+  - pulp-docker-plugins: {}
+  - pulp-admin-client: {}
+  - pulp-rpm-admin-extensions: {}
+  - pulp-puppet-admin-extensions: {}
+  - pulp-docker-admin-extensions: {}
+  - nfs-utils.x86_64: {}
+  
+
+
+##start qpidd here systemctl enable qpidd systemctl enable qpidd
+
+   
+sw_util::wrapper::hiera_service::params:
+  - qpidd: {}
+  - httpd: {}
+  - pulp_workers: {}
+  - pulp_celerybeat: {}
+  - pulp_resource_manager: {}
+
+## install pulp server and reqs 
+
+
+#set up /etc/pulp/server.conf
+
+## initialize the pulp db 
+#sudo -u apache pulp-manage-db
+# this requires the mongodb be up and running first
+# setting up mongodb 
+# user must be defined for the server.conf to use 
+
+
+
+## fix webserver to refuse  sslv3 
+#`SSLProtocol all -SSLv2 -SSLv3`
+
+##start apache here systemctl enable httpd systemctl enable httpd
+
+### enable  workers 
+# edit /etc/default/pulp_workers
+#  systemctl enable pulp_workers  systemctl start pulp_workers
+
+  
+## set up celerybeat 
+#edit /etc/default/pulp_celerybeat
+#systemctl enable pulp_celerybeat
+#systemctl start pulp_celerybeat
+
+
+
+## set up reource manager 
+#systemctl enable pulp_resource_manager
+#systemctl start pulp_resource_manager
+
+
+
+
+
