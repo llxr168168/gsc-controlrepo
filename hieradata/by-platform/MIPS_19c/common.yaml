@@ -18,4 +18,4 @@ access_conf::access:
   - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
   - '-:ALL:ALL'
   
-  oracle_build8::kernel::vm_nr_hugepages: 5632
+oracle_build8::kernel::vm_nr_hugepages: 5632
