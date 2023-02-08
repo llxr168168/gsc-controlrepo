@@ -63,7 +63,8 @@ sw_resource_realizer::package:
     ensure: 'installed'
   libaio-devel.i686:
     ensure: 'installed'
-
+  java-1.8.0:
+    ensure: 'installed'
 
 sw_resource_realizer::service:
   httpd:
