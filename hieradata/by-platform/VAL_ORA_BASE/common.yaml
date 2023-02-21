@@ -1,6 +1,7 @@
 classes:
   - profiles_unix::val::oracle::base
   - sw_linux_cohesity_agent
+  - sw_puppet_ansible_dmw
   
 #Don't make the /swdata/nfs directory
 autofs::make_default_dir: false 
