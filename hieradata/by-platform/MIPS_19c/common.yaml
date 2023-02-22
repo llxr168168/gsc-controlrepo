@@ -2,7 +2,7 @@ classes:
   - profiles_unix::gsc::oracle8::asm
   - sw_linux_cohesity_agent
   - profiles_unix::gsc::apps::trans_mips
-  - profiles_unix::gsc::apps::mq_p2p_client
+  - mq_p2p_client
   - sw_apex_print
   - sw_puppet_ansible_dmw
 
