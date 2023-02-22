@@ -1,7 +1,7 @@
 classes:
   - profiles_unix::gsc::oracle8::asm
   - sw_linux_cohesity_agent
-  - profiles_unix::gsc::apps::trans_mips
+  - mips
   - mq_p2p_client
   - sw_apex_print
   - sw_puppet_ansible_dmw
@@ -29,7 +29,6 @@ access_conf::access:
   - '+:(qaduser):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
-  - '+:(gg-adm-oracle-oem):ALL'
   - '+:(gg-adm-dba-ops):ALL'
   - '+:(gg-adm-gea-mq):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
