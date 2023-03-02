@@ -24,13 +24,13 @@ access_conf::access:
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:(sa-local):LOCAL'
-  - '+:(mips):LOCAL'
+  - '+:(mips):LOCAL cgmipdb01.sherwin.com cgmipdb02.sherwin.com cghpv1.sherwin.com cghpdev1.sherwin.com'
   - '+:(qadrcp):LOCAL'
-  - '+:(qaduser):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-gcdunix):ALL' 
   - '+:(gg-adm-dba-ops):ALL'
   - '+:(gg-adm-gea-mq):ALL'
+  - '+:(gg-cgit-taps):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
   - '+:oracle:LOCAL %{::fqdn} 127.0.0.1 10.140.32.22 10.148.5.81 10.140.32.21 10.148.5.80'
