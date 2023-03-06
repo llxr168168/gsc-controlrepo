@@ -3,7 +3,6 @@ classes:
   - sw_linux_cohesity_agent
   - mips
   - mq_p2p_client
-
   - sw_puppet_ansible_dmw
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'
