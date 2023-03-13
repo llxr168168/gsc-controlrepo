@@ -22,7 +22,7 @@ access_conf::access:
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
   - '+:(sa-local):LOCAL'
-  - '+:(mips):LOCAL cgmipdb01.sherwin.com cgmipdb02.sherwin.com cghpv1.sherwin.com cghpdev1.sherwin.com'
+  - '+:(mips):LOCAL cgmipdb01.sherwin.com cgmipdb02.sherwin.com cghpv1.sherwin.com cghpdev1.sherwin.com hearsdev01.sherwin.com'
   - '+:(qadrcp):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL' 
