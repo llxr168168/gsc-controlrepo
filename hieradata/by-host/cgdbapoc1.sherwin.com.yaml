@@ -1,7 +1,3 @@
 profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/cgddorac1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
-  - '/swdata/nfs/cgddoraw1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
-  - '/global/dd_backup_rw -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddorac1.consumer.sherwin.com:/data/col1/oracle_gsc_rw'
-  - '/global/tmp -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
 
 oracle_build7::kernel::vm_nr_hugepages: 2560

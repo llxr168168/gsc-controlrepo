@@ -17,8 +17,6 @@ sw_apex_print::local_group: 'awcs'
 oracle_build::kernel::vm_nr_hugepages: 2304
 
 profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/cgddoraw1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_rw'
-  - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoraw1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafgps01rw-nfs01.sherwin.com:/CP_oramedia/oracle'
   - '/swdata/nfs/oraremote -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cpdd03rw.sherwin.com:/data/col1/gsc_oraremote_rw'
   - '/swdata/nfs/oraremote_int -defaults,rw nafclerepb-nfs01ext:/oraremote_epia'
