@@ -43,6 +43,5 @@ trans::trans_developers:
 trans::trans_developers_retire: []
 
 profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01wv.sherwin.com:/data/col1/gsc_oracle_ak'
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafgps01rw-nfs01.sherwin.com:/CP_oramedia/oracle'
   - '/swdata/nfs/oraremote -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgnaw1b.consumer.sherwin.com:/vol/oraremote'

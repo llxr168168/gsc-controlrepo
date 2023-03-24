@@ -76,8 +76,6 @@ sw_util::wrapper::hiera_mount::params:
 # cpoempdb4.sherwin.com
 # cpoempdb6.sherwin.com
 
-# cpdd01rw-nas2:/data/col1/oracle_rw/cpoempdb2
-# cpdd01ak-nas2:/data/col1/oracle_rw/cpoempdb2    D/R
 
 
 oracle_oem::rac::ssh_private: >

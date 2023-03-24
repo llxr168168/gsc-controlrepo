@@ -2,10 +2,6 @@ classes:
   - autofs
   
 autofs::nfs_maps:
-  - '/swdata/nfs/gsc_oracle_vault -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvrw.sherwin.com:/data/col1/gsc_pv_locked'
-  - '/swdata/nfs/gsc_oracle_vault_rep -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddvrw.sherwin.com:/data/col1/gsc_oracle_vault_rep'
-  - '/swdata/nfs/cgddorac1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_ak'
-  - '/swdata/nfs/cgddoracv1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_vault'
 
   
 access_conf::access:

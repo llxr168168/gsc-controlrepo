@@ -17,18 +17,6 @@ dnsmasq_conf::nameserver:
 
 awcs7::awcs_alias: 'awcsreno'
   
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddverno.sherwin.com:/data/col1/gsc_ora_backup_rno'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddverno.sherwin.com:/data/col1/gsc_ora_disaster_rno'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddverno.sherwin.com:/data/col1/gsc_oraremote_rw'
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddverno.sherwin.com:/data/col1/gsc_ora_backup_rno'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddverno.sherwin.com:/data/col1/gsc_ora_disaster_rno'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddverno.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddverno.sherwin.com:/data/col1/gsc_ora_backup_rno/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddverno.sherwin.com:/data/col1/gsc_ora_disaster_rno/%{::hostname}'
-  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddverno.sherwin.com:/data/col1/gsc_ora_disaster_rno'
 
 
 access_conf::awcs_dataguard: 'cgrnoawcs1a.sherwin.com cgrnoawcs1b.sherwin.com cgrnoawcs1c.sherwin.com'

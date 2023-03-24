@@ -5,11 +5,8 @@ classes:
 
 
 profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/cgddorac1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01rw.sherwin.com:/data/col1/gsc_oracle_ak'
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafgps01rw-nfs01.sherwin.com:/CP_oramedia/oracle'
-  - '/swdata/nfs/cgddoracv1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddorac1.consumer.sherwin.com:/data/col1/gsc_oracle_vault'
-  - '/swdata/nfs/cgddoracv1_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoravault.consumer.sherwin.com:/data/col1/gsc_oracle_vault'
-  - '/swdata/nfs/cgddorawv1 -rw,noac,hard,rsize=32768,wsize=32768,nolock cgddoravault.consumer.sherwin.com:/data/col1/gsc_oracle_vault_dev'
+
   
 pv::pv_developers:
   - ada76c
