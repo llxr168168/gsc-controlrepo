@@ -13,20 +13,6 @@ resolv_conf::nameserver:
   - '10.20.103.6'
   - '10.240.3.6'
 
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgwacna1a.consumer.sherwin.com:/vol/ora_backup_wac'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgwacna1b.consumer.sherwin.com:/vol/ora_disaster_wac'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgwacna1b.consumer.sherwin.com:/vol/oraremote'
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock cgwacna1a.consumer.sherwin.com:/vol/ora_backup_wac'
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock cgwacna1b.consumer.sherwin.com:/vol/ora_disaster_wac'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgwacna1b.consumer.sherwin.com:/vol/oraremote'
-
-profiles_unix::gsc::apps::utilserver::nfs_mounts:
-  - '/swdata/nfs/lnxmedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgddvewtx.consumer.sherwin.com:/vol/lnxremote'
-  - '/swdata/nfs/cgwacna1a_root -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgwacna1a.consumer.sherwin.com:/vol/vol0'
-  - '/swdata/nfs/cgwacna1b_root -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 cgwacna1b.consumer.sherwin.com:/vol/vol0'
 
 yum::yum_repo_file: remotesite.yum
 sw_os_update_management::redhat::yum_repo_file: remotesite.yum

@@ -41,14 +41,6 @@ sw_util::wrapper::hiera_mount::params:
        fstype: nfs
        dump: 0
        pass: 0
-   - /global/dd_backup:
-       ensure: mounted
-       options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
-       device: cpdd01rw-nas1:/data/col1/oracle_rw/cpqa14v
-       atboot: true
-       fstype: nfs
-       dump: 0
-       pass: 0
    - /util:
        ensure: mounted
        options: rw,intr,hard,tcp,bg,rsize=32768,timeo=600,wsize=32768,vers=3
