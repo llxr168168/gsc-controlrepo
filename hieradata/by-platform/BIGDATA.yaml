@@ -8,5 +8,7 @@ access_conf::access:
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(gg-adm-gcdunix-cyberark):ALL'
+  - '+:(SW\gg-adm-gcdunix-cyberark):ALL'
   - '+:(gg-cgit-pv5webadmins):ALL'
   - '-:ALL:ALL'
