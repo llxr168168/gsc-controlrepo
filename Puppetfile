@@ -968,3 +968,7 @@ mod 'rundeck_ssh_test',
  :git => 'git@github.sherwin.com:SW-CORP-IT/rundeck_ssh_test.git',
  :ref => 'master'
 
+mod 'sw_ignition8_v3',
+ :git => 'git@github.sherwin.com:SW-CORP-IT/sw_ignition8_v3.git',
+ :ref => 'master'
+
