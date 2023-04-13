@@ -1,0 +1,92 @@
+classes:
+    - sw_ignition8_v3
+
+## Default ignition version for regular ignition is 8.1.26 at this time and that is set in sw_ignition8_v3 , but is overridable in by-host
+## including a template for a platform wide upgrade in version, uncomment the line below and set the version correctly
+#sw_ignition8_v2::ign_ver: 8.1.26
+
+access_conf::access:
+  - '+:root:LOCAL'
+  - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
+  - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
+  - "+:sa-indapps-devopsadm:10.148.19.50 10.148.5.225 10.148.38.91"
+  - '+:ignition:LOCAL cgwatsondr.consumer.sherwin.com'
+  - '+:zabbix:LOCAL'
+  - '+:(sa-local):LOCAL'
+  - '+:(sa-remote):ALL'
+  - '+:(gg-adm-gcdunix):ALL'
+  - '+:(gg-cgit-watson):ALL'
+  - '+:(SW\gg-adm-gcdunix):ALL'
+  - '+:(SW\gg-cgit-watson):ALL'
+  - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
+  - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}" 
+  - '-:ALL:ALL'
+
+hosts::hosts_group: ignition
+
+## Default ignition version for batch is 7.9.10 at this time, but is overridable in by-host
+sw_ignition8_v2::ign_ver: 7.9.10
+
+sw_util::wrapper::hiera_package::params:
+- jdk9u4.x86_64: {}
+
+# pushed most of these over into the sw_ignition8_v2 module
+
+profiles_unix::gsc::base::auth::sssd_auth: 'true'
+
+
+sw_util::wrapper::hiera_file::params:
+  - /etc/samba/smb.conf: {
+  ensure: "file",
+  content: "IGNITION_SWBATCH::smb_conf",
+  owner: "root", 
+  group: "root",
+  mode: "655",
+  }  
+
+
+IGNITION_SWBATCH::smb_conf: |
+  # File controlled by puppet IGNITION_SWBATCH platform common.yaml
+
+  [global]
+        client ipc signing = auto
+        workgroup = SW
+        realm = SW.SHERWIN.COM
+        server string = Samba Server Version %v
+        security = ADS
+        log file = /var/log/samba/log.%m
+        max log size = 50
+        template shell = /bin/bash
+        encrypt passwords = yes
+        winbind use default domain = no
+        winbind offline logon = no
+        idmap config * : backend = hash
+        idmap config * : range = 10000-4000000000
+        map to guest = Never
+        load printers = no
+        printing = bsd
+        printcap name = /dev/null
+        restrict anonymous = 2
+        wide links = no
+        log level = 5
+        name resolve order = wins bcast host lmhosts
+        protocol = SMB2
+
+  [ignition]
+  comment = Ignition
+  valid users = @gg-adm-gcdunix @gg-cgit-watson @SW\gg-adm-gcdunix @SW\gg-cgit-watson
+  path = /swpkg/ignition
+  force user = ignition
+  writable = yes
+  create mask = 2770
+  directory mask = 2770
+
+  [backups]
+  comment = backups
+  valid users = @gg-adm-gcdunix @gg-cgit-watson @SW\gg-adm-gcdunix @SW\gg-cgit-watson
+  path = /swdata/ignition
+  force user = ignition
+  writable = yes
+  create mask = 2770
+  directory mask = 2770
+  #~ EOF
