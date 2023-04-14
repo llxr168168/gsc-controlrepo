@@ -3,7 +3,7 @@ classes:
 
 ## Default ignition version for regular ignition is 8.1.26 at this time and that is set in sw_ignition8_v3 , but is overridable in by-host
 ## including a template for a platform wide upgrade in version, uncomment the line below and set the version correctly
-#sw_ignition8_v2::ign_ver: 8.1.26
+#sw_ignition8_v3::ign_ver: 8.1.26
 
 access_conf::access:
   - '+:root:LOCAL'
@@ -24,11 +24,11 @@ access_conf::access:
 
 hosts::hosts_group: ignition
 
-## Default ignition version for batch is 7.9.10 at this time, but is overridable in by-host
-sw_ignition8_v2::ign_ver: 7.9.10
+## Default ignition version for batch is 8.1.26 at this time, but is overridable in by-host
+sw_ignition8_v2::ign_ver: 8.1.26
 
-sw_util::wrapper::hiera_package::params:
-- jdk9u4.x86_64: {}
+#sw_util::wrapper::hiera_package::params:
+#- jdk9u4.x86_64: {}
 
 # pushed most of these over into the sw_ignition8_v2 module
 
