@@ -14,10 +14,6 @@ resolv_conf::nameserver:
   
 site_code: rck
 
-profiles_unix::val::oracle::base::nfs_mounts:
-  - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01rw-nas2.sherwin.com:/data/col1/oracle_val_ak'
-  - '/global/dd_backup_msp -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cgddoraw1.consumer.sherwin.com:/data/col1/oracle_val_msp_ak'
-
 sw_sssd_authentication::ldap_uris: 'ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'
 sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
 sw_sssd_authentication::ldap_default_authtok: 'AAAQAMDDKwvPRh1HKvOFx0bN24HojEh0jvNqA01v4A8DQ5LGqznLa4fOt4EtRQb6y38NWNrsDbXwJvs7XyifNgLP5zUAAQID'
