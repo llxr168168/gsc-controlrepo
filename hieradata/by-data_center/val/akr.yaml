@@ -13,10 +13,6 @@ resolv_conf::nameserver:
 
 site_code: akr
 
-profiles_unix::val::oracle::base::nfs_mounts:
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/oracle_val_ak/%{::hostname}'
-  - '/global/dd_backup_ak -ro,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/oracle_val_ak'
-
 
 sw_sssd_authentication::ldap_uris: 'ldap://lbusldap.sherwin.com,ldap://usldap.sw.sherwin.com'
 sw_sssd_authentication::ldap_default_bind_dn: 'sa-cle-gcdldap-ro'
