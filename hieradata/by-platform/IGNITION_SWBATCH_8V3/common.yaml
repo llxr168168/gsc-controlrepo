@@ -26,7 +26,7 @@ access_conf::access:
 hosts::hosts_group: ignition
 
 ## Default ignition version for batch is 8.1.26 at this time, but is overridable in by-host
-sw_ignition8_v2::ign_ver: 8.1.26
+sw_ignition8_v3::ign_ver: 8.1.26
 
 #sw_util::wrapper::hiera_package::params:
 #- jdk9u4.x86_64: {}
