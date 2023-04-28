@@ -36,7 +36,7 @@ access_conf::access:
   - '+:(qadrcp):LOCAL'
   - '+:(qaduser):LOCAL'
   - '+:(sa-remote):ALL'
-  - '+:(mips):cgtmwftp1.consumer.sherwin.com cgtaprod.sherwin.com cgmipdb1.consumer.sherwin.com cgmipdb2.consumer.sherwin.com cghpv1.sherwin.com cghpdev1.sherwin.com'
+  - '+:(mips):cgtmwftp1.consumer.sherwin.com cgtaprod.sherwin.com cgmipdb1.consumer.sherwin.com cgmipdb2.consumer.sherwin.com cghpv1.sherwin.com cghpdev1.sherwin.com mushqcmftp1pr.sw.sherwin.com mushqcmftp2pr.sw.sherwin.com mushqcmftp1dv.sw.sherwin.com mushqcmftp2dv.sw.sherwin.com'
   - '+:(SW\DL_ADMIN_%{::hostname_upcase}):ALL'
   - '+:(SW\gg-adm-gcdunix):ALL'
   - "+:SW\\sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
