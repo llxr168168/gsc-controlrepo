@@ -1,5 +1,4 @@
-sw_os_update_management::redhat::versionlocks: 
-  - 'cohesity-agent-6.6.0d_u3-1.x86_64'
+
 
 
 

@@ -26,9 +26,7 @@ sw_os_update_management::redhat::falconversionlocks:
 
 
 
-#Lock the Cohesity agent to 6.5 by default.  Certain DCs will be overridden.
-sw_os_update_management::redhat::versionlocks: 
-  - 'cohesity-agent-6.5.1f_u1-2.x86_64'
+
 
 
 resolv_conf::nameserver:
