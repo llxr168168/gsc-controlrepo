@@ -1,6 +1,7 @@
 ---
 profiles_unix::gsc::apps::mysqlserver::nfs_mounts:
-  - '/global/mysql_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/gcd_mysql_ak'
+  #- '/global/mysql_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/gcd_mysql_ak'
   - '/swdata/nfs/cpdd01ak -rw,noac,hard,rsize=32768,wsize=32768,nolock,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/gsc_mysql_ak'
   - '/swdata/nfs/cpdd01rw -rw,noac,hard,rsize=32768,wsize=32768,nolock,vers=3 cpdd01ak-nas2.sherwin.com:/data/col1/gcd_mysql_rw'
   - '/swdata/nfs/cpdd01ak_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock,vers=3 cpdd01rw-nas2.sherwin.com:/data/col1/gsc_mysql_ak'
+  - '/global/mysql_backup -rw,defaults,intr,nfsvers=3 Akflb13da-nfs.sherwin.com:/MySQL_PROD_AK'
