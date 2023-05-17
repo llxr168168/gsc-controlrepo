@@ -21,6 +21,7 @@ profiles_unix::gsc::apps::mysqlserver::nfs_mounts:
   - '/swdata/nfs/cpdd01rw -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01rw-nas2.sherwin.com:/data/col1/gsc_mysql_rw'
   - '/swdata/nfs/cpdd01rw_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01ak-nas2.sherwin.com:/data/col1/gsc_mysql_rw'
   - '/swdata/nfs/cpdd01ak_repl -rw,noac,hard,rsize=32768,wsize=32768,nolock cpdd01rw-nas2.sherwin.com:/data/col1/gsc_mysql_ak'
+  - '/global/mysql_backup -rw,defaults,intr,nfsvers=3 rwflb132d-nfs.sherwin.com:/MySQL-NON-PROD_DEV_RW'
 
 oracle_build7::autofs::nfs_mounts:
   - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 nafgps01rw-nfs01.sherwin.com:/CP_oramedia/oracle'
