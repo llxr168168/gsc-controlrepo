@@ -7,6 +7,7 @@ access_conf::access:
   - '+:(sa-local):LOCAL'
   - '+:(sa-remote):ALL'
   - '+:(gg-cgit-dba-admins):ALL'
+  - '+:(gg-adm-dba-ops):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
