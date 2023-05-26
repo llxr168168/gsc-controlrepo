@@ -8,8 +8,6 @@
 #  - sxp267
 #mqseries9::server9150::mq_developers_retire: []
 
-#Custom SSH for Boomi file transers
-ssh::sshd_config: MQ.sshd.conf
 
 profiles_unix::gsc::base::auth::sssd_auth: 'true'  
 
