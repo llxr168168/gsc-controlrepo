@@ -19,6 +19,7 @@ access_conf::access:
   - '+:(sa-remote):ALL'
   - '+:(gg-adm-gcdunix):ALL'
   - '+:(gg-adm-gea-mq):ALL'
+  - '+:(gg-adm-mqm):ALL'
   - '+:mqm:10.148.37.87 10.148.37.224 10.148.37.89 10.148.37.14 10.140.76.23 10.140.76.33 10.140.76.34'
   - "+:sa-qualys-linux:%{hiera('access_conf::qualys_ips')}"
   - "+:sa-cyberark-linux:%{hiera('access_conf::cyberark_ips')}"
