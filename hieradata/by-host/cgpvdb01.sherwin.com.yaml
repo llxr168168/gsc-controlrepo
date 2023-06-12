@@ -1,4 +1,4 @@
-oracle_build7::kernel::vm_nr_hugepages: 2560
+oracle_build7::kernel::vm_nr_hugepages: 5632
 
 access_conf::access:
   - '+:root:LOCAL'

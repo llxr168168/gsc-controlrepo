@@ -1,2 +1,0 @@
-stdbuild::disable_services::enable_services:
-  - iptables
