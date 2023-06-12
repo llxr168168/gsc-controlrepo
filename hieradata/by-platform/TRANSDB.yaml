@@ -1,6 +1,7 @@
 classes:
   - profiles_unix::gsc::oracle::base
   - oracle_build::sudoers 
+  - sw_puppet_ansible_dmw
 access_conf::access:
   - '+:root:LOCAL'
   - "+:SW\\%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"

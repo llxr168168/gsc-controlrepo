@@ -66,11 +66,4 @@ sw_util::wrapper::hiera_mount::params:
       fstype: nfs
       dump: 0
       pass: 0
-  - /global/dd_backup:
-      ensure: mounted
-      options: rw,bg,hard,nointr,vers=3,rsize=1048576,wsize=1048576,timeo=600,tcp,noacl,nolock
-      device: cpdd01rw-nas2:/data/col1/oracle_rw/lamsdb01
-      atboot: true
-      fstype: nfs
-      dump: 0
-      pass: 0
+

@@ -8,22 +8,6 @@ tz::locality: 'Sydney'
 site_code: anz
 
 
-
-
-
-profiles_unix::gsc::oracle::base::nfs_mounts:
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemct.sherwin.com:/data/col1/gsc_ora_disaster_mct'
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemct.sherwin.com:/data/col1/gsc_ora_backup_mct'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddvemct.sherwin.com:/data/col1/gsc_oraremote_rw'
-
-profiles_unix::gsc::oracle7::base::nfs_mounts:
-  - '/swdata/nfs/ora_disaster -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemct.sherwin.com:/data/col1/gsc_ora_disaster_mct'
-  - '/swdata/nfs/ora_backup -rw,noac,hard,rsize=32768,wsize=32768,nolock swddvemct.sherwin.com:/data/col1/gsc_ora_backup_mct'
-  - '/swdata/nfs/oramedia -rw,nointr,soft,tcp,bg,rsize=65536,wsize=65536,vers=3 swddvemct.sherwin.com:/data/col1/gsc_oraremote_rw'
-  - '/global/dd_backup -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddvemct.sherwin.com:/data/col1/gsc_ora_backup_mct/%{::hostname}'
-  - '/global/remote/gsc_ora_disaster -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddvemct.sherwin.com:/data/col1/gsc_ora_disaster_mct/%{::hostname}'
-  - '/global/tmp -rw,nointr,hard,tcp,bg,noacl,nolock,rsize=1048576,wsize=1048576,vers=3 swddvemct.sherwin.com:/data/col1/gsc_ora_disaster_mct'
-  
 resolv_conf::nameserver:
   - '10.160.2.10'
   - '10.20.103.6'

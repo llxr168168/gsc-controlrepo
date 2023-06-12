@@ -10,7 +10,7 @@ mes7::prod::mes_site_name: 'Orlando-ORD'
 mes7::prod::whs_site: 'ordplt'
 mes7::prod::whs_bar: 'KM'
 
-oracle_build7::kernel::vm_nr_hugepages: 4608
+oracle_build7::kernel::vm_nr_hugepages: 3584
 
 access_conf::mes_dataguard: 'cgorlmes1a.sherwin.com cgorlmes1b.sherwin.com cgorlmes1c.sherwin.com'
 
