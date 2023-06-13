@@ -2,6 +2,8 @@ classes:
   - access_conf
   - ssh
   
+ssh::sshd_config: ebs_valspar_sshd.erb
+  
 access_conf::access:
   - '+:root:LOCAL 10.148.16.105 10.140.16.100 10.140.16.94'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
