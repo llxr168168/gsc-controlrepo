@@ -1,5 +1,6 @@
 classes:
   - access_conf
+  - ssh
   
 access_conf::access:
   - '+:root:LOCAL 10.148.16.105'
