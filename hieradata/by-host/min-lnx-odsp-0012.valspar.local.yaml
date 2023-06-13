@@ -1,9 +1,9 @@
 classes:
   - access_conf
   - ssh
-  
+
 access_conf::access:
-  - '+:root:LOCAL 10.148.16.105 10.140.16.100 10.140.16.94'
+  - '+:root:LOCAL 10.148.16.105'
   - "+:%{hiera('sw_snow_disc:snow_user')}:%{hiera('access_conf::snow_ips')}"
   - "+:%{hiera('sw_puppet_ansible:ansible_user')}:%{hiera('access_conf::ansible_ips')}"
   - "+:%{hiera('sw_puppet_ansible_dmw:ansible_user')}:%{hiera('access_conf::ansible_ips_dmw')}"
